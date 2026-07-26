@@ -1,0 +1,42 @@
+---
+import { getCollection, render } from "astro:content";
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+  const transmisiones = await getCollection("transmisiones");
+
+  return transmisiones.map((transmision) => ({
+    params: {
+      slug: transmision.id,
+    },
+    props: {
+      transmision,
+    },
+  }));
+}
+
+const { transmision } = Astro.props;
+const { Content } = await render(transmision);
+---
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{transmision.data.title}</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>{transmision.data.title}</h1>
+
+<p>{transmision.data.description}</p>
+
+<Content />
+
+</div>
+
+</body>
+</html>

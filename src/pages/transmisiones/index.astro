@@ -3,13 +3,14 @@ import "../styles/global.css";
 import { getCollection } from "astro:content";
 
 const ensayos = await getCollection("ensayos");
-const transmisiones = await getCollection("transmisiones");
 
-ensayos.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-transmisiones.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+ensayos.sort(
+  (a, b) =>
+    new Date(b.data.date).getTime() -
+    new Date(a.data.date).getTime()
+);
 
 const ensayo = ensayos[0];
-const transmision = transmisiones[0];
 ---
 
 <html lang="es">
@@ -32,7 +33,8 @@ const transmision = transmisiones[0];
         />
 
         <p class="eyebrow">
-            LABORATORIO DE ESTUDIOS CRÍTICOS SOBRE ACELERACIONISMO, COLAPSO Y RIESGOS EXISTENCIALES
+            LABORATORIO DE ESTUDIOS CRÍTICOS SOBRE ACELERACIONISMO,
+            COLAPSO Y RIESGOS EXISTENCIALES
         </p>
 
         <h1>CRÍTICA ACELERADA</h1>
@@ -53,6 +55,7 @@ const transmision = transmisiones[0];
 
         {
             ensayo && (
+
                 <article class="essay">
 
                     <div class="number">
@@ -75,43 +78,7 @@ const transmision = transmisiones[0];
                     </div>
 
                 </article>
-            )
-        }
 
-    </div>
-
-</section>
-
-<section class="archive">
-
-    <div class="container">
-
-        <h2>TRANSMISIONES</h2>
-
-        {
-            transmision && (
-                <article class="essay">
-
-                    <div class="number">
-                        001
-                    </div>
-
-                    <div class="content">
-
-                        <h3>{transmision.data.title}</h3>
-
-                        <p>{transmision.data.description}</p>
-
-                        <a
-                            class="read-link"
-                            href={`/transmisiones/${transmision.id}`}
-                        >
-                            Escuchar / Leer →
-                        </a>
-
-                    </div>
-
-                </article>
             )
         }
 
@@ -120,4 +87,5 @@ const transmision = transmisiones[0];
 </section>
 
 </body>
+
 </html>

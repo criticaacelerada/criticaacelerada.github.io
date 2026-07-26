@@ -14,6 +14,19 @@ const ensayos = defineCollection({
   }),
 });
 
+const transmisiones = defineCollection({
+  loader: glob({
+    pattern: "**/*.md",
+    base: "./src/content/transmisiones",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.date(),
+  }),
+});
+
 export const collections = {
   ensayos,
+  transmisiones,
 };
