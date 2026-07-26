@@ -1,17 +1,87 @@
 ---
+import "../styles/global.css";
+import { getCollection } from "astro:content";
 
+const ensayos = await getCollection("ensayos");
+
+// Ordena del más reciente al más antiguo
+ensayos.sort(
+  (a, b) =>
+    new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const ensayo = ensayos[0];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale="1.0" />
+    <title>Crítica Acelerada</title>
+  </head>
+
+  <body>
+
+    <main class="hero">
+      <div class="container">
+
+        <img
+          src="/images/logo.png"
+          alt="Crítica Acelerada"
+          class="logo"
+        />
+
+        <p class="eyebrow">
+          LABORATORIO DE ESTUDIOS CRÍTICOS SOBRE ACELERACIONISMO, COLAPSO Y RIESGOS EXISTENCIALES
+        </p>
+
+        <h1>CRÍTICA ACELERADA</h1>
+
+        <p class="mission">
+          Impensar las categorías heredadas para comprender las transformaciones tecnológicas, económicas y filosóficas del presente.
+        </p>
+
+      </div>
+    </main>
+
+    <section class="archive">
+
+      <div class="container">
+
+        <h2>EXPEDIENTES</h2>
+
+        {ensayo && (
+
+          <article class="essay">
+
+            <div class="number">
+              {String(ensayo.data.expediente).padStart(3, "0")}
+            </div>
+
+            <div class="content">
+
+              <h3>{ensayo.data.title}</h3>
+
+              <p>
+                {ensayo.data.descripcion}
+              </p>
+
+              <a
+                class="read-link"
+                href={`/expedientes/${ensayo.id}`}
+              >
+                Leer expediente →
+              </a>
+
+            </div>
+
+          </article>
+
+        )}
+
+      </div>
+
+    </section>
+
+  </body>
 </html>

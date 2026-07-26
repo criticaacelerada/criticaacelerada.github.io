@@ -1,0 +1,55 @@
+---
+import { getCollection, render } from "astro:content";
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+  const ensayos = await getCollection("ensayos");
+
+  return ensayos.map((ensayo) => ({
+    params: {
+      slug: ensayo.id,
+    },
+    props: {
+      ensayo,
+    },
+  }));
+}
+
+const { ensayo } = Astro.props;
+
+const { Content } = await render(ensayo);
+---
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{ensayo.data.title} | Crítica Acelerada</title>
+</head>
+
+<body>
+
+<main class="article">
+
+    <div class="container">
+
+        <p class="eyebrow">
+            EXPEDIENTE {String(ensayo.data.expediente).padStart(3,"0")}
+        </p>
+
+        <h1>{ensayo.data.title}</h1>
+
+        <p class="mission">
+            {ensayo.data.descripcion}
+        </p>
+
+        <hr />
+
+        <Content />
+
+    </div>
+
+</main>
+
+</body>
+</html>
