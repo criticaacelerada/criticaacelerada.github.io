@@ -166,3 +166,66 @@ RESPONSIVE
     }
 
 }
+
+/* ==========================
+ARTÍCULOS
+========================== */
+
+.article{
+    padding:6rem 0;
+}
+
+.article .container{
+    max-width:760px;
+}
+
+.article > .container > hr{
+    border:none;
+    border-top:1px solid rgba(255,255,255,.1);
+    margin:3rem 0;
+}
+
+.article h2{
+    font-size:2rem;
+    margin-top:3rem;
+    margin-bottom:1.5rem;
+}
+
+.article h3{
+    font-size:1.5rem;
+    margin-top:2rem;
+    margin-bottom:1rem;
+}
+
+.article p{
+    margin:0 0 1.6rem 0;
+    color:var(--text);
+    text-align:justify;
+    line-height:1.9;
+    hyphens:auto;
+}
+
+.article blockquote{
+    margin:2rem 0;
+    padding-left:1.5rem;
+    border-left:3px solid var(--accent);
+    color:var(--muted);
+    font-style:italic;
+}
+
+.article ul,
+.article ol{
+    margin:1.5rem 0 1.5rem 2rem;
+}
+
+.article li{
+    margin-bottom:.75rem;
+}
+
+.article strong{
+    font-weight:700;
+}
+
+.article em{
+    font-style:italic;
+}
