@@ -229,3 +229,22 @@ ARTÍCULOS
 .article em{
     font-style:italic;
 }
+
+.article img{
+    display:block;
+    margin:3rem auto;
+    max-width:100%;
+    border-radius:8px;
+}
+
+.article figure{
+    margin:3rem auto;
+}
+
+.article figcaption{
+    margin-top:1rem;
+    color:var(--muted);
+    text-align:center;
+    font-size:.9rem;
+    font-style:italic;
+}

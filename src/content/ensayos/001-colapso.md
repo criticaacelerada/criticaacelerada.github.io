@@ -46,13 +46,6 @@ Más tarde, Mark Fisher y Slavoj Žižek retomaron esa idea para mostrar que el 
 ***Capitalismo o muerte.***
 
 
-
-Todo parecía condensarse en una frase:
-
-> "Es más fácil hablar del fin del mundo que del fin del capitalismo."
-
-O eso decían…
-
 En el siglo XXI aquellas sospechas e intuiciones comenzaron a adquirir mayor masa crítica, puesto que las múltiples crisis que atraviesan nuestro presente —ecológicas, económicas, energéticas, tecnológicas, geopolíticas y sociales— han transformado aquello que durante mucho tiempo parecía una intuición filosófica en un verdadero problema de investigación.
 
 Las múltiples configuraciones y desviaciones en el sistema parecen apuntar a regresar a las bases fundamentales de la existencia.
@@ -108,34 +101,57 @@ Preliminarmente intuimos que la respuesta depende menos del destino del capitali
 
 Durante casi dos siglos, el capitalismo encontró en la palabra crisis una de sus categorías más eficaces. No sólo para describir interrupciones de la acumulación. También para explicar guerras comerciales, depresiones, transformaciones tecnológicas, reorganizaciones geopolíticas y nuevos espacios de valorización. 
 
-> "Es por eso que se dice que la crisis no es una anomalía del capitalismo" 
+*Es por eso que se dice que la crisis no es una anomalía del capitalismo* 
 
-> "…sino una de sus mecanismos de operación."
+*…sino una de sus mecanismos de operación*
 
-> "Que venía “chorreando sangre y lodo por todos los poros”
-> "Que es un vampiro que drena la materia y la energía de lo orgánico e inorgánico…" 
+*Que venía “chorreando sangre y lodo por todos los poros*
+
+*Que es un vampiro que drena la materia y la energía de lo orgánico e inorgánico…*
 
 Que las crisis destruyan capital no conlleva 
 necesariamente a la destrucción de la maquinaria. Todo lo contrario, el capitalismo necesita destruir capital para seguir funcionando, para crear condiciones para un nuevo ciclo de acumulación. Esa es la virtud de esta máquina de acción perfecta: 
 
-> "Capacidad para la reorganización después de cada ruptura" 
-> "Crisis= mecanismo de violencia perfecta para la recomposición." 
-> "Crisis= suficiencia para comprender
-> "Comprender"
-> "Que no hay alternativa"
-> "Crisis infinita dentro de un planeta finito"
-> "La Gran Depresión dio paso al fordismo." 
-> "La crisis del petróleo reorganizó la geografía industrial." 
-> "La crisis de los años setenta fagocito el modelo de sustitución de importaciones de la periferia" 
-> "La crisis financiera de 2008 aceleró la terciarización de la economía…"
-> "… junto con ello el desvanecimiento del soft y del hard." 
-> "Cada interrupción modificaba el sistema"
-> " No cuestionaba su capacidad para reproducirse." 
-> "Era solo un axioma del capital" 
+*Capacidad para la reorganización después de cada ruptura* 
+
+*Crisis= mecanismo de violencia perfecta para la recomposición.*
+
+*Crisis= suficiencia para comprender*
+
+*Comprender*
+
+*Que no hay alternativa*
+
+*Crisis infinita dentro de un planeta finito*
+
+*La Gran Depresión dio paso al fordismo.* 
+
+*La crisis del petróleo reorganizó la geografía industrial.*
+
+*La crisis de los años setenta fagocito el modelo de sustitución de importaciones de la periferia*
+
+*La crisis financiera de 2008 aceleró la terciarización de la economía…*
+
+*"… junto con ello el desvanecimiento del soft y del hard.* 
+
+*Cada interrupción modificaba el sistema*
+
+*No cuestionaba su capacidad para reproducirse*
+
+*Era solo un axioma del capital* 
 
 Es probable que mucho antes de 2026, ese axioma estuviera vaporizado cuando se evidenció que las múltiples crisis no eran episodios meramente autónomos.   
 
 Los gráficos de La Gran Aceleración presentados por Will Steffen y su equipo demostraron desde 2015 que el crecimiento exponencial de variables económicas, tales como el Producto Interno Bruto (PIB) o la Inversión Extranjera Directa (IED), desde la época dorada del capitalismo, es directamente proporcional a la degradación de la biósfera, la acidificación de los océanos, el incremento térmico y el estrés hídrico, por mencionar algunos ejemplos. 
+
+<figure>
+  <img src="/images/GA.jpg" alt="Figura 1. Gráficas de la Gran Aceleración.">
+
+  <figcaption>
+    <strong>Figura 1.</strong> Gráficas de la Gran Aceleración.<br>
+    Fuente: Steffen et al. (2015).
+  </figcaption>
+</figure>
 
 Las gráficas dicen ya suficiente. La inflación ya no puede entenderse únicamente desde la política monetaria, porque existe una crisis energética –y una transición pendiente– que no puede separarse de la reorganización geopolítica mundial. Que la erosión del suelo y el incremento de gases contaminantes altera la producción agrícola. Que esa alteración implica la explosión urbana, que incrementa los incentivos para migrar; que eso a su vez es la materia prima que alimenta procesos de militarización. 
 
@@ -150,10 +166,15 @@ Fractura la posibilidad de aislar aquello que intentamos explicar
 
 La pregunta no es menor. Si el sistema continúa acumulando capital mientras destruye simultáneamente las condiciones materiales, ecológicas, institucionales y sociales de su propia reproducción, entonces quizá no asistimos simplemente a una crisis más extensa que las anteriores. Quizá nos encontramos frente a un fenómeno cuya lógica ya no puede describirse mediante las reliquias del pasado. Porque no basta con afirmar que vivimos "una crisis sin precedentes". Todas las generaciones tienden a describir su presente en esos términos. Tampoco basta con acumular indicadores ambientales o económicos. 
 
-> "Una mayor cantidad de evidencia no resuelve un problema conceptual," 
-> "Es una simplificación de determinada realidad bajo ciertas condiciones." 
-> "No es la totalidad." 
-> "Lo que está en discusión no es solamente la gravedad de los acontecimientos, sino la capacidad explicativa de nuestros conceptos y categorías."
+*Una mayor cantidad de evidencia no resuelve un problema conceptual,*
+
+*Es una simplificación de determinada realidad bajo ciertas condiciones.*
+
+*No es la totalidad.*
+
+*Lo que está en discusión no es solamente la gravedad de los acontecimientos,*
+
+*sino la capacidad explicativa de nuestros conceptos y categorías*
 
 
 ### III. Cuando la palabra colapso reaparece
@@ -172,38 +193,67 @@ La palabra Colapso permaneció al margen de las ciencias sociales durante gran p
 
 Mientras la economía de receta de cocina ni siquiera pudo patentar una teoría sobre la crisis, la economía política marxista se enfrasco en debates entre las corrientes ortodoxas y heterodoxas en relación al análisis del capitalismo mediante la categoría de crisis; un tanto más se aventuro a teorizar sobre un derrumbe sistémico y que años más tarde perdió veracidad cuando el capitalismo demostraba una y otra vez su capacidad de supervivencia. En tanto, las otras ciencias sociales analizaban los efectos del capitalismo, incluso antes de conocer su funcionamiento, para hablar sobre procesos de modernización, desarrollo, cambio institucional, y un gran etcétera. 
 
-> "El motivo fue simple:"
-> "La aceleración del cambio climático"
-> "La pérdida de biodiversidad"
-> "Los fenómenos climáticos cada vez más extremos"
-> "El vaciamiento de las democracias"
-> "La tirania del capital transnacional"
-> "Las crisis de sobreproducción y acumulación" 
-> "La debilidad intencional del sistema financiero"
-> "Interminable e insuficiente hablar de crisis"
-> "Categoria transhistórica ya obsoleta" 
-> "Finalmente: pensar sistémicamente." 
-> "Sospechas"
-> "Intuiciones"
-> "¿Catastrofismo?"
-> "¿Fin del prometeismo tecnológico?"
-> "¿Crónica de una muerte anunciada?"
-> "Un Colapso como forma de designar realidades divergentes"
-> "Crisis que se alimentan y retroalimentan unas con otras: el atolladero"
-> "No hay futuro en una sociedad antropocentrista que" ya piensa desde el futuro: incompatible"
-> "El mensaje dice:" 
-> "Reproducibilidad de la sociedad= negativo"
-> "Bajo qué condiciones materiales sigue existiendo= positivo" 
-> "Mitigación o adaptación" 
+*El motivo fue simple:*
 
-> "Colapso:"
-> "Problema de complejidad social"
-> "↓"
-> "Problema de sistemas complejos"
-> "↓"
-> "Biofísica"
-> "↓"
-> "Dentro del capitalismo"
+*La aceleración del cambio climático*
+
+*La pérdida de biodiversidad*
+
+*Los fenómenos climáticos cada vez más extremos*
+
+*El vaciamiento de las democracias*
+
+*La tirania del capital transnacional*
+
+*Las crisis de sobreproducción y acumulación*
+
+*La debilidad intencional del sistema financiero*
+
+*Interminable e insuficiente hablar de crisis*
+
+*Categoria transhistórica ya obsoleta* 
+
+*Finalmente: pensar sistémicamente.*
+
+*Sospechas*
+
+*Intuiciones*
+
+*¿Catastrofismo?*
+
+*¿Fin del prometeismo tecnológico?*
+
+*¿Crónica de una muerte anunciada?*
+
+*Un Colapso como forma de designar realidades divergentes*
+
+*Crisis que se alimentan y retroalimentan unas con otras: el atolladero*
+
+*No hay futuro en una sociedad antropocentrista que" ya piensa desde el futuro: incompatible*
+
+*El mensaje dice:*
+
+*Reproducibilidad de la sociedad= negativo*
+
+*Bajo qué condiciones materiales sigue existiendo= positivo*
+
+*Mitigación o adaptación* 
+
+> *Colapso:*
+
+> *Problema de complejidad social*
+
+> ↓
+
+> *Problema de sistemas complejos*
+
+> ↓
+
+> *Biofísica*
+
+> ↓
+
+> *Dentro del capitalismo*
 
 Si el capitalismo representa una forma histórica particular de organización de la producción, por ende, los conceptos y categorías que se utilizaron para estudiar la caída de civilizaciones anteriores, no aplica. El proyecto civilizatorio capitalista es impulsado por la acumulación de capital. La compresión de su funcionamiento es clave para no reducir su dinámica a la institucionalidad, a la racionalidad aparente de la economía de manual. La sociedad capitalista no es una civilización enfrascada en un ciclo infinito de ascensos y caídas. 
 
@@ -214,24 +264,40 @@ La pregunta principal no es si el capitalismo puede colapsar.
 Utilizando la lógica más evidente: 
 ¿Cómo hablar de colapso cuando el capitalismo continúa produciendo mas tecnología, más inteligencia artificial, más infraestructura, mayores ganancias. Es una crisis infinita, una prisión en la que todas las existencias están en el equilibrio perfecto. 
 Todo parece indicar exactamente lo contrario:
-> "La maquinaria sigue expandiéndose." 
-> "Conclusión antropo-capitalocentrista:" 
-> "Todo va a estar bien"
-> "No hay colapso." 
-> "El equilibrio ya no consiste en suprimir a la crisis"
-> "Consiste en administrarla indefinidamente"
-> "El neovampirismo capitalista sigue creyendo que" puede succionar a Gaia indefinidamente" 
-> "Ese es el problema…"
-> "…dentro del problema"
-> "Eso que sobrevive por el caos"
-> "Comienza a erosionar las condiciones que hacían" posibles ese mismo caos"
-> "La singularidad superior que nos ha rodeado siempre"
-> "El geotrauma emerge: condición de supervivencia del capitalismo"
-> "Colapso no es el final." 
-> "Es una forma especifica de movimiento"
-> "No existe oposición entre reproducción y destrucción 
-> "Funcionan en coordinación"
-> "Momentos simultáneos de una misma lógica"
+
+*La maquinaria sigue expandiéndose.*
+
+*Conclusión antropo-capitalocentrista:*
+
+*Todo va a estar bien*
+
+*No hay colapso.*
+
+*El equilibrio ya no consiste en suprimir a la crisis*
+*Consiste en administrarla indefinidamente*
+
+*El neovampirismo capitalista sigue creyendo que puede succionar a Gaia indefinidamente*
+
+*Ese es el problema...*
+
+*…dentro del problema*
+
+*Eso que sobrevive por el caos*
+
+*Comienza a erosionar las condiciones que hacían" posibles ese mismo caos*
+
+*La singularidad superior que nos ha rodeado siempre*
+
+**El geotrauma emerge: condición de supervivencia del capitalismo**
+
+**Colapso no es el final.** 
+
+**Es una forma especifica de movimiento**
+
+*No existe oposición entre reproducción y destrucción* 
+*Funcionan en coordinación*
+
+*Momentos simultáneos de una misma lógica*
 
 
 
