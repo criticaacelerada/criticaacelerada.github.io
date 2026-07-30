@@ -2,89 +2,78 @@
 import "../../styles/global.css";
 import { getCollection } from "astro:content";
 
-const ensayos = await getCollection("ensayos");
+const transmisiones = await getCollection("transmisiones");
 
-ensayos.sort(
-  (a, b) =>
-    new Date(b.data.date).getTime() -
-    new Date(a.data.date).getTime()
+transmisiones.sort(
+    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
-
-const ensayo = ensayos[0];
 ---
 
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crítica Acelerada</title>
+    <title>Transmisiones | Crítica Acelerada</title>
 </head>
 
 <body>
 
-<main class="hero">
+<main class="article">
 
-    <div class="container">
+<div class="container">
 
-        <img
-            src="/images/logo.png"
-            alt="Crítica Acelerada"
-            class="logo"
-        />
+<p class="eyebrow">
+TRANSMISIONES
+</p>
 
-        <p class="eyebrow">
-            LABORATORIO DE ESTUDIOS CRÍTICOS SOBRE ACELERACIONISMO,
-            COLAPSO Y RIESGOS EXISTENCIALES
-        </p>
+<h1>
+Archivo Audiovisual
+</h1>
 
-        <h1>CRÍTICA ACELERADA</h1>
+<p class="mission">
+Conversaciones, podcasts y registros audiovisuales del laboratorio.
+</p>
 
-        <p class="mission">
-            Impensar las categorías heredadas para comprender las transformaciones tecnológicas, económicas y filosóficas del presente.
-        </p>
+<hr />
 
-    </div>
+
+{
+    transmisiones.map((transmision) => (
+
+        <article class="essay">
+
+            <div class="number">
+                {String(transmision.data.numero ?? 1).padStart(3,"0")}
+            </div>
+
+            <div class="content">
+
+                <h3>
+                    {transmision.data.title}
+                </h3>
+
+                <p>
+                    {transmision.data.description}
+                </p>
+
+                <a
+                    class="read-link"
+                    href={`/transmisiones/${transmision.id}`}
+                >
+                    Ver transmisión →
+                </a>
+
+            </div>
+
+        </article>
+
+    ))
+}
+
+</div>
 
 </main>
-
-<section class="archive">
-
-    <div class="container">
-
-        <h2>EXPEDIENTES</h2>
-
-        {
-            ensayo && (
-
-                <article class="essay">
-
-                    <div class="number">
-                        {String(ensayo.data.expediente).padStart(3,"0")}
-                    </div>
-
-                    <div class="content">
-
-                        <h3>{ensayo.data.title}</h3>
-
-                        <p>{ensayo.data.descripcion}</p>
-
-                        <a
-                            class="read-link"
-                            href={`/expedientes/${ensayo.id}`}
-                        >
-                            Leer expediente →
-                        </a>
-
-                    </div>
-
-                </article>
-
-            )
-        }
-
-    </div>
-
-</section>
 
 </body>
 

@@ -1,0 +1,73 @@
+---
+import "../../styles/global.css";
+import { getCollection } from "astro:content";
+
+const ensayos = await getCollection("ensayos");
+
+ensayos.sort((a, b) => a.data.expediente - b.data.expediente);
+---
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expedientes | Crítica Acelerada</title>
+</head>
+
+<body>
+
+<main class="article">
+
+<div class="container">
+
+<p class="eyebrow">
+EXPEDIENTES
+</p>
+
+<h1>
+Archivo
+</h1>
+
+<p class="mission">
+Ensayos, investigaciones y documentos del laboratorio.
+</p>
+
+<hr />
+
+{
+    ensayos.map((ensayo) => (
+
+        <article class="essay">
+
+            <div class="number">
+                {String(ensayo.data.expediente).padStart(3,"0")}
+            </div>
+
+            <div class="content">
+
+                <h3>{ensayo.data.title}</h3>
+
+                <p>{ensayo.data.descripcion}</p>
+
+                <a
+                    class="read-link"
+                    href={`/expedientes/${ensayo.id}`}
+                >
+                    Leer expediente →
+                </a>
+
+            </div>
+
+        </article>
+
+    ))
+}
+
+</div>
+
+</main>
+
+</body>
+
+</html>
