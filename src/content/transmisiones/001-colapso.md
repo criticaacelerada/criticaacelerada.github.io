@@ -1,5 +1,5 @@
 ---
-title: "TRANSMISIÓN 1 | COLAPSO 
+title: "TRANSMISIÓN 1 | COLAPSO"
 description: "Por qué crisis ya no basta para describir el capitalismo"
 pubDate: 2026-07-27
 ---
