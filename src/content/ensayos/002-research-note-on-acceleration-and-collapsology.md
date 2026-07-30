@@ -3,7 +3,7 @@
 title: "A Research Note on Acceleration and Collapsology"
 date: 2026-07-29
 expediente: 2
-descripcion: "INTELLIGENCE, COLLAPSE, AND THE PROBLEM OF THE EVENT"
+descripcion: "Events and Non-Events"
 
 author: "Chiiii"
 role: "CONTRIBUTOR"
