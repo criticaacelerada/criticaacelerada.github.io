@@ -1,18 +1,9 @@
 ---
 import "../styles/global.css";
-import { getCollection } from "astro:content";
-
-const ensayos = await getCollection("ensayos");
-const transmisiones = await getCollection("transmisiones");
-
-ensayos.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-transmisiones.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
-
-const ensayo = ensayos[0];
-const transmision = transmisiones[0];
 ---
 
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -45,79 +36,68 @@ const transmision = transmisiones[0];
 
 </main>
 
-<section class="archive">
+<section class="archive portals">
 
-    <div class="container">
+    <div class="container portal-grid">
 
-        <h2>EXPEDIENTES</h2>
+        <a class="portal-card" href="/expedientes">
 
-        {
-            ensayo && (
-                <article class="essay">
+            <span class="portal-number">01</span>
 
-                    <div class="number">
-                        {String(ensayo.data.expediente).padStart(3,"0")}
-                    </div>
+            <div class="portal-content">
 
-                    <div class="content">
+                <p class="portal-label">
+                    ARCHIVO TEXTUAL
+                </p>
 
-                        <h3>{ensayo.data.title}</h3>
+                <h2>
+                    EXPEDIENTES
+                </h2>
 
-                        <p>{ensayo.data.descripcion}</p>
+                <p>
+                    Ensayos, investigaciones y documentos críticos sobre
+                    aceleracionismo, colapso y riesgos existenciales.
+                </p>
 
-                        <a
-                            class="read-link"
-                            href={`/expedientes/${ensayo.id}`}
-                        >
-                            Leer expediente →
-                        </a>
+                <span class="read-link">
+                    Entrar al archivo →
+                </span>
 
-                    </div>
+            </div>
 
-                </article>
-            )
-        }
+        </a>
 
-    </div>
+        <a class="portal-card" href="/transmisiones">
 
-</section>
+            <span class="portal-number">02</span>
 
-<section class="archive">
+            <div class="portal-content">
 
-    <div class="container">
+                <p class="portal-label">
+                    ARCHIVO AUDIOVISUAL
+                </p>
 
-        <h2>TRANSMISIONES</h2>
+                <h2>
+                    TRANSMISIONES
+                </h2>
 
-        {
-            transmision && (
-                <article class="essay">
+                <p>
+                    Videos, monólogos, conversaciones y registros
+                    audiovisuales del laboratorio.
+                </p>
 
-                    <div class="number">
-                        001
-                    </div>
+                <span class="read-link">
+                    Acceder a transmisiones →
+                </span>
 
-                    <div class="content">
+            </div>
 
-                        <h3>{transmision.data.title}</h3>
-
-                        <p>{transmision.data.description}</p>
-
-                        <a
-                            class="read-link"
-                            href={`/transmisiones/${transmision.id}`}
-                        >
-                            Escuchar / Leer →
-                        </a>
-
-                    </div>
-
-                </article>
-            )
-        }
+        </a>
 
     </div>
 
 </section>
 
 </body>
+
 </html>
