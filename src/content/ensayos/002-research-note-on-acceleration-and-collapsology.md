@@ -1,0 +1,73 @@
+
+---
+title: "A Research Note on Acceleration and Collapsology"
+author: "Chiiii"
+role: "CONTRIBUTOR"
+date: 2026-07-29
+expediente: 2
+descripcion: "INTELLIGENCE, COLLAPSE, AND THE PROBLEM OF THE EVENT"
+---
+
+
+### Nota del Laboratorio
+
+$$
+\forall x \in I,\; x \leq M.
+$$
+
+
+
+
+Accelerationism is twofold:
+
+1) An empirical principle: in capitalism, instrument (capital in circulation) and end (capital accumulation) coincide (*a.k.a. Capitalist Organicity*).
+
+2) A transcendental principle: matter organizes toward intelligence (*a.k.a. Angelic Materialism*). 
+
+
+Nick Land defines intelligence as competency at playing games. We could, for example, consider a chess bot like Deep Blue, the IBM supercomputer that beat Garry Kasparov, the world's greatest chess player at the time. Intelligence, abstractly speaking, need not be a property of agents such as computer bots or persons, however. By Land’s definition, organic systems also exhibit intelligence. If life is a game, without any agentic direction ecological systems continuously reconfigure themselves through Darwinian evolution to be as competitive for it as possible. Organicity is the property of teleological comprehensivity, that is to say, that a set of components is comprehended holistically toward an end. Darwinism is an inherently organic phenomenon. The end of an ecological system is its own perpetuation, achieved through the retention of beneficial properties; Darwinian evolution is simply the persistence of those properties over time. Capitalism may be understood in the same way.
+
+
+*The circulation of money as capital is, on the contrary, an end in itself, for the expansion of value takes place only within this constantly renewed movement. The circulation of capital has therefore no limits. (Capital, Chapter 4)*
+
+
+The end of capitalism is the accumulation of capital, and the means to that end is capital’s own circulation ((C-M-C) → (M-C-M')). Presuming the capitalist market to be a kind of game, then, by the foregoing principles and Land's definition, we may say that capitalism is a form of intelligence and, more speculatively, a non-incidental organization of matter as such.
+
+Collapsology is a neologism denoting the study of the general collapse of societies. In essence, it studies the failure of our second principle—not by directly contradicting it, but by surveying its exceptions. It is therefore exemplified not by affirmation but by negation.
+
+
+If matter is a process of becoming and, in the accelerationist paradigm, of becoming upwards towards intelligence, then collapsology studies its horizontal and descending detours: errors unanticipated by the competent organization of matter. Unbecomings. Decay. In this sense, collapsology is always posterior to acceleration. For, as Ben Woodard notes, “for decay to function (in both space and time as a function of both and expression of both) there must be a decision of what is an entity, of what is decaying.” Intelligent systems necessarily preexist their failure. The reversal of matter's transcendental will-to-intelligence is precisely an overturning of something necessarily prior.
+
+
+But what would this reversal entail? What would it mean to inaugurate an age in which matter must be thought through its deterioration? To understand how one transcendental might give way to another, we must first attain an understanding of the event which would occasion such a shift. It is here that Badiou's Logics of Worlds becomes indispensable. As Badiou himself says, there are many transcendentals; the transition from acceleration to collapse is therefore surely possible, but it is not so simple as asserting an unprecedented phase shift in the nature of matter itself. For Badiou, the transcendental can change only through an event. 
+
+
+For Badiou, auto-sophisticating machine runaway and collapse would both constitute distinct worlds. A world is that which articulates the coherence of multiples around a transcendental. It is a kind of insular body upon-and-in which various happenings take place. 
+
+
+These happenings may be facts, weak singularities, or events. Their status is determined by their relation to a maximum, where the maximum is an element M of transcendental T such that 
+
+That is, M is greater than or equal to every element of T. If a happening is of lesser magnitude than the maximum, it is a fact; if it is equal to the maximum, it is either a weak singularity or an event. The difference between the latter two is a matter of consequences: an event renders something inexistent of its world absolute, whereas a weak singularity does not. 
+
+
+The previously inexistent rendered absolute and the transcendental transformed with it, we reach a decisive point. The shift necessitated by the collapsological turn, while structurally of the magnitude of the event, is its inverse—the diminution of the absolute. It is, in a way, a non-event. 
+
+
+Badiou denotes the minimum degree of T by μ, where 
+
+Formally, the non-event may be expressed by the impossible condition
+
+Every degree of appearance falls below the transcendental minimum, producing a vacuous world where the absolute becomes nihil and determinate content is excluded from its own sense. We can only approach the non-event through this impossible formalization, for its defining feature is precisely the collapse of the transcendental ordering which would make any such formalization possible. 
+
+
+Though impossible within Badiou's own paradigm, and thus strictly a catachresis in his own terms, this formalization nevertheless remains faithful to the intuition developed thus far. The vacuity of the non-event becomes especially clear epistemically: whereas the event calls for fidelity from subjects, the collapsological non-event could in no way prompt fidelity to itself, for it cannot account for itself and becomes increasingly inexplicable through the progression of material decay. 
+
+
+A bold illustration of this appears in the limit case of collapse: the heat death of the universe. As the culmination of material decay, it undoes the very indexing by which it would be an intelligible substrate of analysis. Intensive flows and becomings remain, yet no splace exists around which its underlying multiplicities could cohere. Heat death thus apophatically marks a non-world. 
+
+In this way, the proposition of a coherent collapsology proves bewildering.
+
+
+
+
+
