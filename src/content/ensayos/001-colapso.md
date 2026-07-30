@@ -1,9 +1,13 @@
+
 ---
 title: "¿Por qué hablar de colapso? Parte I"
+author: "Samuel Carmona (Virgo Nocturno)"
+role: "DIRECTOR"
 date: 2026-07-26
 expediente: 1
 descripcion: "EL COLAPSO COMO OBJETO DE INVESTIGACIÓN EN EL SIGLO XXI"
 ---
+
 
  
 ### Nota del Laboratorio

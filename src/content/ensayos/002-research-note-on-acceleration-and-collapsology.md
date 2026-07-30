@@ -1,11 +1,15 @@
 
 ---
 title: "A Research Note on Acceleration and Collapsology"
-author: "Chiiii"
-role: "CONTRIBUTOR"
 date: 2026-07-29
 expediente: 2
 descripcion: "INTELLIGENCE, COLLAPSE, AND THE PROBLEM OF THE EVENT"
+
+author: "Chiiii"
+role: "CONTRIBUTOR"
+
+language: "en"
+translationKey: "exp002"
 ---
 
 
@@ -15,20 +19,14 @@ descripcion: "INTELLIGENCE, COLLAPSE, AND THE PROBLEM OF THE EVENT"
 
 Independent researcher based in the United States whose work develops a constructive theology through Deleuze in dialogue with contemporary post-Continental philosophy.
 
-Substack: https://substack.com/@avicennaquinas
+**Substack**: https://substack.com/@avicennaquinas
 
-X: @avicennaquinas
+**X**: @avicennaquinas
 
-IG: @chi_thinks
+**Instagram**: @chi_thinks
 
-
-
-### Archival Note
 
 ---
-
-
-
 
 Accelerationism is twofold:
 
@@ -93,6 +91,28 @@ Though impossible within Badiou's own paradigm, and thus strictly a catachresis 
 A bold illustration of this appears in the limit case of collapse: the heat death of the universe. As the culmination of material decay, it undoes the very indexing by which it would be an intelligible substrate of analysis. Intensive flows and becomings remain, yet no splace exists around which its underlying multiplicities could cohere. Heat death thus apophatically marks a non-world. 
 
 In this way, the proposition of a coherent collapsology proves bewildering.
+
+---
+
+### Archival Note
+
+Capitalist competition is, at its core, anarchic.
+
+Anything goes as long as the valorization and reproduction of capital are preserved or expanded. Institutional regulations function as the anthropocentric facade—or hypocritical schizophrenia—of a sovereignty that no longer fully controls the movements of capital. Money laundering, tax engineering, and the legal restructuring of transnational corporations (the barons of contemporary capitalism) demonstrate a constant ability to circumvent, absorb, or neutralize the restrictions imposed upon them. Competition continues to operate as a zero-sum game in systemic terms. This reductionism proves useful for describing the chaotic reality that contemporary capitalism represents.
+
+From this perspective, acceleration and collapse are neither successive processes nor distinct stages of the same history. They constitute simultaneous dynamics embedded within the same process. Rather than an economic system, capitalism can be understood as a system of transformation of matter and energy. Neither is created nor destroyed; they are merely transformed. Ultimately, almost all forms of energy available—and profitable—for the capitalist civilizational project are different forms of concentrated solar energy (to quote Dr. Luis Gonzáles Reyes, Ph.D. in Chemical Sciences). The solar system thus ceases to be a mere cosmological backdrop and becomes one of the material conditions that fuel geotrauma. It is no longer solely about the Earth system.
+
+Acceleration is not distributed evenly either. Regions of technological intensification—such as the “Neo-China” evoked by Nick Land—can coexist alongside territories where prolonged processes of material, institutional, and ecological erosion predominate, such as Argentina, Gaza, Haiti, or the European continent. Capitalism does not accelerate everything equally; it distributes differential speeds and produces heterogeneous geographies of collapse.
+
+At this point, Chiii’s observation—drawing on Alain Badiou—opens up a particularly fruitful line of inquiry: “Both the escape and the collapse of a self-sophisticated machine would constitute distinct worlds. A world is that which articulates the coherence of the multiples around a transcendental. It is a kind of insular body upon which and within which various events take place.”
+
+At Crítica Acelerada, we find particularly intriguing potential for development in another of his formulations: “While the event demands fidelity from subjects, the collapsological non-event could not elicit fidelity toward itself, since it cannot account for itself and becomes increasingly inexplicable as material decomposition progresses.”
+
+Perhaps collapse should not be conceived as a succession of extraordinary events, but rather as the progressive impossibility for the world itself to continue producing events that are intelligible to those who inhabit it.
+
+However, does that imply immediate thermodynamic death? Or rather, is language once again beginning to step in to (re)think and (un)think the world from the perspective of human ontology?
+
+The case remains open.
 
 
 

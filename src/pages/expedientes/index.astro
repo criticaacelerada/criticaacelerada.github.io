@@ -4,69 +4,147 @@ import { getCollection } from "astro:content";
 
 const ensayos = await getCollection("ensayos");
 
-ensayos.sort((a, b) => a.data.expediente - b.data.expediente);
+/*
+Agrupa los documentos que comparten translationKey.
+Los ensayos sin traducción permanecen como entradas individuales.
+*/
+const grupos = new Map();
+
+for (const ensayo of ensayos) {
+  const clave = ensayo.data.translationKey ?? `individual-${ensayo.id}`;
+
+  if (!grupos.has(clave)) {
+    grupos.set(clave, []);
+  }
+
+  grupos.get(clave).push(ensayo);
+}
+
+const expedientes = Array.from(grupos.values())
+  .map((versiones) => {
+    /*
+    La versión inglesa funciona como referencia editorial.
+    Si no existe, utiliza la primera versión disponible.
+    */
+    const principal =
+      versiones.find((version) => version.data.language === "en") ??
+      versiones[0];
+
+    const idiomas = versiones.sort((a, b) => {
+      const orden = ["en", "es"];
+
+      return (
+        orden.indexOf(a.data.language) -
+        orden.indexOf(b.data.language)
+      );
+    });
+
+    return {
+      principal,
+      idiomas,
+    };
+  })
+  .sort(
+    (a, b) =>
+      a.principal.data.expediente -
+      b.principal.data.expediente
+  );
 ---
 
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expedientes | Crítica Acelerada</title>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Expedientes | Crítica Acelerada</title>
 </head>
 
 <body>
 
-<main class="article">
+  <main class="article">
 
-<div class="container">
+    <div class="container">
 
-<p class="eyebrow">
-EXPEDIENTES
-</p>
+      <p class="eyebrow">
+        EXPEDIENTES
+      </p>
 
-<h1>
-Archivo
-</h1>
+      <h1>
+        Archivo
+      </h1>
 
-<p class="mission">
-Ensayos, investigaciones y documentos del laboratorio.
-</p>
+      <p class="mission">
+        Ensayos, investigaciones y documentos del laboratorio.
+      </p>
 
-<hr />
+      <hr />
 
-{
-    ensayos.map((ensayo) => (
+      {
+        expedientes.map(({ principal, idiomas }) => (
 
-        <article class="essay">
+          <article class="essay">
 
             <div class="number">
-                {String(ensayo.data.expediente).padStart(3,"0")}
+              {String(principal.data.expediente).padStart(3, "0")}
             </div>
 
             <div class="content">
 
-                <h3>{ensayo.data.title}</h3>
+              <h3>
+                {principal.data.title}
+              </h3>
 
-                <p>{ensayo.data.descripcion}</p>
+              <p>
+                {principal.data.descripcion}
+              </p>
 
-                <a
+              {
+                idiomas.length > 1 ? (
+
+                  <div class="language-switch">
+
+                    {
+                      idiomas.map((version) => (
+                        <a
+                          class="language-chip"
+                          href={`/expedientes/${version.id}`}
+                          lang={version.data.language}
+                          aria-label={`Abrir versión ${version.data.language.toUpperCase()}`}
+                        >
+                          {version.data.language.toUpperCase()}
+                        </a>
+                      ))
+                    }
+
+                  </div>
+
+                ) : (
+
+                  <a
                     class="read-link"
-                    href={`/expedientes/${ensayo.id}`}
-                >
+                    href={`/expedientes/${principal.id}`}
+                  >
                     Leer expediente →
-                </a>
+                  </a>
+
+                )
+              }
 
             </div>
 
-        </article>
+          </article>
 
-    ))
-}
+        ))
+      }
 
-</div>
+    </div>
 
-</main>
+  </main>
 
 </body>
 

@@ -11,6 +11,13 @@ const ensayos = defineCollection({
     date: z.date(),
     expediente: z.number(),
     descripcion: z.string(),
+
+    author: z.string().optional(),
+    role: z.string().optional(),
+    translator: z.string().optional(),
+
+    language: z.enum(["es", "en"]).default("es"),
+    translationKey: z.string().optional(),
   }),
 });
 
