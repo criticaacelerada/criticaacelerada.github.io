@@ -420,3 +420,64 @@ ARTÍCULOS
   color: var(--accent);
   outline: none;
 }
+
+/* ==========================
+   SOCIAL FOOTER
+========================== */
+
+.social-footer{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:1.75rem;
+    margin:5rem 0 3rem;
+}
+
+.social-footer a{
+    width:42px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--text);
+    opacity:.5;
+
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:50%;
+
+    transition:
+        opacity .2s ease,
+        color .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.social-footer a:hover{
+    color:var(--accent);
+    opacity:1;
+    border-color:var(--accent);
+    transform:translateY(-3px);
+}
+
+.social-footer svg{
+    width:20px;
+    height:20px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.7;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.social-footer .youtube-play{
+    fill:currentColor;
+    stroke:none;
+}
+
+.social-footer a:focus-visible{
+    color:var(--accent);
+    border-color:var(--accent);
+    outline:2px solid var(--accent);
+    outline-offset:4px;
+}
