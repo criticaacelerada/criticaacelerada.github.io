@@ -17,7 +17,21 @@ import SocialFooter from "../components/SocialFooter.astro";
 
 <main class="hero">
 
-    <div class="container">
+    <div class="container hero-grid">
+
+        <div class="hero-meta">
+
+            <p class="eyebrow">
+                LABORATORIO DE ESTUDIOS CRÍTICOS
+            </p>
+
+            <div class="research-fields">
+                <span>ACELERACIONISMO</span>
+                <span>COLAPSO</span>
+                <span>RIESGOS EXISTENCIALES</span>
+            </div>
+
+        </div>
 
         <img
             src="/images/logo.png"
@@ -25,15 +39,18 @@ import SocialFooter from "../components/SocialFooter.astro";
             class="logo"
         />
 
-        <p class="eyebrow">
-            LABORATORIO DE ESTUDIOS CRÍTICOS SOBRE ACELERACIONISMO, COLAPSO Y RIESGOS EXISTENCIALES
-        </p>
+        <div class="hero-title">
 
-        <h1>CRÍTICA ACELERADA</h1>
+            <h1>
+                <span>CRÍTICA</span>
+                <span>ACELERADA</span>
+            </h1>
 
-        <p class="mission">
-            Impensar las categorías heredadas para comprender las transformaciones tecnológicas, económicas y filosóficas del presente.
-        </p>
+            <p class="mission">
+                Impensar las categorías heredadas para comprender las transformaciones tecnológicas, económicas y filosóficas del presente.
+            </p>
+
+        </div>
 
     </div>
 
@@ -43,59 +60,53 @@ import SocialFooter from "../components/SocialFooter.astro";
 
     <div class="container portal-grid">
 
-        <a class="portal-card" href="/expedientes">
+<a class="portal-card" href="/expedientes">
 
-            <span class="portal-number">01</span>
+    <div class="portal-top">
+        <span class="portal-code">CA / 01</span>
+        <span class="portal-status">ARCHIVO TEXTUAL</span>
+    </div>
 
-            <div class="portal-content">
+    <div class="portal-content">
 
-                <p class="portal-label">
-                    ARCHIVO TEXTUAL
-                </p>
+        <h2>EXPEDIENTES</h2>
 
-                <h2>
-                    EXPEDIENTES
-                </h2>
+        <p>
+            Ensayos, investigaciones y documentos críticos sobre
+            aceleracionismo, colapso y riesgos existenciales.
+        </p>
 
-                <p>
-                    Ensayos, investigaciones y documentos críticos sobre
-                    aceleracionismo, colapso y riesgos existenciales.
-                </p>
+    </div>
 
-                <span class="read-link">
-                    Entrar al archivo →
-                </span>
+    <span class="read-link">
+        Entrar al archivo →
+    </span>
 
-            </div>
+</a>
 
-        </a>
+<a class="portal-card" href="/transmisiones">
 
-        <a class="portal-card" href="/transmisiones">
+    <div class="portal-top">
+        <span class="portal-code">CA / 02</span>
+        <span class="portal-status">ARCHIVO AUDIOVISUAL</span>
+    </div>
 
-            <span class="portal-number">02</span>
+    <div class="portal-content">
 
-            <div class="portal-content">
+        <h2>TRANSMISIONES</h2>
 
-                <p class="portal-label">
-                    ARCHIVO AUDIOVISUAL
-                </p>
+        <p>
+            Videos, monólogos, conversaciones y registros
+            audiovisuales producidos por el laboratorio.
+        </p>
 
-                <h2>
-                    TRANSMISIONES
-                </h2>
+    </div>
 
-                <p>
-                    Videos, monólogos, conversaciones y registros
-                    audiovisuales del laboratorio.
-                </p>
+    <span class="read-link">
+        Acceder a transmisiones →
+    </span>
 
-                <span class="read-link">
-                    Acceder a transmisiones →
-                </span>
-
-            </div>
-
-        </a>
+</a>
 
     </div>
 
