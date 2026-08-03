@@ -214,43 +214,55 @@ RESPONSIVE
         font-size:1.6rem;
     }
 
-     /* ===== HOME ===== */
+    /* ===== HOME MÓVIL ===== */
 
-    .hero{
-        min-height:auto;
-        padding:3rem 0 4rem;
-    }
+.hero{
+    min-height:auto;
+    padding:3rem 0 4rem;
+}
 
-    .hero-grid{
-        grid-template-columns:1fr;
-        grid-template-areas:
-            "meta"
-            "title";
-        gap:3rem;
-    }
+.hero-grid{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+}
 
-    .logo{
-        position:static;
-        width:76px;
-        margin:0 0 1.5rem auto;
-        display:block;
-        opacity:.95;
-    }
+.hero-meta{
+    order:1;
+}
 
-    .hero h1{
-        font-size:clamp(3.4rem,16vw,5rem);
-        line-height:.84;
-    }
+.logo{
+    order:2;
+    position:static;
+    width:96px;
+    height:auto;
+    margin:2.5rem auto 2.8rem;
+    display:block;
+    opacity:.98;
+}
 
-    .research-fields{
-        flex-direction:column;
-        gap:.7rem;
-    }
+.hero-title{
+    order:3;
+}
 
-    .mission{
-        font-size:1rem;
-        line-height:1.75;
-    }
+.hero h1{
+    font-size:clamp(3.2rem,15vw,4.8rem);
+    line-height:.84;
+    letter-spacing:-.06em;
+    margin-bottom:2rem;
+}
+
+.research-fields{
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:.7rem 1.6rem;
+    margin-top:1.5rem;
+}
+
+.mission{
+    font-size:1rem;
+    line-height:1.75;
+}
 
 }
 
@@ -352,9 +364,7 @@ ARTÍCULOS
     border-radius:8px;
 }
 
-/* ==========================
-   PORTALES DE ACCESO
-========================== */
+
 
 /* ==========================
    PORTALES DE ACCESO
