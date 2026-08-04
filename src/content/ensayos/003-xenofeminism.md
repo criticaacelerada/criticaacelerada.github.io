@@ -74,7 +74,25 @@ As a collective lineage of literature-as-theory, and also, of literature-becomin
 
 ### Archival Note
 
+Before the consolidation of capitalism, historical forms of domination such as patriarchy and authoritarianism already existed. These power structures did not emerge with capitalism; they are embedded in various civilizational projects and fulfill specific functions depending on the material and historical conditions of each era.
 
+With the development of capitalism, these forms of domination do not disappear, but are restructured to facilitate the reproduction of the system.
+
+Patriarchy, for example, has historically contributed to organizing social reproduction and the gendered division of labor, facilitating the extraction of surplus value and the accumulation of capital. However, this relationship is not static. As different technological paradigms replace living labor with dead (objectified) labor and transform the organization of production, the roles assigned to men and women also change. 
+
+What was long presented as an unalterable biological or cultural truth begins to become more flexible when it no longer meets the needs of capital valorization.
+
+It is therefore not surprising to observe that, today, capitalism partially incorporates feminist, LGBT+, and other dissident agendas. This incorporation does not necessarily imply a structural transformation of power relations. In many cases, it constitutes a strategy through which the system itself expands its spheres of value creation, absorbing demands that were previously marginalized and turning them into new markets. *Pinkwashing*, for example, is one of the most obvious examples of this dynamic.
+
+In this context, technology has a dual nature—but it is never neutral. It is a tool, yes. But it is human beings who control it; to that extent, its purposes will always depend on human agency.
+
+In this sense, technology improves people’s well-being and quality of life. But it can also become a tool for highlighting the contradictions of the system itself and opening up possibilities that the system cannot fully control. As Ursula K. Le Guin (2005) points out, technology expresses the way a society confronts its physical reality; it constitutes the interface through which we relate to the material world and, ultimately, that which restores a certain humility in the face of Gaia and her limits.
+
+From this perspective, movements such as xenofeminism are essential. Their contribution lies not only in challenging rigid frameworks of sex and gender, but also in demonstrating that many of the categories presented as natural are, in reality, historical constructs that can be transformed. Imagining and **(un)thinking** alternative configurations allows us to push these categories to the limits of their own contradictions, revealing the contingent nature of numerous biological and cultural dogmas. In this process, the proliferation of identities and categories may ultimately reveal the very fragility of that which sought to establish itself as an essence. Perhaps it will then become clearer that, above all classifications, we share a common condition: we are human beings.
+
+The political significance of these currents is by no means insignificant. They retain the transformative potential that Marx attributed to the revolutionary subject and that Deleuze and Guattari transferred to the notion of the war machine. Indeed, Guattari stated in *Plan on the Planet* (2004) that Integrated World Capitalism (IWC) “has equipped itself with the means to forge new weapons to confront the upheavals engendered by its restructuring and its new segmented nature.” Precisely for this reason, emancipatory struggles cannot be limited to confronting the system on its most entrenched ground. They must also recognize the points of escape that emerge wherever new forms of relationship with labor, the environment, culture, the body, or desire arise.
+
+To think that the CMI constitutes an absolutely impregnable fortress is tantamount to accepting one of its own fictions. Its capacity to manage large economic and political structures is considerable; however, its control over molecular transformations is always partial. It is precisely these everyday, scattered, and minority mutations that continually overflow its mechanisms of capture. Hence Guattari insists on the need to recognize the traps through which the CMI inserts itself into the social body, without losing sight of the fact that every form of capture inevitably leaves lines of flight open.
 
 ---
 
@@ -88,4 +106,11 @@ Pearson, W. G., Hollinger, V., & Gordon, J. (2008). Queer Universes, pg. 59. Liv
 
 
 VanderMeer, A., & VanderMeer, J. (2014). The Time Traveler’s Almanac. Macmillan.
+
+
+**Works Cited by Critica Acelerada**
+
+Guattari, Félix [2004], "2. El capitalismo mundial integrado y la revolución molecular", Plan sobre el planeta. Capitalismo mundial integrado y revoluciones moleculares, Madrid, traficantes de sueños, pp. 57-74, https://traficantes.net/sites/default/files/pdfs/Plan%20sobre%20el%20pla...
+
+Le Guin, U. K. (2005). A rant about “technology”. Ursula K. Le Guin. https://www.ursulakleguin.com/a-rant-about-technology
 

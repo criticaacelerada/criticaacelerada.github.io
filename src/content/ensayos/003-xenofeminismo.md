@@ -62,7 +62,25 @@ Como linaje colectivo de la literatura como teoría, y también de la literatura
 
 ### Nota del Laboratorio
 
+Antes de la consolidación del capitalismo ya existían formas históricas de dominación como el patriarcado y el autoritarismo. Estos regímenes de poder no nacen con el capitalismo; se insertan en distintos proyectos civilizatorios y cumplen funciones específicas según las condiciones materiales e históricas de cada época.
 
+Con el desarrollo del capitalismo, dichas formas de dominación no desaparecen, sino que son rearticuladas para favorecer la reproducción del sistema.
+
+El patriarcado, por ejemplo, ha contribuido históricamente a organizar la reproducción social y la división sexual del trabajo, facilitando la extracción de plusvalía y la acumulación de capital. Sin embargo, esta articulación no permanece inmutable. A medida que los distintos paradigmas tecnológicos sustituyen trabajo vivo por trabajo muerto (objetivado) y transforman la organización de la producción, también se modifican los papeles asignados al hombre y a la mujer. 
+
+Aquello que durante mucho tiempo fue presentado como una verdad biológica o cultural inalterable comienza a flexibilizarse cuando deja de responder a las necesidades de valorización del capital.
+
+Por ello no resulta extraño observar que, en la actualidad, el capitalismo incorpore parcialmente agendas feministas, LGBT+ y otras luchas de las disidencias. Esta incorporación no implica necesariamente una transformación estructural de las relaciones de poder. En muchos casos constituye una estrategia mediante la cual el propio sistema amplía sus espacios de valorización, absorbiendo demandas que antes eran marginadas, para convertirlas en nuevos mercados. El *pinkwashing*, por ejemplo, constituye uno de los ejemplos más evidentes de esta dinámica.
+
+En este contexto, la tecnología presenta un caracter dual, más nunca neutral. Es una herramienta, si. Pero quien la controla es el ser humano; en esa medida, los fines siempre dependerán de la agencia humana. 
+
+En tal sentido, la tecnología mejora el bienestar y la calidad de vida de la población. Pero también puede convertirse en una herramienta para evidenciar las contradicciones del propio sistema y abrir posibilidades que este no logra controlar por completo. Como señala Ursula K. Le Guin (2005), la tecnología expresa la manera en que una sociedad afronta su realidad física; constituye la interfaz mediante la cual nos relacionamos con el mundo material y, en última instancia, aquello que nos devuelve cierta humildad frente a Gaia y sus límites.
+
+Desde esta perspectiva, corrientes como el xenofeminismo resultan esenciales. Su aportación no consiste únicamente en cuestionar los esquemas rígidos sobre el sexo y el género, sino en demostrar que muchas de las categorías que se presentan como naturales son, en realidad, construcciones históricas susceptibles de transformarse. Imaginar e **(im)pensar** configuraciones alternativas permite llevar estas categorías hasta el límite de sus propias contradicciones, evidenciando el carácter contingente de numerosos dogmas biologicistas y culturales. En ese proceso, la proliferación de identidades y categorías puede terminar revelando precisamente la fragilidad de aquello que pretendía fijarse como una esencia. Quizá entonces resulte más evidente que, antes que cualquier clasificación, compartimos una condición común: somos seres humanos.
+
+La importancia política de estas corrientes no es menor. Conservan el potencial transformador que Marx atribuía al sujeto revolucionario y que Deleuze y Guattari trasladaron a la noción de máquina de guerra. Bien Guattari decia en *Plan sobre el planeta* (2004) que el Capitalismo Mundial Integrado (CMI) "se ha dotado de los medios para forjar nuevas armas, para afrontar los trastornos que engendran sus reconversiones y su nueva segmentaridad". Precisamente por ello, las luchas emancipatorias no pueden limitarse a enfrentar al sistema en su terreno más consolidado. Deben reconocer también los puntos de fuga que aparecen allí donde surgen nuevas formas de relación con el trabajo, el medio ambiente, la cultura, el cuerpo o el deseo.
+
+Pensar que el CMI constituye una fortaleza absolutamente inexpugnable equivale a aceptar una de sus propias ficciones. Su capacidad para gestionar las grandes estructuras económicas y políticas es considerable; sin embargo, su control sobre las transformaciones moleculares siempre es parcial. Son precisamente esas mutaciones cotidianas, dispersas y minoritarias las que continuamente desbordan sus mecanismos de captura. De ahí que Guattari insista en la necesidad de reconocer las trampas mediante las cuales el CMI se inserta en el cuerpo social, sin perder de vista que toda forma de captura deja, inevitablemente, líneas de fuga abiertas.
 
 ---
 
@@ -76,6 +94,13 @@ Pearson, W. G., Hollinger, V. y Gordon, J. (2008). Universos queer, pág. 59. Li
 
 
 VanderMeer, A. y VanderMeer, J. (2014). El almanaque del viajero en el tiempo. Macmillan.
+
+
+**Bibliografía de Crítica Acelerada**
+
+Guattari, Félix [2004], "2. El capitalismo mundial integrado y la revolución molecular", Plan sobre el planeta. Capitalismo mundial integrado y revoluciones moleculares, Madrid, traficantes de sueños, pp. 57-74, https://traficantes.net/sites/default/files/pdfs/Plan%20sobre%20el%20pla...
+
+Le Guin, U. K. (2005). A rant about “technology”. Ursula K. Le Guin. https://www.ursulakleguin.com/a-rant-about-technology
 
 
 
