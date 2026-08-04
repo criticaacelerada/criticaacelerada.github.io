@@ -1,0 +1,85 @@
+---
+title: "Tecnologías del parentesco"
+date: 2026-08-04
+expediente: 3
+descripcion: "El xenofeminismo y el tiempo queer en Le Guin y Klages "
+
+author: "Alden Nagel"
+role: "CONTRIBUTOR"
+translator: "Samuel Carmona"
+
+language: "es"
+translationKey: "exp003"
+---
+
+## Dossier del Colaborador
+
+**Alden Nagel** es candidato a la Maestría en Estudios y Enseñanza de la Literatura en la Central Washington University (Estados Unidos), donde su investigación se centra en la literatura contemporánea, la teoría literaria y los estudios de medios. Su trabajo explora la autoficción, la literatura electrónica y las intersecciones entre literatura, filosofía y tecnología.
+
+Además de la crítica literaria, investiga el colapso climático como una condición filosófica, dialogando con el pensamiento ecológico, el pesimismo filosófico y la teoría crítica contemporánea. Ha colaborado con diversos escritores experimentales de alcance internacional y ha editado y publicado trabajos sobre xenopoética y poshumanismo, consolidándose como una voz emergente en la intersección entre la crítica literaria y el pensamiento especulativo.
+
+**Substack**: https://substack.com/@aldennagel
+
+**X**: @AldenNagel
+
+**Instagram**: @alden_nagel_
+
+---
+
+La ciencia ficción ha imaginado con frecuencia el viaje en el tiempo como un problema tecnológico. Con menos frecuencia lo ha imaginado como una tecnología de parentesco capaz de reorganizar la intimidad, la familia y la pertenencia histórica. La lectura de "Otra historia, o Un pescador del mar interior", de Ursula K. Le Guin, y de "Time Gypsies", de Ellen Klages, a través del xenofeminismo de Laboria Cuboniks revela que las tecnologías temporales no se limitan a transportar a los sujetos a través de la historia; reconstruyen activamente las relaciones sociales a través de las cuales el género, la sexualidad y el parentesco se vuelven inteligibles.
+
+La tecnología ocupa un papel central en la política xenofeminista porque permite la reconstrucción de las relaciones sociales en lugar de limitarse a ampliar las ya existentes. En lugar de una polémica sobre las ventajas y desventajas de diversos modelos sociales, de interacciones, relaciones y flujos entre individuos y concepciones de grupos como seres orgánicos socialmente interactivos y autónomos, el *Manifiesto Xenofeminista* aborda el poder liberador de la tecnología a través de la liberación de género, sexual e individual interior. Aunque es solo una parte del manifiesto multifacético, lo siguiente resume en gran medida los ideales del xenofeminismo. Laboria Cuboniks escribe:
+
+> ¿Por qué hay tan pocos esfuerzos explícitos y organizados para reorientar las tecnologías hacia fines políticos progresistas en materia de género? XF busca implementar estratégicamente las tecnologías existentes para rediseñar el mundo. Estas herramientas conllevan riesgos graves; son propensas a generar desequilibrios, abusos y explotación de los más vulnerables. En lugar de fingir que no hay ningún riesgo, XF aboga por la creación necesaria de interfaces tecnopolíticas que respondan a estos riesgos. La tecnología no es intrínsecamente progresista. Sus usos están entrelazados con la cultura en un ciclo de retroalimentación positiva que hace imposible la secuenciación lineal, la predicción y la precaución absoluta. La innovación tecnocientífica debe estar vinculada a un pensamiento teórico y político colectivo en el que las mujeres, las personas queer y quienes no se ajustan a las normas de género desempeñen un papel sin igual.
+
+En este contexto, el manifiesto propone una relación con la tecnología en la que no solo las mujeres, las personas queer y quienes no se ajustan a las normas de género desempeñan un papel fundamental, sino que además dicha relación es moldeada por ellas y para ellas. Esta conceptualización se ha planteado en diversas narrativas de ciencia ficción que abordan la correlación directa entre la tecnología, el género y la sexualidad. A través de ellas, se puede llegar a comprender no solo cómo las personas se relacionan consigo mismas y con el tiempo como concepto, sino también cómo el tiempo y el atravesarlo constituyen un medio de liberación basada en el género y la sexualidad; puntos de revelación que, como se hace evidente en estas narrativas, no se harían realidad en ningún otro lugar dada la especificidad de las mismas.
+
+
+La obra de Ursula K. Le Guin «Otra historia, o Un pescador del mar interior» ilustra esta lógica particularmente bien. Si bien la narrativa en sí misma es anterior al xenofeminismo por décadas, sus temas centrales sentaron las bases para que estas ideas se afianzaran en el ámbito teórico a través de Laboria Cuboniks. En este caso, uno de los puntos de contacto más evidentes entre el xenofeminismo y la narrativa de Le Guin es la forma en que la historia entrelaza ideas de parentesco, tecnología, encarnación y temporalidad, y cómo estos aspectos dentro de la historia se reconstruyen de manera recursiva, en lugar de simplemente heredarse. Más específicamente, el cuento presenta un uso extensivo del parentesco como una tecnología social inherentemente diseñada. La protagonista de la historia proviene del planeta O, cuyo sistema matrimonial de «sedoretu» de cuatro personas reorganiza y replantea fundamentalmente las concepciones de la intimidad, la vida doméstica y la reproducción. Cabe destacar que también replantea la propia noción de lo tradicional, dado que, en paralelo con los ideales estadounidenses contemporáneos del matrimonio tradicional —que solo permite a dos personas a la vez, la monogamia y las relaciones matrimoniales heterosexuales (entre un hombre cisgénero y una mujer cisgénero)—, existe, no obstante, un indudable conservadurismo en ello, así como una falta de opciones tanto para la realización personal y familiar como para el florecimiento de las relaciones.
+
+A modo de paralelo, en "El pescador del mar interior", Le Guin cuestiona precisamente esta concepción tradicional del matrimonio y las relaciones de parentesco; en lugar de considerar que el dualismo del matrimonio entre dos personas es correcto, ideal o natural, Le Guin plantea el parentesco como algo que se diseña, se mantiene y se establece a través del condicionamiento histórico de las relaciones sociales. Este dualismo, que considera que un hogar con dos figuras principales —una madre y un padre (y, más importante aún, un esposo y una esposa)— es algo normal, natural, ideal y el verdadero camino no solo hacia la realización personal y social de uno mismo, sino también de la unidad familiar en su conjunto y, por extensión, de gran parte de la sociedad inmediata, es cuestionado por completo aquí. A su vez, el xenofeminismo rechaza el naturalismo de estas estructuras familiares, proponiendo el ideal de que las estructuras familiares deben reorganizarse en torno a principios emancipadores, en lugar de principios tradicionales o biológicos. El xenofeminismo, como marco conceptual, rechaza por completo las apelaciones a la reproducción biológica como fundamento privilegiado del parentesco, sino que, por el contrario, aboga por tratar las tecnologías reproductivas y las formaciones familiares alternativas como medios igualmente legítimos de producir vida social. Volviendo a la narrativa de "El pescador del mar interior", podemos entender la conceptualización de la familia que presenta la historia no como una promoción de estructuras familiares o relaciones de parentesco comparativamente más alternativas, sino más bien como una forma de comprender la plasticidad inherente a estas estructuras. De este modo, la familia se vuelve plástica en lugar de natural.
+
+Esta idea se ve reforzada por las observaciones de Wendy Pearson sobre el lugar y el uso de la sexualidad en las narrativas de ciencia ficción. En su ensayo "Ciencia ficción y teoría queer", escribe:
+
+
+> «La teoría queer apenas ha comenzado a ofrecer nuevas formas de ver la ciencia ficción, una perspectiva que sugiere que la sexualidad no es meramente periférica, sino absolutamente central para los futuros potenciales que podamos inventar, así como para nuestra reflexión sobre el presente».
+
+En este sentido, las narrativas de ciencia ficción encapsulan y representan las posibilidades para el futuro de la humanidad, así como nuestra relación con sus componentes divisibles: el individuo, la relación y la familia. Además, dado que estos componentes —así como la humanidad en su conjunto, que puede concebirse y organizarse en torno a ellos— también pueden surgir futuros muy diversos a partir de las acciones que se tomen hoy, incluyendo, entre otras cosas, el trabajo realizado para invertir estas estructuras y visualizarlas con miras a una comprensión futura del mundo que nos rodea y de estos componentes más pequeños, modificados no solo para adaptarse mejor a sus medios sociales y liberadores, sino también a sus ideales sobre cómo relacionarse con la tecnología, a fin de mejorar no solo el futuro, sino también el presente. En este sentido, la obviedad de cambiar el presente para provocar un cambio en el futuro tiene una inversa necesaria: al alterar la forma en que concebimos el futuro, también podemos concebir el presente de manera muy diferente.
+
+La tecnología en "Otra historia, o El pescador del mar interior" no es simplemente un mecanismo a través del cual la liberación se vuelve posible, sino que se convierte en sí misma en un elemento constitutivo del parentesco. Una de las implicaciones más sutiles del manifiesto de Laboria Cubonik es que la tecnología no debe utilizarse como un instrumento neutral cuyo significado potencial resida únicamente en su aplicación, sino que son las propias tecnologías las que reorganizan las condiciones bajo las cuales los sujetos se relacionan entre sí, transformando así no solo lo que los individuos son capaces de hacer, sino también las formas de socialidad que, de este modo, se vuelven imaginables. Si bien el xenofeminismo suele enfatizar la intervención tecnológica como un medio para superar tanto los naturalismos sociales como los biológicos, a su vez, la narrativa de Le Guin amplía esta propuesta al demostrar que las tecnologías mismas se convierten en estructuras relacionales. Si Le Guin imagina el parentesco en sí mismo como algo diseñado tecnológicamente, Klages, a su vez, se pregunta qué sucede cuando la historia se vuelve igualmente susceptible de ser diseñada. En lugar de rediseñar la familia, "Time Gypsies" rediseña las pertenencias históricas.
+
+Mientras que Le Guin reimagina los lazos de parentesco a través de esta antropología especulativa, Ellen Klages traslada el proyecto emancipador del xenofeminismo a la historia misma. En el cuento «Time Gypsies», la temporalidad queer está expresamente presente. La trama del cuento gira en torno a una mujer llamada Carol que trabaja en una máquina del tiempo en el presente contemporáneo de la historia, viaja al pasado de su familia, se enamora de otra científica llamada Sara y no quiere regresar a su propia época. En esta historia, la temporalidad queer se abstrae expresamente en relación con nuestro propio tiempo y nuestra forma de ser. Mientras que Le Guin reconstruye el parentesco a través de la antropología especulativa, Klages reconstruye la historia misma a través de la temporalidad queer. La temporalidad queer suele enmarcarse y entenderse como un concepto relegado al presente contemporáneo, que afecta y constituye una faceta de las vidas queer, cuya existencia no se desarrolla en relación con el tiempo «heteronormativo», es decir, una vida marcada por metas organizadas según la edad, el tiempo y el espacio propios de la estructura familiar tradicional. Organizar la propia vida en torno al matrimonio, una familia, diversas inversiones y puestos de trabajo orientados al beneficio de dicho matrimonio y familia, ahorrar para la matrícula de la educación superior de los hijos, jubilarse, planificar la muerte y los ritos finales. En la vida queer,esto suele quedar en segundo plano, dado que muchas vidas queer no se organizan en torno a conceptos como la familia, el matrimonio o los objetivos económicos antes mencionados. Se dedica más tiempo a actividades secundarias, como la recreación, el ocio y los objetivos artísticos. El concepto mismo de la domesticidad queer permite que se generalice un estilo de vida basado en dos ingresos y sin hijos, y se fundamenta por completo en la temporalidad queer en este sentido. 
+
+Volviendo a «Time Gypsies», el cuento en el que aparecen Carol y Sara es en sí mismo una variación de la temporalidad queer en la que pueden vivir en el tiempo de Carol y, relativamente, en el presente de Sara. Esto es idealista y, sin duda, una vía de escape para Carol de su pasado relativo (nótese, además, la temporalidad de sus nombres; Carol se asocia más con generaciones anteriores de mujeres, mientras que Sara, sin la «h», presenta un estilo mucho más contemporáneo y una relación diferente con los nombres en sí). En este sentido, el xenofeminismo nos permite ver que estas arquitecturas temporales alternativas pueden ofrecer interpretaciones radicales de la vida queer, y cómo la domesticidad y las relaciones queer existen en relación con el pasado. La autora Ellen Klages deja esto claro con el mismo final del cuento y la decisión final de los personajes de permanecer en el mismo período de tiempo y de influir en el tiempo para poder permanecer juntos, coexistiendo así en su propio tiempo queer, compartido mutuamente. Como escribe Klages,
+
+> «Sara y yo decidimos que incluso devolver una versión incompleta de su artículo era peligroso. Le daría a Chambers pruebas suficientes de que su experimento de tempocinesis había funcionado como para que obtuviera más financiamiento e intentara de nuevo. Así que lo único que hay en la caja es una postal anónima y sin fecha del Hotel St. Francis que dice: “La estoy pasando de maravilla. Gracias por el viaje”.»
+
+Consideradas en conjunto como una dualidad de narrativas de ciencia ficción que se refuerzan mutuamente, Le Guin y Klages demuestran que el compromiso del xenofeminismo con la tecnología va más allá del rediseño de los cuerpos o los sistemas reproductivos. Además, ambas historias conciben la tecnología como una infraestructura de relacionalidad a través de la cual el parentesco, la memoria y los futuros queer se reconstruyen continuamente para sus propios fines. En lugar de limitarse a anticipar las ideas de Laboria Cuboniks, estas narrativas revelan un aspecto del xenofeminismo que sigue siendo fundamental para la investigación discreta y doméstica; las tecnologías, tanto emancipadoras como especulativas —como la del viaje en el tiempo—, no se limitan a generar nuevas posibilidades sociopolíticas por sí mismas, sino que participan activamente en la formación de la intimidad y en la materialización de la relación íntima en sí misma. El viaje en el tiempo no se revela simplemente como una tecnología para atravesar temporalidades, sino para construir vínculos de parentesco a través del tiempo queer.
+
+Como linaje colectivo de la literatura como teoría, y también de la literatura que se convierte en teoría, podemos observar cómo la obra de Klages y Le Guin, en sus meditaciones prosaicas sobre las interrelaciones tecnológicas con los personajes y sus relaciones, así como sobre los vínculos tanto materiales como abstractos que estas tecnologías generan, conforma un proto-xenofeminismo. Estos cuentos, escritos décadas antes del Manifiesto Xenofeminista de Laboria Cuboniks, ofrecen no solo un punto de partida para el pensamiento liberador en el contexto de lo maquínico emancipador, sino también de futuros en los que la tecnología misma opera como un vector de libertad y liberación reales y materiales entre las mujeres y las personas queer, y más aún entre las comunidades. No se limitan a defender situaciones muy similares a las que describen, sino que, al imaginarlas, las hacen realidad para evitar que cualquier futuro perdido sea simplemente tiempo perdido. El futuro y su potencial liberador, intrínsecamente entrelazado con el de los individuos y los lazos de afinidad, aún puede hacerse realidad. En un tiempo aún por desarrollarse, las posibilidades son ilimitadas, y estas historias plantean solo algunas formas de situaciones liberadoras en las que la tecnología funciona como un mecanismo puramente liberador. Estas situaciones no tienen por qué ser meramente imaginarias; pueden volverse palpablemente reales y verdaderamente vividas. No necesitamos una máquina del tiempo para que este trabajo, en espíritu y en la práctica, comience.
+
+---
+
+### Nota del Laboratorio
+
+
+
+---
+
+
+**Bibliografía**
+
+Laboria Cuboniks (colectivo). (2018). El Manifiesto del xenofeminismo: una política de la alienación. Verso.
+
+
+Pearson, W. G., Hollinger, V. y Gordon, J. (2008). Universos queer, pág. 59. Liverpool University Press.
+
+
+VanderMeer, A. y VanderMeer, J. (2014). El almanaque del viajero en el tiempo. Macmillan.
+
+
+
+
+
+
+
