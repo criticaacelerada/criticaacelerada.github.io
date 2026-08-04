@@ -6,6 +6,7 @@ const ensayos = defineCollection({
     pattern: "**/*.md",
     base: "./src/content/ensayos",
   }),
+
   schema: z.object({
     title: z.string(),
     date: z.date(),
@@ -26,10 +27,12 @@ const transmisiones = defineCollection({
     pattern: "**/*.md",
     base: "./src/content/transmisiones",
   }),
+
   schema: z.object({
     title: z.string(),
     description: z.string(),
     pubDate: z.date(),
+    numero: z.number(),
   }),
 });
 

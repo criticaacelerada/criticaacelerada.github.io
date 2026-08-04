@@ -5,76 +5,65 @@ import { getCollection } from "astro:content";
 const transmisiones = await getCollection("transmisiones");
 
 transmisiones.sort(
-    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
 ---
 
 <html lang="es">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
     <title>Transmisiones | Crítica Acelerada</title>
-</head>
+  </head>
 
-<body>
+  <body>
+    <main class="article">
+      <div class="container">
+        <p class="eyebrow">
+          TRANSMISIONES
+        </p>
 
-<main class="article">
+        <h1>
+          Archivo Audiovisual
+        </h1>
 
-<div class="container">
+        <p class="mission">
+          Conversaciones, podcasts y registros audiovisuales del laboratorio.
+        </p>
 
-<p class="eyebrow">
-TRANSMISIONES
-</p>
+        <hr />
 
-<h1>
-Archivo Audiovisual
-</h1>
+        {
+          transmisiones.map((transmision) => (
+            <article class="essay">
+              <div class="number">
+                {String(transmision.data.numero).padStart(3, "0")}
+              </div>
 
-<p class="mission">
-Conversaciones, podcasts y registros audiovisuales del laboratorio.
-</p>
-
-<hr />
-
-
-{
-    transmisiones.map((transmision) => (
-
-        <article class="essay">
-
-            <div class="number">
-                {String(transmision.data.numero ?? 1).padStart(3,"0")}
-            </div>
-
-            <div class="content">
-
+              <div class="content">
                 <h3>
-                    {transmision.data.title}
+                  {transmision.data.title}
                 </h3>
 
                 <p>
-                    {transmision.data.description}
+                  {transmision.data.description}
                 </p>
 
                 <a
-                    class="read-link"
-                    href={`/transmisiones/${transmision.id}`}
+                  class="read-link"
+                  href={`/transmisiones/${transmision.id}`}
                 >
-                    Ver transmisión →
+                  Ver transmisión →
                 </a>
-
-            </div>
-
-        </article>
-
-    ))
-}
-
-</div>
-
-</main>
-
-</body>
-
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </main>
+  </body>
 </html>
