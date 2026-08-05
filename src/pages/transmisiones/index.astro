@@ -1,5 +1,7 @@
 ---
 import "../../styles/global.css";
+import HomeButton from "../../components/HomeButton.astro";
+import SocialFooter from "../../components/SocialFooter.astro";
 import { getCollection } from "astro:content";
 
 const transmisiones = await getCollection("transmisiones");
@@ -20,31 +22,79 @@ transmisiones.sort(
     <title>Transmisiones | Crítica Acelerada</title>
   </head>
 
-  <body>
-    <main class="article">
-      <div class="container">
-        <p class="eyebrow">
-          TRANSMISIONES
-        </p>
+<body>
 
-        <h1>
-          Archivo Audiovisual
-        </h1>
+<SocialFooter />
 
-        <p class="mission">
-          Conversaciones, podcasts y registros audiovisuales del laboratorio.
-        </p>
+<HomeButton />
 
-        <hr />
+  <main class="transmissions-page">
+
+    <div class="container">
+
+      <section class="transmissions-hero">
+
+        <div class="transmissions-intro">
+
+          <p class="eyebrow">
+            TRANSMISIONES
+          </p>
+
+          <h1>
+            Archivo Audiovisual
+          </h1>
+
+          <p class="mission">
+            Conversaciones, podcasts y registros audiovisuales del laboratorio.
+          </p>
+
+          <div class="transmissions-meta">
+            <span>CRÍTICA ACELERADA</span>
+            <span>
+              {String(transmisiones.length).padStart(2, "0")} TRANSMISIONES
+            </span>
+          </div>
+
+        </div>
+
+        <div class="transmissions-visual" aria-hidden="true">
+
+          <div class="transmissions-signal">
+            <span>C</span>
+          </div>
+
+          <img
+            src="/images/transmisiones.png"
+            alt=""
+          />
+
+          <p>
+            SEÑAL ABIERTA · ARCHIVO AUDIOVISUAL
+          </p>
+
+        </div>
+
+      </section>
+
+      <section class="transmissions-list">
+
+        <div class="transmissions-list-header">
+          <span>N.º</span>
+          <span>TRANSMISIÓN</span>
+          <span>ACCESO</span>
+        </div>
 
         {
           transmisiones.map((transmision) => (
-            <article class="essay">
+
+            <article class="transmission-entry">
+
               <div class="number">
                 {String(transmision.data.numero).padStart(3, "0")}
               </div>
 
               <div class="content">
+
                 <h3>
                   {transmision.data.title}
                 </h3>
@@ -53,17 +103,30 @@ transmisiones.sort(
                   {transmision.data.description}
                 </p>
 
+              </div>
+
+              <div class="transmission-actions">
+
                 <a
                   class="read-link"
                   href={`/transmisiones/${transmision.id}`}
                 >
-                  Ver transmisión →
+                  Ver señal →
                 </a>
+
               </div>
+
             </article>
+
           ))
         }
-      </div>
-    </main>
-  </body>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</body>
+
 </html>

@@ -1,5 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
+import HomeButton from "../../components/HomeButton.astro";
+import SocialFooter from "../../components/SocialFooter.astro";
 import "../../styles/global.css";
 
 export async function getStaticPaths() {
@@ -28,15 +30,137 @@ const { Content } = await render(transmision);
 
 <body>
 
-<div class="container">
+<SocialFooter />
 
-<h1>{transmision.data.title}</h1>
+<HomeButton />
 
-<p>{transmision.data.description}</p>
+  <main class="broadcast-page">
 
-<Content />
+    <div class="container">
 
-</div>
+      <header class="broadcast-header">
+
+        <div class="broadcast-header-top">
+
+          <p class="eyebrow">
+            TRANSMISIÓN {String(transmision.data.numero).padStart(3,"0")}
+          </p>
+
+          <span class="broadcast-status">
+            SEÑAL ARCHIVADA
+          </span>
+
+        </div>
+
+        <div class="broadcast-title-grid">
+
+          <div class="broadcast-title-block">
+
+            <h1>
+              {transmision.data.title}
+            </h1>
+
+            <p class="broadcast-description">
+              {transmision.data.description}
+            </p>
+
+          </div>
+
+          <div class="broadcast-number" aria-hidden="true">
+            {String(transmision.data.numero).padStart(3,"0")}
+          </div>
+
+        </div>
+
+        <div class="broadcast-meta">
+
+          <span>CRÍTICA ACELERADA</span>
+
+          <span>ARCHIVO AUDIOVISUAL</span>
+
+          {
+            transmision.data.pubDate && (
+              <span>
+                {transmision.data.pubDate.toLocaleDateString("es-MX", {
+                  day: "2-digit",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </span>
+            )
+          }
+
+        </div>
+
+      </header>
+
+      <div class="broadcast-layout">
+
+        <aside class="broadcast-sidebar">
+
+          <div class="broadcast-sidebar-block">
+
+            <span class="broadcast-sidebar-label">
+              CLASIFICACIÓN
+            </span>
+
+            <strong>
+              TRANSMISIÓN {String(transmision.data.numero).padStart(3,"0")}
+            </strong>
+
+          </div>
+
+          <div class="broadcast-sidebar-block">
+
+            <span class="broadcast-sidebar-label">
+              ESTADO
+            </span>
+
+            <strong>
+              PUBLICADA
+            </strong>
+
+          </div>
+
+          <div class="broadcast-sidebar-block">
+
+            <span class="broadcast-sidebar-label">
+              FORMATO
+            </span>
+
+            <strong>
+              AUDIOVISUAL
+            </strong>
+
+          </div>
+
+          <div class="broadcast-signal" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <a
+            class="broadcast-back-link"
+            href="/transmisiones"
+          >
+            ← Volver al archivo
+          </a>
+
+        </aside>
+
+        <article class="broadcast-content">
+
+          <Content />
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </main>
 
 </body>
+
 </html>

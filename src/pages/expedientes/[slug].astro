@@ -1,5 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
+import HomeButton from "../../components/HomeButton.astro";
+import SocialFooter from "../../components/SocialFooter.astro";
 import "../../styles/global.css";
 
 export async function getStaticPaths() {
@@ -29,27 +31,133 @@ const { Content } = await render(ensayo);
 
 <body>
 
-<main class="article">
+<SocialFooter />
+
+<HomeButton />
+
+  <main class="case-page">
 
     <div class="container">
 
-        <p class="eyebrow">
+      <header class="case-header">
+
+        <div class="case-header-top">
+
+          <p class="eyebrow">
             EXPEDIENTE {String(ensayo.data.expediente).padStart(3,"0")}
-        </p>
+          </p>
 
-        <h1>{ensayo.data.title}</h1>
+          <span class="case-status">
+            ARCHIVO ABIERTO
+          </span>
 
-        <p class="mission">
-            {ensayo.data.descripcion}
-        </p>
+        </div>
 
-        <hr />
+        <div class="case-title-grid">
 
-        <Content />
+          <div class="case-title-block">
+
+            <h1>
+              {ensayo.data.title}
+            </h1>
+
+            <p class="case-description">
+              {ensayo.data.descripcion}
+            </p>
+
+          </div>
+
+          <div class="case-number" aria-hidden="true">
+            {String(ensayo.data.expediente).padStart(3,"0")}
+          </div>
+
+        </div>
+
+        <div class="case-meta">
+
+          <span>
+            CRÍTICA ACELERADA
+          </span>
+
+          <span>
+            LABORATORIO DE ESTUDIOS CRÍTICOS
+          </span>
+
+          {
+            ensayo.data.language && (
+              <span>
+                IDIOMA: {ensayo.data.language.toUpperCase()}
+              </span>
+            )
+          }
+
+        </div>
+
+      </header>
+
+      <div class="case-layout">
+
+        <aside class="case-sidebar">
+
+          <div class="case-sidebar-block">
+
+            <span class="case-sidebar-label">
+              CLASIFICACIÓN
+            </span>
+
+            <strong>
+              EXPEDIENTE {String(ensayo.data.expediente).padStart(3,"0")}
+            </strong>
+
+          </div>
+
+          <div class="case-sidebar-block">
+
+            <span class="case-sidebar-label">
+              ESTADO
+            </span>
+
+            <strong>
+              PUBLICADO
+            </strong>
+
+          </div>
+
+          <div class="case-sidebar-block">
+
+            <span class="case-sidebar-label">
+              FORMATO
+            </span>
+
+            <strong>
+              ENSAYO
+            </strong>
+
+          </div>
+
+          <div class="case-sidebar-line"></div>
+
+          <a
+            class="case-back-link"
+            href="/expedientes"
+          >
+            ← Volver al archivo
+          </a>
+
+        </aside>
+
+        <article class="case-content">
+
+          <Content />
+
+        </article>
+
+      </div>
 
     </div>
 
-</main>
+  </main>
 
 </body>
+
 </html>

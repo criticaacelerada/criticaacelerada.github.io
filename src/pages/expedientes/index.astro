@@ -1,5 +1,7 @@
 ---
 import "../../styles/global.css";
+import HomeButton from "../../components/HomeButton.astro";
+import SocialFooter from "../../components/SocialFooter.astro";
 import { getCollection } from "astro:content";
 
 const ensayos = await getCollection("ensayos");
@@ -66,81 +68,127 @@ const expedientes = Array.from(grupos.values())
 
 <body>
 
-  <main class="article">
+<SocialFooter />
+
+<HomeButton />
+
+  <main class="archive-page">
 
     <div class="container">
 
-      <p class="eyebrow">
-        EXPEDIENTES
-      </p>
+      <section class="archive-hero">
 
-      <h1>
-        Archivo
-      </h1>
+        <div class="archive-intro">
 
-      <p class="mission">
-        Ensayos, investigaciones y documentos del laboratorio.
-      </p>
+          <p class="eyebrow">
+            EXPEDIENTES
+          </p>
 
-      <hr />
+          <h1>
+            Archivo
+          </h1>
 
-      {
-        expedientes.map(({ principal, idiomas }) => (
+          <p class="mission">
+            Ensayos, investigaciones y documentos del laboratorio.
+          </p>
 
-          <article class="essay">
+          <div class="archive-meta">
+            <span>CRÍTICA ACELERADA</span>
+            <span>{String(expedientes.length).padStart(2, "0")} DOCUMENTOS</span>
+          </div>
 
-            <div class="number">
-              {String(principal.data.expediente).padStart(3, "0")}
-            </div>
+        </div>
 
-            <div class="content">
+        <div class="archive-visual" aria-hidden="true">
 
-              <h3>
-                {principal.data.title}
-              </h3>
+          <div class="archive-logo">
+            <span>C</span>
+          </div>
 
-              <p>
-                {principal.data.descripcion}
-              </p>
+          <img
+            src="/images/expedientes.png"
+            alt=""
+          />
 
-              {
-                idiomas.length > 1 ? (
+          <p>
+            LABORATORIO DE ESTUDIOS CRÍTICOS
+          </p>
 
-                  <div class="language-switch">
+        </div>
 
-                    {
-                      idiomas.map((version) => (
-                        <a
-                          class="language-chip"
-                          href={`/expedientes/${version.id}`}
-                          lang={version.data.language}
-                          aria-label={`Abrir versión ${version.data.language.toUpperCase()}`}
-                        >
-                          {version.data.language.toUpperCase()}
-                        </a>
-                      ))
-                    }
+      </section>
 
-                  </div>
+      <section class="archive-list">
 
-                ) : (
+        <div class="archive-list-header">
+          <span>N.º</span>
+          <span>DOCUMENTO</span>
+          <span>IDIOMA</span>
+        </div>
 
-                  <a
-                    class="read-link"
-                    href={`/expedientes/${principal.id}`}
-                  >
-                    Leer expediente →
-                  </a>
+        {
+          expedientes.map(({ principal, idiomas }) => (
 
-                )
-              }
+            <article class="essay">
 
-            </div>
+              <div class="number">
+                {String(principal.data.expediente).padStart(3, "0")}
+              </div>
 
-          </article>
+              <div class="content">
 
-        ))
-      }
+                <h3>
+                  {principal.data.title}
+                </h3>
+
+                <p>
+                  {principal.data.descripcion}
+                </p>
+
+              </div>
+
+              <div class="essay-actions">
+
+                {
+                  idiomas.length > 1 ? (
+
+                    <div class="language-switch">
+
+                      {
+                        idiomas.map((version) => (
+                          <a
+                            class="language-chip"
+                            href={`/expedientes/${version.id}`}
+                            lang={version.data.language}
+                            aria-label={`Abrir versión ${version.data.language.toUpperCase()}`}
+                          >
+                            {version.data.language.toUpperCase()}
+                          </a>
+                        ))
+                      }
+
+                    </div>
+
+                  ) : (
+
+                    <a
+                      class="read-link"
+                      href={`/expedientes/${principal.id}`}
+                    >
+                      Leer →
+                    </a>
+
+                  )
+                }
+
+              </div>
+
+            </article>
+
+          ))
+        }
+
+      </section>
 
     </div>
 
