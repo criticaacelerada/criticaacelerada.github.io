@@ -13,9 +13,9 @@ translationKey: "exp001"
 
 ## Dossier del Colaborador
 
-**Samuel C. (Virgo Nocturno)**
+**Oliver F.S. (Virgo Nocturno)**
 
-Investigador independiente radicado en México. Ingeniero químico y economista. Actualmente cursa la Maestría en Ciencias Económicas. Es integrante del Laboratorio de Estudios sobre Empresas Transnacionales del Instituto de Investigaciones Económicas de la UNAM y fundador de **Crítica Acelerada**. Sus líneas de investigación se centran en la colapsología, el aceleracionismo crítico y la economía política de los datos.
+Investigador independiente radicado en México. Ingeniero químico y economista. Actualmente cursa la Maestría en Ciencias Económicas. Es integrante del Laboratorio de Estudios sobre Empresas Transnacionales del Instituto de Investigaciones Económicas de la UNAM y nodo inicial de **Crítica Acelerada**. Sus líneas de investigación se centran en la colapsología, el aceleracionismo crítico y la economía política de los datos.
 
 
 **Substack:** https://substack.com/@virgonocturno
