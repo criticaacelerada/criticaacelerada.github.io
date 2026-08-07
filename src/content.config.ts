@@ -36,7 +36,27 @@ const transmisiones = defineCollection({
   }),
 });
 
+const destilados = defineCollection({
+  loader: glob({
+    pattern: "**/*.md",
+    base: "./src/content/destilados",
+  }),
+
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    numero: z.number(),
+    autor: z.string(),
+    obra: z.string(),
+
+    language: z.enum(["es", "en"]).default("es"),
+    translationKey: z.string().optional(),
+  }),
+});
+
 export const collections = {
   ensayos,
   transmisiones,
+  destilados,
 };

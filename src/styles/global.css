@@ -2421,3 +2421,55 @@ ARTÍCULOS
     }
 
 }
+
+.destilados-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  min-height: 430px;
+  padding: 5rem 0 4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.destilados-hero-text h1 {
+  margin: 0.25rem 0 1rem;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.destilados-meta {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.destilados-hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.destilados-hero-image img {
+  width: min(100%, 520px);
+  display: block;
+  opacity: 0.72;
+  filter: contrast(1.1);
+}
+
+@media (max-width: 800px) {
+  .destilados-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .destilados-hero-image img {
+    width: 100%;
+    max-width: 420px;
+  }
+}

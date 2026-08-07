@@ -1,0 +1,158 @@
+---
+import { getCollection, render } from "astro:content";
+import HomeButton from "../../components/HomeButton.astro";
+import SocialFooter from "../../components/SocialFooter.astro";
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+  const destilados = await getCollection("destilados");
+
+  return destilados.map((destilado) => ({
+    params: {
+      slug: destilado.id,
+    },
+    props: {
+      destilado,
+    },
+  }));
+}
+
+const { destilado } = Astro.props;
+const { Content } = await render(destilado);
+---
+
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{destilado.data.title} | Crítica Acelerada</title>
+</head>
+
+<body>
+
+<div class="container">
+
+  <header class="case-header">
+
+    <div class="case-header-top">
+
+      <p class="eyebrow">
+        DESTILADO {String(destilado.data.numero).padStart(3, "0")}
+      </p>
+
+      <span class="case-status">
+        ARCHIVO ABIERTO
+      </span>
+
+    </div>
+
+    <div class="case-title-grid">
+
+      <div class="case-title-block">
+
+        <h1>
+          {destilado.data.title}
+        </h1>
+
+        <p class="case-description">
+          {destilado.data.description}
+        </p>
+
+      </div>
+
+      <div class="case-number" aria-hidden="true">
+        {String(destilado.data.numero).padStart(3, "0")}
+      </div>
+
+    </div>
+
+    <div class="case-meta">
+
+      <span>
+        CRÍTICA ACELERADA
+      </span>
+
+      <span>
+        LABORATORIO DE ESTUDIOS CRÍTICOS
+      </span>
+
+      <span>
+        {destilado.data.autor}
+      </span>
+
+      <span>
+        {destilado.data.obra}
+      </span>
+
+    </div>
+
+  </header>
+
+  <div class="case-layout">
+
+    <aside class="case-sidebar">
+
+      <div class="case-sidebar-block">
+
+        <span class="case-sidebar-label">
+          CLASIFICACIÓN
+        </span>
+
+        <strong>
+          DESTILADO {String(destilado.data.numero).padStart(3, "0")}
+        </strong>
+
+      </div>
+
+      <div class="case-sidebar-block">
+
+        <span class="case-sidebar-label">
+          ESTADO
+        </span>
+
+        <strong>
+          PUBLICADO
+        </strong>
+
+      </div>
+
+      <div class="case-sidebar-block">
+
+        <span class="case-sidebar-label">
+          FORMATO
+        </span>
+
+        <strong>
+          SÍNTESIS
+        </strong>
+
+      </div>
+
+      <div class="case-sidebar-line"></div>
+
+      <a
+        class="case-back-link"
+        href="/destilados"
+      >
+        ← Volver al archivo
+      </a>
+
+    </aside>
+
+    <article class="case-content">
+
+      <Content />
+
+    </article>
+
+  </div>
+
+</div>
+
+<HomeButton />
+<SocialFooter />
+
+</body>
+</html>
