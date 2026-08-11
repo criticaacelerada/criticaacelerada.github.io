@@ -55,8 +55,30 @@ const destilados = defineCollection({
   }),
 });
 
+const alicuotas = defineCollection({
+  loader: glob({
+    pattern: "**/*.md",
+    base: "./src/content/alicuotas",
+  }),
+
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    numero: z.number(),
+
+    autor: z.string(),
+    translator: z.string().optional(),
+    tipo: z.string().optional(),
+
+    language: z.enum(["es", "en"]).default("es"),
+    translationKey: z.string().optional(),
+  }),
+});
+
 export const collections = {
   ensayos,
   transmisiones,
   destilados,
+  alicuotas,
 };

@@ -1,0 +1,209 @@
+---
+import "../../styles/global.css";
+import HomeButton from "../../components/HomeButton.astro";
+import SocialFooter from "../../components/SocialFooter.astro";
+import { getCollection } from "astro:content";
+
+const documentos = await getCollection("alicuotas");
+
+const grupos = new Map();
+
+for (const documento of documentos) {
+  const clave =
+    documento.data.translationKey ??
+    `individual-${documento.id}`;
+
+  if (!grupos.has(clave)) {
+    grupos.set(clave, []);
+  }
+
+  grupos.get(clave).push(documento);
+}
+
+const alicuotas = Array.from(grupos.values())
+  .map((versiones) => {
+    const principal =
+      versiones.find((version) => version.data.language === "en") ??
+      versiones[0];
+
+    const idiomas = versiones.sort((a, b) => {
+      const orden = ["en", "es"];
+
+      return (
+        orden.indexOf(a.data.language) -
+        orden.indexOf(b.data.language)
+      );
+    });
+
+    return {
+      principal,
+      idiomas,
+    };
+  })
+  .sort(
+    (a, b) =>
+      b.principal.data.pubDate.getTime() -
+      a.principal.data.pubDate.getTime()
+  );
+---
+
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alícuotas experimentales | Crítica Acelerada</title>
+</head>
+
+<body>
+
+  <HomeButton />
+
+  <main class="archive-page">
+
+    <div class="container">
+
+      <section class="archive-hero">
+
+        <div class="archive-intro">
+
+          <p class="eyebrow">
+            ALÍCUOTAS EXPERIMENTALES
+          </p>
+
+          <h1>
+            Archivo
+          </h1>
+
+          <p class="mission">
+            Fragmentos, intervenciones y muestras textuales que
+            experimentan con las formas, los lenguajes y los límites
+            de la producción crítica.
+          </p>
+
+          <div class="archive-meta">
+
+            <span>
+              CRÍTICA ACELERADA
+            </span>
+
+            <span>
+              {String(alicuotas.length).padStart(2, "0")} MUESTRAS
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="archive-visual" aria-hidden="true">
+
+          <img
+            src="/images/alicuotas.png"
+            alt=""
+          />
+
+          <p>
+            LABORATORIO DE ESTUDIOS CRÍTICOS
+          </p>
+
+        </div>
+
+      </section>
+
+      <section class="archive-list">
+
+        <div class="archive-list-header">
+
+          <span>
+            AE
+          </span>
+
+          <span>
+            MUESTRA
+          </span>
+
+          <span>
+            IDIOMA
+          </span>
+
+        </div>
+
+        {
+          alicuotas.map(({ principal, idiomas }) => (
+
+            <article class="essay">
+
+              <div class="number">
+                AE—{String(principal.data.numero).padStart(3, "0")}
+              </div>
+
+              <div class="content">
+
+                <h3>
+                  {principal.data.title}
+                </h3>
+
+                <p>
+                  {principal.data.description}
+                </p>
+
+                <p>
+                  {principal.data.autor}
+                </p>
+
+              </div>
+
+              <div class="essay-actions">
+
+                {
+                  idiomas.length > 1 ? (
+
+                    <div class="language-switch">
+
+                      {
+                        idiomas.map((version) => (
+
+                          <a
+                            class="language-chip"
+                            href={`/alicuotas/${version.id}`}
+                            lang={version.data.language}
+                            aria-label={`Abrir versión ${version.data.language.toUpperCase()}`}
+                          >
+                            {version.data.language.toUpperCase()}
+                          </a>
+
+                        ))
+                      }
+
+                    </div>
+
+                  ) : (
+
+                    <a
+                      class="read-link"
+                      href={`/alicuotas/${principal.id}`}
+                    >
+                      Leer →
+                    </a>
+
+                  )
+                }
+
+              </div>
+
+            </article>
+
+          ))
+        }
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <SocialFooter />
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+---
+import { getCollection, render } from "astro:content";
+import HomeButton from "../../components/HomeButton.astro";
+import SocialFooter from "../../components/SocialFooter.astro";
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+  const alicuotas = await getCollection("alicuotas");
+
+  return alicuotas.map((alicuota) => ({
+    params: {
+      slug: alicuota.id,
+    },
+    props: {
+      alicuota,
+    },
+  }));
+}
+
+const { alicuota } = Astro.props;
+const { Content } = await render(alicuota);
+---
+
+<!doctype html>
+<html lang={alicuota.data.language}>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{alicuota.data.title} | Crítica Acelerada</title>
+</head>
+
+<body>
+
+<div class="container">
+
+  <header class="case-header">
+
+    <div class="case-header-top">
+
+      <p class="eyebrow">
+        AE—{String(alicuota.data.numero).padStart(3, "0")}
+      </p>
+
+      <span class="case-status">
+        ARCHIVO ABIERTO
+      </span>
+
+    </div>
+
+    <div class="case-title-grid">
+
+      <div class="case-title-block">
+
+        <h1>
+          {alicuota.data.title}
+        </h1>
+
+        <p class="case-description">
+          {alicuota.data.description}
+        </p>
+
+      </div>
+
+      <div class="case-number" aria-hidden="true">
+        {String(alicuota.data.numero).padStart(3, "0")}
+      </div>
+
+    </div>
+
+    <div class="case-meta">
+
+      <span>
+        CRÍTICA ACELERADA
+      </span>
+
+      <span>
+        LABORATORIO DE ESTUDIOS CRÍTICOS
+      </span>
+
+      <span>
+        {alicuota.data.autor}
+      </span>
+
+      {
+        alicuota.data.translator && (
+          <span>
+            TRADUCCIÓN: {alicuota.data.translator}
+          </span>
+        )
+      }
+
+    </div>
+
+  </header>
+
+  <div class="case-layout">
+
+    <aside class="case-sidebar">
+
+      <div class="case-sidebar-block">
+
+        <span class="case-sidebar-label">
+          CLASIFICACIÓN
+        </span>
+
+        <strong>
+          AE—{String(alicuota.data.numero).padStart(3, "0")}
+        </strong>
+
+      </div>
+
+      <div class="case-sidebar-block">
+
+        <span class="case-sidebar-label">
+          ESTADO
+        </span>
+
+        <strong>
+          PUBLICADO
+        </strong>
+
+      </div>
+
+      <div class="case-sidebar-block">
+
+        <span class="case-sidebar-label">
+          FORMATO
+        </span>
+
+        <strong>
+          {alicuota.data.tipo?.toUpperCase() ?? "MUESTRA EXPERIMENTAL"}
+        </strong>
+
+      </div>
+
+      <div class="case-sidebar-block">
+
+        <span class="case-sidebar-label">
+          IDIOMA
+        </span>
+
+        <strong>
+          {alicuota.data.language.toUpperCase()}
+        </strong>
+
+      </div>
+
+      <div class="case-sidebar-line"></div>
+
+      <a
+        class="case-back-link"
+        href="/alicuotas"
+      >
+        ← Volver al archivo
+      </a>
+
+    </aside>
+
+    <article class="case-content">
+
+      <Content />
+
+    </article>
+
+  </div>
+
+</div>
+
+<HomeButton />
+<SocialFooter />
+
+</body>
+</html>
