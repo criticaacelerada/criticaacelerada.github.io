@@ -17,11 +17,9 @@ translationKey: "exp003"
 
 **Alden Nagel** is a Master's candidate in Literature Studies and Teaching at Central Washington University (United States), where his research focuses on contemporary literature, literary theory, and media studies. His work explores autofiction, electronic literature, and the intersections of literature, philosophy, and technology. Alongside literary criticism, he investigates climate collapse as a philosophical condition, engaging with ecological thought, philosophical pessimism, and contemporary critical theory. He has collaborated with a range of international experimental writers and has edited and published works on xenopoetics and posthumanism, establishing himself as an emerging voice at the intersection of literary criticism and speculative thought.
 
-**Substack**: https://substack.com/@aldennagel
-
-**X**: @AldenNagel
-
-**Instagram**: @alden_nagel_
+**Substack:** [@aldennagel](https://substack.com/@aldennagel)  
+**X:** [@AldenNagel](https://x.com/AldenNagel)  
+**Instagram:** [@alden_nagel_](https://www.instagram.com/alden_nagel_/)
 
 
 ---

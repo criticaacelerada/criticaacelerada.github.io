@@ -23,9 +23,11 @@ El extracto original aparece en [https://burialmagazine.neocities.org/myfirsttim
 
 La obra de Christian McDonough ha aparecido en Hobart, Back Patio Press y D.F.L. Lit. Es autor del poemario *Book Of A Thousand Poems*. Su libro [Cunus](https://www.amazon.com/dp/B0H7XFJ6S2?linkCode=ssc\&tag=onamzathinsli-20\&creativeASIN=B0H7XFJ6S2\&asc_item-id=amzn1.ideas.1T5FJB96438FO\&ref_=aip_sf_list_spv_ons_d_asin) y la colección editada [Cunus Response Project](https://www.amazon.com/dp/B0H827WDHM?linkCode=ssc\&tag=onamzathinsli-20\&creativeASIN=B0H827WDHM\&asc_item-id=amzn1.ideas.1T5FJB96438FO\&ref_=aip_sf_list_spv_ons_mixed_d_asin), que reúne trabajos de más de treinta escritores y artistas, están disponibles a través de Anxiety Press.
 
-**Substack:** https://substack.com/@cunus
+**Substack:** [@cunus](https://substack.com/@cunus)  
+**X:** [@CMhcrDiosntoiua](https://x.com/CMhcrDiosntoiua)  
+**Instagram:** [@mistercunus](https://www.instagram.com/mistercunus/)
 
-**Instagram:** @mistercunus
+
 
 ---
 
@@ -945,6 +947,110 @@ Semenquat Hombreverga
 Colgado como una Soga...  
 Arrugado en Camalandia  
 ¡Pero Túrgido en Agallas!  
+
+
+# Contracampo
+
+## Nueve respuestas de Christian McDonough en torno a *Mi primera vez*
+
+**Crítica Acelerada**
+**Entrevistador:** Oliver F. (Virgo Nocturno)
+
+---
+
+### 1. Para comenzar, ¿podrías contarnos un poco sobre ti? ¿Quién es Christian McDonough fuera de la escritura y cómo llegaste al mundo literario?
+
+Tengo 28 años. Crecí en Texas. Tengo dos hermanos y una hermana. Me casé el año pasado.
+
+Fuera de la escritura, soy simplemente un hombre. Estoy intentando mejorarme a mí mismo. Quiero ser bueno. Me interesan las religiones, pensar. Me gusta comer. En realidad, es difícil ser cualquier cosa. Los intereses se desvanecen.
+
+Supongo que llegué al mundo literario leyendo. Pero siempre me ha interesado más crear. A veces siento que escribo más de lo que leo, y eso me molesta.
+
+Leer *Ficciones*, de Borges, fue lo que por primera vez me hizo darme cuenta de lo profundo que puede llegar a ser un libro, de lo que puede hacerte sentir y provocar en ti. Cuando leo, busco libros que despierten en mí esos sentimientos profundos y conmovedores, que me ayuden a ver verdaderamente el mundo y la vida. Eso es lo único que me importa de la literatura.
+
+Empecé a publicar cuando encontré D.F.L. Lit en Twitter. Les envié cien poemas para que los publicaran en su sitio y, unos meses después, me pidieron que escribiera *Book Of A Thousand Poems* (BOATP). Creo que los encontré porque estaba buscando en Google algo como «editoriales independientes». En aquel entonces solo había estado escribiendo diálogos, influidos principalmente por Platón y Witkacy. No sabía qué hacer con ellos.
+
+---
+
+### 2. El texto tiene una estructura muy particular: capítulos numerados en orden descendente, múltiples voces y cambios abruptos de registro. ¿Cómo fue tu proceso de escritura? ¿Planeaste esta estructura desde el principio o surgió de manera natural?
+
+Para entonces ya tenía cierta tendencia a escribir en formato de diálogo y de obra teatral, así que sí tenía previsto que eso entrara en juego al escribir *Cunus*. Para este fragmento, *My First Time*, el primer capítulo de *Cunus*, inicialmente no había pensado numerar las secciones en orden descendente.
+
+Sin embargo, sí había planeado escribir 10,000 palabras. Todas esas palabras fueron escritas durante la primera noche en que comencé *Cunus*. Después eliminé algunas, así que ahora ya no son 10,000, pero para mí era importante llegar hasta ese punto durante aquella primera noche. Lo consideraba mi iniciación en el mundo de *Cunus*.
+
+También notarás que en cada sección de este capítulo se presenta al menos un personaje. Esto surgió de manera natural. ¡Me dio mucho gusto conocer a los personajes aquella primera noche! No sabía que iban a aparecer.
+
+---
+
+### 3. El narrador se dirige a sí mismo como Christian y conversa con entidades como Freng, Drollo y las Ninfas. ¿Qué representa para ti este Christian? ¿Qué representan esas otras entidades? ¿Son fragmentos de una sola psique o entidades independientes?
+
+Esto es algo que había pensado desde el principio. *Cunus* pretende ser una expresión total de mi Yo, de modo que todo en *Cunus*, cada palabra y cada personaje, representa alguna parte de mi Yo.
+
+No tenía en mente ningún aspecto particular de mí mismo cuando aparecieron los personajes y, mientras escribía el libro, decidí intencionalmente no determinar ni pensar qué podrían representar esos personajes acerca de mí.
+
+No quería ser consciente de lo que estaba diciendo o haciendo hasta el punto de terminar ideándolo y controlándolo. Creo que eso habría degradado la verdad de la autoexpresión.
+
+---
+
+### 4. Mi percepción es que *Cunus* contiene ecos del flujo de conciencia, de la escritura confesional y de ciertas tradiciones vinculadas al horror psicológico. En ese sentido, ¿qué autores u obras influyeron en este libro?
+
+No pretendía que el libro siguiera el estilo o la corriente de ningún autor en particular, pero siento un enorme amor y aprecio por la vanguardia literaria polaca del siglo XX, es decir, Witkacy, Gombrowicz y Schulz, con un énfasis especial en Witkacy. También adoro a Friedrich Nietzsche.
+
+Cuando escribía *Cunus*, también estaba especialmente interesado en *Finnegans Wake* y *Mil mesetas*, y no me sorprendería que estos libros también hubieran ejercido una influencia considerable sobre el texto.
+
+---
+
+### 5. El capítulo que compartiste con nosotros se titula *My First Time*. En la literatura, una primera vez suele marcar cierta «pérdida» de la inocencia. Siguiendo esa lógica, ¿qué pierde exactamente —o qué obtiene— el narrador en este primer encuentro con su propia realidad dentro del capítulo?
+
+El título del capítulo es una referencia un tanto socarrona al hecho de que Freng me viola en las primeras páginas del libro, así como a esa especie de **autoviolación psíquica** que constituye la totalidad de *Cunus*.
+
+También pretende representar que este capítulo funciona como una especie de portal de entrada a este reino, como mencioné antes. Quería llevarme a mis propios límites al escribir el libro y, en cierto sentido, llevarme también a otro lugar; por eso este capítulo es «mi primera vez» poniendo un pie en estas nuevas tierras.
+
+---
+
+### 6. En este capítulo inicial hay una fuerte presencia de lo físico. ¿Consideras que el cuerpo es el único lugar donde reside la verdad, o es simplemente el primer obstáculo que debe ser destruido para llegar a lo que más adelante llamas «el Reino»?
+
+Es una pregunta muy interesante. Últimamente, en mi vida personal, he puesto más énfasis en comprenderme a mí mismo como un cuerpo y en utilizar mi cuerpo para alcanzar un mayor grado de comprensión.
+
+Sin embargo, cuando escribía *Cunus*, entendía mi cuerpo más bien como algo que simplemente limitaba las posibilidades.
+
+Esto también tiene un sentido más metafórico: representa los límites de la autoconciencia y la manera en que esta nos obliga a reconocernos como individuos singulares y coherentes, en lugar de como multiplicidades paradójicas.
+
+---
+
+### 7. Hacia el final de la sección 3 aparece una entidad muy mecánica, Mr. Roboto. Después de la densidad visceral que se va acumulando a medida que avanza el capítulo, ¿por qué aparece esta voz compasiva y tranquila? ¿Qué representa para ti este personaje y por qué elegiste esa voz para ese momento de «calma» dentro de este primer capítulo?
+
+En realidad hay una razón muy concreta y personal para esto que nadie, aparte de mí, podría conocer.
+
+Cuando era niño me encantaba cantar la canción *Mr. Roboto* con mi padre y mi hermano, así que ese nombre despierta en mí algo muy reconfortante y juguetón.
+
+Creo que también lo relacioné con el recuerdo de uno de mis hermanos sujetándose el pene mientras caminaba por la casa de nuestra infancia, utilizándolo como si fuera un joystick y diciendo, con una voz fingidamente robótica:
+
+> «Bip bip, bup bup, robot desnudo, robot desnudo».
+
+Lo hacía todo el tiempo cuando era muy pequeño y a todos nos parecía gracioso y tierno.
+
+También podría decirse que representa una especie de aspecto juguetonamente carente de emoción de la autocomprensión y el entendimiento.
+
+Creo que el poema de Mr. Roboto trata, básicamente, de cómo en última instancia estamos constituidos por todas esas cosas que desconocemos o no comprendemos, por todos esos factores sobre los que no tenemos ningún control; que, en esencia, no poseemos una voluntad verdadera sobre nosotros mismos ni sobre aquello que nos constituye, o algo por el estilo.
+
+---
+
+### 8. ¿Qué esperas que los lectores se lleven consigo después de terminar *Cunus*? ¿Quieres que el lector se sienta cómplice de las líneas que escribes o preferirías que se sintiera como un intruso que observa algo que no debería estar viendo?
+
+Espero que se sientan inspirados a hacer lo mismo, a expresarse plena y honestamente y, al hacerlo, cambiar.
+
+Aunque en el libro hay cosas violentas y despiadadas, no quiero que el lector sienta lástima ni repugnancia hacia él. Quiero que se sienta libre de mí y libre de sí mismo.
+
+---
+
+### 9. ¿Cómo imaginas *Cunus* dentro de cinco años? ¿Qué viene después de *Cunus*?
+
+Tengo un plan.
+
+Un libro de filosofía, un libro «normal» y después una nueva Biblia.
+
+
 
 
 

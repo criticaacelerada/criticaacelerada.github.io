@@ -18,14 +18,10 @@ translationKey: "exp001"
 Investigador independiente radicado en México. Ingeniero químico y economista. Actualmente cursa la Maestría en Ciencias Económicas. Es integrante del Laboratorio de Estudios sobre Empresas Transnacionales del Instituto de Investigaciones Económicas de la UNAM y nodo inicial de **Crítica Acelerada**. Sus líneas de investigación se centran en la colapsología, el aceleracionismo crítico y la economía política de los datos.
 
 
-**Substack:** https://substack.com/@virgonocturno
-
-**X:** @virgonocturno
-
-**Instagram:** @itsolivergnosis
-
-**Correo electrónico:** samuel.murdock91@gmail.com
-
+**Substack:** [@virgonocturno](https://substack.com/@virgonocturno)  
+**X:** [@virgonocturno](https://x.com/virgonocturno)  
+**Instagram:** [@itsolivergnosis](https://www.instagram.com/itsolivergnosis/)  
+**Correo electrónico:** [samuel.murdock91@gmail.com](mailto:samuel.murdock91@gmail.com)
 
  
 ### Nota del Laboratorio

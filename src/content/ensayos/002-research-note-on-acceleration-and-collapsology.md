@@ -19,11 +19,9 @@ translationKey: "exp002"
 
 Independent researcher based in the United States whose work develops a constructive theology through Deleuze in dialogue with contemporary post-Continental philosophy.
 
-**Substack**: https://substack.com/@avicennaquinas
-
-**X**: @avicennaquinas
-
-**Instagram**: @chi_thinks
+**Substack:** [@avicennaquinas](https://substack.com/@avicennaquinas)  
+**X:** [@avicennaquinas](https://x.com/avicennaquinas)  
+**Instagram:** [@chi_thinks](https://www.instagram.com/chi_thinks/)
 
 
 ---

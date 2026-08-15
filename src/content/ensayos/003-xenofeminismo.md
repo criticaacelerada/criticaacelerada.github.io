@@ -18,11 +18,9 @@ translationKey: "exp003"
 
 Además de la crítica literaria, investiga el colapso climático como una condición filosófica, dialogando con el pensamiento ecológico, el pesimismo filosófico y la teoría crítica contemporánea. Ha colaborado con diversos escritores experimentales de alcance internacional y ha editado y publicado trabajos sobre xenopoética y poshumanismo, consolidándose como una voz emergente en la intersección entre la crítica literaria y el pensamiento especulativo.
 
-**Substack**: https://substack.com/@aldennagel
-
-**X**: @AldenNagel
-
-**Instagram**: @alden_nagel_
+**Substack:** [@aldennagel](https://substack.com/@aldennagel)  
+**X:** [@AldenNagel](https://x.com/AldenNagel)  
+**Instagram:** [@alden_nagel_](https://www.instagram.com/alden_nagel_/)
 
 ---
 
