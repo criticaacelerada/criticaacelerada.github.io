@@ -6,7 +6,7 @@ descripcion: "El xenofeminismo y el tiempo queer en Le Guin y Klages "
 
 author: "Alden Nagel"
 role: "CONTRIBUTOR"
-translator: "Samuel Carmona"
+translator: "Oliver Ferran"
 
 language: "es"
 translationKey: "exp003"
