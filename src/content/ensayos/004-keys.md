@@ -13,8 +13,6 @@ translationKey: "exp004"
 
 ## Co-agencement Node Dossier
 
-# Author Profile
-
 **Diego Giménez Vila** is a PhD candidate in Philosophy at the University of Valencia, Spain. He is the creator of the YouTube channel *Indagando*, a space where he shares analyses, reflections, and commentary on the readings that accompany his ongoing education and research. His work is characterized by a defence of eclecticism and freedom of thought, understood as fundamental tools against dogmatism and as pathways toward an open-ended search for meaning.
 
 - **YouTube:** [Indagando](https://www.youtube.com/@in-dagando)
