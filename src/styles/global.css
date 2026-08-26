@@ -582,6 +582,11 @@ ARTÍCULOS
     stroke:none;
 }
 
+.footer-social .tiktok-icon{
+    fill:currentColor;
+    stroke:none;
+}
+
 .footer-social a:focus-visible{
     color:var(--accent);
     border-color:var(--accent);

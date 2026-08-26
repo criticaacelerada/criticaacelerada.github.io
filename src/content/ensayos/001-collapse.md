@@ -1,7 +1,7 @@
 ---
 title: "Why Talk About Collapse? Part I"
-author: "Samuel Carmona (Virgo Nocturno)"
-role: "FOUNDER"
+author: "Oliver Ferran"
+role: "SEED NODE"
 date: 2026-07-26
 expediente: 1
 descripcion: "COLLAPSE AS AN OBJECT OF RESEARCH IN THE TWENTY-FIRST CENTURY"
@@ -12,277 +12,299 @@ translationKey: "exp001"
 
 ## Contributor Dossier
 
-**Oliver F.S. (Virgo Nocturno)**
+**Oliver Ferran**
 
 Independent researcher based in Mexico. Chemical engineer and economist. He is currently pursuing a Master's degree in Economic Sciences. He is a member of the Laboratory for the Study of Transnational Corporations at the Institute for Economic Research (IIEc), National Autonomous University of Mexico (UNAM), and the seed node of **Crítica Acelerada**. His research focuses on collapsology, critical accelerationism, and the political economy of data.
 
-**Substack:** [@virgonocturno](https://substack.com/@virgonocturno)  
-**X:** [@virgonocturno](https://x.com/virgonocturno)  
-**Instagram:** [@itsolivergnosis](https://www.instagram.com/itsolivergnosis/)  
-**Correo electrónico:** [samuel.murdock91@gmail.com](mailto:samuel.murdock91@gmail.com)
+**Substack:** [@ferracianuro91](https://substack.com/@ferracianuro91)  
+**X:** [@ferracianuro](https://x.com/ferracianuro)  
+**Instagram:** [@ferracianuro](https://www.instagram.com/ferracianuro/)  
+**Correo electrónico:** [oliver.virgo@gmail.com](mailto:oliver.virgo@gmail.com)
 
 
 ---
 
-### Archival Note
+### Laboratory Note
 
-The year 1977 marked the beginning of the “No future” slogan that the Sex Pistols shouted in “God Save the Queen” across every corner of the United Kingdom as a protest against the British monarchy, but also as a sign of a political horizon that seemed to have faded away. Later, Thatcherism would co-opt that slogan, incorporating it into the capitalist machinery and transforming it into yet another slogan under the banner of “There Is No Alternative.” That was the framework for everything that was lumped into the “neoliberal” box—which is nothing more than an economic program geared toward unrestricted free trade, coupled with minimal state intervention. Because there was no alternative other than the anarchy of capitalist competition.
+The year 1977 marked the beginning of the “No future” that the Sex Pistols shouted through *God Save the Queen* across the United Kingdom, as a protest against the British monarchy but also as a sign of a political horizon that seemed to have expired. Thatcherism would later appropriate that slogan, feeding it into the capitalist machinery and transforming it into another: **“There Is No Alternative.”** This became the imaginary of everything that would eventually be placed inside the box labelled “neoliberalism”: an economic programme oriented towards unrestricted free trade and limited state intervention.
 
-*The engine of infinite production devoured formal subsumption and expelled real subsumption*
+Because there was no alternative other than the anarchy of capitalist competition.
 
-In the decades that followed, that program infiltrated and shaped not only the economic sphere, but also the political and cultural spheres. As Frederic Jameson noted in *The Seeds of Time* (1994): “It is easier to imagine the end of the world than the end of capitalism”—a point later taken up by Mark Fisher and Slavoj Žižek to show that capitalism had subsumed even our political and existential imagination. That was the diagnosis.
+*The reactor of infinite production devoured formal subsumption and expelled real subsumption.*
 
-*The future ceased to be a promise.*
+In the decades that followed, that programme infiltrated and conditioned not only the economic sphere, but also the political and the cultural. As Fredric Jameson had already written in *The Seeds of Time* (1994):
 
-*It became a repetition.*
+> “It is easier to imagine the end of the world than the end of capitalism.”
 
-*Capitalism had left the past behind.*
+Mark Fisher and Slavoj Žižek would later return to this idea in order to show that capitalism had subsumed even our political and existential imagination.
 
-*It controlled the future.*
+That was the diagnosis.
 
-*From there, it directed the present.*
+*The future ceased to be a promise.*  
+*It became repetition.*  
+*Capitalism had left the past behind.*  
+*It controlled the future.*  
+*From there, it governed the present.*  
+*There is no alternative:*  
+***Capitalism or death.***
 
-*There is no alternative:*
+In the twenty-first century, those suspicions and intuitions began to acquire greater critical mass, as the multiple crises traversing our present — ecological, economic, energy-related, technological, geopolitical, and social — transformed what had long appeared to be a philosophical intuition into a genuine research problem.
 
-*Capitalism or death.*
+The system's multiple configurations and deviations seem to point towards a return to the fundamental conditions of existence.
 
-It all seemed to boil down to: “It’s easier to talk about the end of the world than the end of capitalism.”
+> “Labour, therefore, is not the only source of the use-values it produces, of material wealth. Labour is the father of material wealth […] and the earth is its mother.”
+>
+> — **Karl Marx, *Capital***
 
-Or so they said…
+The impasse of contemporary society can no longer be reduced to *crisis* as an all-purpose category: the concept that once seemed capable of naming everything. Perhaps it is precisely this insufficiency that explains why, across very different fields of research, another word has begun to force its way into view: **collapse**.
 
-In the 21st century, those suspicions and intuitions began to gain greater critical mass, as the multiple crises we are currently facing—ecological, economic, energy-related, technological, geopolitical, and social—have transformed what for a long time seemed like a philosophical intuition into a genuine research problem.
+Time to leave the comfort zone.
 
-The system’s many configurations and deviations seem to point toward a return to the fundamental foundations of existence.
+## But What Exactly Do We Mean When We Speak of Collapse?
 
-*We see, then, that labor is not the sole source of the use-values it produces, of material wealth. Labor is the father of material wealth […] and the earth is its mother.*
-
-***Karl Marx, Capital***
-
-The impasse of contemporary society can no longer be reduced to “crisis” as a catch-all category—that concept that once seemed capable of accounting for everything. Perhaps it is precisely this inadequacy that explains why, from very different fields of research, another word has begun to gain traction: collapse.
-
-It is time to step out of our comfort zone.
-
-But what exactly are we talking about when we speak of collapse?
-
-That is the starting point of this special issue.
+This is the point of departure for this dossier.
 
 
 ## I. Introduction
 
-A certain flexibility has emerged regarding what precedes the word “crisis” as a way to describe any emergency within capitalism: financial crisis, energy crisis, ecological crisis, migration crisis, social crisis, economic crisis, and so on and so forth. It has become a catch-all term for a recession lasting just a few months—an intellectually convenient category for describing the increasingly inhospitable conditions for living in certain parts of the planet.
+A certain conceptual plasticity has developed around the use of the word *crisis* as a means of describing virtually any emergency within capitalism: financial crisis, energy crisis, ecological crisis, migration crisis, social crisis, economic crisis, and so on. The term functions as a catch-all category, capable of naming both a recession lasting a few months and the increasingly inhospitable conditions that make particular regions of the planet progressively more difficult to inhabit.
 
-It’s not that the definition of the word “crisis” is false. It has fulfilled the criteria for naming certain phenomena. In medical terms, a crisis opens up a field of possibilities and options for recovery. We cannot deny the capitalist machinery’s capacity to turn any event or existence into a zone of valorization. That capacity to reorganize itself—to deterritorialize and reterritorialize—remains intrinsic. The history of this system attests to the perfect machine of action: crises are a mechanism through which the system renews its conditions of accumulation.
+This is not to say that the definition of *crisis* is false. It has possessed the necessary characteristics to designate particular phenomena. In medical terms, a crisis opens a field of possibilities and alternatives for recomposition. Nor can we deny the capitalist machine's capacity to convert any event or form of existence into a zone of valorisation. This capacity for reorganisation — for deterritorialisation and reterritorialisation — is intrinsic to it. The history of the system bears witness to this perfect machine of action: crises constitute a mechanism through which capitalism renews the conditions of accumulation.
 
-But if today we are stuck in the “There is no alternative” mindset, it is precisely because this phrase is no longer sufficient to understand current problems.
+Yet if we remain trapped today within the dictum that “There Is No Alternative”, it is precisely because the word *crisis* no longer appears sufficient to comprehend contemporary problems.
 
-Today, it is impossible to understand the problem of water scarcity in certain areas of the Global South without recognizing its connections to large transnational corporations that evade environmental regulations in countries where government laxity is a prerequisite for securing a small slice of the pie of windfall profits. To this we can also add the effects this has on the local market, as well as the population displacement that water scarcity can cause.
+The problem of water scarcity in particular regions of the Global South cannot today be understood without attending to its connections with large transnational capitals that circumvent environmental regulations in states where governmental laxity becomes a condition for securing a small portion of extraordinary profits. To this must be added the effects produced within local markets and the population displacements that water scarcity itself may generate.
 
-*No problem exists in isolation.*
+No problem remains isolated.
 
-*Each one amplifies the others.*
+Each amplifies the others.
 
-The problem has taken on a new level of complexity. It is no longer enough to identify a single crisis among the many that exist.
+The problem has acquired a different degree of complexity. It is no longer sufficient simply to identify one crisis among the many that exist.
 
-It is at this point that one of the most powerful tools regains its relevance: language.
+At this point, one of our most powerful tools once again becomes relevant: language.
 
-The term “collapse,” once confined to cinematic and doomsday imagery, has been liberated to find its way into the realm of research. The word “collapse” should not be reduced to either the dystopian or the messianic.
+The confinement of the word *collapse* to cinematic and catastrophist imaginaries has begun to break down, allowing the term to enter research spaces. Collapse should be reduced neither to the dystopian nor to the messianic.
 
-In this initial approach, Crítica Acelerada does not intend to make abrupt ethical judgments. Rather, it aims to map out the current state of the system. We do not intend to demonstrate that collapse is inevitable, nor do we seek to defend yet another variation of the doomsday narrative.
+In this initial approach, Crítica Acelerada does not intend to rush towards ethical judgement. Its purpose is to map the present state of the system. In doing so, we do not seek to demonstrate that collapse is inevitable. Nor do we intend to defend yet another variation of the catastrophist imaginary.
 
-Discussing collapse implies, above all, questioning whether the conceptual apparatus through which capitalism has historically interpreted its transformations is still sufficient to explain the contemporary world. Such a question precedes any empirical diagnosis, insofar as it is an ethical judgment.
+To discuss collapse means, first and foremost, asking whether the conceptual apparatus through which we have historically interpreted capitalism's mutations remains sufficient to explain the contemporary moment. Such a question precedes any empirical diagnosis and, consequently, any ethical judgement.
 
-Before assessing whether collapse will occur, we must consider whether we are thinking about a different reality through categories and concepts inherited from another regime.
+Before evaluating whether collapse will occur, we must consider whether we are attempting to think a different reality through categories and concepts inherited from another regime.
 
-Our goal is to reconstruct the conceptual problem that drives us to speak of collapse today.
+Our objective is to reconstruct the conceptual problem that compels us to speak of collapse today.
 
-But what exactly are we talking about when we speak of collapse? Is it a metaphor, a prediction, a political concept, or an analytical category capable of describing the transformations of the 21st century?
+But what exactly do we mean when we speak of collapse? Is it a metaphor, a prediction, a political concept, or an analytical category capable of describing the transformations of the twenty-first century?
 
-At first glance, we sense that the answer depends less on the fate of capitalism than on our ability to understand the nature of the historical era in which we live.
-
-
-## II. The Insufficiency of the Crisis
+Our preliminary intuition is that the answer depends less upon capitalism's ultimate fate than upon our capacity to understand the nature of the historical time we inhabit.
 
 
-For nearly two centuries, capitalism found in the word “crisis” one of its most effective categories—not only to describe interruptions in accumulation, but also to explain trade wars, depressions, technological transformations, geopolitical reorganizations, and new spaces of valorization.
+## II. The Insufficiency of Crisis
 
-*That is why it is said that the crisis is not an anomaly of capitalism*
+For almost two centuries, capitalism found in the word *crisis* one of its most effective categories. Not only for describing interruptions to accumulation, but also for explaining trade wars, depressions, technological transformations, geopolitical reorganisations, and new spaces of valorisation.
 
-*…but rather one of its operating mechanisms.*
+*This is why crisis is said not to be an anomaly of capitalism.*
 
-*That it was “oozing blood and mud from every pore”*
+*…but one of its mechanisms of operation.*
 
-*That it is a vampire that drains matter and energy from the organic and inorganic…*
+*That it came “dripping from head to toe, from every pore, with blood and dirt”.*
 
-The fact that crises destroy capital does not necessarily lead to the destruction of the machinery. Quite the contrary: capitalism needs to destroy capital in order to continue functioning, to create the conditions for a new cycle of accumulation. That is the virtue of this perfectly functioning machine:
+*That it is a vampire draining matter and energy from the organic and the inorganic…*
 
-*The capacity to reorganize after every breakdown*
+The fact that crises destroy capital does not necessarily entail the destruction of the machinery. Quite the opposite: capitalism needs to destroy capital in order to continue functioning, creating the conditions for a new cycle of accumulation.
 
-*Crisis = the perfect mechanism of violence for recomposition.*
+That is the virtue of this perfect machine of action:
 
-*Crisis = the capacity to understand*
+*The capacity for reorganisation after every rupture.*
 
-*To understand*
+*Crisis = a mechanism of perfect violence for recomposition.*
 
-*That there is no alternative*
+*Crisis = sufficiency for understanding.*
 
-*Infinite crisis within a finite planet*
+*Understanding.*
+
+*That there is no alternative.*
+
+*Infinite crisis within a finite planet.*
 
 *The Great Depression gave way to Fordism.*
 
-*The oil crisis reorganized the industrial landscape.*
+*The oil crisis reorganised industrial geography.*
 
-*The crisis of the 1970s engulfed the import-substitution model of the periphery*
+*The crisis of the 1970s devoured the import-substitution model of the periphery.*
 
-*The 2008 financial crisis accelerated the shift toward the service sector…*
+*The 2008 financial crisis accelerated the tertiarisation of the economy…*
 
-*…along with the blurring of the lines between “soft” and “hard.”*
+*“…and with it, the dissolution of the* soft *and the* hard*.”*
 
-*Each disruption altered the system*
+*Every interruption modified the system.*
 
-*It did not call into question its ability to reproduce itself.*
+*It did not call into question its capacity for reproduction.*
 
-*It was simply an axiom of capital*
+*It was merely an axiom of capital.*
 
-It is likely that long before 2026, that axiom would have evaporated once it became clear that the multiple crises were not merely isolated episodes.
+It is possible that, long before 2026, this axiom had already begun to evaporate once it became evident that multiple crises were not merely autonomous episodes.
 
-The “Great Acceleration” graphs presented by Will Steffen and his team have shown since 2015 that the exponential growth of economic variables—such as Gross Domestic Product (GDP) or Foreign Direct Investment (FDI)—since the golden age of capitalism is directly proportional to the degradation of the biosphere, ocean acidification, rising temperatures, and water stress, to name a few examples.
+The graphs of **the Great Acceleration**, presented by Will Steffen and his colleagues, had already shown by 2015 that the exponential growth of economic variables — such as Gross Domestic Product (GDP) and Foreign Direct Investment (FDI) — since capitalism's golden age had unfolded in parallel with the degradation of the biosphere, ocean acidification, rising temperatures, and water stress, to mention only a few examples.
 
 <figure>
-  <img src="/images/GA.jpg" alt="Figure 1. Graphs of the Great Acceleration">
-
+  <img src="/images/GA.jpg" alt="Figure 1. Great Acceleration graphs.">
   <figcaption>
-    <strong>Figure 1.</strong> Graphs of the Great Acceleration.<br>
+    <strong>Figure 1.</strong> Great Acceleration graphs.<br>
     Source: Steffen et al. (2015).
   </figcaption>
 </figure>
 
+The graphs already say enough.
 
-The graphs speak for themselves. Inflation can no longer be understood solely through the lens of monetary policy, because there is an energy crisis—and a pending transition—that cannot be separated from the global geopolitical realignment. That soil erosion and the increase in polluting gases disrupt agricultural production. That this disruption leads to urban sprawl, which increases incentives to migrate; that this, in turn, is the raw material that fuels processes of militarization. That militarization reorganizes global supply chains. That these supply chains are served by military, technology, and financial corporations.
+Inflation can no longer be understood solely through monetary policy, because an energy crisis — and an unresolved transition — exists that cannot itself be separated from the global geopolitical reorganisation.
 
-*Each process alters the conditions of the next*
+Soil erosion and increasing levels of polluting gases alter agricultural production.
 
-*These are feedback loops*
+That alteration affects urban dynamics and may increase incentives for migration.
 
-*An architecture of interdependencies*
+Those displacements, in turn, can become raw material for new processes of militarisation.
 
-*It erodes economic stability*
+Militarisation reorganises global supply chains.
 
-*It undermines the possibility of isolating what we are trying to explain*
+Those supply chains are serviced by military, technological, and financial corporations.
 
-*What happens when the very language we were using to map the present is no longer sufficient?*
+Each process modifies the conditions of the next.
 
-This is no trivial question. If the system continues to accumulate capital while simultaneously destroying the material, ecological, institutional, and social conditions of its own reproduction, then perhaps we are not simply witnessing a crisis more extensive than previous ones. Perhaps we are facing a phenomenon whose logic can no longer be described using the relics of the past. Because it is not enough to simply state that we are living through “an unprecedented crisis.” Every generation tends to describe its present in those terms. Nor is it enough to compile environmental or economic indicators.
+They are feedback loops.
 
-*More evidence does not resolve a conceptual problem;*
+An architecture of interdependencies.
 
-*It is a simplification of a particular reality under certain conditions.*
+It erodes economic stability.
 
-*It is not the whole picture.*
+It fractures the possibility of isolating what we are attempting to explain.
 
-*What is at issue is not only the gravity of the events, but also the explanatory power of our concepts and categories.*
+What happens when the very language through which we sought to map the present ceases to be sufficient?
+
+The question is far from trivial. If the system continues accumulating capital while simultaneously destroying the material, ecological, institutional, and social conditions of its own reproduction, then perhaps we are not simply witnessing a crisis more extensive than those that preceded it.
+
+Perhaps we are confronting a phenomenon whose logic can no longer be described through the conceptual relics of the past.
+
+For it is not enough to claim that we are living through “an unprecedented crisis”. Every generation tends to describe its own present in such terms.
+
+Nor is it sufficient merely to accumulate environmental or economic indicators.
+
+*A greater quantity of evidence does not resolve a conceptual problem.*
+
+*It is a simplification of a particular reality under particular conditions.*
+
+*It is not the totality.*
+
+*What is at stake is not merely the severity of events.*
+
+*It is the explanatory capacity of our concepts and categories.*
 
 
+## III. When the Word Collapse Reappears
 
-### III. When “collapse” reappears
+Those linguistic units are transhistorical.
 
+They do not emerge spontaneously from the brain-system.
 
-*Those linguistic units are transhistorical*
+They are not static.
 
-*They do not emerge from the brain-system through spontaneous order*
+They are individuals that come and go.
 
-*They are not static.*
+They are born, they perish…
 
-*They are individuals that come and go*
+They are zombified.
 
-*They are born, they die…*
+They return as entropy increases.
 
-*They are zombified*
+When information rebels against existing categories.
 
-*They return when entropy increases*
+The word *collapse* remained largely at the margins of the social sciences throughout much of the twentieth century. There was scarcely any need to think it except as a means of describing the fall of ancient civilisations.
 
-*When information defies existing categories*
+While cookbook economics could not even patent a theory of crisis, Marxist political economy became entangled in debates between orthodox and heterodox currents over the analysis of capitalism through the category of crisis. It ventured only slightly further into theorising systemic breakdown, a perspective that would lose credibility in subsequent decades as capitalism repeatedly demonstrated its capacity for survival.
 
-The word “collapse” remained on the margins of the social sciences for much of the 20th century. There was no need to even think about it beyond describing the fall of ancient civilizations.
-
-While “cookbook economics” could not even formulate a theory of crisis, Marxist political economy became embroiled in debates between orthodox and heterodox schools regarding the analysis of capitalism through the category of crisis; it ventured a bit further to theorize about a systemic collapse—a theory that lost its validity years later as capitalism demonstrated time and again its capacity for survival. Meanwhile, the other social sciences analyzed the effects of capitalism—even before understanding how it functioned—to discuss processes of modernization, development, institutional change, and much more.
+Meanwhile, the other social sciences analysed capitalism's effects — sometimes even before understanding its operation — through discussions of modernisation, development, institutional change, and much else besides.
 
 *The reason was simple:*
 
-*The acceleration of climate change*
+*The acceleration of climate change.*
 
-*The loss of biodiversity*
+*The loss of biodiversity.*
 
-*Increasingly extreme weather events*
+*Increasingly extreme climatic phenomena.*
 
-*The hollowing out of democracies*
+*The hollowing-out of democracies.*
 
-*The tyranny of transnational capital*
+*The tyranny of transnational capital.*
 
-*Crises of overproduction and accumulation*
+*Crises of overproduction and accumulation.*
 
-*The intentional weakness of the financial system*
+*The intentional fragility of the financial system.*
 
-*Endless and insufficient talk of crisis*
+*Endless and insufficient: speaking of crisis.*
 
-*A transhistorical category that is already obsolete*
+*A transhistorical category now rendered obsolete.*
 
 *Finally: thinking systemically.*
 
-*Suspicions*
+*Suspicions.*
 
-*Intuitions*
+*Intuitions.*
 
 *Catastrophism?*
 
 *The end of technological Prometheanism?*
 
-*Chronicle of a death foretold?*
+*A chronicle of a death foretold?*
 
-*“Collapse” as a way of designating divergent realities*
+*Collapse as a means of designating divergent realities.*
 
-*Crises that feed off and reinforce one another: the quagmire*
+*Crises feeding and feeding back into one another: the impasse.*
 
-*There is no future in an anthropocentric society that already thinks from the future: incompatible*
+*There is no future within an anthropocentric society that already thinks from the future: incompatibility.*
 
 *The message reads:*
 
-*Reproducibility of society = negative*
+*Reproducibility of society = negative.*
 
-*Under what material conditions does it continue to exist = positive*
+*Under what material conditions does it continue to exist = positive.*
 
-*Mitigation or adaptation*
+*Mitigation or adaptation.*
 
+> ***Collapse:***  
+> *Problem of social complexity*  
+> ↓  
+> *Problem of complex systems*  
+> ↓  
+> *Biophysics*  
+> ↓  
+> *Within capitalism*
 
+If capitalism represents a historically specific form of organising production, then the concepts and categories used to study the fall of earlier civilisations cannot simply be transferred to it without qualification. The capitalist civilisational project is driven by capital accumulation. Understanding how it operates is essential if its dynamics are not to be reduced to institutional structures or to the apparent rationality of textbook economics.
 
-**Collapse:**
+Capitalist society is not a civilisation trapped within an endless cycle of rises and falls.
 
-*Problem of social complexity*
+Capitalism is a society organised through production and for production. It is a form of social organisation captured by the machine, which establishes efficiency, profitability, efficacy, welfare, and success as criteria governing human existence.
 
-↓
+It is here that we must ask to what extent free will or human agency genuinely exists within capitalism.
 
-*Problem of complex systems*
+Complexity compels us to begin decentring the subject in relation to the object.
 
-↓
+Which ultimately leads us back to the same path:
 
-*Biophysics*
+Capitalism nevertheless depends upon the permanent transformation of its own conditions of existence.
 
-↓
+In this sense, what exactly would collapse mean for a system that survives through constant crises?
 
-*Within capitalism*
+The central question is not whether capitalism can collapse.
 
-If capitalism represents a particular historical form of organizing production, then the concepts and categories used to study the decline of previous civilizations do not apply. The capitalist civilizational project is driven by the accumulation of capital. Understanding how it functions is key to avoiding the reduction of its dynamics to mere institutional frameworks or the apparent rationality of textbook economics. Capitalist society is not a civilization trapped in an endless cycle of rises and falls.
+Following the most obvious logic:
 
-Capitalism is a society organized by production and for production. It is a form of social organization shaped by the machine as the criterion for efficiency, profitability, effectiveness, well-being, and success in human existence. It is here that we would question the extent to which free will—or human agency—exists within capitalism. Complexity compels us to begin decentring the subject from the object. This ultimately leads us down the same path:
+How can we speak of collapse when capitalism continues to produce more technology, more artificial intelligence, more infrastructure, and greater profits?
 
-Capitalism nonetheless depends on the constant transformation of its own conditions of existence. In this sense, what exactly would a collapse entail for a system that survives thanks to constant crises?
+It is an infinite crisis.
 
-The main question is not whether capitalism can collapse.
+A prison in which all forms of existence remain suspended in perfect equilibrium.
 
-Using the most obvious logic:
-
-How can we talk about collapse when capitalism continues to produce more technology, more artificial intelligence, more infrastructure, and greater profits? It is an endless crisis, a prison in which all forms of existence are in perfect balance.
-
-*Everything seems to point to exactly the opposite:*
+Everything seems to indicate precisely the opposite:
 
 *The machinery continues to expand.*
 
@@ -292,30 +314,30 @@ How can we talk about collapse when capitalism continues to produce more technol
 
 *There is no collapse.*
 
-*Equilibrium no longer consists of suppressing the crisis;*
+*Equilibrium no longer consists in suppressing crisis.*
 
-*It consists of managing it indefinitely.*
+*It consists in administering it indefinitely.*
 
-*Capitalist neo-vampirism continues to believe it can drain Gaia indefinitely.*
+*Capitalist neo-vampirism continues to believe that it can drain Gaia indefinitely.*
 
 *That is the problem…*
 
 *…within the problem.*
 
-*That which survives through chaos*
+*That which survives through chaos…*
 
-*begins to erode the very conditions that made that chaos possible.*
+*…begins to erode the very conditions that made that chaos possible.*
 
 *The higher singularity that has always surrounded us.*
 
-**Geotrauma emerges: capitalism’s condition for survival.**
+***Geotrauma emerges: a condition for capitalism's survival.***
 
-**Collapse is not the end.**
+***Collapse is not the end.***
 
-**It is a specific form of movement.**
+***It is a specific form of movement.***
 
-**There is no opposition between reproduction and destruction;**
+*There is no opposition between reproduction and destruction.*
 
-**they operate in coordination—**
+*They operate in coordination.*
 
-**simultaneous moments of the same logic.**
+*Simultaneous moments of the same logic.*

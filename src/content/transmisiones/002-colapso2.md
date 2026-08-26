@@ -7,7 +7,7 @@ numero: 2
 
 # Qué colapsa y qué no colapsa
 
-En el primer bloque, Virgo sintetiza la agenda de Crítica Acelerada durante la semana del 27 al 31 de julio de 2026 y detalla las entregas venideras.
+En el primer bloque, se sintetiza la agenda de Crítica Acelerada durante la semana del 27 al 31 de julio de 2026 y detalla las entregas venideras.
 
 A continuación, Virgo Nocturno retoma la tesis del colapso para delimitar sus alcances —qué es lo que colapsa y qué lo que permanece— e inscribir el colapso capitalista dentro de la totalidad.
 

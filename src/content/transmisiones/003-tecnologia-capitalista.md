@@ -9,7 +9,7 @@ numero: 3
 
 ¿Puede una tecnología nacida y desarrollada bajo el capitalismo producir algo distinto al propio capitalismo?
 
-En esta Transmisión, Virgo aborda la tecnología no como una herramienta neutral ni como una fuerza autónoma, sino como un campo atravesado por relaciones sociales, económicas y políticas.
+En esta Transmisión, se aborda la tecnología no como una herramienta neutral ni como una fuerza autónoma, sino como un campo atravesado por relaciones sociales, económicas y políticas.
 
 A partir del xenofeminismo, Félix Guattari y Anselm Jappe, exploramos una tensión central: si las tecnologías contemporáneas se encuentran materialmente configuradas por las exigencias de acumulación, control y valorización, ¿hasta qué punto pueden ser reapropiadas, desviadas o reprogramadas con fines emancipatorios?
 
