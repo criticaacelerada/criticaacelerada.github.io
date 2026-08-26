@@ -1,7 +1,7 @@
 ---
 title: "Manifesto of Numerical Capitalism"
 date: 2026-08-26
-expediente: 4
+expediente: 5
 descripcion: "No, It Is Not the End of History, but Neither Is There an Alternative"
 
 author: "Diego Giménez Vila"

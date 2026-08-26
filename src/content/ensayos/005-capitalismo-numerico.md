@@ -229,8 +229,7 @@ Por este motivo, llevar el realismo capitalista a su máxima expresión es asumi
 [^5]: “Declaramos que la cuantificación no es un mal que deba ser eliminado, sino una herramienta que ha de ser utilizada de la forma más eficaz posible. La modelación económica es, en palabras simples, una necesidad para hacer inteligible un mundo complejo” (Srnicek y Williams, 2017, p. 42).
 
 
-# Bibliografía
-
+## Bibliografía
 
 
 * Berardi, F. (2017). El aceleracionismo cuestionado desde el punto de vista del cuerpo. En A. Avanessian & M. Reis (Comps.), *Aceleracionismo: Estrategias para una transición hacia el postcapitalismo* (pp. 69–76). Caja Negra.
