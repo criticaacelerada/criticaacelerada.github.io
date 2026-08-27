@@ -3,24 +3,49 @@ import "../styles/global.css";
 import SocialFooter from "../components/SocialFooter.astro";
 import { getCollection } from "astro:content";
 
-const [ensayos, transmisiones, destilados, alicuotas] = await Promise.all([
-    getCollection("ensayos", ({ data }) => data.language === "es"),
+const [ensayosTodos, transmisiones, destiladosTodos, alicuotasTodos] = await Promise.all([
+    getCollection("ensayos"),
     getCollection("transmisiones"),
-    getCollection("destilados", ({ data }) => data.language === "es"),
-    getCollection("alicuotas", ({ data }) => data.language === "es"),
+    getCollection("destilados"),
+    getCollection("alicuotas"),
 ]);
 
+const ensayos = ensayosTodos.filter(
+    (entry) => entry.data.language === "es"
+);
+
+const destilados = destiladosTodos.filter(
+    (entry) => entry.data.language === "es"
+);
+
+const alicuotas = alicuotasTodos.filter(
+    (entry) => entry.data.language === "es"
+);
+
 const publicaciones = [
-    ...ensayos.map((entry) => ({
-        id: entry.id,
-        codigo: `EXPEDIENTE ${String(entry.data.expediente).padStart(3, "0")}`,
-        tipo: "ARCHIVO TEXTUAL",
-        fecha: entry.data.date,
-        titulo: entry.data.title,
-        descripcion: entry.data.descripcion,
-        autor: entry.data.author ?? "CRÍTICA ACELERADA",
-        href: `/expedientes/${entry.id}`,
-    })),
+    ...ensayos.map((entry) => {
+        const traduccionEn = entry.data.translationKey
+            ? ensayosTodos.find(
+                (candidate) =>
+                    candidate.data.language === "en" &&
+                    candidate.data.translationKey === entry.data.translationKey
+            )
+            : undefined;
+
+        return {
+            id: entry.id,
+            codigo: `EXPEDIENTE ${String(entry.data.expediente).padStart(3, "0")}`,
+            tipo: "ARCHIVO TEXTUAL",
+            fecha: entry.data.date,
+            titulo: entry.data.title,
+            descripcion: entry.data.descripcion,
+            autor: entry.data.author ?? "CRÍTICA ACELERADA",
+            hrefEs: `/expedientes/${entry.id}`,
+            hrefEn: traduccionEn
+                ? `/expedientes/${traduccionEn.id}`
+                : null,
+        };
+    }),
 
     ...transmisiones.map((entry) => ({
         id: entry.id,
@@ -30,30 +55,57 @@ const publicaciones = [
         titulo: entry.data.title,
         descripcion: entry.data.description,
         autor: "CRÍTICA ACELERADA",
-        href: `/transmisiones/${entry.id}`,
+        hrefEs: `/transmisiones/${entry.id}`,
+        hrefEn: null,
     })),
 
-    ...destilados.map((entry) => ({
-        id: entry.id,
-        codigo: `DESTILADO ${String(entry.data.numero).padStart(3, "0")}`,
-        tipo: "ARCHIVO DESTILADO",
-        fecha: entry.data.pubDate,
-        titulo: entry.data.title,
-        descripcion: entry.data.description,
-        autor: entry.data.autor,
-        href: `/destilados/${entry.id}`,
-    })),
+    ...destilados.map((entry) => {
+        const traduccionEn = entry.data.translationKey
+            ? destiladosTodos.find(
+                (candidate) =>
+                    candidate.data.language === "en" &&
+                    candidate.data.translationKey === entry.data.translationKey
+            )
+            : undefined;
 
-    ...alicuotas.map((entry) => ({
-        id: entry.id,
-        codigo: `AE—${String(entry.data.numero).padStart(3, "0")}`,
-        tipo: "ARCHIVO EXPERIMENTAL",
-        fecha: entry.data.pubDate,
-        titulo: entry.data.title,
-        descripcion: entry.data.description,
-        autor: entry.data.autor,
-        href: `/alicuotas/${entry.id}`,
-    })),
+        return {
+            id: entry.id,
+            codigo: `DESTILADO ${String(entry.data.numero).padStart(3, "0")}`,
+            tipo: "ARCHIVO DESTILADO",
+            fecha: entry.data.pubDate,
+            titulo: entry.data.title,
+            descripcion: entry.data.description,
+            autor: entry.data.autor,
+            hrefEs: `/destilados/${entry.id}`,
+            hrefEn: traduccionEn
+                ? `/destilados/${traduccionEn.id}`
+                : null,
+        };
+    }),
+
+    ...alicuotas.map((entry) => {
+        const traduccionEn = entry.data.translationKey
+            ? alicuotasTodos.find(
+                (candidate) =>
+                    candidate.data.language === "en" &&
+                    candidate.data.translationKey === entry.data.translationKey
+            )
+            : undefined;
+
+        return {
+            id: entry.id,
+            codigo: `AE—${String(entry.data.numero).padStart(3, "0")}`,
+            tipo: "ARCHIVO EXPERIMENTAL",
+            fecha: entry.data.pubDate,
+            titulo: entry.data.title,
+            descripcion: entry.data.description,
+            autor: entry.data.autor,
+            hrefEs: `/alicuotas/${entry.id}`,
+            hrefEn: traduccionEn
+                ? `/alicuotas/${traduccionEn.id}`
+                : null,
+        };
+    }),
 ];
 
 const masReciente = publicaciones.sort(
@@ -408,11 +460,7 @@ const formatearFecha = (fecha: Date) =>
                         </aside>
 
 
-                        <a
-                            class="latest-entry"
-                            href={masReciente.href}
-                            aria-label={`Leer ${masReciente.titulo}`}
-                        >
+                        <div class="latest-entry">
 
                             <div class="latest-meta">
 
@@ -447,14 +495,38 @@ const formatearFecha = (fecha: Date) =>
                                     {masReciente.autor}
                                 </span>
 
-                                <span class="latest-read">
-                                    LEER REGISTRO
-                                    <i>→</i>
-                                </span>
+                                <div
+                                    class="latest-languages"
+                                    aria-label="Idiomas disponibles"
+                                >
+
+                                    <a
+                                        class="latest-read"
+                                        href={masReciente.hrefEs}
+                                        aria-label={`Leer ${masReciente.titulo} en español`}
+                                    >
+                                        ESPAÑOL
+                                        <i>→</i>
+                                    </a>
+
+                                    {
+                                        masReciente.hrefEn && (
+                                            <a
+                                                class="latest-read"
+                                                href={masReciente.hrefEn}
+                                                aria-label={`Read ${masReciente.titulo} in English`}
+                                            >
+                                                ENGLISH
+                                                <i>→</i>
+                                            </a>
+                                        )
+                                    }
+
+                                </div>
 
                             </div>
 
-                        </a>
+                        </div>
 
                     </div>
 
@@ -2050,11 +2122,20 @@ const formatearFecha = (fecha: Date) =>
     }
 
 
+    .latest-languages {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        gap: 18px 34px;
+    }
+
+
     .latest-read {
         display: flex;
         align-items: center;
 
-        gap: 17px;
+        gap: 13px;
 
         font-size: 8px;
         line-height: 1.5;
@@ -2062,6 +2143,16 @@ const formatearFecha = (fecha: Date) =>
         letter-spacing: 0.21em;
 
         color: rgba(245, 245, 245, 0.52);
+
+        text-decoration: none;
+
+        transition:
+            color 0.25s ease;
+    }
+
+
+    .latest-read:hover {
+        color: var(--ca-white);
     }
 
 
@@ -2078,7 +2169,7 @@ const formatearFecha = (fecha: Date) =>
     }
 
 
-    .latest-entry:hover .latest-read i {
+    .latest-read:hover i {
         transform: translateX(7px);
     }
 
@@ -2741,6 +2832,13 @@ const formatearFecha = (fecha: Date) =>
             flex-direction: column;
 
             gap: 17px;
+        }
+
+
+        .latest-languages {
+            width: 100%;
+
+            gap: 14px 28px;
         }
 
 
