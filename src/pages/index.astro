@@ -1,7 +1,75 @@
 ---
 import "../styles/global.css";
 import SocialFooter from "../components/SocialFooter.astro";
+import { getCollection } from "astro:content";
+
+const [ensayos, transmisiones, destilados, alicuotas] = await Promise.all([
+    getCollection("ensayos", ({ data }) => data.language === "es"),
+    getCollection("transmisiones"),
+    getCollection("destilados", ({ data }) => data.language === "es"),
+    getCollection("alicuotas", ({ data }) => data.language === "es"),
+]);
+
+const publicaciones = [
+    ...ensayos.map((entry) => ({
+        id: entry.id,
+        codigo: `EXPEDIENTE ${String(entry.data.expediente).padStart(3, "0")}`,
+        tipo: "ARCHIVO TEXTUAL",
+        fecha: entry.data.date,
+        titulo: entry.data.title,
+        descripcion: entry.data.descripcion,
+        autor: entry.data.author ?? "CRÍTICA ACELERADA",
+        href: `/expedientes/${entry.id}`,
+    })),
+
+    ...transmisiones.map((entry) => ({
+        id: entry.id,
+        codigo: `TRANSMISIÓN ${String(entry.data.numero).padStart(3, "0")}`,
+        tipo: "ARCHIVO AUDIOVISUAL",
+        fecha: entry.data.pubDate,
+        titulo: entry.data.title,
+        descripcion: entry.data.description,
+        autor: "CRÍTICA ACELERADA",
+        href: `/transmisiones/${entry.id}`,
+    })),
+
+    ...destilados.map((entry) => ({
+        id: entry.id,
+        codigo: `DESTILADO ${String(entry.data.numero).padStart(3, "0")}`,
+        tipo: "ARCHIVO DESTILADO",
+        fecha: entry.data.pubDate,
+        titulo: entry.data.title,
+        descripcion: entry.data.description,
+        autor: entry.data.autor,
+        href: `/destilados/${entry.id}`,
+    })),
+
+    ...alicuotas.map((entry) => ({
+        id: entry.id,
+        codigo: `AE—${String(entry.data.numero).padStart(3, "0")}`,
+        tipo: "ARCHIVO EXPERIMENTAL",
+        fecha: entry.data.pubDate,
+        titulo: entry.data.title,
+        descripcion: entry.data.description,
+        autor: entry.data.autor,
+        href: `/alicuotas/${entry.id}`,
+    })),
+];
+
+const masReciente = publicaciones.sort(
+    (a, b) => b.fecha.getTime() - a.fecha.getTime()
+)[0];
+
+const formatearFecha = (fecha: Date) =>
+    new Intl.DateTimeFormat("es-MX", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+    })
+        .format(fecha)
+        .replaceAll("/", ".");
 ---
+
 
 <!doctype html>
 <html lang="es">
@@ -301,6 +369,99 @@ import SocialFooter from "../components/SocialFooter.astro";
             </div>
 
         </section>
+
+
+        <!-- =====================================================
+             REGISTRO MÁS RECIENTE
+        ====================================================== -->
+
+        {
+            masReciente && (
+
+                <section class="latest-section">
+
+                    <div
+                        class="latest-ghost"
+                        aria-hidden="true"
+                    >
+                        02
+                    </div>
+
+                    <div class="home-container latest-inner">
+
+                        <aside class="latest-aside">
+
+                            <span class="latest-system-code">
+                                CA / REGISTRO
+                            </span>
+
+                            <span class="latest-index">
+                                ACTUALIZACIÓN / 002
+                            </span>
+
+                            <div class="latest-aside-line"></div>
+
+                            <span class="latest-status">
+                                PUBLICACIÓN MÁS RECIENTE
+                            </span>
+
+                        </aside>
+
+
+                        <a
+                            class="latest-entry"
+                            href={masReciente.href}
+                            aria-label={`Leer ${masReciente.titulo}`}
+                        >
+
+                            <div class="latest-meta">
+
+                                <span class="latest-code">
+                                    {masReciente.codigo}
+                                </span>
+
+                                <span>
+                                    {masReciente.tipo}
+                                </span>
+
+                                <span class="latest-date">
+                                    {formatearFecha(masReciente.fecha)}
+                                </span>
+
+                            </div>
+
+
+                            <h2>
+                                {masReciente.titulo}
+                            </h2>
+
+
+                            <p class="latest-description">
+                                {masReciente.descripcion}
+                            </p>
+
+
+                            <div class="latest-footer">
+
+                                <span class="latest-author">
+                                    {masReciente.autor}
+                                </span>
+
+                                <span class="latest-read">
+                                    LEER REGISTRO
+                                    <i>→</i>
+                                </span>
+
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </section>
+
+            )
+        }
 
 
         <!-- =====================================================
@@ -1548,6 +1709,380 @@ import SocialFooter from "../components/SocialFooter.astro";
 
 
 
+
+    /* ============================================================
+       REGISTRO MÁS RECIENTE
+    ============================================================ */
+
+    .latest-section {
+        position: relative;
+
+        overflow: hidden;
+        isolation: isolate;
+
+        border-bottom:
+            1px solid var(--ca-line);
+
+        background:
+            radial-gradient(
+                circle at 76% 48%,
+                rgba(255, 47, 109, 0.055),
+                transparent 36%
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255, 47, 109, 0.016),
+                transparent 42%
+            ),
+            #050505;
+    }
+
+
+    .latest-section::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        z-index: -2;
+
+        pointer-events: none;
+
+        opacity: 0.48;
+
+        background-image:
+            linear-gradient(
+                rgba(255, 255, 255, 0.012) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.012) 1px,
+                transparent 1px
+            );
+
+        background-size: 42px 42px;
+
+        -webkit-mask-image:
+            radial-gradient(
+                ellipse at 67% 50%,
+                black,
+                transparent 76%
+            );
+
+        mask-image:
+            radial-gradient(
+                ellipse at 67% 50%,
+                black,
+                transparent 76%
+            );
+    }
+
+
+    .latest-ghost {
+        position: absolute;
+
+        right: 3%;
+        top: 50%;
+
+        z-index: -1;
+
+        transform: translateY(-52%);
+
+        font-size: clamp(
+            210px,
+            25vw,
+            390px
+        );
+
+        font-weight: 700;
+
+        line-height: 1;
+        letter-spacing: -0.09em;
+
+        color: rgba(255, 255, 255, 0.014);
+
+        user-select: none;
+        pointer-events: none;
+    }
+
+
+    .latest-inner {
+        position: relative;
+
+        padding: 102px 0 108px;
+
+        display: grid;
+
+        grid-template-columns:
+            185px
+            minmax(0, 1fr);
+
+        gap: 70px;
+
+        align-items: start;
+    }
+
+
+    /* COLUMNA IZQUIERDA */
+
+    .latest-aside {
+        display: flex;
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 13px;
+
+        padding-top: 8px;
+    }
+
+
+    .latest-system-code {
+        font-size: 9px;
+        line-height: 1.5;
+
+        letter-spacing: 0.27em;
+
+        color: var(--ca-pink);
+    }
+
+
+    .latest-index {
+        font-size: 7px;
+        line-height: 1.5;
+
+        letter-spacing: 0.22em;
+
+        color: rgba(245, 245, 245, 0.26);
+    }
+
+
+    .latest-aside-line {
+        width: 78px;
+        height: 1px;
+
+        margin: 8px 0 2px;
+
+        background:
+            linear-gradient(
+                90deg,
+                var(--ca-pink),
+                rgba(255, 47, 109, 0)
+            );
+    }
+
+
+    .latest-status {
+        max-width: 150px;
+
+        font-size: 7px;
+        line-height: 1.7;
+
+        letter-spacing: 0.2em;
+
+        color: rgba(245, 245, 245, 0.20);
+    }
+
+
+    /* PUBLICACIÓN */
+
+    .latest-entry {
+        position: relative;
+
+        display: block;
+
+        min-width: 0;
+
+        padding: 27px 0 0;
+
+        color: inherit;
+        text-decoration: none;
+
+        border-top:
+            1px solid rgba(255, 47, 109, 0.72);
+
+        transition:
+            padding-left 0.28s ease,
+            background 0.28s ease;
+    }
+
+
+    .latest-entry::before {
+        content: "";
+
+        position: absolute;
+
+        left: 0;
+        top: -1px;
+
+        width: 0;
+        height: 1px;
+
+        background: var(--ca-pink);
+
+        box-shadow:
+            0 0 18px rgba(255, 47, 109, 0.45);
+
+        transition:
+            width 0.45s ease;
+    }
+
+
+    .latest-entry:hover {
+        padding-left: 17px;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(255, 47, 109, 0.035),
+                transparent 58%
+            );
+    }
+
+
+    .latest-entry:hover::before {
+        width: 100%;
+    }
+
+
+    /* METADATOS */
+
+    .latest-meta {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        gap: 12px 28px;
+
+        margin-bottom: 31px;
+
+        font-size: 8px;
+        line-height: 1.5;
+
+        letter-spacing: 0.22em;
+
+        color: rgba(245, 245, 245, 0.30);
+    }
+
+
+    .latest-code {
+        color: var(--ca-pink);
+    }
+
+
+    .latest-date {
+        margin-left: auto;
+
+        color: rgba(245, 245, 245, 0.44);
+    }
+
+
+    /* TÍTULO */
+
+    .latest-entry h2 {
+        max-width: 890px;
+
+        margin: 0;
+
+        font-size: clamp(
+            40px,
+            4.8vw,
+            67px
+        );
+
+        font-weight: 680;
+
+        line-height: 1.01;
+
+        letter-spacing: -0.052em;
+
+        color: var(--ca-white);
+
+        text-wrap: balance;
+    }
+
+
+    /* DESCRIPCIÓN */
+
+    .latest-description {
+        max-width: 760px;
+
+        margin: 27px 0 0;
+
+        font-size: 14px;
+        line-height: 1.8;
+
+        color: rgba(245, 245, 245, 0.48);
+    }
+
+
+    /* PIE */
+
+    .latest-footer {
+        margin-top: 42px;
+
+        padding: 22px 0 25px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 30px;
+
+        border-top:
+            1px solid rgba(255, 255, 255, 0.07);
+
+        border-bottom:
+            1px solid rgba(255, 255, 255, 0.07);
+    }
+
+
+    .latest-author {
+        font-size: 8px;
+        line-height: 1.5;
+
+        letter-spacing: 0.18em;
+
+        text-transform: uppercase;
+
+        color: rgba(245, 245, 245, 0.35);
+    }
+
+
+    .latest-read {
+        display: flex;
+        align-items: center;
+
+        gap: 17px;
+
+        font-size: 8px;
+        line-height: 1.5;
+
+        letter-spacing: 0.21em;
+
+        color: rgba(245, 245, 245, 0.52);
+    }
+
+
+    .latest-read i {
+        font-size: 22px;
+        line-height: 1;
+
+        font-style: normal;
+
+        color: var(--ca-pink);
+
+        transition:
+            transform 0.25s ease;
+    }
+
+
+    .latest-entry:hover .latest-read i {
+        transform: translateX(7px);
+    }
+
+
     /* ============================================================
        ARCHIVOS
     ============================================================ */
@@ -2129,6 +2664,91 @@ import SocialFooter from "../components/SocialFooter.astro";
             font-size: 280px;
         }
 
+
+
+
+        /* REGISTRO MÁS RECIENTE */
+
+        .latest-inner {
+            padding: 78px 0 82px;
+
+            display: block;
+        }
+
+
+        .latest-aside {
+            margin-bottom: 42px;
+        }
+
+
+        .latest-aside-line {
+            width: 54px;
+        }
+
+
+        .latest-entry {
+            padding-top: 23px;
+        }
+
+
+        .latest-entry:hover {
+            padding-left: 0;
+
+            background: transparent;
+        }
+
+
+        .latest-meta {
+            display: grid;
+            grid-template-columns: 1fr;
+
+            gap: 7px;
+
+            margin-bottom: 25px;
+
+            font-size: 7px;
+        }
+
+
+        .latest-date {
+            margin-left: 0;
+        }
+
+
+        .latest-entry h2 {
+            font-size: clamp(
+                35px,
+                10.5vw,
+                50px
+            );
+
+            line-height: 1.02;
+        }
+
+
+        .latest-description {
+            margin-top: 22px;
+
+            font-size: 12px;
+            line-height: 1.75;
+        }
+
+
+        .latest-footer {
+            margin-top: 32px;
+
+            align-items: flex-start;
+            flex-direction: column;
+
+            gap: 17px;
+        }
+
+
+        .latest-ghost {
+            right: -28%;
+
+            font-size: 280px;
+        }
 
 
         /* ARCHIVOS */
