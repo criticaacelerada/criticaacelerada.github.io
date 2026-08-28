@@ -10,6 +10,13 @@ translator: "Oliver Ferran"
 
 language: "es"
 translationKey: "exp005"
+
+video:
+  youtubeId: "RcV5d-BLL0o"
+  title: "Capitalismo numérico"
+  context: "Líneas de Fuga II · Universitat de València"
+  label: "Archivo audiovisual"
+  date: 2026-08-27
 ---
 
 ## Dossier del Nodo de co-agenciamiento

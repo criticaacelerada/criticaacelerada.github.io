@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import HomeButton from "../../components/HomeButton.astro";
 import SocialFooter from "../../components/SocialFooter.astro";
+import ArchivoAudiovisual from "../../components/ArchivoAudiovisual.astro";
 import "../../styles/global.css";
 
 export async function getStaticPaths() {
@@ -148,9 +149,22 @@ const { Content } = await render(ensayo);
 
         <article class="case-content">
 
-          <Content />
+  <Content />
 
-        </article>
+  {
+    ensayo.data.video && (
+      <ArchivoAudiovisual
+        youtubeId={ensayo.data.video.youtubeId}
+        title={ensayo.data.video.title}
+        context={ensayo.data.video.context}
+        label={ensayo.data.video.label}
+        expediente={ensayo.data.expediente}
+        language={ensayo.data.language}
+      />
+    )
+  }
+
+</article>
 
       </div>
 

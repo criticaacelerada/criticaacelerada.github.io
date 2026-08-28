@@ -19,6 +19,16 @@ const ensayos = defineCollection({
 
     language: z.enum(["es", "en"]).default("es"),
     translationKey: z.string().optional(),
+
+    video: z
+  .object({
+    youtubeId: z.string(),
+    title: z.string(),
+    context: z.string(),
+    label: z.string(),
+    date: z.date(),
+  })
+  .optional(),
   }),
 });
 

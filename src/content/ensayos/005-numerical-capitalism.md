@@ -9,6 +9,13 @@ role: "Co-agencement node"
 
 language: "en"
 translationKey: "exp005"
+
+video:
+  youtubeId: "RcV5d-BLL0o"
+  title: "Numerical Capitalism"
+  context: "Líneas de Fuga II · Universitat de València"
+  label: "Audiovisual archive"
+  date: 2026-08-27
 ---
 
 ## Co-agencement Node Dossier

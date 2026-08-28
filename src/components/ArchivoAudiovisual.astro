@@ -1,0 +1,171 @@
+---
+interface Props {
+  youtubeId: string;
+  title: string;
+  context: string;
+  label: string;
+  expediente: number;
+  language: "es" | "en";
+}
+
+const {
+  youtubeId,
+  title,
+  context,
+  label,
+  expediente,
+  language,
+} = Astro.props;
+
+const intro =
+  language === "en"
+    ? "Audiovisual material associated with this expediente."
+    : "Material audiovisual asociado a este expediente.";
+---
+
+<section class="archivo-audiovisual">
+
+  <div class="archivo-top">
+
+    <span class="archivo-label">
+      {label.toUpperCase()} / {String(expediente).padStart(3, "0")}
+    </span>
+
+    <span class="archivo-line"></span>
+
+  </div>
+
+  <div class="archivo-grid">
+
+    <div class="archivo-info">
+
+      <p class="archivo-intro">
+        {intro}
+      </p>
+
+      <h2>
+        {title}
+      </h2>
+
+      <p class="archivo-author">
+        Diego Giménez Vila
+      </p>
+
+      <p class="archivo-context">
+        {context}
+      </p>
+
+    </div>
+
+    <div class="video-wrapper">
+
+      <iframe
+        src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
+        title={`${title} — Diego Giménez Vila`}
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+
+  .archivo-audiovisual {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+  }
+
+  .archivo-top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .archivo-label {
+    flex-shrink: 0;
+    color: #ff2f6d;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .archivo-line {
+    width: 100%;
+    height: 1px;
+    background: #333;
+  }
+
+  .archivo-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .archivo-intro {
+    margin: 0 0 1rem;
+    color: #888;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .archivo-info h2 {
+    margin: 0;
+    color: #f5f5f5;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .archivo-author {
+    margin: 1.5rem 0 0;
+    color: #f5f5f5;
+    font-weight: 600;
+  }
+
+  .archivo-context {
+    margin: 0.35rem 0 0;
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #101010;
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  @media (max-width: 800px) {
+
+    .archivo-audiovisual {
+      margin-top: 4rem;
+    }
+
+    .archivo-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+  }
+
+</style>

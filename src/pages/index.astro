@@ -23,7 +23,7 @@ const alicuotas = alicuotasTodos.filter(
 );
 
 const publicaciones = [
-    ...ensayos.map((entry) => {
+    ...ensayos.flatMap((entry) => {
         const traduccionEn = entry.data.translationKey
             ? ensayosTodos.find(
                 (candidate) =>
@@ -32,7 +32,7 @@ const publicaciones = [
             )
             : undefined;
 
-        return {
+        const expediente = {
             id: entry.id,
             codigo: `EXPEDIENTE ${String(entry.data.expediente).padStart(3, "0")}`,
             tipo: "ARCHIVO TEXTUAL",
@@ -45,6 +45,26 @@ const publicaciones = [
                 ? `/expedientes/${traduccionEn.id}`
                 : null,
         };
+
+        if (!entry.data.video) {
+            return [expediente];
+        }
+
+        const audiovisual = {
+            id: `${entry.id}-audiovisual`,
+            codigo: `ARCHIVO AUDIOVISUAL / ${String(entry.data.expediente).padStart(3, "0")}`,
+            tipo: "MATERIAL ASOCIADO",
+            fecha: entry.data.video.date,
+            titulo: entry.data.video.title,
+            descripcion: "Material audiovisual asociado a este expediente.",
+            autor: entry.data.author ?? "CRÍTICA ACELERADA",
+            hrefEs: `/expedientes/${entry.id}`,
+            hrefEn: traduccionEn
+                ? `/expedientes/${traduccionEn.id}`
+                : null,
+        };
+
+        return [expediente, audiovisual];
     }),
 
     ...transmisiones.map((entry) => ({
