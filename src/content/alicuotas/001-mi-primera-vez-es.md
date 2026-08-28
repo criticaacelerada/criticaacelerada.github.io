@@ -15,7 +15,7 @@ translationKey: "001-mi-primera-vez"
 
 Por Christian McDonough
 
-Traducción: Oliver Ferran (Virgo Noctorno)
+Traducción: Oliver Ferran
 
 El extracto original aparece en [https://burialmagazine.neocities.org/myfirsttime](https://burialmagazine.neocities.org/myfirsttime).
 
