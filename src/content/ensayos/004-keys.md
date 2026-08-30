@@ -7,6 +7,12 @@ descripcion: "Toward a Realist Understanding of Constant Change"
 author: "Diego Giménez Vila"
 role: "Co-agencement node"
 
+credits:
+  - node: diego-gimenez-vila
+    role: autoria
+  - node: oliver-ferran
+    role: traduccion
+
 language: "en"
 translationKey: "exp004"
 ---

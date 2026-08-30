@@ -8,6 +8,12 @@ author: "Diego Giménez Vila"
 role: "NODO DE COAGENCIAMIENTO"
 translator: "Oliver Ferran"
 
+credits:
+  - node: diego-gimenez-vila
+    role: autoria
+  - node: oliver-ferran
+    role: traduccion
+
 language: "es"
 translationKey: "exp004"
 ---

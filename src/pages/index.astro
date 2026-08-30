@@ -581,7 +581,7 @@ const formatearFecha = (fecha: Date) =>
                     </div>
 
                     <span class="archive-count">
-                        04 NODOS ACTIVOS
+                        04 ARCHIVOS ACTIVOS
                     </span>
 
                 </header>
@@ -803,6 +803,187 @@ const formatearFecha = (fecha: Date) =>
 
                             <span class="portal-arrow">
                                 →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             MICELIO
+        ====================================================== -->
+
+        <section class="mycelium-section">
+
+            <div
+                class="mycelium-grid-background"
+                aria-hidden="true"
+            ></div>
+
+            <div
+                class="mycelium-ghost"
+                aria-hidden="true"
+            >
+                03
+            </div>
+
+            <div class="home-container">
+
+                <!-- CABECERA -->
+                <header class="mycelium-header">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            ESTRUCTURA DEL LABORATORIO
+                        </span>
+
+                        <h2>
+                            MICELIO
+                        </h2>
+
+                    </div>
+
+                    <span class="mycelium-count">
+                        02 NODOS ACTIVOS
+                    </span>
+
+                </header>
+
+
+                <!-- INTRODUCCIÓN -->
+                <div class="mycelium-intro">
+
+                    <span class="mycelium-code">
+                        CA / REGISTRO NODAL
+                    </span>
+
+                    <p>
+                        Crítica Acelerada se articula como una red de nodos,
+                        trayectorias y procesos de co-agenciamiento. Las funciones
+                        nodales describen posiciones dentro del micelio, no rangos
+                        jerárquicos.
+                    </p>
+
+                </div>
+
+
+                <!-- NODOS -->
+                <div class="node-grid">
+
+                    <!-- OLIVER -->
+                    <a
+                        href="/nodos/oliver-ferran"
+                        class="node-card"
+                        aria-label="Abrir perfil nodal de Oliver Ferran"
+                    >
+
+                        <div class="node-top">
+
+                            <span class="node-number">
+                                01
+                            </span>
+
+                            <span class="node-status">
+                                ACTIVO
+                            </span>
+
+                        </div>
+
+                        <div class="node-meta">
+
+                            <span>
+                                CA / NODO 001
+                            </span>
+
+                            <span>
+                                NODO SEMILLA
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            OLIVER FERRAN
+                        </h3>
+
+                        <p class="node-description">
+                            Economía política, tecnología, capitalismo,
+                            aceleracionismo y crítica de las transformaciones
+                            contemporáneas.
+                        </p>
+
+                        <div class="node-footer">
+
+                            <span class="node-traces">
+                                REGISTRO EN CONSTRUCCIÓN
+                            </span>
+
+                            <span class="node-trace">
+                                RASTREAR NODO
+                                <i>→</i>
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- DIEGO -->
+                    <a
+                        href="/nodos/diego-gimenez-vila"
+                        class="node-card"
+                        aria-label="Abrir perfil nodal de Diego Giménez Vila"
+                    >
+
+                        <div class="node-top">
+
+                            <span class="node-number">
+                                02
+                            </span>
+
+                            <span class="node-status">
+                                ACTIVO
+                            </span>
+
+                        </div>
+
+                        <div class="node-meta">
+
+                            <span>
+                                CA / NODO 002
+                            </span>
+
+                            <span>
+                                NODO DE CO-AGENCIAMIENTO
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            DIEGO GIMÉNEZ VILA
+                        </h3>
+
+                        <p class="node-description">
+                            Filosofía, ontología, capitalismo, técnica y
+                            experimentación conceptual.
+                        </p>
+
+                        <div class="node-footer">
+
+                            <span class="node-traces">
+                                REGISTRO EN CONSTRUCCIÓN
+                            </span>
+
+                            <span class="node-trace">
+                                RASTREAR NODO
+                                <i>→</i>
                             </span>
 
                         </div>
@@ -2487,6 +2668,501 @@ const formatearFecha = (fecha: Date) =>
 
 
     /* ============================================================
+       MICELIO
+    ============================================================ */
+
+    .mycelium-section {
+        position: relative;
+
+        padding: 122px 0 142px;
+
+        overflow: hidden;
+        isolation: isolate;
+
+        border-top:
+            1px solid rgba(255, 255, 255, 0.035);
+
+        background:
+            radial-gradient(
+                circle at 72% 42%,
+                rgba(255, 47, 109, 0.055),
+                transparent 38%
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255, 47, 109, 0.018),
+                transparent 46%
+            ),
+            #030303;
+    }
+
+
+    .mycelium-grid-background {
+        position: absolute;
+        inset: 0;
+
+        z-index: -2;
+
+        pointer-events: none;
+
+        opacity: 0.48;
+
+        background-image:
+            linear-gradient(
+                rgba(255, 255, 255, 0.012) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.012) 1px,
+                transparent 1px
+            );
+
+        background-size: 42px 42px;
+
+        -webkit-mask-image:
+            radial-gradient(
+                ellipse at 69% 50%,
+                black,
+                transparent 76%
+            );
+
+        mask-image:
+            radial-gradient(
+                ellipse at 69% 50%,
+                black,
+                transparent 76%
+            );
+    }
+
+
+    .mycelium-ghost {
+        position: absolute;
+
+        right: 3%;
+        top: 50%;
+
+        z-index: -1;
+
+        transform: translateY(-52%);
+
+        font-size: clamp(
+            210px,
+            25vw,
+            390px
+        );
+
+        font-weight: 700;
+
+        line-height: 1;
+        letter-spacing: -0.09em;
+
+        color: rgba(255, 255, 255, 0.014);
+
+        user-select: none;
+        pointer-events: none;
+    }
+
+
+    /* CABECERA */
+
+    .mycelium-header {
+        display: flex;
+
+        align-items: flex-end;
+        justify-content: space-between;
+
+        gap: 40px;
+
+        margin-bottom: 38px;
+
+        padding-bottom: 28px;
+
+        border-bottom:
+            1px solid var(--ca-line);
+    }
+
+
+    .mycelium-header h2 {
+        margin: 0;
+
+        font-size: clamp(
+            42px,
+            5vw,
+            72px
+        );
+
+        line-height: 0.95;
+
+        letter-spacing: -0.06em;
+
+        color: var(--ca-white);
+    }
+
+
+    .mycelium-count {
+        margin-bottom: 6px;
+
+        font-size: 8px;
+        line-height: 1.5;
+
+        letter-spacing: 0.22em;
+
+        color: rgba(245, 245, 245, 0.35);
+    }
+
+
+    /* INTRODUCCIÓN */
+
+    .mycelium-intro {
+        display: grid;
+
+        grid-template-columns:
+            185px
+            minmax(0, 650px);
+
+        gap: 70px;
+
+        margin-bottom: 66px;
+
+        align-items: start;
+    }
+
+
+    .mycelium-code {
+        padding-top: 4px;
+
+        font-size: 8px;
+        line-height: 1.5;
+
+        letter-spacing: 0.24em;
+
+        color: var(--ca-pink);
+    }
+
+
+    .mycelium-intro p {
+        margin: 0;
+
+        font-size: 14px;
+        line-height: 1.85;
+
+        color: rgba(245, 245, 245, 0.48);
+    }
+
+
+    /* RED DE NODOS */
+
+    .node-grid {
+        position: relative;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 1px;
+
+        border-top:
+            1px solid rgba(255, 47, 109, 0.72);
+
+        border-bottom:
+            1px solid var(--ca-line);
+
+        background:
+            rgba(245, 245, 245, 0.10);
+    }
+
+
+    .node-grid::before {
+        content: "";
+
+        position: absolute;
+
+        left: 50%;
+        top: -32px;
+
+        width: 1px;
+        height: 32px;
+
+        background:
+            linear-gradient(
+                to bottom,
+                transparent,
+                rgba(255, 47, 109, 0.38)
+            );
+
+        pointer-events: none;
+    }
+
+
+    .node-card {
+        position: relative;
+
+        min-height: 390px;
+
+        padding: 34px 38px 30px;
+
+        display: flex;
+        flex-direction: column;
+
+        color: inherit;
+        text-decoration: none;
+
+        background: #050505;
+
+        overflow: hidden;
+
+        transition:
+            background 0.28s ease,
+            transform 0.28s ease;
+    }
+
+
+    .node-card::before {
+        content: "";
+
+        position: absolute;
+
+        left: 0;
+        top: 0;
+
+        width: 2px;
+        height: 0;
+
+        background: var(--ca-pink);
+
+        transition:
+            height 0.28s ease;
+    }
+
+
+    .node-card::after {
+        content: "";
+
+        position: absolute;
+
+        width: 150px;
+        height: 150px;
+
+        right: -70px;
+        top: -70px;
+
+        border:
+            1px solid rgba(255, 47, 109, 0.08);
+
+        border-radius: 50%;
+
+        box-shadow:
+            0 0 0 32px rgba(255, 47, 109, 0.018),
+            0 0 0 64px rgba(255, 47, 109, 0.010);
+
+        pointer-events: none;
+    }
+
+
+    .node-card:hover {
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255, 47, 109, 0.055),
+                rgba(255, 47, 109, 0.012) 42%,
+                #050505 75%
+            );
+    }
+
+
+    .node-card:hover::before {
+        height: 100%;
+    }
+
+
+    .node-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 24px;
+
+        margin-bottom: 42px;
+    }
+
+
+    .node-number {
+        font-size: 48px;
+        font-weight: 300;
+
+        line-height: 1;
+
+        letter-spacing: -0.05em;
+
+        color: rgba(245, 245, 245, 0.13);
+
+        transition:
+            color 0.25s ease;
+    }
+
+
+    .node-card:hover .node-number {
+        color: var(--ca-pink);
+    }
+
+
+    .node-status {
+        position: relative;
+
+        padding-left: 12px;
+
+        font-size: 7px;
+        line-height: 1.5;
+
+        letter-spacing: 0.22em;
+
+        color: rgba(245, 245, 245, 0.28);
+    }
+
+
+    .node-status::before {
+        content: "";
+
+        position: absolute;
+
+        left: 0;
+        top: 50%;
+
+        width: 4px;
+        height: 4px;
+
+        transform: translateY(-50%);
+
+        border-radius: 50%;
+
+        background: var(--ca-pink);
+
+        box-shadow:
+            0 0 8px rgba(255, 47, 109, 0.62);
+    }
+
+
+    .node-meta {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        gap: 10px 25px;
+
+        margin-bottom: 19px;
+
+        font-size: 8px;
+        line-height: 1.6;
+
+        letter-spacing: 0.20em;
+
+        color: rgba(245, 245, 245, 0.32);
+    }
+
+
+    .node-meta span:first-child {
+        color: rgba(255, 47, 109, 0.82);
+    }
+
+
+    .node-card h3 {
+        max-width: 480px;
+
+        margin: 0;
+
+        font-size: clamp(
+            30px,
+            3.2vw,
+            46px
+        );
+
+        font-weight: 700;
+
+        line-height: 0.98;
+
+        letter-spacing: -0.052em;
+
+        color: var(--ca-white);
+
+        text-wrap: balance;
+    }
+
+
+    .node-description {
+        max-width: 470px;
+
+        margin: 23px 0 42px;
+
+        font-size: 12px;
+        line-height: 1.75;
+
+        color: rgba(245, 245, 245, 0.42);
+    }
+
+
+    .node-footer {
+        margin-top: auto;
+
+        padding-top: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 24px;
+
+        border-top:
+            1px solid rgba(255, 255, 255, 0.07);
+    }
+
+
+    .node-traces {
+        font-size: 7px;
+        line-height: 1.5;
+
+        letter-spacing: 0.18em;
+
+        color: rgba(245, 245, 245, 0.22);
+    }
+
+
+    .node-trace {
+        display: flex;
+        align-items: center;
+
+        gap: 13px;
+
+        font-size: 8px;
+        line-height: 1.5;
+
+        letter-spacing: 0.20em;
+
+        color: rgba(245, 245, 245, 0.48);
+    }
+
+
+    .node-trace i {
+        font-size: 21px;
+        line-height: 1;
+
+        font-style: normal;
+
+        color: var(--ca-pink);
+
+        transition:
+            transform 0.25s ease;
+    }
+
+
+    .node-card:hover .node-trace i {
+        transform: translateX(6px);
+    }
+
+
+
+    /* ============================================================
        TABLET
     ============================================================ */
 
@@ -2532,6 +3208,20 @@ const formatearFecha = (fecha: Date) =>
                 95px
                 1fr
                 120px;
+        }
+
+
+        .mycelium-intro {
+            grid-template-columns:
+                150px
+                minmax(0, 1fr);
+
+            gap: 45px;
+        }
+
+
+        .node-card {
+            padding-inline: 30px;
         }
 
     }
@@ -2948,6 +3638,119 @@ const formatearFecha = (fecha: Date) =>
             padding-left: 0;
         }
 
+
+        /* MICELIO */
+
+        .mycelium-section {
+            padding: 88px 0 96px;
+        }
+
+
+        .mycelium-header {
+            display: block;
+
+            margin-bottom: 34px;
+        }
+
+
+        .mycelium-count {
+            display: block;
+
+            margin-top: 20px;
+        }
+
+
+        .mycelium-intro {
+            display: block;
+
+            margin-bottom: 48px;
+        }
+
+
+        .mycelium-code {
+            display: block;
+
+            margin-bottom: 20px;
+        }
+
+
+        .mycelium-intro p {
+            font-size: 12px;
+            line-height: 1.78;
+        }
+
+
+        .node-grid {
+            grid-template-columns: 1fr;
+
+            gap: 1px;
+        }
+
+
+        .node-grid::before {
+            display: none;
+        }
+
+
+        .node-card {
+            min-height: 340px;
+
+            padding: 28px 24px 26px;
+        }
+
+
+        .node-top {
+            margin-bottom: 34px;
+        }
+
+
+        .node-number {
+            font-size: 36px;
+        }
+
+
+        .node-meta {
+            display: block;
+
+            line-height: 1.9;
+        }
+
+
+        .node-meta span {
+            display: block;
+        }
+
+
+        .node-card h3 {
+            font-size: clamp(
+                31px,
+                9vw,
+                42px
+            );
+        }
+
+
+        .node-description {
+            margin-top: 19px;
+
+            font-size: 11px;
+        }
+
+
+        .node-footer {
+            align-items: flex-start;
+            flex-direction: column;
+
+            gap: 15px;
+        }
+
+
+        .mycelium-ghost {
+            right: -30%;
+
+            font-size: 280px;
+        }
+
     }
 
 
@@ -2961,7 +3764,11 @@ const formatearFecha = (fecha: Date) =>
         .portal-row,
         .portal-row::before,
         .portal-arrow,
-        .portal-number {
+        .portal-number,
+        .node-card,
+        .node-card::before,
+        .node-number,
+        .node-trace i {
             transition: none;
         }
 

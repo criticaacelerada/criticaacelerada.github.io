@@ -1,0 +1,481 @@
+---
+interface Props {
+    handle: string;
+    label: string;
+    url: string;
+}
+
+const {
+    handle,
+    label,
+    url,
+} = Astro.props;
+---
+
+<section
+    class="youtube-feed"
+    data-youtube-feed
+    data-handle={handle}
+>
+
+    <div class="youtube-feed-head">
+
+        <div>
+            <span class="youtube-kicker">
+                ACTIVIDAD EXTERNA
+            </span>
+
+            <h3>
+                {label}
+            </h3>
+        </div>
+
+        <a
+            class="youtube-channel-link"
+            href={url}
+            target="_blank"
+            rel="noreferrer"
+        >
+            ABRIR CANAL
+            <span>↗</span>
+        </a>
+
+    </div>
+
+
+    <div
+        class="youtube-status"
+        data-youtube-status
+    >
+        Sincronizando actividad reciente…
+    </div>
+
+
+    <div
+        class="youtube-list"
+        data-youtube-list
+        hidden
+    ></div>
+
+</section>
+
+
+<script>
+    const feeds = document.querySelectorAll(
+        "[data-youtube-feed]"
+    );
+
+    const formatDate = (value) => {
+        if (!value) return "";
+
+        return new Intl.DateTimeFormat(
+            "es-MX",
+            {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+            }
+        )
+            .format(new Date(value))
+            .replaceAll("/", ".");
+    };
+
+
+    for (const feed of feeds) {
+
+        const status =
+            feed.querySelector(
+                "[data-youtube-status]"
+            );
+
+        const list =
+            feed.querySelector(
+                "[data-youtube-list]"
+            );
+
+
+        fetch("/api/indagando")
+            .then((response) => {
+
+                if (!response.ok) {
+                    throw new Error(
+                        "YouTube feed error"
+                    );
+                }
+
+                return response.json();
+            })
+            .then((data) => {
+
+                const videos =
+                    Array.isArray(data.videos)
+                        ? data.videos
+                        : [];
+
+
+                if (videos.length === 0) {
+
+                    status.textContent =
+                        "No hay actividad reciente disponible.";
+
+                    return;
+                }
+
+
+                list.innerHTML = videos
+                    .map((video) => {
+
+                        const thumbnail =
+                            video.thumbnail
+                                ? `
+                                    <div class="youtube-thumb">
+                                        <img
+                                            src="${video.thumbnail}"
+                                            alt=""
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                `
+                                : `
+                                    <div
+                                        class="youtube-thumb youtube-thumb-empty"
+                                        aria-hidden="true"
+                                    ></div>
+                                `;
+
+
+                        return `
+                            <a
+                                class="youtube-item"
+                                href="${video.url}"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+
+                                ${thumbnail}
+
+                                <div class="youtube-item-copy">
+
+                                    <div class="youtube-item-meta">
+                                        <span>YOUTUBE</span>
+                                        <time>
+                                            ${formatDate(
+                                                video.publishedAt
+                                            )}
+                                        </time>
+                                    </div>
+
+                                    <h4>
+                                        ${video.title}
+                                    </h4>
+
+                                </div>
+
+                                <span
+                                    class="youtube-item-arrow"
+                                    aria-hidden="true"
+                                >
+                                    ↗
+                                </span>
+
+                            </a>
+                        `;
+                    })
+                    .join("");
+
+
+                status.hidden = true;
+                list.hidden = false;
+
+            })
+            .catch(() => {
+
+                status.textContent =
+                    "La actividad de INDAGANDO no está disponible temporalmente.";
+
+            });
+
+    }
+</script>
+
+
+<style>
+
+    .youtube-feed {
+        margin-top: 48px;
+
+        border-top:
+            1px solid rgba(255, 47, 109, 0.65);
+    }
+
+
+    .youtube-feed-head {
+        padding: 24px 0;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        gap: 30px;
+
+        border-bottom:
+            1px solid rgba(245, 245, 245, 0.12);
+    }
+
+
+    .youtube-kicker {
+        display: block;
+
+        margin-bottom: 8px;
+
+        font-size: 7px;
+        line-height: 1.5;
+
+        letter-spacing: 0.22em;
+
+        color: #ff2f6d;
+    }
+
+
+    .youtube-feed-head h3 {
+        margin: 0;
+
+        font-size: 24px;
+        font-weight: 620;
+
+        line-height: 1;
+
+        letter-spacing: -0.03em;
+
+        color: #f5f5f5;
+    }
+
+
+    .youtube-channel-link {
+        display: inline-flex;
+        align-items: center;
+
+        gap: 10px;
+
+        font-size: 7px;
+        line-height: 1.5;
+
+        letter-spacing: 0.20em;
+
+        color: rgba(245, 245, 245, 0.38);
+
+        text-decoration: none;
+    }
+
+
+    .youtube-channel-link span {
+        color: #ff2f6d;
+    }
+
+
+    .youtube-status {
+        padding: 27px 0;
+
+        font-size: 9px;
+        line-height: 1.6;
+
+        letter-spacing: 0.13em;
+
+        color: rgba(245, 245, 245, 0.30);
+
+        border-bottom:
+            1px solid rgba(245, 245, 245, 0.12);
+    }
+
+
+    .youtube-list {
+        width: 100%;
+    }
+
+
+    .youtube-item {
+        position: relative;
+
+        min-height: 135px;
+
+        padding: 22px 0;
+
+        display: grid;
+
+        grid-template-columns:
+            170px
+            minmax(0, 1fr)
+            30px;
+
+        gap: 26px;
+
+        align-items: center;
+
+        color: inherit;
+        text-decoration: none;
+
+        border-bottom:
+            1px solid rgba(245, 245, 245, 0.12);
+
+        transition:
+            padding-left 0.25s ease,
+            background 0.25s ease;
+    }
+
+
+    .youtube-item:hover {
+        padding-left: 12px;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(255, 47, 109, 0.04),
+                transparent 65%
+            );
+    }
+
+
+    .youtube-thumb {
+        aspect-ratio: 16 / 9;
+
+        overflow: hidden;
+
+        background: #090909;
+    }
+
+
+    .youtube-thumb img {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+
+        object-fit: cover;
+
+        filter:
+            saturate(0.78)
+            contrast(1.03);
+
+        transition:
+            transform 0.35s ease,
+            filter 0.35s ease;
+    }
+
+
+    .youtube-item:hover .youtube-thumb img {
+        transform: scale(1.025);
+
+        filter:
+            saturate(1)
+            contrast(1.04);
+    }
+
+
+    .youtube-thumb-empty {
+        border:
+            1px solid rgba(245, 245, 245, 0.08);
+    }
+
+
+    .youtube-item-meta {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        gap: 8px 18px;
+
+        margin-bottom: 9px;
+
+        font-size: 7px;
+        line-height: 1.5;
+
+        letter-spacing: 0.18em;
+
+        color: rgba(245, 245, 245, 0.29);
+    }
+
+
+    .youtube-item-meta span {
+        color: #ff2f6d;
+    }
+
+
+    .youtube-item-copy h4 {
+        max-width: 520px;
+
+        margin: 0;
+
+        font-size: clamp(
+            17px,
+            1.8vw,
+            23px
+        );
+
+        font-weight: 590;
+
+        line-height: 1.2;
+
+        letter-spacing: -0.02em;
+
+        color: rgba(245, 245, 245, 0.84);
+    }
+
+
+    .youtube-item-arrow {
+        justify-self: end;
+
+        font-size: 18px;
+
+        color: #ff2f6d;
+
+        transition:
+            transform 0.25s ease;
+    }
+
+
+    .youtube-item:hover .youtube-item-arrow {
+        transform:
+            translate(3px, -3px);
+    }
+
+
+    @media (max-width: 720px) {
+
+        .youtube-feed-head {
+            align-items: flex-start;
+            flex-direction: column;
+
+            gap: 18px;
+        }
+
+
+        .youtube-item {
+            grid-template-columns:
+                105px
+                minmax(0, 1fr);
+
+            gap: 16px;
+
+            min-height: 110px;
+        }
+
+
+        .youtube-item:hover {
+            padding-left: 0;
+
+            background: transparent;
+        }
+
+
+        .youtube-item-arrow {
+            display: none;
+        }
+
+
+        .youtube-item-copy h4 {
+            font-size: 15px;
+        }
+
+    }
+
+</style>

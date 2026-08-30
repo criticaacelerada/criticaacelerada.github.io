@@ -1,6 +1,23 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
+
+/* ============================================================
+   CRÉDITOS NODALES
+============================================================ */
+
+const creditSchema = z.object({
+  node: z.string(),
+  role: z.string(),
+});
+
+const creditsSchema = z.array(creditSchema).optional();
+
+
+/* ============================================================
+   ENSAYOS / EXPEDIENTES
+============================================================ */
+
 const ensayos = defineCollection({
   loader: glob({
     pattern: "**/*.md",
@@ -17,20 +34,36 @@ const ensayos = defineCollection({
     role: z.string().optional(),
     translator: z.string().optional(),
 
+    /*
+     * Identidad nodal interna.
+     * No sustituye author ni translator.
+     */
+    credits: creditsSchema,
+
     language: z.enum(["es", "en"]).default("es"),
     translationKey: z.string().optional(),
 
     video: z
-  .object({
-    youtubeId: z.string(),
-    title: z.string(),
-    context: z.string(),
-    label: z.string(),
-    date: z.date(),
-  })
-  .optional(),
+      .object({
+        youtubeId: z.string(),
+        title: z.string(),
+        context: z.string(),
+        label: z.string(),
+        date: z.date(),
+
+        /*
+         * Créditos específicos del material audiovisual.
+         */
+        credits: creditsSchema,
+      })
+      .optional(),
   }),
 });
+
+
+/* ============================================================
+   TRANSMISIONES
+============================================================ */
 
 const transmisiones = defineCollection({
   loader: glob({
@@ -43,8 +76,15 @@ const transmisiones = defineCollection({
     description: z.string(),
     pubDate: z.date(),
     numero: z.number(),
+
+    credits: creditsSchema,
   }),
 });
+
+
+/* ============================================================
+   DESTILADOS
+============================================================ */
 
 const destilados = defineCollection({
   loader: glob({
@@ -60,10 +100,17 @@ const destilados = defineCollection({
     autor: z.string(),
     obra: z.string(),
 
+    credits: creditsSchema,
+
     language: z.enum(["es", "en"]).default("es"),
     translationKey: z.string().optional(),
   }),
 });
+
+
+/* ============================================================
+   ALÍCUOTAS
+============================================================ */
 
 const alicuotas = defineCollection({
   loader: glob({
@@ -81,10 +128,17 @@ const alicuotas = defineCollection({
     translator: z.string().optional(),
     tipo: z.string().optional(),
 
+    credits: creditsSchema,
+
     language: z.enum(["es", "en"]).default("es"),
     translationKey: z.string().optional(),
   }),
 });
+
+
+/* ============================================================
+   EXPORTACIÓN
+============================================================ */
 
 export const collections = {
   ensayos,

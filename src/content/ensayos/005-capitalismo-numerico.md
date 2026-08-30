@@ -8,6 +8,12 @@ author: "Diego Giménez Vila"
 role: "NODO DE COAGENCIAMIENTO"
 translator: "Oliver Ferran"
 
+credits:
+  - node: diego-gimenez-vila
+    role: autoria
+  - node: oliver-ferran
+    role: traduccion
+
 language: "es"
 translationKey: "exp005"
 
@@ -17,6 +23,9 @@ video:
   context: "Líneas de Fuga II · Universitat de València"
   label: "Archivo audiovisual"
   date: 2026-08-27
+  credits:
+    - node: diego-gimenez-vila
+      role: participacion
 ---
 
 ## Dossier del Nodo de co-agenciamiento
