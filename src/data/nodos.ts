@@ -27,14 +27,19 @@ export type NodeProfile = {
 
 export const nodes: NodeProfile[] = [
     {
-        slug: "samuel-oliver",
+        // Se conserva el slug original para no romper
+        // perfiles, enlaces, créditos ni trazas existentes.
+        slug: "oliver-ferran",
+
         code: "CA / NODO 001",
         name: "SAMUEL OLIVER (ferracianuro)",
         role: "NODO SEMILLA",
         status: "ACTIVO",
 
         aliases: [
+            "Oliver Ferran",
             "Samuel Oliver",
+            "SAMUEL OLIVER",
             "SAMUEL OLIVER (ferracianuro)",
         ],
 
@@ -58,6 +63,7 @@ export const nodes: NodeProfile[] = [
 
     {
         slug: "diego-gimenez-vila",
+
         code: "CA / NODO 002",
         name: "DIEGO GIMÉNEZ VILA",
         role: "NODO DE CO-AGENCIAMIENTO",
