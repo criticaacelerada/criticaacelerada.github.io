@@ -27,14 +27,14 @@ export type NodeProfile = {
 
 export const nodes: NodeProfile[] = [
     {
-        slug: "oliver-ferran",
+        slug: "samuel-oliver",
         code: "CA / NODO 001",
         name: "SAMUEL OLIVER (ferracianuro)",
         role: "NODO SEMILLA",
         status: "ACTIVO",
 
         aliases: [
-            "Oliver Ferran",
+            "Samuel Oliver",
             "SAMUEL OLIVER (ferracianuro)",
         ],
 
