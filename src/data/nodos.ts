@@ -52,7 +52,7 @@ export const nodes: NodeProfile[] = [
         ],
 
         professional:
-            "Investigador radicado en México. Maestrando en Ciencias Económicas. Investigación crítica sobre las transformaciones contemporáneas del capitalismo, la tecnología y los procesos de digitalización.",
+            "Investigador radicado en México. Maestrando en Ciencias Económicas. Forma parte del Laboratorio de Estudios sobre Empresas Transnacionales (LET) del Instituto de Investigaciones Económicas de la UNAM. Investigación crítica sobre las transformaciones contemporáneas del capitalismo, la tecnología y los procesos de digitalización.",
 
         parallel: {
             title: "CRÍTICA ACELERADA",
@@ -65,13 +65,17 @@ export const nodes: NodeProfile[] = [
         slug: "diego-gimenez-vila",
 
         code: "CA / NODO 002",
-        name: "DIEGO GIMÉNEZ VILA",
+        name: "DIEGO GIMÉNEZ VILA (DAGA)",
         role: "NODO DE CO-AGENCIAMIENTO",
         status: "ACTIVO",
         location: "VALENCIA · ESPAÑA",
 
         aliases: [
             "Diego Giménez Vila",
+            "Daga",
+            "DAGA",
+            "Diego Giménez Vila (Daga)",
+            "DIEGO GIMÉNEZ VILA (DAGA)",
         ],
 
         youtube: {
