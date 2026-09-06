@@ -31,7 +31,7 @@ video:
 ## Dossier del Nodo de co-agenciamiento
 
 
-**Diego Giménez Vila** es doctorando en Filosofía por la Universidad de Valencia, España. Es creador del canal de YouTube *Indagando*, un espacio en el que comparte análisis, reflexiones y comentarios sobre las lecturas que acompañan su proceso de formación e investigación. Su trabajo se caracteriza por una defensa del eclecticismo y la libertad de pensamiento, entendidos como herramientas fundamentales frente al dogmatismo y como vías para una búsqueda abierta de sentido.
+**Diego Giménez Vila (Daga)** es doctorando en Filosofía por la Universidad de Valencia, España. Es creador del canal de YouTube *Indagando*, un espacio en el que comparte análisis, reflexiones y comentarios sobre las lecturas que acompañan su proceso de formación e investigación. Su trabajo se caracteriza por una defensa del eclecticismo y la libertad de pensamiento, entendidos como herramientas fundamentales frente al dogmatismo y como vías para una búsqueda abierta de sentido.
 
 - **YouTube:** [Indagando](https://www.youtube.com/@in-dagando)
 - **E-mail:** [dagaindagando@gmail.com](mailto:dagaindagando@gmail.com)
