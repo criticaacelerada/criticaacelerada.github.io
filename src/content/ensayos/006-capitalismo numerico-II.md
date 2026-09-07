@@ -89,7 +89,7 @@ Todo excepto el capitalismo, evidentemente, pero porque este actúa como un marc
 
 El realismo es debido no a que la realidad sea dada por unos hechos objetivos e inmutables, sino que la realidad se adapta a los cambios mutables del capitalismo. Es el capitalismo el que dirige lo Real. Ahora bien, asumiendo ahora ese realismo inexorable, debemos pasar a comprender y conceptualizar ese dinamismo tan realista como inexorable.
 
-# 6. CAPITALISMO NUMÉRICO: MÁS ALLÁ DEL REALISMO CAPITALISTA
+# 2. CAPITALISMO NUMÉRICO: MÁS ALLÁ DEL REALISMO CAPITALISTA
 
 > El capitalismo se identifica con el deseo a un grado tal que resulta imposible imaginar que pueda ser superado, abordando desvergonzadamente cualquier impulso capaz de aportar más pulsión economizable a sus iniciativas productivas en multiplicación continua. Lo que sea que desees, el capitalismo es la manera más confiable de obtenerlo, a la vez que, mediante la absorción de toda fuente de dinamismo social, hace del cambio, el crecimiento e incluso el tiempo mismo componentes integrales de su marea siempre en ascenso (Land, 2019a, p. 272).
 
@@ -214,7 +214,7 @@ Por este motivo, llevar más allá el realismo capitalista dependerá de compren
 A partir del capitalismo numérico podemos calcular los cambios que se efectúan en el sistema y, de este modo, comprometernos con la dirección que toma la realidad más allá del desenlace utópico o distópico que virtualmente llegue a realizarse.
 
 
-# 6. CONCLUSIÓN: NO, NO ES EL FIN DE LA HISTORIA, PERO TAMPOCO HAY ALTERNATIVA
+# 3. CONCLUSIÓN: NO, NO ES EL FIN DE LA HISTORIA, PERO TAMPOCO HAY ALTERNATIVA
 
 Nuestra propuesta teórica puede resumirse en una síntesis o contestación a dos de las grandes propuestas de las últimas décadas, la de Fukuyama y la de Fisher. Efectivamente, creemos que el capitalismo no es el fin de la historia, ya que la historia no depende del capitalismo, ha habido historia sin capitalismo antes y puede haberla después. Del mismo modo que consideramos absurdo pensar en un postcapitalismo utópico, pensamos absurdo creer en la permanencia del capitalismo por todos los medios. En realidad, el capitalismo potencialmente tiene la capacidad de permanecer por su modo de adaptarse al cambio, pero no podemos asegurar que estadios avanzados del capitalismo terminen no configurando algo distinto a sí mismo. Porque, aunque el capitalismo implica la adaptación y el cambio, no tenemos una certeza *a priori* de que la adaptación algún día transmute en algo distinto a partir del cambio, que su propio proceso encadene otro proceso distinto a partir de sus hitos o de sus ruinas.
 
