@@ -17,6 +17,10 @@ type Credit = {
 };
 
 
+/* ============================================================
+   UTILIDADES
+============================================================ */
+
 const normalize = (value: unknown) =>
     String(value ?? "")
         .normalize("NFD")
@@ -41,6 +45,10 @@ const matchesNode = (
 };
 
 
+/* ============================================================
+   CREDITS
+============================================================ */
+
 const roleLabel = (role: unknown) => {
     const normalized = normalize(role);
 
@@ -59,6 +67,9 @@ const roleLabel = (role: unknown) => {
         entrevista: "ENTREVISTA",
         moderacion: "MODERACIÓN",
         diseno: "DISEÑO",
+
+        // NUEVO:
+        destilado: "DESTILADO",
     };
 
     return (
@@ -114,6 +125,7 @@ const pushCreditTraces = ({
     date: Date;
     href: string;
 }) => {
+
     credits.forEach((credit, index) => {
         traces.push({
             id: `${idPrefix}-${credit.role}-${index}`,
@@ -127,6 +139,10 @@ const pushCreditTraces = ({
     });
 };
 
+
+/* ============================================================
+   TRAZAS DE UN NODO
+============================================================ */
 
 export async function getNodeTraces(
     node: NodeProfile
@@ -145,17 +161,23 @@ export async function getNodeTraces(
     ]);
 
 
-    // Una sola versión visible por pieza bilingüe.
+    /* ========================================================
+       UNA SOLA VERSIÓN VISIBLE POR PIEZA BILINGÜE
+    ======================================================== */
+
     const ensayos = ensayosTodos.filter(
-        (entry) => (entry.data as any).language !== "en"
+        (entry) =>
+            (entry.data as any).language !== "en"
     );
 
     const destilados = destiladosTodos.filter(
-        (entry) => (entry.data as any).language !== "en"
+        (entry) =>
+            (entry.data as any).language !== "en"
     );
 
     const alicuotas = alicuotasTodos.filter(
-        (entry) => (entry.data as any).language !== "en"
+        (entry) =>
+            (entry.data as any).language !== "en"
     );
 
 
@@ -170,7 +192,10 @@ export async function getNodeTraces(
 
         const data = entry.data as any;
 
-        const mainCredits = getCredits(data.credits);
+        const mainCredits = getCredits(
+            data.credits
+        );
+
         const nodeMainCredits = creditsForNode(
             data.credits,
             node
@@ -179,16 +204,20 @@ export async function getNodeTraces(
 
         /*
          * NUEVO SISTEMA:
-         * Si la publicación ya tiene credits, éstos son la fuente
-         * de verdad para la pieza textual.
+         *
+         * Si existen credits, éstos son la fuente
+         * principal de la pieza.
          */
+
         if (mainCredits.length > 0) {
 
             pushCreditTraces({
                 traces,
                 credits: nodeMainCredits,
                 idPrefix: `ensayo-${entry.id}`,
-                code: `EXPEDIENTE ${String(data.expediente).padStart(3, "0")}`,
+                code: `EXPEDIENTE ${String(
+                    data.expediente
+                ).padStart(3, "0")}`,
                 type: "ARCHIVO TEXTUAL",
                 title: data.title,
                 date: data.date,
@@ -199,38 +228,60 @@ export async function getNodeTraces(
 
             /*
              * COMPATIBILIDAD:
-             * Los archivos antiguos siguen funcionando con author
-             * y translator mientras los migramos.
+             *
+             * Archivos antiguos que todavía usan
+             * author / translator.
              */
-            if (matchesNode(data.author, node)) {
+
+            if (
+                matchesNode(
+                    data.author,
+                    node
+                )
+            ) {
+
                 traces.push({
                     id: `ensayo-${entry.id}-autor`,
-                    code: `EXPEDIENTE ${String(data.expediente).padStart(3, "0")}`,
+                    code: `EXPEDIENTE ${String(
+                        data.expediente
+                    ).padStart(3, "0")}`,
                     type: "ARCHIVO TEXTUAL",
                     title: data.title,
                     role: "AUTORÍA",
                     date: data.date,
                     href: `/expedientes/${entry.id}`,
                 });
+
             }
 
 
-            if (matchesNode(data.translator, node)) {
+            if (
+                matchesNode(
+                    data.translator,
+                    node
+                )
+            ) {
+
                 traces.push({
                     id: `ensayo-${entry.id}-traduccion`,
-                    code: `EXPEDIENTE ${String(data.expediente).padStart(3, "0")}`,
+                    code: `EXPEDIENTE ${String(
+                        data.expediente
+                    ).padStart(3, "0")}`,
                     type: "ARCHIVO TEXTUAL",
                     title: data.title,
                     role: "TRADUCCIÓN",
                     date: data.date,
                     href: `/expedientes/${entry.id}`,
                 });
+
             }
 
         }
 
 
-        /* MATERIAL AUDIOVISUAL ASOCIADO */
+        /* ========================================================
+           MATERIAL AUDIOVISUAL ASOCIADO
+        ======================================================== */
 
         if (data.video) {
 
@@ -238,39 +289,50 @@ export async function getNodeTraces(
                 data.video.credits
             );
 
-            const nodeVideoCredits = creditsForNode(
-                data.video.credits,
-                node
-            );
+            const nodeVideoCredits =
+                creditsForNode(
+                    data.video.credits,
+                    node
+                );
 
 
-            if (videoCredits.length > 0) {
+            if (
+                videoCredits.length > 0
+            ) {
 
                 pushCreditTraces({
                     traces,
                     credits: nodeVideoCredits,
                     idPrefix: `ensayo-${entry.id}-video`,
-                    code: `ARCHIVO AUDIOVISUAL / ${String(data.expediente).padStart(3, "0")}`,
+                    code: `ARCHIVO AUDIOVISUAL / ${String(
+                        data.expediente
+                    ).padStart(3, "0")}`,
                     type: "MATERIAL ASOCIADO",
                     title: data.video.title,
-                    date: data.video.date ?? data.date,
+                    date:
+                        data.video.date ??
+                        data.date,
                     href: `/expedientes/${entry.id}`,
                 });
 
-            } else if (matchesNode(data.author, node)) {
+            } else if (
+                matchesNode(
+                    data.author,
+                    node
+                )
+            ) {
 
-                /*
-                 * Compatibilidad temporal con el comportamiento anterior.
-                 * Una vez migrados los videos a video.credits, esta
-                 * inferencia dejará de ser necesaria.
-                 */
                 traces.push({
                     id: `ensayo-${entry.id}-video-legacy`,
-                    code: `ARCHIVO AUDIOVISUAL / ${String(data.expediente).padStart(3, "0")}`,
+                    code: `ARCHIVO AUDIOVISUAL / ${String(
+                        data.expediente
+                    ).padStart(3, "0")}`,
                     type: "MATERIAL ASOCIADO",
                     title: data.video.title,
                     role: "PARTICIPACIÓN AUDIOVISUAL",
-                    date: data.video.date ?? data.date,
+                    date:
+                        data.video.date ??
+                        data.date,
                     href: `/expedientes/${entry.id}`,
                 });
 
@@ -289,12 +351,20 @@ export async function getNodeTraces(
 
         const data = entry.data as any;
 
-        const credits = getCredits(data.credits);
-        const nodeCredits = creditsForNode(
-            data.credits,
-            node
+        const credits = getCredits(
+            data.credits
         );
 
+        const nodeCredits =
+            creditsForNode(
+                data.credits,
+                node
+            );
+
+
+        /*
+         * NUEVO SISTEMA
+         */
 
         if (credits.length > 0) {
 
@@ -302,7 +372,9 @@ export async function getNodeTraces(
                 traces,
                 credits: nodeCredits,
                 idPrefix: `transmision-${entry.id}`,
-                code: `TRANSMISIÓN ${String(data.numero).padStart(3, "0")}`,
+                code: `TRANSMISIÓN ${String(
+                    data.numero
+                ).padStart(3, "0")}`,
                 type: "ARCHIVO AUDIOVISUAL",
                 title: data.title,
                 date: data.pubDate,
@@ -310,6 +382,10 @@ export async function getNodeTraces(
             });
 
         } else {
+
+            /*
+             * COMPATIBILIDAD CON ARCHIVOS ANTIGUOS
+             */
 
             const possiblePeople = [
                 ["author", "AUTORÍA"],
@@ -319,34 +395,54 @@ export async function getNodeTraces(
             ] as const;
 
 
-            for (const [field, role] of possiblePeople) {
+            for (
+                const [field, role]
+                of possiblePeople
+            ) {
 
                 const value = data[field];
 
-                if (Array.isArray(value)) {
+
+                if (
+                    Array.isArray(value)
+                ) {
 
                     if (
                         value.some(
                             (person) =>
-                                matchesNode(person, node)
+                                matchesNode(
+                                    person,
+                                    node
+                                )
                         )
                     ) {
+
                         traces.push({
                             id: `transmision-${entry.id}-${field}`,
-                            code: `TRANSMISIÓN ${String(data.numero).padStart(3, "0")}`,
+                            code: `TRANSMISIÓN ${String(
+                                data.numero
+                            ).padStart(3, "0")}`,
                             type: "ARCHIVO AUDIOVISUAL",
                             title: data.title,
                             role,
                             date: data.pubDate,
                             href: `/transmisiones/${entry.id}`,
                         });
+
                     }
 
-                } else if (matchesNode(value, node)) {
+                } else if (
+                    matchesNode(
+                        value,
+                        node
+                    )
+                ) {
 
                     traces.push({
                         id: `transmision-${entry.id}-${field}`,
-                        code: `TRANSMISIÓN ${String(data.numero).padStart(3, "0")}`,
+                        code: `TRANSMISIÓN ${String(
+                            data.numero
+                        ).padStart(3, "0")}`,
                         type: "ARCHIVO AUDIOVISUAL",
                         title: data.title,
                         role,
@@ -371,12 +467,26 @@ export async function getNodeTraces(
 
         const data = entry.data as any;
 
-        const credits = getCredits(data.credits);
-        const nodeCredits = creditsForNode(
-            data.credits,
-            node
+        const credits = getCredits(
+            data.credits
         );
 
+        const nodeCredits =
+            creditsForNode(
+                data.credits,
+                node
+            );
+
+
+        /*
+         * NUEVO SISTEMA DE CRÉDITOS
+         *
+         * Ejemplo:
+         *
+         * credits:
+         *   - node: "oliver-ferran"
+         *     role: "destilado"
+         */
 
         if (credits.length > 0) {
 
@@ -384,7 +494,9 @@ export async function getNodeTraces(
                 traces,
                 credits: nodeCredits,
                 idPrefix: `destilado-${entry.id}`,
-                code: `DESTILADO ${String(data.numero).padStart(3, "0")}`,
+                code: `DESTILADO ${String(
+                    data.numero
+                ).padStart(3, "0")}`,
                 type: "ARCHIVO DESTILADO",
                 title: data.title,
                 date: data.pubDate,
@@ -393,32 +505,55 @@ export async function getNodeTraces(
 
         } else {
 
+            /*
+             * COMPATIBILIDAD CON DESTILADOS ANTIGUOS
+             */
+
             if (
-                matchesNode(data.autor, node) ||
-                matchesNode(data.author, node)
+                matchesNode(
+                    data.autor,
+                    node
+                ) ||
+                matchesNode(
+                    data.author,
+                    node
+                )
             ) {
+
                 traces.push({
                     id: `destilado-${entry.id}-autor`,
-                    code: `DESTILADO ${String(data.numero).padStart(3, "0")}`,
+                    code: `DESTILADO ${String(
+                        data.numero
+                    ).padStart(3, "0")}`,
                     type: "ARCHIVO DESTILADO",
                     title: data.title,
                     role: "AUTORÍA",
                     date: data.pubDate,
                     href: `/destilados/${entry.id}`,
                 });
+
             }
 
 
-            if (matchesNode(data.translator, node)) {
+            if (
+                matchesNode(
+                    data.translator,
+                    node
+                )
+            ) {
+
                 traces.push({
                     id: `destilado-${entry.id}-traduccion`,
-                    code: `DESTILADO ${String(data.numero).padStart(3, "0")}`,
+                    code: `DESTILADO ${String(
+                        data.numero
+                    ).padStart(3, "0")}`,
                     type: "ARCHIVO DESTILADO",
                     title: data.title,
                     role: "TRADUCCIÓN",
                     date: data.pubDate,
                     href: `/destilados/${entry.id}`,
                 });
+
             }
 
         }
@@ -434,11 +569,15 @@ export async function getNodeTraces(
 
         const data = entry.data as any;
 
-        const credits = getCredits(data.credits);
-        const nodeCredits = creditsForNode(
-            data.credits,
-            node
+        const credits = getCredits(
+            data.credits
         );
+
+        const nodeCredits =
+            creditsForNode(
+                data.credits,
+                node
+            );
 
 
         if (credits.length > 0) {
@@ -447,7 +586,9 @@ export async function getNodeTraces(
                 traces,
                 credits: nodeCredits,
                 idPrefix: `alicuota-${entry.id}`,
-                code: `AE—${String(data.numero).padStart(3, "0")}`,
+                code: `AE—${String(
+                    data.numero
+                ).padStart(3, "0")}`,
                 type: "ARCHIVO EXPERIMENTAL",
                 title: data.title,
                 date: data.pubDate,
@@ -456,32 +597,55 @@ export async function getNodeTraces(
 
         } else {
 
+            /*
+             * COMPATIBILIDAD CON ARCHIVOS ANTIGUOS
+             */
+
             if (
-                matchesNode(data.autor, node) ||
-                matchesNode(data.author, node)
+                matchesNode(
+                    data.autor,
+                    node
+                ) ||
+                matchesNode(
+                    data.author,
+                    node
+                )
             ) {
+
                 traces.push({
                     id: `alicuota-${entry.id}-autor`,
-                    code: `AE—${String(data.numero).padStart(3, "0")}`,
+                    code: `AE—${String(
+                        data.numero
+                    ).padStart(3, "0")}`,
                     type: "ARCHIVO EXPERIMENTAL",
                     title: data.title,
                     role: "AUTORÍA",
                     date: data.pubDate,
                     href: `/alicuotas/${entry.id}`,
                 });
+
             }
 
 
-            if (matchesNode(data.translator, node)) {
+            if (
+                matchesNode(
+                    data.translator,
+                    node
+                )
+            ) {
+
                 traces.push({
                     id: `alicuota-${entry.id}-traduccion`,
-                    code: `AE—${String(data.numero).padStart(3, "0")}`,
+                    code: `AE—${String(
+                        data.numero
+                    ).padStart(3, "0")}`,
                     type: "ARCHIVO EXPERIMENTAL",
                     title: data.title,
                     role: "TRADUCCIÓN",
                     date: data.pubDate,
                     href: `/alicuotas/${entry.id}`,
                 });
+
             }
 
         }
@@ -489,8 +653,13 @@ export async function getNodeTraces(
     }
 
 
+    /* ============================================================
+       ORDEN CRONOLÓGICO
+    ============================================================ */
+
     return traces.sort(
         (a, b) =>
-            b.date.getTime() - a.date.getTime()
+            b.date.getTime() -
+            a.date.getTime()
     );
 }

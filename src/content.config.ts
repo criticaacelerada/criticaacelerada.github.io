@@ -97,8 +97,15 @@ const destilados = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     numero: z.number(),
+
+    /* Autor de la obra original */
     autor: z.string(),
+
+    /* Obra o texto del que se realiza el destilado */
     obra: z.string(),
+
+    /* Persona que realizó el destilado */
+    destiladoPor: z.string(),
 
     credits: creditsSchema,
 

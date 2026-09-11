@@ -5,6 +5,12 @@ pubDate: 2026-08-06
 numero: 1
 autor: "Nick Bostrom and Milan Ćirković"
 obra: "Global Catastrophic Risks"
+destiladoPor: "Oliver Ferran"
+
+credits:
+  - node: "oliver-ferran"
+    role: "destilado"
+
 language: "en"
 translationKey: "dest001"
 ---
