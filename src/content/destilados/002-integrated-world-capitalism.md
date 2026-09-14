@@ -16,7 +16,7 @@ translationKey: "dest002"
 ---
 > **Source**
 >
-> Guattari, Félix [2004], "2. El capitalismo mundial integrado y la revolución molecular", *Plan sobre el planeta. Capitalismo mundial integrado y revoluciones moleculares*, Madrid, Traficantes de Sueños, pp. 57–74. [PDF](URL_COMPLETA)
+> Guattari, Félix [2004], "2. El capitalismo mundial integrado y la revolución molecular", *Plan sobre el planeta. Capitalismo mundial integrado y revoluciones moleculares*, Madrid, Traficantes de Sueños, pp. 57–74. [PDF](https://traficantes.net/sites/default/files/pdfs/Plan%20sobre%20el%20planeta-TdS.pdf)
 >
 > **Translation:** Oliver Ferran
 
