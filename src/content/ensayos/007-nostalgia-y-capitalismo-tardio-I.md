@@ -28,6 +28,9 @@ translationKey: "exp007"
 - **E-mail:** [dagaindagando@gmail.com](mailto:dagaindagando@gmail.com)
 
 ---
+>Nota: La presente trilogía es extraída del trabajo de tesis de master de Diego Giménez Vila (Daga).
+📄 [El texto original puede consultarse en el siguiente enlace](/pdfs/nostalgia-capitalismo-tardio.pdf)
+
 
 # PARTE I: La nostalgia en el capitalismo tardío
 
