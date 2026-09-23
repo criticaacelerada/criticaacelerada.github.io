@@ -591,4 +591,64 @@ const {
 
     }
 
+
+
+    /* Refined editorial treatment */
+    .youtube-feed {
+        margin-top: 42px;
+        border-top: 1px solid rgba(255,47,109,.55);
+    }
+
+    .youtube-feed-head {
+        padding: 20px 0 18px;
+    }
+
+    .youtube-feed-head h3 {
+        font-size: clamp(20px, 2.2vw, 30px);
+        font-weight: 560;
+        letter-spacing: -.045em;
+    }
+
+    .youtube-channel-link {
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255,47,109,.35);
+    }
+
+    .youtube-grid {
+        padding: 26px 0 0;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 34px 24px;
+    }
+
+    .youtube-card {
+        min-width: 0;
+        background: rgba(255,255,255,.018);
+        transition: background .25s ease;
+    }
+
+    .youtube-card:hover { background: rgba(255,47,109,.045); }
+
+    .youtube-thumb {
+        border-color: rgba(245,245,245,.12);
+    }
+
+    .youtube-card-copy {
+        min-height: 126px;
+        padding: 16px 20px 20px;
+        border: 1px solid rgba(245,245,245,.09);
+        border-top: 0;
+    }
+
+    .youtube-card h4 {
+        font-size: clamp(15px, 1.45vw, 19px);
+        line-height: 1.25;
+    }
+
+    .youtube-card-arrow { right: 18px; bottom: 18px; }
+
+    @media (max-width: 620px) {
+        .youtube-grid { grid-template-columns: 1fr; gap: 24px; }
+        .youtube-card-copy { min-height: 0; }
+    }
+
 </style>
