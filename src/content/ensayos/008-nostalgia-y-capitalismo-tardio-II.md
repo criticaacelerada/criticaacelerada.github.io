@@ -1,8 +1,8 @@
 ---
-title: "Nostalgia y capitalismo tardío: Los espacios liminales como producto cultural nostálgico"
+title: "Nostalgia y capitalismo tardío: Los espacios liminales como producto cultural nostálgico. Parte II"
 date: 2026-09-22
 expediente: 8
-descripcion: "Parte II. Nostalgia y crítica cultural"
+descripcion: "Nostalgia y crítica cultural"
 
 author: "Diego Giménez Vila"
 role: "NODO DE COAGENCIAMIENTO"

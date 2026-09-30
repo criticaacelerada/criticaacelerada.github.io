@@ -1,8 +1,8 @@
 ---
-title: "Los espacios liminales como producto cultural nostálgico"
+title: "Nostalgía y capitalismo tardío: Los espacios liminales como producto cultural nostálgico. Parte III"
 date: 2026-09-29
 expediente: 9
-descripcion: "Parte III. Espacios liminales: Contextualización del fenómeno artístico"
+descripcion: "Espacios liminales: Contextualización del fenómeno artístico"
 
 author: "Diego Giménez Vila"
 role: "NODO DE COAGENCIAMIENTO"
