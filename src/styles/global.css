@@ -2,6 +2,8 @@
 
 
 
+
+
 /* ==========================
 
    CRÍTICA ACELERADA
@@ -608,6 +610,10 @@ ARTÍCULOS
 
 
 
+
+
+
+
 /* ==========================
 
    PORTALES DE ACCESO
@@ -662,7 +668,7 @@ ARTÍCULOS
 
         border-color .25s ease,
 
-background .25s ease;
+*background* .25s ease;
 
 }
 
@@ -1478,7 +1484,7 @@ background .25s ease;
 
     transition:
 
-background .25s ease,
+*background* .25s ease,
 
         padding .25s ease;
 
@@ -2198,7 +2204,7 @@ background .25s ease,
 
     transition:
 
-background .25s ease,
+*background* .25s ease,
 
         padding .25s ease;
 
@@ -2921,49 +2927,83 @@ background .25s ease,
 }
 
 .case-content img{
+
     display:block;
+
     width:100%;
+
     height:auto;
+
     margin:0;
+
     border-radius:0;
+
     border:1px solid var(--accent);
+
 }
 
 .case-content figure{
+
     width:100%;
+
     margin:4rem 0;
+
 }
 
 .case-content figure img{
+
     display:block;
+
     width:100%;
+
     height:auto;
+
     margin:0;
+
     border:1px solid var(--accent);
+
     border-radius:0;
+
 }
 
 .case-content figcaption{
+
     margin-top:.9rem;
+
     padding-left:.8rem;
+
     border-left:2px solid var(--accent);
+
     color:rgba(245,245,245,.5);
+
     font-size:.78rem;
+
     line-height:1.6;
+
     text-align:left;
+
 }
 
 .case-content figcaption strong{
+
     color:var(--accent);
+
     font-weight:600;
+
 }
 
 .case-content figcaption sup{
+
     color:var(--accent);
+
     font-size:.7em;
+
     line-height:0;
+
     vertical-align:super;
+
     margin-left:.1rem;
+
 }
 
 .case-content code{
@@ -3950,7 +3990,7 @@ background .25s ease,
 
         border-color .2s ease,
 
-background .2s ease,
+*background* .2s ease,
 
         transform .2s ease;
 
@@ -4091,5 +4131,1131 @@ background .2s ease,
     max-width: 420px;
 
   }
+
+}
+
+/* =========================================================
+
+   CRÍTICA ACELERADA
+
+   SISTEMA EDITORIAL DE IMÁGENES — EXPEDIENTES
+
+   ========================================================= */
+
+/* ---------------------------------------------------------
+
+   1. IMAGEN PRINCIPAL / HERO DEL EXPEDIENTE
+
+   --------------------------------------------------------- */
+
+.case-content .exp-image-hero {
+
+    width:100%;
+
+    margin:3.5rem 0 4.5rem;
+
+}
+
+.case-content .exp-image-hero img {
+
+    display:block;
+
+    width:100%;
+
+    max-width:none;
+
+    height:auto;
+
+    margin:0;
+
+    border:0;
+
+    border-radius:0;
+
+    object-fit:cover;
+
+}
+
+.case-content .exp-image-hero figcaption {
+
+    margin-top:.8rem;
+
+    padding:0;
+
+    border:0;
+
+    color:rgba(245,245,245,.42);
+
+    font-size:.68rem;
+
+    line-height:1.5;
+
+    letter-spacing:.04em;
+
+    text-align:left;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   2. IMAGEN ANCHA
+
+   Sale ligeramente del ancho de lectura.
+
+   Muy útil para fotografías horizontales.
+
+   --------------------------------------------------------- */
+
+.case-content .exp-image-wide {
+
+    width:calc(100% + 180px);
+
+    margin:4.5rem 0 4.5rem -90px;
+
+}
+
+.case-content .exp-image-wide img {
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    margin:0;
+
+    border:0;
+
+    border-radius:0;
+
+}
+
+.case-content .exp-image-wide figcaption {
+
+    margin-top:.8rem;
+
+    padding-left:.8rem;
+
+    border-left:1px solid rgba(245,245,245,.25);
+
+    color:rgba(245,245,245,.42);
+
+    font-size:.68rem;
+
+    line-height:1.5;
+
+    text-align:left;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   3. IMAGEN NORMAL
+
+   --------------------------------------------------------- */
+
+.case-content .exp-image {
+
+    width:100%;
+
+    margin:3.5rem 0;
+
+}
+
+.case-content .exp-image img {
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    margin:0;
+
+    border:0;
+
+    border-radius:0;
+
+}
+
+.case-content .exp-image figcaption {
+
+    margin-top:.8rem;
+
+    padding-left:.8rem;
+
+    border-left:1px solid rgba(245,245,245,.22);
+
+    color:rgba(245,245,245,.42);
+
+    font-size:.68rem;
+
+    line-height:1.55;
+
+    text-align:left;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   4. IMAGEN PEQUEÑA / DOCUMENTAL
+
+   Para retratos, capturas, portadas, objetos, etc.
+
+   --------------------------------------------------------- */
+
+.case-content .exp-image-small {
+
+    width:72%;
+
+    margin:4rem auto;
+
+}
+
+.case-content .exp-image-small img {
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    margin:0;
+
+    border:0;
+
+    border-radius:0;
+
+}
+
+.case-content .exp-image-small figcaption {
+
+    margin-top:.8rem;
+
+    color:rgba(245,245,245,.4);
+
+    font-size:.68rem;
+
+    line-height:1.5;
+
+    text-align:left;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   5. IMAGEN VERTICAL
+
+   Para retratos, posters, portadas, fotografías verticales.
+
+   --------------------------------------------------------- */
+
+.case-content .exp-image-portrait {
+
+    width:58%;
+
+    margin:4.5rem auto;
+
+}
+
+.case-content .exp-image-portrait img {
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    margin:0;
+
+    border:0;
+
+    border-radius:0;
+
+}
+
+.case-content .exp-image-portrait figcaption {
+
+    margin-top:.8rem;
+
+    color:rgba(245,245,245,.42);
+
+    font-size:.68rem;
+
+    line-height:1.5;
+
+    text-align:left;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   6. DOS IMÁGENES EN PARALELO
+
+   --------------------------------------------------------- */
+
+.case-content .exp-image-pair {
+
+    display:grid;
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:1.25rem;
+
+    width:calc(100% + 80px);
+
+    margin:4.5rem 0 4.5rem -40px;
+
+}
+
+.case-content .exp-image-pair figure {
+
+    width:100%;
+
+    margin:0;
+
+}
+
+.case-content .exp-image-pair img {
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    margin:0;
+
+    border:0;
+
+    border-radius:0;
+
+}
+
+.case-content .exp-image-pair figcaption {
+
+    margin-top:.7rem;
+
+    padding:0;
+
+    border:0;
+
+    color:rgba(245,245,245,.38);
+
+    font-size:.64rem;
+
+    line-height:1.5;
+
+    text-align:left;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   7. TRES IMÁGENES EN GRILLA
+
+   --------------------------------------------------------- */
+
+.case-content .exp-image-triptych {
+
+    display:grid;
+
+    grid-template-columns:repeat(3,minmax(0,1fr));
+
+    gap:1rem;
+
+    width:calc(100% + 100px);
+
+    margin:4.5rem 0 4.5rem -50px;
+
+}
+
+.case-content .exp-image-triptych figure {
+
+    width:100%;
+
+    margin:0;
+
+}
+
+.case-content .exp-image-triptych img {
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    aspect-ratio:4 / 3;
+
+    object-fit:cover;
+
+    margin:0;
+
+    border:0;
+
+    border-radius:0;
+
+}
+
+.case-content .exp-image-triptych figcaption {
+
+    margin-top:.65rem;
+
+    padding:0;
+
+    border:0;
+
+    color:rgba(245,245,245,.38);
+
+    font-size:.62rem;
+
+    line-height:1.45;
+
+    text-align:left;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   8. IMAGEN CON TEXTO AL LADO
+
+   Estilo editorial / magazine.
+
+   --------------------------------------------------------- */
+
+.case-content .exp-image-aside {
+
+    display:grid;
+
+    grid-template-columns:minmax(0,1.4fr) minmax(180px,.6fr);
+
+    gap:3rem;
+
+    align-items:center;
+
+    width:calc(100% + 120px);
+
+    margin:5rem 0 5rem -60px;
+
+}
+
+.case-content .exp-image-aside figure {
+
+    margin:0;
+
+    width:100%;
+
+}
+
+.case-content .exp-image-aside img {
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    margin:0;
+
+    border:0;
+
+    border-radius:0;
+
+}
+
+.case-content .exp-image-aside .aside-text {
+
+    color:rgba(245,245,245,.55);
+
+    font-size:.78rem;
+
+    line-height:1.7;
+
+}
+
+.case-content .exp-image-aside .aside-label {
+
+    display:block;
+
+    margin-bottom:.7rem;
+
+    color:var(--accent);
+
+    font-size:.58rem;
+
+    font-weight:600;
+
+    letter-spacing:.2em;
+
+    text-transform:uppercase;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   9. IMAGEN CON ETIQUETA EDITORIAL
+
+   --------------------------------------------------------- */
+
+.case-content .exp-image-editorial {
+
+    position:relative;
+
+    margin:5rem 0;
+
+}
+
+.case-content .exp-image-editorial img {
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    margin:0;
+
+    border:0;
+
+    border-radius:0;
+
+}
+
+.case-content .exp-image-editorial::before {
+
+    content:"FIG.";
+
+    position:absolute;
+
+    top:-1.5rem;
+
+    left:0;
+
+    color:var(--accent);
+
+    font-size:.58rem;
+
+    font-weight:600;
+
+    letter-spacing:.2em;
+
+}
+
+.case-content .exp-image-editorial figcaption {
+
+    margin-top:.8rem;
+
+    padding-left:.8rem;
+
+    border-left:1px solid rgba(245,245,245,.25);
+
+    color:rgba(245,245,245,.42);
+
+    font-size:.68rem;
+
+    line-height:1.55;
+
+    text-align:left;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   10. IMAGEN FULL BLEED
+
+   Rompe completamente el ancho del artículo.
+
+   Usar sólo para imágenes muy importantes.
+
+   --------------------------------------------------------- */
+
+.case-content .exp-image-full {
+
+    width:100vw;
+
+    max-width:none;
+
+    margin:5rem 0 5rem calc(50% - 50vw);
+
+}
+
+.case-content .exp-image-full img {
+
+    display:block;
+
+    width:100%;
+
+    max-width:none;
+
+    height:auto;
+
+    margin:0;
+
+    border:0;
+
+    border-radius:0;
+
+}
+
+.case-content .exp-image-full figcaption {
+
+    width:min(820px,92%);
+
+    margin:.8rem auto 0;
+
+    color:rgba(245,245,245,.38);
+
+    font-size:.68rem;
+
+    line-height:1.5;
+
+    text-align:left;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   11. IMAGEN FLOTANTE A LA DERECHA
+
+   Para ilustraciones o retratos secundarios.
+
+   --------------------------------------------------------- */
+
+.case-content .exp-image-float-right {
+
+    float:right;
+
+    width:42%;
+
+    margin:0 0 2rem 3rem;
+
+}
+
+.case-content .exp-image-float-right img {
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    margin:0;
+
+    border:0;
+
+    border-radius:0;
+
+}
+
+.case-content .exp-image-float-right figcaption {
+
+    margin-top:.6rem;
+
+    color:rgba(245,245,245,.38);
+
+    font-size:.62rem;
+
+    line-height:1.45;
+
+    text-align:left;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   12. IMAGEN FLOTANTE A LA IZQUIERDA
+
+   --------------------------------------------------------- */
+
+.case-content .exp-image-float-left {
+
+    float:left;
+
+    width:42%;
+
+    margin:0 3rem 2rem 0;
+
+}
+
+.case-content .exp-image-float-left img {
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    margin:0;
+
+    border:0;
+
+    border-radius:0;
+
+}
+
+.case-content .exp-image-float-left figcaption {
+
+    margin-top:.6rem;
+
+    color:rgba(245,245,245,.38);
+
+    font-size:.62rem;
+
+    line-height:1.45;
+
+    text-align:left;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   13. LIMPIAR FLOATS
+
+   --------------------------------------------------------- */
+
+.case-content .exp-clear {
+
+    clear:both;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   14. SEPARADOR EDITORIAL
+
+   --------------------------------------------------------- */
+
+.case-content .exp-divider {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1rem;
+
+    margin:5rem 0;
+
+    color:rgba(245,245,245,.25);
+
+    font-size:.58rem;
+
+    letter-spacing:.22em;
+
+    text-transform:uppercase;
+
+}
+
+.case-content .exp-divider::before,
+
+.case-content .exp-divider::after {
+
+    content:"";
+
+    height:1px;
+
+    background:rgba(245,245,245,.1);
+
+}
+
+.case-content .exp-divider::before {
+
+    width:42px;
+
+}
+
+.case-content .exp-divider::after {
+
+    flex:1;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   15. LEAD / ENTRADILLA EDITORIAL
+
+   --------------------------------------------------------- */
+
+.case-content .exp-lead {
+
+    margin:0 0 3.5rem;
+
+    color:rgba(245,245,245,.88);
+
+    font-size:1.28rem;
+
+    line-height:1.75;
+
+    letter-spacing:-.01em;
+
+}
+
+.case-content .exp-lead::first-letter {
+
+    font-size:3.8em;
+
+    font-weight:700;
+
+    line-height:.8;
+
+    float:left;
+
+    margin:.08em .12em 0 0;
+
+    color:var(--accent);
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   16. DESTACADO NUMÉRICO
+
+   --------------------------------------------------------- */
+
+.case-content .exp-stat {
+
+    display:grid;
+
+    grid-template-columns:auto 1fr;
+
+    gap:1.5rem;
+
+    align-items:start;
+
+    margin:4rem 0;
+
+    padding:2rem 0;
+
+    border-top:1px solid rgba(245,245,245,.12);
+
+    border-bottom:1px solid rgba(245,245,245,.12);
+
+}
+
+.case-content .exp-stat-number {
+
+    color:var(--accent);
+
+    font-size:clamp(3rem,7vw,5rem);
+
+    font-weight:700;
+
+    line-height:.9;
+
+    letter-spacing:-.06em;
+
+}
+
+.case-content .exp-stat-text {
+
+    max-width:520px;
+
+    color:rgba(245,245,245,.52);
+
+    font-size:.82rem;
+
+    line-height:1.7;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   17. NOTA EDITORIAL
+
+   --------------------------------------------------------- */
+
+.case-content .exp-note {
+
+    margin:3rem 0;
+
+    padding:1rem 1.2rem;
+
+    border-left:2px solid var(--accent);
+
+    background:rgba(255,255,255,.025);
+
+    color:rgba(245,245,245,.55);
+
+    font-size:.78rem;
+
+    line-height:1.7;
+
+}
+
+.case-content .exp-note strong {
+
+    color:var(--accent);
+
+    font-weight:600;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   18. CITAS DESTACADAS
+
+   --------------------------------------------------------- */
+
+.case-content .exp-pullquote {
+
+    width:calc(100% + 100px);
+
+    margin:5rem 0 5rem -50px;
+
+    padding:2.5rem 3rem;
+
+    border-top:1px solid rgba(245,245,245,.14);
+
+    border-bottom:1px solid rgba(245,245,245,.14);
+
+    color:#fff;
+
+    font-size:clamp(1.4rem,3vw,2.2rem);
+
+    line-height:1.25;
+
+    letter-spacing:-.025em;
+
+}
+
+.case-content .exp-pullquote strong {
+
+    color:var(--accent);
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   19. BIBLIOGRAFÍA
+
+   --------------------------------------------------------- */
+
+.case-content .bibliography,
+
+.case-content .references {
+
+    margin-top:5rem;
+
+    padding-top:2rem;
+
+    border-top:1px solid rgba(245,245,245,.12);
+
+}
+
+.case-content .bibliography li,
+
+.case-content .references li {
+
+    margin-bottom:.8rem;
+
+    color:rgba(245,245,245,.5);
+
+    font-size:.82rem;
+
+    line-height:1.65;
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   20. RESPONSIVE
+
+   --------------------------------------------------------- */
+
+@media(max-width:980px){
+
+    .case-content .exp-image-wide,
+
+    .case-content .exp-image-pair,
+
+    .case-content .exp-image-triptych,
+
+    .case-content .exp-image-aside,
+
+    .case-content .exp-pullquote {
+
+        width:100%;
+
+        margin-left:0;
+
+        margin-right:0;
+
+    }
+
+    .case-content .exp-image-wide {
+
+        margin-top:4rem;
+
+        margin-bottom:4rem;
+
+    }
+
+    .case-content .exp-image-aside {
+
+        grid-template-columns:1fr;
+
+        gap:1.5rem;
+
+    }
+
+    .case-content .exp-image-aside .aside-text {
+
+        max-width:600px;
+
+    }
+
+}
+
+
+
+@media(max-width:768px){
+
+    .case-content .exp-image-hero,
+
+    .case-content .exp-image-wide,
+
+    .case-content .exp-image,
+
+    .case-content .exp-image-small,
+
+    .case-content .exp-image-portrait,
+
+    .case-content .exp-image-editorial,
+
+    .case-content .exp-image-full {
+
+        margin-top:3rem;
+
+        margin-bottom:3rem;
+
+    }
+
+    .case-content .exp-image-small,
+
+    .case-content .exp-image-portrait {
+
+        width:100%;
+
+    }
+
+    .case-content .exp-image-pair {
+
+        grid-template-columns:1fr;
+
+        gap:2rem;
+
+    }
+
+    .case-content .exp-image-triptych {
+
+        grid-template-columns:1fr;
+
+        gap:2rem;
+
+    }
+
+    .case-content .exp-image-triptych img {
+
+        aspect-ratio:auto;
+
+    }
+
+    .case-content .exp-image-float-right,
+
+    .case-content .exp-image-float-left {
+
+        float:none;
+
+        width:100%;
+
+        margin:3rem 0;
+
+    }
+
+    .case-content .exp-pullquote {
+
+        padding:2rem 0;
+
+        font-size:1.45rem;
+
+    }
+
+    .case-content .exp-lead {
+
+        font-size:1.12rem;
+
+        line-height:1.75;
+
+    }
+
+    .case-content .exp-stat {
+
+        grid-template-columns:1fr;
+
+        gap:1rem;
+
+    }
+
+    .case-content .exp-stat-number {
+
+        font-size:3.5rem;
+
+    }
+
+}
+
+
+
+/* ---------------------------------------------------------
+
+   21. REDUCED MOTION
+
+   --------------------------------------------------------- */
+
+@media(prefers-reduced-motion:reduce){
+
+    .case-content * {
+
+        scroll-behavior:auto;
+
+    }
 
 }
