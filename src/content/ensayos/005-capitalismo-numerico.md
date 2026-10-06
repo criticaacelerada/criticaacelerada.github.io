@@ -26,6 +26,7 @@ video:
   credits:
     - node: diego-gimenez-vila
       role: participacion
+      trace: false
 ---
 
 ## Dossier del Nodo de co-agenciamiento

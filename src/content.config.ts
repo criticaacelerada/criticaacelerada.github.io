@@ -1,7 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
-
 /* ============================================================
    CRÉDITOS NODALES
 ============================================================ */
@@ -13,6 +12,11 @@ const creditSchema = z.object({
 
 const creditsSchema = z.array(creditSchema).optional();
 
+const videoCreditSchema = creditSchema.extend({
+  trace: z.boolean().optional(),
+});
+
+const videoCreditsSchema = z.array(videoCreditSchema).optional();
 
 /* ============================================================
    ENSAYOS / EXPEDIENTES
@@ -53,13 +57,14 @@ const ensayos = defineCollection({
 
         /*
          * Créditos específicos del material audiovisual.
+         * trace: false permite conservar el crédito sin
+         * convertirlo en una traza del nodo.
          */
-        credits: creditsSchema,
+        credits: videoCreditsSchema,
       })
       .optional(),
   }),
 });
-
 
 /* ============================================================
    TRANSMISIONES
@@ -80,7 +85,6 @@ const transmisiones = defineCollection({
     credits: creditsSchema,
   }),
 });
-
 
 /* ============================================================
    DESTILADOS
@@ -114,7 +118,6 @@ const destilados = defineCollection({
   }),
 });
 
-
 /* ============================================================
    ALÍCUOTAS
 ============================================================ */
@@ -141,7 +144,6 @@ const alicuotas = defineCollection({
     translationKey: z.string().optional(),
   }),
 });
-
 
 /* ============================================================
    EXPORTACIÓN

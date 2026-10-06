@@ -18,13 +18,14 @@ translationKey: "exp006"
 
 video:
   youtubeId: "RcV5d-BLL0o"
-  title: "Numerical Capitalism"
+  title: "Capitalismo numérico"
   context: "Líneas de Fuga II · Universitat de València"
-  label: "Audiovisual archive"
+  label: "Archivo audiovisual"
   date: 2026-08-27
   credits:
     - node: diego-gimenez-vila
       role: participacion
+      trace: false
 ---
 
 ## Co-agency Node Dossier

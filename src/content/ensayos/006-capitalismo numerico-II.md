@@ -18,6 +18,7 @@ language: "es"
 translationKey: "exp006"
 
 video:
+
   youtubeId: "RcV5d-BLL0o"
   title: "Capitalismo numérico"
   context: "Líneas de Fuga II · Universitat de València"
@@ -26,6 +27,7 @@ video:
   credits:
     - node: diego-gimenez-vila
       role: participacion
+      trace: false
 ---
 
 ## Dossier del Nodo de co-agenciamiento

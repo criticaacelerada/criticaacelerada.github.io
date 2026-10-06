@@ -2,664 +2,544 @@ import { getCollection } from "astro:content";
 import type { NodeProfile } from "../data/nodos";
 
 export type NodeTrace = {
-    id: string;
-    code: string;
-    type: string;
-    title: string;
-    role: string;
-    date: Date;
-    href: string;
+  id: string;
+  code: string;
+  type: string;
+  title: string;
+  role: string;
+  date: Date;
+  href: string;
 };
 
 type Credit = {
-    node: string;
-    role: string;
+  node: string;
+  role: string;
+  trace?: boolean;
 };
-
-
-/* ============================================================
-   UTILIDADES
-============================================================ */
 
 const normalize = (value: unknown) =>
-    String(value ?? "")
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .trim()
-        .toLowerCase();
+  String(value ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim()
+    .toLowerCase();
 
+const matchesNode = (value: unknown, node: NodeProfile) => {
+  const target = normalize(value);
 
-const matchesNode = (
-    value: unknown,
-    node: NodeProfile
-) => {
-    const target = normalize(value);
+  if (!target) {
+    return false;
+  }
 
-    if (!target) {
-        return false;
-    }
-
-    return node.aliases.some(
-        (alias) => normalize(alias) === target
-    );
+  return node.aliases.some(
+    (alias) => normalize(alias) === target
+  );
 };
-
-
-/* ============================================================
-   CREDITS
-============================================================ */
 
 const roleLabel = (role: unknown) => {
-    const normalized = normalize(role);
+  const normalized = normalize(role);
 
-    const labels: Record<string, string> = {
-        autoria: "AUTORÍA",
-        autor: "AUTORÍA",
-        coautoria: "COAUTORÍA",
-        traduccion: "TRADUCCIÓN",
-        edicion: "EDICIÓN",
-        curaduria: "CURADURÍA",
-        participacion: "PARTICIPACIÓN",
-        conversacion: "CONVERSACIÓN",
-        produccion: "PRODUCCIÓN",
-        coordinacion: "COORDINACIÓN",
-        investigacion: "INVESTIGACIÓN",
-        entrevista: "ENTREVISTA",
-        moderacion: "MODERACIÓN",
-        diseno: "DISEÑO",
+  const labels: Record<string, string> = {
+    autoria: "AUTORÍA",
+    autor: "AUTORÍA",
+    coautoria: "COAUTORÍA",
+    traduccion: "TRADUCCIÓN",
+    edicion: "EDICIÓN",
+    curaduria: "CURADURÍA",
+    participacion: "PARTICIPACIÓN",
+    conversacion: "CONVERSACIÓN",
+    produccion: "PRODUCCIÓN",
+    coordinacion: "COORDINACIÓN",
+    investigacion: "INVESTIGACIÓN",
+    entrevista: "ENTREVISTA",
+    moderacion: "MODERACIÓN",
+    diseno: "DISEÑO",
+    destilado: "DESTILADO",
+  };
 
-        // NUEVO:
-        destilado: "DESTILADO",
-    };
-
-    return (
-        labels[normalized] ??
-        String(role ?? "INTERVENCIÓN")
-            .replaceAll("-", " ")
-            .replaceAll("_", " ")
-            .toUpperCase()
-    );
+  return (
+    labels[normalized] ??
+    String(role ?? "INTERVENCIÓN")
+      .replaceAll("-", " ")
+      .replaceAll("_", " ")
+      .toUpperCase()
+  );
 };
-
 
 const getCredits = (value: unknown): Credit[] => {
-    if (!Array.isArray(value)) {
-        return [];
-    }
+  if (!Array.isArray(value)) {
+    return [];
+  }
 
-    return value.filter(
-        (credit): credit is Credit =>
-            !!credit &&
-            typeof credit === "object" &&
-            typeof (credit as Credit).node === "string" &&
-            typeof (credit as Credit).role === "string"
-    );
+  return value.filter(
+    (credit): credit is Credit =>
+      !!credit &&
+      typeof credit === "object" &&
+      typeof (credit as Credit).node === "string" &&
+      typeof (credit as Credit).role === "string"
+  );
 };
-
 
 const creditsForNode = (
-    value: unknown,
-    node: NodeProfile
+  value: unknown,
+  node: NodeProfile
 ) =>
-    getCredits(value).filter(
-        (credit) => credit.node === node.slug
-    );
+  getCredits(value).filter(
+    (credit) => credit.node === node.slug
+  );
 
+const traceCreditsForNode = (
+  value: unknown,
+  node: NodeProfile
+) =>
+  getCredits(value).filter(
+    (credit) =>
+      credit.node === node.slug &&
+      credit.trace !== false
+  );
 
 const pushCreditTraces = ({
-    traces,
-    credits,
-    idPrefix,
-    code,
-    type,
-    title,
-    date,
-    href,
+  traces,
+  credits,
+  idPrefix,
+  code,
+  type,
+  title,
+  date,
+  href,
 }: {
-    traces: NodeTrace[];
-    credits: Credit[];
-    idPrefix: string;
-    code: string;
-    type: string;
-    title: string;
-    date: Date;
-    href: string;
+  traces: NodeTrace[];
+  credits: Credit[];
+  idPrefix: string;
+  code: string;
+  type: string;
+  title: string;
+  date: Date;
+  href: string;
 }) => {
-
-    credits.forEach((credit, index) => {
-        traces.push({
-            id: `${idPrefix}-${credit.role}-${index}`,
-            code,
-            type,
-            title,
-            role: roleLabel(credit.role),
-            date,
-            href,
-        });
+  credits.forEach((credit, index) => {
+    traces.push({
+      id: `${idPrefix}-${credit.role}-${index}`,
+      code,
+      type,
+      title,
+      role: roleLabel(credit.role),
+      date,
+      href,
     });
+  });
 };
 
-
-/* ============================================================
-   TRAZAS DE UN NODO
-============================================================ */
-
 export async function getNodeTraces(
-    node: NodeProfile
+  node: NodeProfile
 ): Promise<NodeTrace[]> {
+  const [
+    ensayosTodos,
+    transmisiones,
+    destiladosTodos,
+    alicuotasTodos,
+  ] = await Promise.all([
+    getCollection("ensayos"),
+    getCollection("transmisiones"),
+    getCollection("destilados"),
+    getCollection("alicuotas"),
+  ]);
 
-    const [
-        ensayosTodos,
-        transmisiones,
-        destiladosTodos,
-        alicuotasTodos,
-    ] = await Promise.all([
-        getCollection("ensayos"),
-        getCollection("transmisiones"),
-        getCollection("destilados"),
-        getCollection("alicuotas"),
-    ]);
+  const ensayos = ensayosTodos.filter(
+    (entry) =>
+      (entry.data as any).language !== "en"
+  );
 
+  const destilados = destiladosTodos.filter(
+    (entry) =>
+      (entry.data as any).language !== "en"
+  );
+
+  const alicuotas = alicuotasTodos.filter(
+    (entry) =>
+      (entry.data as any).language !== "en"
+  );
+
+  const traces: NodeTrace[] = [];
+
+  /* ============================================================
+     EXPEDIENTES
+  ============================================================ */
+
+  for (const entry of ensayos) {
+    const data = entry.data as any;
+
+    const mainCredits = getCredits(
+      data.credits
+    );
+
+    const nodeMainCredits =
+      creditsForNode(
+        data.credits,
+        node
+      );
+
+    if (mainCredits.length > 0) {
+      pushCreditTraces({
+        traces,
+        credits: nodeMainCredits,
+        idPrefix: `ensayo-${entry.id}`,
+        code: `EXPEDIENTE ${String(
+          data.expediente
+        ).padStart(3, "0")}`,
+        type: "ARCHIVO TEXTUAL",
+        title: data.title,
+        date: data.date,
+        href: `/expedientes/${entry.id}`,
+      });
+    } else {
+      if (
+        matchesNode(
+          data.author,
+          node
+        )
+      ) {
+        traces.push({
+          id: `ensayo-${entry.id}-autor`,
+          code: `EXPEDIENTE ${String(
+            data.expediente
+          ).padStart(3, "0")}`,
+          type: "ARCHIVO TEXTUAL",
+          title: data.title,
+          role: "AUTORÍA",
+          date: data.date,
+          href: `/expedientes/${entry.id}`,
+        });
+      }
+
+      if (
+        matchesNode(
+          data.translator,
+          node
+        )
+      ) {
+        traces.push({
+          id: `ensayo-${entry.id}-traduccion`,
+          code: `EXPEDIENTE ${String(
+            data.expediente
+          ).padStart(3, "0")}`,
+          type: "ARCHIVO TEXTUAL",
+          title: data.title,
+          role: "TRADUCCIÓN",
+          date: data.date,
+          href: `/expedientes/${entry.id}`,
+        });
+      }
+    }
 
     /* ========================================================
-       UNA SOLA VERSIÓN VISIBLE POR PIEZA BILINGÜE
+       MATERIAL AUDIOVISUAL ASOCIADO
     ======================================================== */
 
-    const ensayos = ensayosTodos.filter(
-        (entry) =>
-            (entry.data as any).language !== "en"
-    );
+    if (data.video) {
+      const videoCredits = getCredits(
+        data.video.credits
+      );
 
-    const destilados = destiladosTodos.filter(
-        (entry) =>
-            (entry.data as any).language !== "en"
-    );
-
-    const alicuotas = alicuotasTodos.filter(
-        (entry) =>
-            (entry.data as any).language !== "en"
-    );
-
-
-    const traces: NodeTrace[] = [];
-
-
-    /* ============================================================
-       EXPEDIENTES
-    ============================================================ */
-
-    for (const entry of ensayos) {
-
-        const data = entry.data as any;
-
-        const mainCredits = getCredits(
-            data.credits
+      /*
+       * IMPORTANTE:
+       * Los créditos del video siguen existiendo,
+       * pero trace: false evita que generen una
+       * contribución en el perfil del nodo.
+       */
+      const nodeVideoCredits =
+        traceCreditsForNode(
+          data.video.credits,
+          node
         );
 
-        const nodeMainCredits = creditsForNode(
-            data.credits,
+      if (
+        videoCredits.length > 0
+      ) {
+        pushCreditTraces({
+          traces,
+          credits: nodeVideoCredits,
+          idPrefix: `ensayo-${entry.id}-video`,
+          code: `ARCHIVO AUDIOVISUAL / ${String(
+            data.expediente
+          ).padStart(3, "0")}`,
+          type: "MATERIAL ASOCIADO",
+          title: data.video.title,
+          date:
+            data.video.date ??
+            data.date,
+          href: `/expedientes/${entry.id}`,
+        });
+      } else if (
+        matchesNode(
+          data.author,
+          node
+        )
+      ) {
+        traces.push({
+          id: `ensayo-${entry.id}-video-legacy`,
+          code: `ARCHIVO AUDIOVISUAL / ${String(
+            data.expediente
+          ).padStart(3, "0")}`,
+          type: "MATERIAL ASOCIADO",
+          title: data.video.title,
+          role: "PARTICIPACIÓN AUDIOVISUAL",
+          date:
+            data.video.date ??
+            data.date,
+          href: `/expedientes/${entry.id}`,
+        });
+      }
+    }
+  }
+
+  /* ============================================================
+     TRANSMISIONES
+  ============================================================ */
+
+  for (const entry of transmisiones) {
+    const data = entry.data as any;
+
+    const credits = getCredits(
+      data.credits
+    );
+
+    const nodeCredits =
+      creditsForNode(
+        data.credits,
+        node
+      );
+
+    if (credits.length > 0) {
+      pushCreditTraces({
+        traces,
+        credits: nodeCredits,
+        idPrefix: `transmision-${entry.id}`,
+        code: `TRANSMISIÓN ${String(
+          data.numero
+        ).padStart(3, "0")}`,
+        type: "ARCHIVO AUDIOVISUAL",
+        title: data.title,
+        date: data.pubDate,
+        href: `/transmisiones/${entry.id}`,
+      });
+    } else {
+      const possiblePeople = [
+        ["author", "AUTORÍA"],
+        ["autor", "AUTORÍA"],
+        ["participant", "PARTICIPACIÓN"],
+        ["participante", "PARTICIPACIÓN"],
+      ] as const;
+
+      for (
+        const [field, role]
+        of possiblePeople
+      ) {
+        const value = data[field];
+
+        if (
+          Array.isArray(value)
+        ) {
+          if (
+            value.some(
+              (person) =>
+                matchesNode(
+                  person,
+                  node
+                )
+            )
+          ) {
+            traces.push({
+              id: `transmision-${entry.id}-${field}`,
+              code: `TRANSMISIÓN ${String(
+                data.numero
+              ).padStart(3, "0")}`,
+              type: "ARCHIVO AUDIOVISUAL",
+              title: data.title,
+              role,
+              date: data.pubDate,
+              href: `/transmisiones/${entry.id}`,
+            });
+          }
+        } else if (
+          matchesNode(
+            value,
             node
-        );
-
-
-        /*
-         * NUEVO SISTEMA:
-         *
-         * Si existen credits, éstos son la fuente
-         * principal de la pieza.
-         */
-
-        if (mainCredits.length > 0) {
-
-            pushCreditTraces({
-                traces,
-                credits: nodeMainCredits,
-                idPrefix: `ensayo-${entry.id}`,
-                code: `EXPEDIENTE ${String(
-                    data.expediente
-                ).padStart(3, "0")}`,
-                type: "ARCHIVO TEXTUAL",
-                title: data.title,
-                date: data.date,
-                href: `/expedientes/${entry.id}`,
-            });
-
-        } else {
-
-            /*
-             * COMPATIBILIDAD:
-             *
-             * Archivos antiguos que todavía usan
-             * author / translator.
-             */
-
-            if (
-                matchesNode(
-                    data.author,
-                    node
-                )
-            ) {
-
-                traces.push({
-                    id: `ensayo-${entry.id}-autor`,
-                    code: `EXPEDIENTE ${String(
-                        data.expediente
-                    ).padStart(3, "0")}`,
-                    type: "ARCHIVO TEXTUAL",
-                    title: data.title,
-                    role: "AUTORÍA",
-                    date: data.date,
-                    href: `/expedientes/${entry.id}`,
-                });
-
-            }
-
-
-            if (
-                matchesNode(
-                    data.translator,
-                    node
-                )
-            ) {
-
-                traces.push({
-                    id: `ensayo-${entry.id}-traduccion`,
-                    code: `EXPEDIENTE ${String(
-                        data.expediente
-                    ).padStart(3, "0")}`,
-                    type: "ARCHIVO TEXTUAL",
-                    title: data.title,
-                    role: "TRADUCCIÓN",
-                    date: data.date,
-                    href: `/expedientes/${entry.id}`,
-                });
-
-            }
-
+          )
+        ) {
+          traces.push({
+            id: `transmision-${entry.id}-${field}`,
+            code: `TRANSMISIÓN ${String(
+              data.numero
+            ).padStart(3, "0")}`,
+            type: "ARCHIVO AUDIOVISUAL",
+            title: data.title,
+            role,
+            date: data.pubDate,
+            href: `/transmisiones/${entry.id}`,
+          });
         }
-
-
-        /* ========================================================
-           MATERIAL AUDIOVISUAL ASOCIADO
-        ======================================================== */
-
-        if (data.video) {
-
-            const videoCredits = getCredits(
-                data.video.credits
-            );
-
-            const nodeVideoCredits =
-                creditsForNode(
-                    data.video.credits,
-                    node
-                );
-
-
-            if (
-                videoCredits.length > 0
-            ) {
-
-                pushCreditTraces({
-                    traces,
-                    credits: nodeVideoCredits,
-                    idPrefix: `ensayo-${entry.id}-video`,
-                    code: `ARCHIVO AUDIOVISUAL / ${String(
-                        data.expediente
-                    ).padStart(3, "0")}`,
-                    type: "MATERIAL ASOCIADO",
-                    title: data.video.title,
-                    date:
-                        data.video.date ??
-                        data.date,
-                    href: `/expedientes/${entry.id}`,
-                });
-
-            } else if (
-                matchesNode(
-                    data.author,
-                    node
-                )
-            ) {
-
-                traces.push({
-                    id: `ensayo-${entry.id}-video-legacy`,
-                    code: `ARCHIVO AUDIOVISUAL / ${String(
-                        data.expediente
-                    ).padStart(3, "0")}`,
-                    type: "MATERIAL ASOCIADO",
-                    title: data.video.title,
-                    role: "PARTICIPACIÓN AUDIOVISUAL",
-                    date:
-                        data.video.date ??
-                        data.date,
-                    href: `/expedientes/${entry.id}`,
-                });
-
-            }
-
-        }
-
+      }
     }
+  }
 
+  /* ============================================================
+     DESTILADOS
+  ============================================================ */
 
-    /* ============================================================
-       TRANSMISIONES
-    ============================================================ */
+  for (const entry of destilados) {
+    const data = entry.data as any;
 
-    for (const entry of transmisiones) {
-
-        const data = entry.data as any;
-
-        const credits = getCredits(
-            data.credits
-        );
-
-        const nodeCredits =
-            creditsForNode(
-                data.credits,
-                node
-            );
-
-
-        /*
-         * NUEVO SISTEMA
-         */
-
-        if (credits.length > 0) {
-
-            pushCreditTraces({
-                traces,
-                credits: nodeCredits,
-                idPrefix: `transmision-${entry.id}`,
-                code: `TRANSMISIÓN ${String(
-                    data.numero
-                ).padStart(3, "0")}`,
-                type: "ARCHIVO AUDIOVISUAL",
-                title: data.title,
-                date: data.pubDate,
-                href: `/transmisiones/${entry.id}`,
-            });
-
-        } else {
-
-            /*
-             * COMPATIBILIDAD CON ARCHIVOS ANTIGUOS
-             */
-
-            const possiblePeople = [
-                ["author", "AUTORÍA"],
-                ["autor", "AUTORÍA"],
-                ["participant", "PARTICIPACIÓN"],
-                ["participante", "PARTICIPACIÓN"],
-            ] as const;
-
-
-            for (
-                const [field, role]
-                of possiblePeople
-            ) {
-
-                const value = data[field];
-
-
-                if (
-                    Array.isArray(value)
-                ) {
-
-                    if (
-                        value.some(
-                            (person) =>
-                                matchesNode(
-                                    person,
-                                    node
-                                )
-                        )
-                    ) {
-
-                        traces.push({
-                            id: `transmision-${entry.id}-${field}`,
-                            code: `TRANSMISIÓN ${String(
-                                data.numero
-                            ).padStart(3, "0")}`,
-                            type: "ARCHIVO AUDIOVISUAL",
-                            title: data.title,
-                            role,
-                            date: data.pubDate,
-                            href: `/transmisiones/${entry.id}`,
-                        });
-
-                    }
-
-                } else if (
-                    matchesNode(
-                        value,
-                        node
-                    )
-                ) {
-
-                    traces.push({
-                        id: `transmision-${entry.id}-${field}`,
-                        code: `TRANSMISIÓN ${String(
-                            data.numero
-                        ).padStart(3, "0")}`,
-                        type: "ARCHIVO AUDIOVISUAL",
-                        title: data.title,
-                        role,
-                        date: data.pubDate,
-                        href: `/transmisiones/${entry.id}`,
-                    });
-
-                }
-
-            }
-
-        }
-
-    }
-
-
-    /* ============================================================
-       DESTILADOS
-    ============================================================ */
-
-    for (const entry of destilados) {
-
-        const data = entry.data as any;
-
-        const credits = getCredits(
-            data.credits
-        );
-
-        const nodeCredits =
-            creditsForNode(
-                data.credits,
-                node
-            );
-
-
-        /*
-         * NUEVO SISTEMA DE CRÉDITOS
-         *
-         * Ejemplo:
-         *
-         * credits:
-         *   - node: "oliver-ferran"
-         *     role: "destilado"
-         */
-
-        if (credits.length > 0) {
-
-            pushCreditTraces({
-                traces,
-                credits: nodeCredits,
-                idPrefix: `destilado-${entry.id}`,
-                code: `DESTILADO ${String(
-                    data.numero
-                ).padStart(3, "0")}`,
-                type: "ARCHIVO DESTILADO",
-                title: data.title,
-                date: data.pubDate,
-                href: `/destilados/${entry.id}`,
-            });
-
-        } else {
-
-            /*
-             * COMPATIBILIDAD CON DESTILADOS ANTIGUOS
-             */
-
-            if (
-                matchesNode(
-                    data.autor,
-                    node
-                ) ||
-                matchesNode(
-                    data.author,
-                    node
-                )
-            ) {
-
-                traces.push({
-                    id: `destilado-${entry.id}-autor`,
-                    code: `DESTILADO ${String(
-                        data.numero
-                    ).padStart(3, "0")}`,
-                    type: "ARCHIVO DESTILADO",
-                    title: data.title,
-                    role: "AUTORÍA",
-                    date: data.pubDate,
-                    href: `/destilados/${entry.id}`,
-                });
-
-            }
-
-
-            if (
-                matchesNode(
-                    data.translator,
-                    node
-                )
-            ) {
-
-                traces.push({
-                    id: `destilado-${entry.id}-traduccion`,
-                    code: `DESTILADO ${String(
-                        data.numero
-                    ).padStart(3, "0")}`,
-                    type: "ARCHIVO DESTILADO",
-                    title: data.title,
-                    role: "TRADUCCIÓN",
-                    date: data.pubDate,
-                    href: `/destilados/${entry.id}`,
-                });
-
-            }
-
-        }
-
-    }
-
-
-    /* ============================================================
-       ALÍCUOTAS
-    ============================================================ */
-
-    for (const entry of alicuotas) {
-
-        const data = entry.data as any;
-
-        const credits = getCredits(
-            data.credits
-        );
-
-        const nodeCredits =
-            creditsForNode(
-                data.credits,
-                node
-            );
-
-
-        if (credits.length > 0) {
-
-            pushCreditTraces({
-                traces,
-                credits: nodeCredits,
-                idPrefix: `alicuota-${entry.id}`,
-                code: `AE—${String(
-                    data.numero
-                ).padStart(3, "0")}`,
-                type: "ARCHIVO EXPERIMENTAL",
-                title: data.title,
-                date: data.pubDate,
-                href: `/alicuotas/${entry.id}`,
-            });
-
-        } else {
-
-            /*
-             * COMPATIBILIDAD CON ARCHIVOS ANTIGUOS
-             */
-
-            if (
-                matchesNode(
-                    data.autor,
-                    node
-                ) ||
-                matchesNode(
-                    data.author,
-                    node
-                )
-            ) {
-
-                traces.push({
-                    id: `alicuota-${entry.id}-autor`,
-                    code: `AE—${String(
-                        data.numero
-                    ).padStart(3, "0")}`,
-                    type: "ARCHIVO EXPERIMENTAL",
-                    title: data.title,
-                    role: "AUTORÍA",
-                    date: data.pubDate,
-                    href: `/alicuotas/${entry.id}`,
-                });
-
-            }
-
-
-            if (
-                matchesNode(
-                    data.translator,
-                    node
-                )
-            ) {
-
-                traces.push({
-                    id: `alicuota-${entry.id}-traduccion`,
-                    code: `AE—${String(
-                        data.numero
-                    ).padStart(3, "0")}`,
-                    type: "ARCHIVO EXPERIMENTAL",
-                    title: data.title,
-                    role: "TRADUCCIÓN",
-                    date: data.pubDate,
-                    href: `/alicuotas/${entry.id}`,
-                });
-
-            }
-
-        }
-
-    }
-
-
-    /* ============================================================
-       ORDEN CRONOLÓGICO
-    ============================================================ */
-
-    return traces.sort(
-        (a, b) =>
-            b.date.getTime() -
-            a.date.getTime()
+    const credits = getCredits(
+      data.credits
     );
+
+    const nodeCredits =
+      creditsForNode(
+        data.credits,
+        node
+      );
+
+    if (credits.length > 0) {
+      pushCreditTraces({
+        traces,
+        credits: nodeCredits,
+        idPrefix: `destilado-${entry.id}`,
+        code: `DESTILADO ${String(
+          data.numero
+        ).padStart(3, "0")}`,
+        type: "ARCHIVO DESTILADO",
+        title: data.title,
+        date: data.pubDate,
+        href: `/destilados/${entry.id}`,
+      });
+    } else {
+      if (
+        matchesNode(
+          data.autor,
+          node
+        ) ||
+        matchesNode(
+          data.author,
+          node
+        )
+      ) {
+        traces.push({
+          id: `destilado-${entry.id}-autor`,
+          code: `DESTILADO ${String(
+            data.numero
+          ).padStart(3, "0")}`,
+          type: "ARCHIVO DESTILADO",
+          title: data.title,
+          role: "AUTORÍA",
+          date: data.pubDate,
+          href: `/destilados/${entry.id}`,
+        });
+      }
+
+      if (
+        matchesNode(
+          data.translator,
+          node
+        )
+      ) {
+        traces.push({
+          id: `destilado-${entry.id}-traduccion`,
+          code: `DESTILADO ${String(
+            data.numero
+          ).padStart(3, "0")}`,
+          type: "ARCHIVO DESTILADO",
+          title: data.title,
+          role: "TRADUCCIÓN",
+          date: data.pubDate,
+          href: `/destilados/${entry.id}`,
+        });
+      }
+    }
+  }
+
+  /* ============================================================
+     ALÍCUOTAS
+  ============================================================ */
+
+  for (const entry of alicuotas) {
+    const data = entry.data as any;
+
+    const credits = getCredits(
+      data.credits
+    );
+
+    const nodeCredits =
+      creditsForNode(
+        data.credits,
+        node
+      );
+
+    if (credits.length > 0) {
+      pushCreditTraces({
+        traces,
+        credits: nodeCredits,
+        idPrefix: `alicuota-${entry.id}`,
+        code: `AE—${String(
+          data.numero
+        ).padStart(3, "0")}`,
+        type: "ARCHIVO EXPERIMENTAL",
+        title: data.title,
+        date: data.pubDate,
+        href: `/alicuotas/${entry.id}`,
+      });
+    } else {
+      if (
+        matchesNode(
+          data.autor,
+          node
+        ) ||
+        matchesNode(
+          data.author,
+          node
+        )
+      ) {
+        traces.push({
+          id: `alicuota-${entry.id}-autor`,
+          code: `AE—${String(
+            data.numero
+          ).padStart(3, "0")}`,
+          type: "ARCHIVO EXPERIMENTAL",
+          title: data.title,
+          role: "AUTORÍA",
+          date: data.pubDate,
+          href: `/alicuotas/${entry.id}`,
+        });
+      }
+
+      if (
+        matchesNode(
+          data.translator,
+          node
+        )
+      ) {
+        traces.push({
+          id: `alicuota-${entry.id}-traduccion`,
+          code: `AE—${String(
+            data.numero
+          ).padStart(3, "0")}`,
+          type: "ARCHIVO EXPERIMENTAL",
+          title: data.title,
+          role: "TRADUCCIÓN",
+          date: data.pubDate,
+          href: `/alicuotas/${entry.id}`,
+        });
+      }
+    }
+  }
+
+  /* ============================================================
+     ORDEN CRONOLÓGICO
+  ============================================================ */
+
+  return traces.sort(
+    (a, b) =>
+      b.date.getTime() -
+      a.date.getTime()
+  );
 }
