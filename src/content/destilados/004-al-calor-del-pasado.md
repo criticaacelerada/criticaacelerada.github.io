@@ -31,7 +31,7 @@ Andreas Malm comienza el capítulo señalando que los orígenes de la economía 
 
 ## Ahora sí se sabe
 
-Hasta 2026, se conoce bien sobre los efectos contaminantes de las emisiones es ampliamente compartido. Desde 1990, diferentes expertos y autoridades en el tema han difundido informes alertando sobre las consecuencias de un plantea que se calienta cada vez más. No obstante, esto no ha resultado suficiente para que la generación de emisiones disminuya.
+Hasta 2026, se conoce bien sobre los efectos contaminantes de las emisiones. Desde 1990, diferentes expertos y autoridades en el tema han difundido informes alertando sobre las consecuencias de un plantea que se calienta cada vez más. No obstante, esto no ha resultado suficiente para que la generación de emisiones disminuya.
 
 Malm destaca que entre 1990 y 2012, la producción global de CO₂ aumentó 58%. Así, los combustibles fósiles siguen siendo un pilar fundamental de la producción mundial. Las proyecciones indican que esta tendencia difícilmente se revertirá: en la década de 1990 la tasa de crecimiento anual de emisiones fue de 1%, mientras que para el año 2000 se elevó a 3.1%. En otras palabras, el tratamiento de las emisiones contaminantes sigue siendo sumamente permisivo.
 
