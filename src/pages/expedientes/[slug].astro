@@ -1,3 +1,4 @@
+
 ---
 import { getCollection, render } from "astro:content";
 import HomeButton from "../../components/HomeButton.astro";
@@ -19,71 +20,92 @@ export async function getStaticPaths() {
 }
 
 const { ensayo } = Astro.props;
-
 const { Content } = await render(ensayo);
+
+const esTraduccion = Boolean(ensayo.data.translator);
 ---
 
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content={ensayo.data.descripcion}
+  />
   <title>{ensayo.data.title} | Crítica Acelerada</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 </head>
 
 <body>
 
-<SocialFooter />
+  <SocialFooter />
 
-<HomeButton />
+  <HomeButton />
 
   <main class="case-page">
-
     <div class="container">
 
       <header class="case-header">
 
         <div class="case-header-top">
-
           <p class="eyebrow">
-            EXPEDIENTE {String(ensayo.data.expediente).padStart(3,"0")}
+            EXPEDIENTE {String(ensayo.data.expediente).padStart(3, "0")}
           </p>
 
           <span class="case-status">
             ARCHIVO ABIERTO
           </span>
-
         </div>
 
         <div class="case-title-grid">
 
           <div class="case-title-block">
 
-            <h1>
-              {ensayo.data.title}
-            </h1>
+            {
+              esTraduccion && (
+                <div class="translation-label">
+                  <span class="translation-label-marker" aria-hidden="true">
+                    ↳
+                  </span>
+                  <span>TRADUCCIÓN TEÓRICA</span>
+                  <span class="translation-label-languages">
+                    INGLÉS → ESPAÑOL
+                  </span>
+                </div>
+              )
+            }
+
+            <h1>{ensayo.data.title}</h1>
 
             <p class="case-description">
               {ensayo.data.descripcion}
             </p>
 
+            {
+              esTraduccion && (
+                <p class="translation-credit">
+                  Texto de <strong>{ensayo.data.author}</strong>
+                  {" · "}
+                  Traducción al español de{" "}
+                  <strong>{ensayo.data.translator}</strong>
+                </p>
+              )
+            }
+
           </div>
 
           <div class="case-number" aria-hidden="true">
-            {String(ensayo.data.expediente).padStart(3,"0")}
+            {String(ensayo.data.expediente).padStart(3, "0")}
           </div>
 
         </div>
 
         <div class="case-meta">
 
-          <span>
-            CRÍTICA ACELERADA
-          </span>
+          <span>CRÍTICA ACELERADA</span>
 
-          <span>
-            LABORATORIO DE ESTUDIOS CRÍTICOS
-          </span>
+          <span>LABORATORIO DE ESTUDIOS CRÍTICOS</span>
 
           {
             ensayo.data.language && (
@@ -102,47 +124,64 @@ const { Content } = await render(ensayo);
         <aside class="case-sidebar">
 
           <div class="case-sidebar-block">
-
             <span class="case-sidebar-label">
               CLASIFICACIÓN
             </span>
 
             <strong>
-              EXPEDIENTE {String(ensayo.data.expediente).padStart(3,"0")}
+              EXPEDIENTE {String(ensayo.data.expediente).padStart(3, "0")}
             </strong>
-
           </div>
 
           <div class="case-sidebar-block">
-
             <span class="case-sidebar-label">
               ESTADO
             </span>
 
-            <strong>
-              PUBLICADO
-            </strong>
-
+            <strong>PUBLICADO</strong>
           </div>
 
           <div class="case-sidebar-block">
-
             <span class="case-sidebar-label">
               FORMATO
             </span>
 
             <strong>
-              ENSAYO
+              {esTraduccion ? "TRADUCCIÓN TEÓRICA" : "ENSAYO"}
             </strong>
-
           </div>
+
+          {
+            esTraduccion && (
+              <>
+                <div class="case-sidebar-line"></div>
+
+                <div class="case-sidebar-block">
+                  <span class="case-sidebar-label">
+                    AUTORÍA ORIGINAL
+                  </span>
+
+                  <strong>
+                    {ensayo.data.author}
+                  </strong>
+                </div>
+
+                <div class="case-sidebar-block">
+                  <span class="case-sidebar-label">
+                    TRADUCCIÓN AL ESPAÑOL
+                  </span>
+
+                  <strong>
+                    {ensayo.data.translator}
+                  </strong>
+                </div>
+              </>
+            )
+          }
 
           <div class="case-sidebar-line"></div>
 
-          <a
-            class="case-back-link"
-            href="/expedientes"
-          >
+          <a class="case-back-link" href="/expedientes">
             ← Volver al archivo
           </a>
 
@@ -150,29 +189,67 @@ const { Content } = await render(ensayo);
 
         <article class="case-content">
 
-  <Content />
+          <Content />
 
-  {
-    ensayo.data.video && (
-      <ArchivoAudiovisual
-        youtubeId={ensayo.data.video.youtubeId}
-        title={ensayo.data.video.title}
-        context={ensayo.data.video.context}
-        label={ensayo.data.video.label}
-        expediente={ensayo.data.expediente}
-        language={ensayo.data.language}
-      />
-    )
-  }
+          {
+            ensayo.data.video && (
+              <ArchivoAudiovisual
+                youtubeId={ensayo.data.video.youtubeId}
+                title={ensayo.data.video.title}
+                context={ensayo.data.video.context}
+                label={ensayo.data.video.label}
+                expediente={ensayo.data.expediente}
+                language={ensayo.data.language}
+              />
+            )
+          }
 
-</article>
+        </article>
 
       </div>
 
     </div>
-
   </main>
 
 </body>
-
 </html>
+
+<style>
+  .translation-label {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-bottom: 1.5rem;
+    color: #ff2f6d;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.6;
+  }
+
+  .translation-label-marker {
+    font-size: 1rem;
+    letter-spacing: 0;
+  }
+
+  .translation-label-languages {
+    padding-left: 0.75rem;
+    border-left: 1px solid #383838;
+    color: #999;
+    font-size: 0.62rem;
+    font-weight: 500;
+  }
+
+  .translation-credit {
+    margin-top: 1.25rem;
+    color: #999;
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+
+  .translation-credit strong {
+    color: #ddd;
+    font-weight: 600;
+  }
+</style>
