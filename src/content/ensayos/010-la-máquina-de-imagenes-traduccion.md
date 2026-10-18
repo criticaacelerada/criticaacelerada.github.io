@@ -2,7 +2,7 @@
 title: "La máquina de imágenes"
 date: 2026-10-14
 expediente: 10
-descripcion: "Traducción al español de un texto de Félix Guattari sobre la producción de subjetividad, la transformación de la experiencia cinematográfica y televisiva, y las posibilidades de reapropiación de las imágenes en la era digital."
+descripcion: "Sobre la producción de subjetividad, la transformación de la experiencia cinematográfica y televisiva, y las posibilidades de reapropiación de las imágenes en la era digital."
 
 author: "Félix Guattari"
 role: "TRADUCCIÓN TEÓRICA"
@@ -29,7 +29,7 @@ translationKey: "exp010"
 
 # La máquina de imágenes [^1]
 
-**Félix Guattari**
+
 
 La forma fílmica ocupa un lugar cada vez más importante en la producción de la subjetividad individual y colectiva, en gran medida gracias a la televisión. Entre el cine y la televisión se despliega todo un campo de interacciones. El cine tiende a quedar absorbido por una temporalidad televisiva que denomino temporalidad del videoclip. Hay una especie de estribillo temporal, un fragmento de tiempo que, a mi juicio, está profundamente condicionado por el consumo televisivo. Esta fórmula temporal del cine tiene algo de misterioso: deriva de la televisión y, al mismo tiempo, ha influido en las formas de consumo televisivo.
 
