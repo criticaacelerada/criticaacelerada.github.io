@@ -25,6 +25,7 @@ translationKey: "exp010"
 
 **Félix Guattari** fue un psicoanalista, filósofo, semiólogo, activista y guionista francés. Fundó el esquizoanálisis y la ecosofía. Su obra es ampliamente conocida por la colaboración intelectual con Gilles Deleuze, de la que surgieron *Anti-Edipo* y *Mil mesetas*, los dos volúmenes que conforman *Capitalismo y esquizofrenia*.
 
+
 ---
 
 # La máquina de imágenes [^1]
