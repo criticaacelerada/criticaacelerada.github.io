@@ -32,7 +32,7 @@ export const nodes: NodeProfile[] = [
         slug: "oliver-ferran",
 
         code: "CA / NODO 001",
-        name: "SAMUEL OLIVER (ferracianuro)",
+        name: "OLIVER CARMENEZ (Virgo Nocturno)",
         role: "NODO SEMILLA",
         status: "ACTIVO",
 
@@ -40,7 +40,7 @@ export const nodes: NodeProfile[] = [
             "Oliver Ferran",
             "Samuel Oliver",
             "SAMUEL OLIVER",
-            "SAMUEL OLIVER (ferracianuro)",
+            "OLIVER CARMENEZ (Virgo Nocturno)",
         ],
 
         fields: [

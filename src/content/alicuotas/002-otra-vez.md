@@ -3,7 +3,7 @@ title: "OTRA VEZ"
 description: "Pieza de escritura experimental"
 pubDate: 2026-10-23
 numero: 2
-autor: "Oliver Ferran"
+autor: "Oliver Carmenez"
 translator: "Oliver Ferran"
 tipo: "Fragmento"
 language: "es"
@@ -12,15 +12,16 @@ translationKey: "002-otra-vez"
 
 ## Dossier del Colaborador
 
-**Oliver Ferran**
+**Oliver Carmenez**
 
 Investigador independiente radicado en México. Ingeniero químico y economista. Actualmente cursa la Maestría en Ciencias Económicas. Es integrante del Laboratorio de Estudios sobre Empresas Transnacionales del Instituto de Investigaciones Económicas de la UNAM y nodo inicial de **Crítica Acelerada**. Sus líneas de investigación se centran en la colapsología, el aceleracionismo crítico y la economía política de los datos.
 
 
-**Substack:** [@ferracianuro91](https://substack.com/@ferracianuro91)  
-**X:** [@ferracianuro](https://x.com/ferracianuro)  
-**Instagram:** [@ferracianuro](https://www.instagram.com/ferracianuro/)  
+**Substack:** [@virgonocturno](https://substack.com/@virgonocturno)  
+**X:** [@virgonocturno](https://x.com/virgonocturno)  
+**Instagram:** [@virgonocturno](https://www.instagram.com/virgonocturno/)  
 **Correo electrónico:** [olifer.virgo@gmail.com](mailto:olifer.virgo@gmail.com)
+
 
 ---
 

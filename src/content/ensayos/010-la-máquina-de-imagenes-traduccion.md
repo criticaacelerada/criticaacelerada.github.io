@@ -6,7 +6,7 @@ descripcion: "Sobre la producción de subjetividad, la transformación de la exp
 
 author: "Félix Guattari"
 role: "TRADUCCIÓN TEÓRICA"
-translator: "Oliver Ferran"
+translator: "Oliver Carmenez"
 sourceLanguage: "en"
 sourceTitle: "The Image Machine"
 sourceUrl: "https://www.e-flux.com/notes/6783490/the-image-machine"

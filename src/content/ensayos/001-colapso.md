@@ -1,27 +1,30 @@
 
+
 ---
 title: "¿Por qué hablar de colapso? Parte I"
-author: "Oliver Ferran"
-role: "Seed Node"
 date: 2026-07-26
 expediente: 1
 descripcion: "EL COLAPSO COMO OBJETO DE INVESTIGACIÓN EN EL SIGLO XXI"
+
+author: "Oliver Carmenez"
+role: "Seed Node"
 
 language: "es"
 translationKey: "exp001"
 ---
 
+
 ## Dossier del Colaborador
 
-**Oliver Ferran**
+**Oliver Carmenez (Virgo Nocturno)**
 
 Investigador independiente radicado en México. Ingeniero químico y economista. Actualmente cursa la Maestría en Ciencias Económicas. Es integrante del Laboratorio de Estudios sobre Empresas Transnacionales del Instituto de Investigaciones Económicas de la UNAM y nodo inicial de **Crítica Acelerada**. Sus líneas de investigación se centran en la colapsología, el aceleracionismo crítico y la economía política de los datos.
 
 
-**Substack:** [@ferracianuro91](https://substack.com/@ferracianuro91)  
-**X:** [@ferracianuro](https://x.com/ferracianuro)  
-**Instagram:** [@ferracianuro](https://www.instagram.com/ferracianuro/)  
-**Correo electrónico:** [oliver.virgo@gmail.com](mailto:oliver.virgo@gmail.com)
+**Substack:** [@virgonocturno](https://substack.com/@virgonocturno)  
+**X:** [@virgonocturno](https://x.com/virgonocturno)  
+**Instagram:** [@virgonocturno](https://www.instagram.com/virgonocturno/)  
+**Correo electrónico:** [olifer.virgo@gmail.com](mailto:olifer.virgo@gmail.com)
 
  
 ### Nota del Laboratorio

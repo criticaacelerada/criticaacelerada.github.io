@@ -1,6 +1,6 @@
 ---
 title: "Why Talk About Collapse? Part I"
-author: "Oliver Ferran"
+author: "Oliver Carmenez"
 role: "SEED NODE"
 date: 2026-07-26
 expediente: 1
@@ -12,14 +12,15 @@ translationKey: "exp001"
 
 ## Contributor Dossier
 
-**Oliver Ferran**
+**Oliver Carmenez (Virgo Nocturno)**
 
 Independent researcher based in Mexico. Chemical engineer and economist. He is currently pursuing a Master's degree in Economic Sciences. He is a member of the Laboratory for the Study of Transnational Corporations at the Institute for Economic Research (IIEc), National Autonomous University of Mexico (UNAM), and the seed node of **Crítica Acelerada**. His research focuses on collapsology, critical accelerationism, and the political economy of data.
 
-**Substack:** [@ferracianuro91](https://substack.com/@ferracianuro91)  
-**X:** [@ferracianuro](https://x.com/ferracianuro)  
-**Instagram:** [@ferracianuro](https://www.instagram.com/ferracianuro/)  
-**Correo electrónico:** [oliver.virgo@gmail.com](mailto:oliver.virgo@gmail.com)
+**Substack:** [@virgonocturno](https://substack.com/@virgonocturno)  
+**X:** [@virgonocturno](https://x.com/virgonocturno)  
+**Instagram:** [@virgonocturno](https://www.instagram.com/virgonocturno/)  
+**Correo electrónico:** [olifer.virgo@gmail.com](mailto:olifer.virgo@gmail.com)
+
 
 
 ---
