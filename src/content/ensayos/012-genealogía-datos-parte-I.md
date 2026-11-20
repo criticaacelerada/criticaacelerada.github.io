@@ -28,7 +28,7 @@ translationKey: "exp012"
 
 ---
 
->Nota: La presente entrega recoge los hallazgos en bruto —y estado salvaje— que forman parte de mi tesis de maestría.
+>Nota: Esta entrega recoge los hallazgos en bruto —aún sin domesticar— de mi tesis de maestría.
 
 De pronto el talante electromaquínico de Moloch me obliga a retornar de mi *systemind* subconsciente de medianoche. Moloch, aquella criatura ginsbergneana cubierta de electrodepósitos de cobre y plástico y una pantalla alimentada por restos fósiles, me arrastra hacia aquello que me ha tenido sobrepensando —incluso a las ideas de mis ideas de mi *systemind*— por espacio de un vasto tiempo. Empero, dilatar el fiel digital de la hora resulta mayormente atractivo que erigir Roma en un exacto día, para un sujeto poco aficionado al cortoplacismo.
 
