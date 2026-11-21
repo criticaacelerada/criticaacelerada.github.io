@@ -11,7 +11,7 @@ role: "Co-agencement node"
 credits:
   - node: diego-gimenez-vila
     role: autoria
-  - node: oliver-ferran
+  - node: oliver-carmenez
     role: traduccion
 
 language: "en"

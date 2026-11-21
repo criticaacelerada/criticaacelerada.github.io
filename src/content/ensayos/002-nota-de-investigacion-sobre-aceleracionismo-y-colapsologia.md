@@ -6,7 +6,7 @@ descripcion: "Acontecimientos y no-acontecimientos"
 
 author: "Chiiii"
 role: "CONTRIBUTOR"
-translator: "Oliver Ferran"
+translator: "Oliver Carmenez"
 
 language: "es"
 translationKey: "exp002"

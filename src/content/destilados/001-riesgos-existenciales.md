@@ -5,10 +5,10 @@ pubDate: 2026-08-06
 numero: 1
 autor: "Nick Bostrom y Milan Ćirković"
 obra: "Riesgos Catastróficos Globales"
-destiladoPor: "Oliver Ferran"
+destiladoPor: "Oliver Carmenez (Virgo Nocturno)"
 
 credits:
-  - node: "oliver-ferran"
+  - node: "oliver-carmenez"
     role: "destilado"
 
 language: "es"

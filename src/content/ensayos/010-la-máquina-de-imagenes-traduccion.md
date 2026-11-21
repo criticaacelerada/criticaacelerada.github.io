@@ -12,7 +12,7 @@ sourceTitle: "The Image Machine"
 sourceUrl: "https://www.e-flux.com/notes/6783490/the-image-machine"
 
 credits:
-  - node: oliver-ferran
+  - node: oliver-carmenez
     role: traduccion
 
 language: "es"

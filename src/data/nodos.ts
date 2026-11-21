@@ -29,7 +29,7 @@ export const nodes: NodeProfile[] = [
     {
         // Se conserva el slug original para no romper
         // perfiles, enlaces, créditos ni trazas existentes.
-        slug: "oliver-ferran",
+        slug: "oliver-carmenez",
 
         code: "CA / NODO 001",
         name: "OLIVER CARMENEZ (Virgo Nocturno)",
@@ -37,7 +37,7 @@ export const nodes: NodeProfile[] = [
         status: "ACTIVO",
 
         aliases: [
-            "Oliver Ferran",
+            "Oliver Carmenez",
             "Samuel Oliver",
             "SAMUEL OLIVER",
             "OLIVER CARMENEZ (Virgo Nocturno)",

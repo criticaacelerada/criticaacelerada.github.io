@@ -4,7 +4,7 @@ description: "Fragmento de Cunus"
 pubDate: 2026-08-11
 numero: 1
 autor: "Christian McDonough"
-translator: "Oliver Ferran (Virgo Nocturno)"
+translator: "Oliver Carmenez (Virgo Nocturno)"
 tipo: "Fragmento"
 language: "es"
 translationKey: "001-mi-primera-vez"
@@ -15,7 +15,7 @@ translationKey: "001-mi-primera-vez"
 
 Por Christian McDonough
 
-Traducción: Oliver Ferran
+Traducción: Oliver Carmenez
 
 El extracto original aparece en [https://burialmagazine.neocities.org/myfirsttime](https://burialmagazine.neocities.org/myfirsttime).
 

@@ -5,10 +5,10 @@ pubDate: 2026-11-04
 numero: 6
 autor: "Jorge Riechmann"
 obra: "Nuestra Bandera. Reflexiones críticas en torno a la transición energética"
-destiladoPor: "Oliver Ferran"
+destiladoPor: "Oliver Carmenez (Virgo Nocturno)"
 
 credits:
-  - node: "oliver-ferran"
+  - node: "oliver-carmenez"
     role: "destilado"
 
 language: "es"

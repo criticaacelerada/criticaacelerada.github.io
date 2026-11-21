@@ -13,7 +13,7 @@ translationKey: "001-mi-primera-vez"
 
 by Christian McDonough
 
-Translator: Oliver Ferran
+Translator: Oliver Carmenez (Virgo Nocturno)
 
 The original excerpt appears at [https://burialmagazine.neocities.org/myfirsttime](https://burialmagazine.neocities.org/myfirsttime).
 

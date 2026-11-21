@@ -5,10 +5,10 @@ pubDate: 2026-09-17
 numero: 3
 autor: "John Bellamy Foster"
 obra: "Marx's Ecology: Materialism and Nature"
-destiladoPor: "Oliver Ferran"
+destiladoPor: "Oliver Carmenez (Virgo Nocturno)"
 
 credits:
-  - node: "oliver-ferran"
+  - node: "oliver-carmenez"
     role: "destilado"
 
 language: "en"

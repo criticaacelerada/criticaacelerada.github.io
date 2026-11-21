@@ -5,10 +5,10 @@ pubDate: 2026-09-11
 numero: 2
 autor: "Félix Guattari"
 obra: "Le Capitalisme Mondial Intégré et la révolution moléculaire"
-destiladoPor: "Oliver Ferran"
+destiladoPor: "Oliver Carmenez (Virgo Nocturno)"
 
 credits:
-  - node: "oliver-ferran"
+  - node: "oliver-carmenez"
     role: "destilado"
 
 language: "en"

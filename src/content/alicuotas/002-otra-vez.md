@@ -4,7 +4,6 @@ description: "Pieza de escritura experimental"
 pubDate: 2026-10-23
 numero: 2
 autor: "Oliver Carmenez"
-translator: "Oliver Ferran"
 tipo: "Fragmento"
 language: "es"
 translationKey: "002-otra-vez"

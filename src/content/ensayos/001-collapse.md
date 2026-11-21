@@ -1,14 +1,17 @@
+
 ---
 title: "Why Talk About Collapse? Part I"
-author: "Oliver Carmenez"
-role: "SEED NODE"
 date: 2026-07-26
 expediente: 1
 descripcion: "COLLAPSE AS AN OBJECT OF RESEARCH IN THE TWENTY-FIRST CENTURY"
 
+author: "Oliver Carmenez"
+role: "SEED NODE"
+
 language: "en"
 translationKey: "exp001"
 ---
+
 
 ## Contributor Dossier
 

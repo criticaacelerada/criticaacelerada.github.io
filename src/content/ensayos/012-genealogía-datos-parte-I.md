@@ -9,7 +9,7 @@ role: "Seed Node"
 
 
 credits:
-  - node: oliver-ferran
+  - node: oliver-carmenez
     role: autoria
 
 

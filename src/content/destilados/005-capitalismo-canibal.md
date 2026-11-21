@@ -5,10 +5,10 @@ pubDate: 2026-10-21
 numero: 5
 autor: "Nancy Fraser"
 obra: "Capítulo 1"
-destiladoPor: "Oliver Ferran"
+destiladoPor: "Oliver Carmenez (Virgo Nocturno)"
 
 credits:
-  - node: "oliver-ferran"
+  - node: "oliver-carmenez"
     role: "destilado"
 
 language: "es"

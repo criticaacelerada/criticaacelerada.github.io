@@ -5,10 +5,10 @@ pubDate: 2026-09-11
 numero: 2
 autor: "Félix Guattari"
 obra: "Plan sobre el planeta. Capitalismo mundial integrado y revoluciones moleculares"
-destiladoPor: "Oliver Ferran"
+destiladoPor: "Oliver Carmenez (Virgo Nocturno)"
 
 credits:
-  - node: "oliver-ferran"
+  - node: "oliver-carmenez"
     role: "destilado"
 
 language: "es"

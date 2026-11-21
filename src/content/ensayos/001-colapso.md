@@ -6,8 +6,9 @@ date: 2026-07-26
 expediente: 1
 descripcion: "EL COLAPSO COMO OBJETO DE INVESTIGACIÓN EN EL SIGLO XXI"
 
-author: "Oliver Carmenez"
+author: "Oliver Carmenez (Virgo Nocturno)"
 role: "Seed Node"
+translator: "Oliver Carmenez"
 
 language: "es"
 translationKey: "exp001"

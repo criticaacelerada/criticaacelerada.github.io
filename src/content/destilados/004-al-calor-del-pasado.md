@@ -5,10 +5,10 @@ pubDate: 2026-10-05
 numero: 4
 autor: "Andreas Malm"
 obra: "Capital fósil. El auge del vapor y las raíces del calentamiento global"
-destiladoPor: "Oliver Ferran"
+destiladoPor: "Oliver Carmenez (Virgo Nocturno)"
 
 credits:
-  - node: "oliver-ferran"
+  - node: "oliver-carmenez"
     role: "destilado"
 
 language: "es"
