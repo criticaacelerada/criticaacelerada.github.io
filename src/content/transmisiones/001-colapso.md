@@ -5,7 +5,7 @@ pubDate: 2026-07-27
 numero: 1
 ---
 
-# Comienza la discusión acerca del colapso
+## Comienza la discusión acerca del colapso
 
 En esta primera transmisión, introducimos el problema del colapso a partir de una hipótesis central: la crisis ya no constituye una categoría suficiente para describir el estado actual del capitalismo.
 

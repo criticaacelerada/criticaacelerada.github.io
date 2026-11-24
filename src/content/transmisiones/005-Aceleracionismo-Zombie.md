@@ -5,7 +5,7 @@ pubDate: 2026-09-28
 numero: 5
 ---
 
-# ¿Qué significa realmente el aceleracionismo más allá de las modas tecnológicas? 
+## ¿Qué significa realmente el aceleracionismo más allá de las modas tecnológicas? 
 
 En la transmisión 005 de KOlapsando, realizamos una reconstrucción ontológica del pensamiento de Nick Land.
 

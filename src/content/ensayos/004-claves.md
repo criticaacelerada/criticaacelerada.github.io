@@ -28,7 +28,7 @@ translationKey: "exp004"
 
 ---
 
-# Nota del autor
+## Nota del autor
 
 > El siguiente texto se inscribe en un enfoque y metodología interdisciplinar que pretendo desarrollar más detalladamente en mi investigación de tesis doctoral. Un proyecto que se enmarca en diferentes campos de investigación, especialmente en ontología, economía, cibernética, sociología y filosofía de la tecnología como ejes centrales para elaborar una perspectiva renovadora que trate de reflexionar acerca del sistema socioeconómico en el que nos encontramos.
 
@@ -47,7 +47,7 @@ Finalmente, la propuesta se aleja de la apología moral o la condena ética para
 No se busca una **“solución” al capitalismo**, pues tal pretensión revelaría una ignorancia sobre su esencia, sino comprender cómo su dinámica de desterritorialización redefine constantemente lo que entendemos por realidad social. En última instancia, se trata de una mirada que busca comprender el fenómeno no como un destino inevitable, sino como la necesidad histórica de nuestro presente.
 
 
-# 2. ANTICAPITALISMO Y POSTCAPITALISMO: ESPEJISMOS DE DESEO
+## 2. ANTICAPITALISMO Y POSTCAPITALISMO: ESPEJISMOS DE DESEO
 
 Cuando Jameson y Žižek aseveraron la potente frase de **“es más fácil imaginar el fin del mundo que el fin del capitalismo”** (Fisher, 2018, p. 2), subliminalmente se nos muestra que cualquier tipo de catástrofe ecológica o sociopolítica en última instancia es un problema *inmanente* al capitalismo, no *trascendente*. Lejos de parecer que la naturaleza nos amenaza desde un afuera, es el afuera el que es anhelado por las diferentes posturas anticapitalistas y postcapitalistas.
 
@@ -154,7 +154,7 @@ Es decir, no podemos modificar a nuestro antojo la realidad por tener meramente 
 Por este motivo, llevar el realismo capitalista a su máxima expresión es asumirlo no como destino, pero sí como necesidad histórica en el actual estadio en el que nos encontramos como especie.
 
 
-# 3. ENFOQUE ONTOLÓGICO-ECONÓMICO PARA ANALIZAR EL REALISMO CAPITALISTA
+## 3. ENFOQUE ONTOLÓGICO-ECONÓMICO PARA ANALIZAR EL REALISMO CAPITALISTA
 
 Llegados a este punto, hemos apuntado a la problemática que tratamos de mostrar. Sin embargo, todavía no hemos reparado profundamente en el núcleo de la cuestión, ya que hasta el momento nos hemos centrado en hacer una crítica de las presuntas “soluciones” que envuelven nuestro contexto histórico.
 
@@ -248,7 +248,7 @@ El realismo es debido no a que la realidad sea dada por unos hechos objetivos e 
 En definitiva, **es el capitalismo el que dirige lo Real a través de su mediación con un entorno siempre fluctuante.**
 
 
-# 4. CONCLUSIÓN: POR UNA COMPRENSIÓN REALISTA DEL CAMBIO CONSTANTE
+## 4. CONCLUSIÓN: POR UNA COMPRENSIÓN REALISTA DEL CAMBIO CONSTANTE
 
 Tras el análisis recorrido, queda de manifiesto que el capitalismo no puede ser comprendido como una entidad monolítica o estática, sino como un proceso de mutación inmanente que se alimenta de sus propias contradicciones.
 
@@ -290,7 +290,7 @@ El reto para el pensamiento futuro no es imaginar el fin del mundo, sino ser cap
 
 [^10]: “Preguntamos por la técnica y hemos llegado a la αλήθεια, al desocultar. ¿Qué tiene que ver la técnica con el desocultar? Respuesta: Todo. Pues, en el desocultarse se funda todo pro-ducir” (Heidegger, 2007, p. 120).
 
-# 5. NOTA DEL LABORATORIO
+## 5. NOTA DEL LABORATORIO
 
 En *Crítica Acelerada* leemos esta aproximación de Diego Giménez Vila como una invitación a desplazar la pregunta por la superación del capitalismo hacia otra: ¿qué tipo de proceso es aquello que pretendemos superar? El ensayo sitúa una posible respuesta en la capacidad del capitalismo para modificar sus propios límites, recodificar sus crisis y producir nuevas configuraciones sin abandonar necesariamente la axiomática que permite su reproducción. Esta perspectiva entra directamente en diálogo con algunos de los problemas que interesan al Laboratorio, tal es el caso de la aceleración y la trayectoria del capitalismo. 
 
@@ -305,7 +305,7 @@ Al mismo tiempo, su propuesta deja abiertas tensiones que consideramos muy inter
 En el marco de la investigación doctoral de Diego, este ensayo se publica en **Crítica Acelerada** como parte de una investigación en proceso, en el que existe una hipótesis abierta a ampliaciones, reformulaciones, tensiones y desarrollos posteriores. Como nodo de co-agenciamiento del CA, esta línea de trabajo podrá ramificarse en futuras contribuciones conforme avance su investigación.
 
 
-# 5. BIBLIOGRAFÍA
+## 5. BIBLIOGRAFÍA
 
 * Berardi, Franco (2017). *El aceleracionismo cuestionado desde el punto de vista del cuerpo*. En Armen Avanessian y Mauro Reis (eds.), *Aceleracionismo: Estrategias para una transición hacia el postcapitalismo* (pp. 69-76). Buenos Aires: Editorial Caja Negra.
 

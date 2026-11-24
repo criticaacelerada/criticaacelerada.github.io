@@ -28,7 +28,7 @@ translationKey: "exp010"
 
 ---
 
-# La máquina de imágenes [^1]
+## La máquina de imágenes [^1]
 
 
 

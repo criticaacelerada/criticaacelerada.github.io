@@ -18,7 +18,7 @@ translationKey: "exp008"
 
 ---
 
-# Co-Agency Node Dossier
+## Co-Agency Node Dossier
 
 **Diego Giménez Vila (Daga)** is a PhD candidate in Philosophy at the University of Valencia, Spain. He is the creator of the YouTube channel *Indagando*, a space in which he shares analyses, reflections, and commentaries on the readings accompanying his process of academic formation and research. His work is characterized by a defense of eclecticism and freedom of thought, understood as fundamental tools against dogmatism and as pathways toward an open-ended search for meaning.
 
@@ -30,7 +30,7 @@ translationKey: "exp008"
 >Note: This trilogy is extracted from Diego Giménez Vila’s (Daga) master’s thesis.
 📄 [The original text can be accessed at the following link](/pdfs/nostalgia-capitalismo-tardio.pdf)
 
-# PART II: Nostalgia and Cultural Critique
+## PART II: Nostalgia and Cultural Critique
 
 At first glance, many of us might find it strange to establish a relationship between two seemingly disparate things, such as an emotion and a socioeconomic system. Unlike in previous historical periods, nostalgia is an emotional response that has become increasingly present in our everyday lives. Our particular context, as we discussed earlier, reveals itself as a powerful catalyst for ruminating over all kinds of past experiences within the shell of our memories.
 
@@ -42,7 +42,7 @@ In this second part, we will approach this question through two of the principal
 
 We will then examine the concept of “hauntology,” proposed by Jacques Derrida and subsequently reworked by Mark Fisher. This concept is particularly relevant to the question of nostalgia, especially insofar as it allows us to understand its form from a metaphysical perspective and to grasp its cultural determinations.
 
-## 1. Addiction to the Retro and Obsession with the Past
+### 1. Addiction to the Retro and Obsession with the Past
 
 Cultural critic Simon Reynolds examined the contemporary landscape, bringing to light the obsession we feel with the cultural products of our past. More specifically, his concern is situated within the current music scene. Nevertheless, his analysis extends to and can be generalized across various areas of our culture. In response to this phenomenon, Reynolds develops the concept of “retromania,” a term he considers necessary to demonstrate how we tend to ritualize, collect, recall, and compulsively venerate the cultural artifacts of our immediate past. As Reynolds himself explains:
 
@@ -174,7 +174,7 @@ If the terrain where the raw material of the new lies has become sterile, every 
 
 For this reason, our culture “exhausts what is *not realized* within the possible,”[^26] as though every virtual possibility were compelled to become actual, as if the fuel of creativity were infinite.
 
-## 2. Hauntology: Ghosts of the Past
+### 2. Hauntology: Ghosts of the Past
 
 In 1993, Jacques Derrida delivered the lectures that would give rise to his work *Specters of Marx*. In this rather peculiar book, Derrida attempts to reread Marx and formulate a non-Marxist defense of Marx. As a response to Francis Fukuyama’s controversial and widely cited work, *The End of History and the Last Man*, Derrida sets out to challenge its messianic claims. Let us recall that, in this book, the author views the collapse and fall of the USSR as the event that forces the glorious triumph of capitalism over communism and, by extension, the victory of the Western bloc over the Eastern bloc. The consequences Fukuyama derives from this event constitute the objective manifestation of the predominance of the liberal-democratic model as the champion of civilizational progress. Fukuyama seeks to “plant the American flag on the moon,” attempting to demonstrate the end of history as the barriers resisting globalization collapse and everything becomes framed within the logic of the market and liberal democracy. In response to these assumptions, Derrida’s critique seeks to be incisive and direct. However, our concern, or the reason why we introduce this work, is not the critique of Fukuyama itself, but rather certain effects that Derrida derives from it.
 

@@ -5,7 +5,7 @@ pubDate: 2026-08-14
 numero: 3
 ---
 
-# Xenofeminismo, Guattari y Jappe en tensión
+## Xenofeminismo, Guattari y Jappe en tensión
 
 ¿Puede una tecnología nacida y desarrollada bajo el capitalismo producir algo distinto al propio capitalismo?
 

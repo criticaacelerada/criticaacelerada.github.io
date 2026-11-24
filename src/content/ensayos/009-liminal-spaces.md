@@ -21,7 +21,7 @@ translationKey: "exp009"
 
 
 
-# PART III: Liminal Spaces: Contextualizing the Artistic Phenomenon
+## PART III: Liminal Spaces: Contextualizing the Artistic Phenomenon
 
 > Silence, the space that frightens and captivates… At the back of my nights, God, with his wise finger, traces a multiform and unrelenting nightmare.
 >
@@ -87,7 +87,7 @@ Although this comment may help provide an initial understanding of the phenomeno
 
 This will subsequently allow us to distinguish more effectively those Internet aesthetics that depart from liminal spaces by emphasizing certain aspects over others.
 
-# 1. Characteristics of Liminal Spaces
+## 1. Characteristics of Liminal Spaces
 
 > “Today and tomorrow, capitalism lives everywhere, in our televisions, phones, and minds, but nowhere is it more sacred than in the gleaming temples of its interface with the public: the office lobby, the hotel reception area, and, above all, the shopping mall.”
 >
@@ -163,7 +163,7 @@ Having established these four decisive points for elucidating the idiosyncratic 
 
 Having reviewed these points, the following subsection will examine several Internet aesthetics that are closely connected to liminal spaces. We will also address the question of nostalgia in relation to these aesthetics, highlighting the recurring presence of this emotion and connecting it to the central problem of our research.
 
-# 2. Nostalgia and Internet Aesthetics
+## 2. Nostalgia and Internet Aesthetics
 
 Now that we have presented the origins and context of liminal spaces and dissected the different elements present in their aesthetic, it is time to bring this subject into alignment with the central thread of this research. To do so, we will analyze nostalgia in relation to liminal spaces under late capitalism. In light of this phenomenon, we will also introduce some of the principal Internet aesthetics that, as noted above, are closely related to liminal spaces. This will allow us to better understand the sociocultural context in which this movement emerged, since—although we have focused specifically on liminal spaces—nostalgia is in fact embedded in a wide range of cultural productions of our time.
 
@@ -257,7 +257,7 @@ The truth is that our culture’s fixation on nostalgia expresses something larg
 
 Technology gives us the tools to remember our past and, at the same time, gives us reasons to feel nostalgic. We reconnect with our immediate past and forget that our present will one day itself become an object of nostalgia. As Tanner puts it, “cultural nostalgia becomes stronger as our technological ascendancy increases. We yearn for analog technology and readily consume the myth that we can safely hide within the pre-digital warmth of the media technologies of the past.”[^47]
 
-# 3. Non-Places as the Archetype of Liminal Spaces
+## 3. Non-Places as the Archetype of Liminal Spaces
 
 In the early 1990s, the anthropologist Marc Augé published his renowned book *Non-lieux: Introduction à une anthropologie de la surmodernité*. In this work, Augé sought to understand contemporary culture and society from an anthropological perspective. He centered his analysis on Western society itself, moving away from the traditional anthropological gaze that examines foreign cultures from an external position. What is most relevant to our research is his analysis of what he calls *non-places*. As we shall see, non-places have a close—though unintended—relationship with liminal spaces. Our comparison of these two phenomena aims to identify the consequences arising from this relationship, given that non-places constitute an explicit theoretical antecedent.
 
@@ -312,7 +312,7 @@ In summary, the arguments presented allow us to deduce that *liminal spaces are 
 
 For the reasons outlined above, we can assert that the non-place is the archetype of the liminal space. A liminal space, therefore, can never be created from a church, nor from a beach or a mountain. Augé’s analysis thus acquires particular relevance when applied to liminal spaces, making non-places an indispensable condition for their existence.
 
-# 4. The Production of Space under Late Capitalism
+## 4. The Production of Space under Late Capitalism
 
 At this point, we have analyzed and developed the different dimensions of nostalgia and liminal spaces under late capitalism. In this final section, serving as both a conclusion and a bridge between the various themes examined throughout this research, we will address the production of space from the perspective of Henri Lefebvre. Lefebvre is particularly relevant because of his ability to illuminate the question of space within the capitalist system, demonstrating that space is not reducible to a mere container or transcendental category, but should instead be understood as a social or cultural product.
 
@@ -344,7 +344,7 @@ If we reconsider more dispassionately the possibility that the spaces of capital
 
 Ultimately, the spaces surrounding us are the spaces of our experience. They are physical spaces, but also temporal ones: childhood, adolescence, adulthood, and so forth. Every stage of life is traversed through spaces, and therefore non-places are also lived by individuals. To deny nostalgia to the spaces of late capitalism would therefore be absurd. At the end of the day, much of what surrounds us is a cultural production and, consequently, something contingent in our lives. As Hermann Hesse beautifully expressed it, “I came to recognize chance once again as destiny, and the ruins of my life as a heavenly fragment.”[^68] We long for what we long for because of how it was; although it could probably have been very different, it is cherished precisely because it was that way and not another.
 
-# Conclusion
+## Conclusion
 
 > So it is with our past. It is a waste of effort to try to evoke it, and futile to attempt to summon it through our intelligence. It lies hidden beyond its domains and its reach, in some material object (in the sensation that such a material object would give us) of which we are unaware. And it depends upon chance whether we encounter that object before death overtakes us, or whether we never encounter it at all.
 >
@@ -394,7 +394,7 @@ Within the immense ocean of cultural products, liminal spaces are reintroduced a
 
 ---
 
-# Bibliography
+## Bibliography
 
 * Alberti, R. “Canción 8.” *Antología poética*. Córdoba: Ediciones del Sur, 2003.
 * ALT236. *Liminal: Les nouveaux espaces de l'angoisse*. Paris: Éditions Hoëbeke, 2023.
@@ -429,7 +429,7 @@ Within the immense ocean of cultural products, liminal spaces are reintroduced a
 * Tanner, G. *Un cadáver balbuceante: El Vaporwave y los fantasmas electrónicos*. Barcelona: Editorial Holobionte, 2022.
 * Vattimo, G. *El fin de la modernidad: Nihilismo y hermenéutica en la cultura posmoderna*. Barcelona: Editorial Gedisa, 1987.
 
-# Webography
+## Webography
 
 * 4chan. (May 12, 2019). *unsettling images*. Retrieved May 21, 2024: https://archive.4plebs.org/x/thread/22661164/#22661164
 * Aesthetics Wiki. (n.d.). *Liminal Space*. Retrieved May 21, 2024: https://aesthetics.fandom.com/wiki/Liminal_Space

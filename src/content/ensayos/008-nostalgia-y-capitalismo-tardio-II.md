@@ -32,7 +32,7 @@ translationKey: "exp008"
 📄 [El texto original puede consultarse en el siguiente enlace](/pdfs/nostalgia-capitalismo-tardio.pdf)
 
 
-# PARTE II: Nostalgia y crítica cultural
+## PARTE II: Nostalgia y crítica cultural
 
 En un primer momento, muchos de nosotros podríamos considerar extraña una relación entre dos cosas tan aparentemente distintas como podrían ser una emoción y un sistema socioeconómico. A diferencia de otras épocas, la nostalgia es una respuesta emocional que cada día se encuentra más presente en nuestra cotidianeidad. Nuestro particular contexto, como detallamos anteriormente, se revela como un catalizador magnífico para rumiar todo tipo de experiencias pasadas en el cascarón de nuestros recuerdos.
 
@@ -45,7 +45,7 @@ En esta segunda parte trataremos de desenvolver esta cuestión a partir de dos d
 Posteriormente, indagaremos acerca del concepto de “hauntología” propuesto por Jacques Derrida, y reelaborado por Mark Fisher. Un concepto con una gran resonancia para la cuestión de la nostalgia, especialmente para comprender su forma desde una dimensión metafísica, y para comprender sus determinaciones culturales.
 
 
-## 1. Adicción a lo retro y obsesión por el pasado
+### 1. Adicción a lo retro y obsesión por el pasado
 
 
 El crítico cultural Simon Reynolds auscultó el panorama actual, visibilizando la obsesión que sentimos por los productos culturales de nuestro pasado. Concretamente, su preocupación se enmarca en la actual escena musical. No obstante, su análisis se extiende y se generaliza en las diversas áreas de nuestra cultura. A tenor de este fenómeno, Reynolds despliega el concepto de «retromanía», un concepto que considera pertinente acuñar para mostrar cómo tendemos a ritualizar, coleccionar, rememorar y venerar compulsivamente los artefactos culturales de nuestro pasado inmediato. Tal como expone el propio Reynolds:
@@ -178,7 +178,7 @@ Si el terreno donde yace la materia prima de lo nuevo está estéril, toda posib
 
 Por ello, nuestra cultura «agota lo que *no se realiza* en lo posible»,[^26] toda posibilidad virtual busca ser realizada en acto, como si el combustible de la creatividad fuese infinito.
 
-## 2. Hauntología: Los fantasmas del pasado
+### 2. Hauntología: Los fantasmas del pasado
 
 
 En 1993, Jacques Derrida impartió las conferencias que darían lugar a su obra titulada *Espectros de Marx*. En este libro, bastante peculiar, Derrida trata de hacer una relectura de Marx y esgrimir una defensa no marxista en favor de Marx. A modo de reacción ante la polémica y citada obra de Francis Fukuyama, *El fin de la historia y el último hombre*, Derrida se propone hacer una réplica a sus pretensiones mesiánicas. Recordemos que el autor, en esta obra, contempla el colapso y la caída de la URSS como el acontecimiento que fuerza el triunfo glorioso del capitalismo sobre el comunismo y, por extensión, la victoria del bloque occidental sobre el oriental. Las consecuencias que Fukuyama deriva de este evento son la manifestación objetiva de la preponderancia del modelo de las democracias liberales como el adalid del avance de la civilización. Fukuyama pretende «poner la bandera de Estados Unidos sobre la luna», tratando de mostrar el fin de la historia en tanto que los diques de resistencia ante la globalización se rompen y ahora todo se enmarca en la lógica del mercado y en la democracia liberal. Ante estos supuestos, la crítica de Derrida pretende ser incisiva y directa. Sin embargo, nuestra preocupación o el motivo por el cual presentamos esta obra no es el interés acerca de la cuestión de la crítica a Fukuyama, sino más bien por ciertos efectos que Derrida deriva de esta.

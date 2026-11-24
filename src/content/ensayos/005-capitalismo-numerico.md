@@ -39,7 +39,7 @@ video:
 
 ---
 
-# Nota del autor
+## Nota del autor
 
 > El siguiente texto se inscribe en un enfoque y metodología interdisciplinar que pretendo desarrollar más detalladamente en mi investigación de tesis doctoral. Un proyecto que se enmarca en diferentes campos de investigación, especialmente en ontología, economía, cibernética, sociología y filosofía de la tecnología como ejes centrales para elaborar una perspectiva renovadora que trate de reflexionar acerca del sistema socioeconómico en el que nos encontramos.
 

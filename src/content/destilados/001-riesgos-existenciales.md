@@ -15,12 +15,12 @@ language: "es"
 translationKey: "dest001"
 ---
 
-# SEMBLANZA AL TRABAJO DE LOS AUTORES
+## SEMBLANZA AL TRABAJO DE LOS AUTORES
 
 Nick Bostrom, filósofo sueco de la Universidad de Oxford, es ampliamente reconocido por sus aportaciones al estudio del riesgo existencial, el principio antrópico, la ética del transhumanismo y los desafíos de la superinteligencia. Por su parte, Milan M. Ćirković, astrónomo y astrofísico serbio, centra sus investigaciones en la astrobiología, los riesgos catastróficos globales y el futuro de la humanidad, ámbito en el cual ha colaborado cercanamente con Bostrom.
 
 
-# DESTILADO 001. INTRODUCCIÓN DEL LIBRO "RIESGOS CATASTRÓFICOS GLOBALES"
+## DESTILADO 001. INTRODUCCIÓN DEL LIBRO "RIESGOS CATASTRÓFICOS GLOBALES"
 
 
 Nick Bostrom y Milan Ćirković realizan un estudio sobre los riesgos catastróficos globales, entendidos como aquellos eventos capaces de ocasionar daños severos al bienestar humano a escala planetaria. A partir de esta preocupación, los autores examinan qué debe entenderse por “riesgo” para la humanidad y proponen una clasificación de estas amenazas, distinguiendo entre riesgos naturales, riesgos derivados de consecuencias no deseadas y riesgos originados por actos hostiles.
@@ -35,7 +35,7 @@ Existen también razones de carácter pragmático para considerar los riesgos ca
 
 Con base en estos argumentos, el objetivo del libro consiste en examinar el conjunto de riesgos catastróficos globales que la humanidad enfrenta en el presente o podría enfrentar en el futuro. Se trata de una obra dirigida a lectores con formación interdisciplinaria y cuyo propósito es fomentar la investigación, la sensibilización pública y el debate político en torno a la gestión de estos riesgos. En opinión de Bostrom y Ćirković, el desarrollo de una comunidad interdisciplinaria dedicada al estudio de los riesgos catastróficos globales incrementará las probabilidades de diseñar e implementar respuestas adecuadas frente a los principales desafíos del siglo XXI.
 
-# Taxonomía y organización
+## Taxonomía y organización
 
 Una vez establecido el concepto general de riesgo catastrófico global, los autores precisan qué tipos de eventos pueden ser considerados dentro de esta categoría. El criterio fundamental es que el daño producido alcance una magnitud verdaderamente global. En este sentido, una catástrofe que ocasionara 10 000 muertes o pérdidas económicas por 10 000 millones de dólares no constituiría un riesgo catastrófico global (Bostrom & Ćirković, 2008). En contraste, un acontecimiento responsable de aproximadamente 10 millones de muertes o pérdidas del orden de 10 billones de dólares sí podría clasificarse como tal (Bostrom & Ćirković, 2008).
 
@@ -71,7 +71,7 @@ Una situación similar ocurre con las armas nucleares. Aunque se trata de una te
 
 Finalmente, los autores destacan que la naturaleza de un riesgo puede modificarse con el paso del tiempo. El caso de las hambrunas resulta ilustrativo: históricamente estuvieron asociadas principalmente a fenómenos naturales, como variaciones climáticas o alteraciones en la disponibilidad de alimentos. En la actualidad, sin embargo, la mayoría de las grandes hambrunas tienen su origen en fallas de mercado, conflictos armados, crisis políticas o procesos de colapso social. En consecuencia, un mismo fenómeno puede desplazarse de la categoría de riesgo natural hacia la de consecuencia no deseada o acto hostil, dependiendo del contexto histórico y de las condiciones sociales en las que se produce.
 
-# Parte I. Trasfondo
+## Parte I. Trasfondo
 
 El propósito de esta primera parte del libro es proporcionar un contexto general y una orientación metodológica para pensar de manera sistemática y crítica los riesgos catastróficos globales. El capítulo inicial, elaborado por el astrofísico estadounidense Fred Adams, presenta un escenario de largo plazo sobre el futuro de la Tierra, la galaxia y el universo en su conjunto.
 
@@ -133,7 +133,7 @@ Cuando no es posible asignar una probabilidad precisa a una amenaza, Posner prop
 
 Sin embargo, este cálculo no significa necesariamente que quienes diseñan las políticas hayan realizado una evaluación consciente o adecuada. También puede revelar que se ha decidido, de manera explícita o implícita, que un millón de dólares constituye una inversión suficiente, incluso si la probabilidad real del desastre pudiera ser superior a 1 entre 1 000. La crítica central de Posner consiste, por tanto, en señalar que los gobiernos destinan recursos insuficientes a la prevención y mitigación de los riesgos catastróficos globales.
 
-# Parte II. Riesgos de la naturaleza
+## Parte II. Riesgos de la naturaleza
 
 En relación con los riesgos de origen natural, las erupciones volcánicas registradas en tiempos históricos recientes han producido efectos medibles sobre el clima global. En algunos casos, han provocado un enfriamiento temporal de la Tierra de varias décimas de grado, con una duración aproximada de un año. Sin embargo, como señala Michael Rampino en el capítulo 10, estos episodios resultan pequeños en comparación con las erupciones de mayor magnitud conocidas.
 
@@ -157,7 +157,7 @@ Los asteroides y cometas, sin embargo, no constituyen los únicos peligros proce
 
 Estos riesgos son analizados por Arnon Dar en el capítulo 12. Aunque su estudio resulta relevante para comprender las amenazas externas que enfrenta la Tierra, las posibilidades de mitigación son todavía muy limitadas. En algunos casos, los peligros parecen extremadamente remotos; en otros, la humanidad carece de los conocimientos y recursos tecnológicos necesarios para prevenirlos o reducir sus efectos. Por esta razón, la investigación continúa siendo la principal herramienta disponible para evaluar su probabilidad, comprender sus mecanismos y anticipar sus posibles consecuencias.
 
-# Parte III. Riesgos derivados de consecuencias no deseadas
+## Parte III. Riesgos derivados de consecuencias no deseadas
 
 A pesar de la diversidad de amenazas examinadas hasta este punto, el calentamiento global provocado por las emisiones de gases de efecto invernadero ha concentrado una parte considerable de la atención pública. El cambio climático antropogénico se ha convertido, de hecho, en el ejemplo paradigmático de una amenaza global. Para Bostrom y Ćirković, esta cuestión ocupa una proporción desmesurada del interés destinado al conjunto de los riesgos catastróficos globales (Bostrom & Ćirković, 2008).
 
@@ -219,7 +219,7 @@ Finalmente, Hanson plantea una posible estrategia para transformar ciertos riesg
 
 La prevención de las catástrofes continúa siendo una alternativa preferible a cualquier estrategia de supervivencia posterior. Sin embargo, Hanson considera pertinente evaluar si alguna variante de estos refugios podría ser viable como medida complementaria para reducir la probabilidad de extinción humana en escenarios extremos.
 
-# Parte IV. Riesgos derivados de actos hostiles
+## Parte IV. Riesgos derivados de actos hostiles
 
 En relación con los riesgos derivados de actos hostiles, la amenaza de un Armagedón nuclear que marcó el imaginario público durante la Guerra Fría parece haber perdido parte de su centralidad. Esto se debe, en buena medida, a la aparición de otras preocupaciones globales, como la crisis ambiental y el terrorismo. Sin embargo, el capítulo 18 advierte que la guerra nuclear continúa representando una amenaza grave. Las relaciones entre Estados Unidos y Rusia podrían deteriorarse nuevamente hasta alcanzar un punto en el que una crisis política o militar desencadenara un enfrentamiento nuclear. Asimismo, una nueva carrera armamentística podría conducir al aumento de los arsenales de ambos países.
 
@@ -287,7 +287,7 @@ Para discutir estas cuestiones de manera productiva, Caplan sostiene que es nece
 
 La conclusión no consiste en rechazar cualquier avance tecnológico o forma de gobernanza global, sino en diseñarlos tomando en consideración sus posibles efectos autoritarios. Es posible fortalecer nuevas instituciones internacionales y, al mismo tiempo, establecer controles destinados a reducir el riesgo de que evolucionen hacia un régimen totalitario de alcance mundial.
 
-# Conclusiones y direcciones futuras
+## Conclusiones y direcciones futuras
 
 A manera de conclusión, Bostrom y Ćirković sostienen que los riesgos catastróficos globales más probables tienen su origen en actividades humanas, especialmente en la civilización industrial y en el desarrollo de tecnologías avanzadas. Sin embargo, esto no significa que la industria y la tecnología deban considerarse, por sí mismas, responsables de tales amenazas, pues también han generado importantes beneficios para la humanidad. Aunque la modernidad tecnológica ha dado lugar a nuevos riesgos catastróficos, también ha contribuido a reducir numerosos peligros de menor escala en distintas partes del mundo. De hecho, los desastres locales y personales, como el hambre, la sed, la depredación, las enfermedades y la violencia de pequeña escala, han causado históricamente muchas más muertes que los grandes cataclismos globales (Bostrom & Ćirković, 2008).
 
@@ -322,9 +322,9 @@ Otra prioridad consiste en construir una comunidad interdisciplinaria e internac
 Por último, Bostrom y Ćirković consideran indispensable promover un discurso público más crítico, reflexivo y analítico sobre los riesgos catastróficos globales. Su estudio y gestión deben situarse dentro de un marco más amplio de desafíos y oportunidades orientado no solo a evitar la destrucción, sino también a salvaguardar y mejorar la condición humana.Texto de prueba.
 
 
-# Datos sobre Escalas Temporales y Riesgos Existenciales
+## Datos sobre Escalas Temporales y Riesgos Existenciales
 
-## 1. Escalas de Tiempo Cósmico y Planetario
+### 1. Escalas de Tiempo Cósmico y Planetario
 
 | Evento | Plazo |
 |---|---|
@@ -334,14 +334,14 @@ Por último, Bostrom y Ćirković consideran indispensable promover un discurso 
 | Las últimas estrellas dejan de brillar | 100 billones de años |
 | Evaporación de los agujeros negros más grandes | 10^100 años |
 
-## 2. Extinciones Masivas
+### 2. Extinciones Masivas
 
 - **Frecuencia**: 15 extinciones masivas en los últimos 500 millones de años; 5 de ellas eliminaron más de la mitad de las especies existentes.
 - **La "Gran Mortandad"** (hace 251.4 millones de años): la mayor extinción conocida. Eliminó >90% de las especies y familias filogenéticas completas. La biodiversidad tardó más de 5 millones de años en recuperarse.
 - **Impacto de hace 65 millones de años** (extinción de los dinosaurios): posiblemente condición necesaria para el ascenso del Homo sapiens, al liberar el nicho ecológico ocupado por grandes reptiles.
 - **Balance general**: al menos el 99.9% de todas las especies que han existido están extintas.
 
-## 3. Evolución Humana
+### 3. Evolución Humana
 
 | Evento | Hace cuánto tiempo |
 |---|---|
@@ -349,7 +349,7 @@ Por último, Bostrom y Ćirković consideran indispensable promover un discurso 
 | Extinción de los neandertales en Europa | 3 000–24 000 años (probablemente por competencia con H. sapiens) |
 | Última supervivencia estimada de Homo floresiensis | ~12 000 años (con incertidumbre en la interpretación) |
 
-## 4. Evaluación de Riesgos Globales (Foro Económico Mundial, informe 2007, horizonte 10 años)
+### 4. Evaluación de Riesgos Globales (Foro Económico Mundial, informe 2007, horizonte 10 años)
 
 **Por prioridad/severidad:**
 1. Riesgo computacional (prioridad más alta)
@@ -373,13 +373,13 @@ Por último, Bostrom y Ćirković consideran indispensable promover un discurso 
 
 *Nota: varios riesgos de la encuesta estaban mal definidos, lo que dificulta interpretar las opiniones recabadas — definir con claridad los riesgos es un paso esencial previo a cuantificarlos.*
 
-## 5. Impactos Climáticos Catastróficos (invierno nuclear / de impacto)
+### 5. Impactos Climáticos Catastróficos (invierno nuclear / de impacto)
 
 - Enfriamiento global estimado: **-15 °C**
 - Enfriamiento de la superficie oceánica: **2–6 °C**, posiblemente sostenido varios años
 - Hollín atmosférico persistente (1–3 años) podría causar enfriamiento climático de **décadas**, amplificado por retroalimentaciones (mayor cobertura de nieve/hielo → mayor reflexión solar)
 
-## 6. Riesgo de Impactos de Asteroides/Cometas
+### 6. Riesgo de Impactos de Asteroides/Cometas
 
 | Diámetro del impacto | Consecuencia |
 |---|---|
@@ -390,7 +390,7 @@ Por último, Bostrom y Ćirković consideran indispensable promover un discurso 
 - **Súper-erupciones volcánicas**: ocurren en promedio cada 50 000 años (posiblemente subestimado por registros geológicos incompletos)
 - **Proyecto Spaceguard** (NASA, ~$4M anuales + voluntarios): meta de detectar el 90% de asteroides cercanos a la Tierra >1 km para fines de 2008
 
-## 7. Cambio Climático (proyecciones IPCC)
+### 7. Cambio Climático (proyecciones IPCC)
 
 | Escenario | Calentamiento medio | Rango de incertidumbre |
 |---|---|---|
@@ -399,7 +399,7 @@ Por último, Bostrom y Ćirković consideran indispensable promover un discurso 
 
 - Aumento del nivel del mar (escenarios extremos considerados): 18–38 cm y 26–59 cm
 
-## 8. Enfermedades Infecciosas y Mortalidad Global
+### 8. Enfermedades Infecciosas y Mortalidad Global
 
 - Representan ~25% de todas las muertes mundiales (~15 millones/año)
 - 75% de estas muertes ocurren en el sudeste asiático y África subsahariana
@@ -419,7 +419,7 @@ Por último, Bostrom y Ćirković consideran indispensable promover un discurso 
 - Enfermedad cardiovascular: ~30% de la mortalidad mundial (~18 millones/año)
 - Cáncer: ~8 millones de muertes/año
 
-## 9. Armas Nucleares
+### 9. Armas Nucleares
 
 - Arsenal mundial: de 65 000 armas (Guerra Fría, 1986) a ~26 000 (2007) — una reducción del 60%
 - ~96% de estas armas en manos de EE. UU. y Rusia
@@ -435,6 +435,6 @@ Por último, Bostrom y Ćirković consideran indispensable promover un discurso 
 
 
 
-# Cita
+## Cita
 
 Bostrom, Nick y Milan Cirkovic [2008], Global Catastrophic Risks, Oxford, Oxford University Press.

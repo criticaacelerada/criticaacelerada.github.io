@@ -5,7 +5,7 @@ pubDate: 2026-08-04
 numero: 2
 ---
 
-# Qué colapsa y qué no colapsa
+## Qué colapsa y qué no colapsa
 
 En el primer bloque, se sintetiza la agenda de Crítica Acelerada durante la semana del 27 al 31 de julio de 2026 y detalla las entregas venideras.
 

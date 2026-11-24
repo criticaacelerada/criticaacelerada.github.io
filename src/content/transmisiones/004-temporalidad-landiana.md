@@ -5,7 +5,7 @@ pubDate: 2026-09-04
 numero: 4
 ---
 
-# Entendiendo la temporalidad capitalista desde Land
+## Entendiendo la temporalidad capitalista desde Land
 
 En esta transmisión continuamos con el análisis de la temporalidad en el capitalismo, retomando al Nick Land temprano de Sed de Aniquilación para extraer una de las premisas fundamentales sobre la cual gira la tesis aceleracionista: el tiempo.
 

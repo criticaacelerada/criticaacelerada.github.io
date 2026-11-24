@@ -38,7 +38,7 @@ video:
 
 ---
 
-# Author's Note
+## Author's Note
 
 > The following text is inscribed in an interdisciplinary approach and methodology that I intend to develop in more detail in my doctoral thesis research. A project framed within different research fields, especially in ontology, economics, cybernetics, sociology, and philosophy of technology as central axes to elaborate a renewing perspective that seeks to reflect on the socioeconomic system in which we find ourselves.
 

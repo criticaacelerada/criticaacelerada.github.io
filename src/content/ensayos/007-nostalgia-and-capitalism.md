@@ -18,7 +18,7 @@ translationKey: "exp007"
 
 ---
 
-# Co-Agency Node Dossier
+## Co-Agency Node Dossier
 
 **Diego Giménez Vila (Daga)** is a PhD candidate in Philosophy at the University of Valencia, Spain. He is the creator of the YouTube channel *Indagando*, a space in which he shares analyses, reflections, and commentaries on the readings accompanying his process of academic formation and research. His work is characterized by a defense of eclecticism and freedom of thought, understood as fundamental tools against dogmatism and as pathways toward an open-ended search for meaning.
 
@@ -30,9 +30,9 @@ translationKey: "exp007"
 >Note: This trilogy is extracted from Diego Giménez Vila’s (Daga) master’s thesis.
 📄 [The original text can be accessed at the following link](/pdfs/nostalgia-capitalismo-tardio.pdf)
 
-# PART I: Nostalgia in Late Capitalism
+## PART I: Nostalgia in Late Capitalism
 
-## 1. Nostalgia: From Pathology to Emotion and Symptom
+### 1. Nostalgia: From Pathology to Emotion and Symptom
 
 > I, on horseback, beneath its shadow
 >
@@ -90,13 +90,13 @@ Thus, nostalgia is an emotion that helps us recompose the fragments of our life 
 
 Thus, we arrive practically at the present day. We are faced with a problem rooted in our historical context, in which mass culture, capitalism, and technification promote nostalgia both directly and indirectly. In the following section, we shall attempt to place our elusive social context into perspective in order to provide a frame of reference for examining in greater detail the relationship between nostalgia and cultural critique.
 
-# 2. Cultural Critique and Capitalism
+## 2. Cultural Critique and Capitalism
 
 Well-being becomes established in the West and capitalism assumes a hegemonic role; a role that will ultimately prove itself through force following the fall of the Berlin Wall in 1989. In this liquid society, in constant restructuring of its internal axiomatics, under the pretext of liberal and social-democratic societies, and also in the transition from disciplinary societies to societies of control, we see that the reality of our era depends upon a multiplicity of forms that are difficult to conceptualize. The hackneyed concept of postmodernity attempted to do its part by seeking a way to analyze this sociohistorical heterogeneity, an incomplete project, if indeed it was ever a project. Each author has attempted to offer a version of events, an interpretation of the phenomena inscribed within the social reality of our times.[^19]
 
 In this section, we shall present different perspectives that have marked an era in their attempts to explain what has happened and what continues to happen within these consumerist and hypertechnological societies. We have selected the principal voices that, in our judgment, have made especially crucial contributions to conceptualizing this elusive context. First, we shall draw upon Gilles Lipovetsky’s historical and sociological analysis in order to lay out the central elements that established the consumer society as the prevailing social model. We shall then briefly present the perspectives of Jean Baudrillard and Guy Debord, who took up the legacy of the consumer society that emerged between the late 1960s and the 1970s. Subsequently, we shall analyze the concept of postmodernity through Fredric Jameson, arguably its principal theorist, and then briefly examine Mark Fisher’s concept of capitalist realism as a counterpoint to postmodernity. Finally, having sketched a panoramic image of the sociohistorical conjuncture, we shall articulate our own conceptual commitment as a consequence of the conclusions obtained by comparing these different authors.
 
-## 2.1. Cultural Context and the Integration of Consumer Society as Social Reality
+### 2.1. Cultural Context and the Integration of Consumer Society as Social Reality
 
 Various cultural and economic transformations became established from the nineteenth century to the present. The capitalist mode of production expanded and increased its investment power and its capacity to transform the everyday lives of individuals, from the organization of labor to forms of interpersonal relations in private life. The first moment of the capitalist phase, as Lipovetsky explains, was characterized by unprecedented growth in the system of goods production:
 
@@ -134,7 +134,7 @@ Within this historical context, everything is mediated by signs and spectacle. B
 
 Thus, Debord criticizes this degradation and rejects the necessity of appearance inscribed within the logic of consumption. For him, the commodity is a fatal evil; its presence leads us toward the pathological logic of consumption and spectacle: *panem et circenses*. From the moment the commodity has occupied the whole of social life, spectacle appears as the inevitable effect of our culture. As a more mature Baudrillard would demonstrate, signs have ultimately been placed before the real; things, mediated through their appearance, are identified by what has been socially coded within them. The real becomes opaque, and only the symbolic acquires the power of signification: “the real will never again have a chance to occur.”[^34]
 
-## 2.2. Postmodernity<span style="font-size: 0.45em;">[^35]</span>: Its Problematic Identity and Difficult Status
+### 2.2. Postmodernity<span style="font-size: 0.45em;">[^35]</span>: Its Problematic Identity and Difficult Status
 
 > One would have thought that the world of headphones and Andy Warhol, fundamentalism and AIDS, exercise machines and MTV, yuppies and books on postmodernism, punk hairstyles and crew cuts in the style of the 1950s, the “loss of historicity” and the éloge of schizophrenia, the media and obsessions with calcium and cholesterol, the logic of the “shock of the future” and the emergence of scientists and counterinsurgent forces as new types of social groups would fulfill all the requirements for appearing thoroughly decadent in the eyes of any sensible Martian observer.[^36]
 >
@@ -190,7 +190,7 @@ In this regard, Fisher argues that capitalist realism no longer presents this ki
 
 Without entering into greater detail regarding Fisher’s interpretation and his ideas surrounding “capitalist realism,” we have presented it here as a critique and updating of the concept of postmodernity. At this point, we believe that the reach of the different voices we have presented, and their different ways of referring to a dense and constitutively dynamic social conjuncture, provide us with grounds for organizing the philosophical consequences yielded by this panorama. Having said this, let us proceed to identify the ideas we wish to retain for our research.
 
-## 2.3. Theoretical Commitment to the Concept of “Late Capitalism”
+### 2.3. Theoretical Commitment to the Concept of “Late Capitalism”
 
 Following the journey we have undertaken through different authors, concepts, and perspectives, we now find ourselves in the position of reorganizing and filtering all the positions presented above. As we have said, each interpretation captures a series of elements and highlights certain motives that do not appear in others. Thus, we can now incorporate certain points that we consider indispensable in order to emphasize the concept or form that we find most satisfactory to employ in this research.
 

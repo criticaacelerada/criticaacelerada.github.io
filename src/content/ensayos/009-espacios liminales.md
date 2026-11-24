@@ -32,7 +32,7 @@ translationKey: "exp009"
 📄 [El texto original puede consultarse en el siguiente enlace](/pdfs/nostalgia-capitalismo-tardio.pdf)
 
 
-# PARTE III: Espacios liminales: Contextualización del fenómeno artístico
+## PARTE III: Espacios liminales: Contextualización del fenómeno artístico
 
 
 > El silencio, el espacio que asusta y que cautiva… Al fondo de mis noches Dios con su sabio dedo traza una pesadilla multiforme y sin tregua.
@@ -103,7 +103,7 @@ No obstante, aunque este comentario pueda servirnos de ayuda para tener una visi
 De este modo, posteriormente, podremos tratar de separar de un modo más eficaz aquellas estéticas de internet que se deslindan de los espacios liminales al acentuar ciertos aspectos sobre otros.
 
 
-# 1. Características de los espacios liminales
+## 1. Características de los espacios liminales
 
 > “Hoy y mañana, el capitalismo vive en todas partes, en nuestros televisores, teléfonos y mentes, pero en ninguna parte es más sagrado que en los relucientes templos de su interfaz con el público: el vestíbulo de la oficina, el área de recepción del hotel y, sobre todo, el centro comercial”.
 >
@@ -181,7 +181,7 @@ Tras haber mostrado estos cuatro puntos determinantes a la hora de dilucidar la 
 Después de haber repasado estos puntos, en el próximo subapartado trataremos de revisar algunas estéticas de internet que tienen una gran conexión con los espacios liminales. Además, trataremos la cuestión de la nostalgia en relación con estas estéticas, para destacar la presencia recurrente de esta emoción en dichas estéticas y enlazarlo con la problemática de nuestra investigación.
 
 
-# 2. Nostalgia y estéticas de internet
+## 2. Nostalgia y estéticas de internet
 
 Ahora que hemos presentado su origen y contexto, y también hemos diseccionado las diferentes partes que están presentes en la estética de los espacios liminales, llega el momento de poner en sintonía este tema con el hilo conductor de esta investigación. Para ello, analizaremos la cuestión de la nostalgia en relación con los espacios liminales en el capitalismo tardío, pero a tenor de este suceso trataremos de presentar también algunas de las principales estéticas de internet, que como dijimos anteriormente, están muy relacionadas con los espacios liminales. De este modo, podremos entender mejor el contexto sociocultural en el que se fragua este movimiento, puesto que —aunque nosotros hayamos hecho hincapié en los espacios liminales— la realidad es que la nostalgia está impregnada en diversas producciones culturales de nuestra época.
 
@@ -280,7 +280,7 @@ La realidad es que la fijación de nuestra cultura por la nostalgia expresa algo
 La tecnología nos da las herramientas para rememorar nuestro pasado y, a su vez, nos da los motivos para sentirnos nostálgicos. Reconectamos con nuestro pasado inmediato y olvidamos que nuestro presente algún día será objeto de nuestra nostalgia. Tal y como expone Tanner, “la nostalgia cultural es más fuerte a medida que aumenta nuestro auge tecnológico. Suspiramos por la tecnología analógica y consumimos fácilmente el mito de que podemos escondernos con seguridad en la calidez predigital de las tecnologías de los medios del pasado”.[^47]
 
 
-# 3. Los no lugares como arquetipo de los espacios liminales
+## 3. Los no lugares como arquetipo de los espacios liminales
 
 A principios de los años noventa, el antropólogo Marc Augé publicó su reconocido libro *Non-lieux: Introduction à une anthropologie de la surmodernité*. En este trabajo, Augé busca entender desde una perspectiva antropológica la cultura y la sociedad contemporánea. El autor centra su análisis en la propia sociedad occidental, alejándose de la tradicional mirada del antropólogo que examina culturas foráneas desde una posición externa. Lo que más nos interesa de su estudio, en relación con nuestra investigación, es el análisis que hace de los denominados *no lugares*. Como veremos, los no lugares tienen una estrecha relación —no intencionada— con los espacios liminales. El motivo de nuestro cotejo de ambos fenómenos es poder detectar las consecuencias que se derivan de esta relación, atendiendo que los no lugares son un antecedente teórico manifiesto.
 
@@ -336,7 +336,7 @@ En resumidas cuentas, podemos deducir de los argumentos presentados que *los esp
 
 Por las razones esgrimidas, se puede aseverar que el no lugar es el arquetipo del espacio liminal. De tal forma que un espacio liminal jamás podrá ser creado a partir de una iglesia, ni tampoco en una playa o una montaña. Así pues, el análisis de Augé cobra especial relevancia al ser aplicado a los espacios liminales, haciendo de los no lugares una condición imprescindible para su existencia.
 
-# 4. La producción del espacio en el capitalismo tardío
+## 4. La producción del espacio en el capitalismo tardío
 
 Llegados a este punto, hemos analizado y desarrollado los diferentes aspectos que entrañan la nostalgia y los espacios liminales en el capitalismo tardío. En este último apartado, a modo de colofón y de puente entre las diversas temáticas examinadas en este trabajo de investigación, vamos a tratar la cuestión de la producción del espacio a partir de la perspectiva de Henri Lefebvre. Si nos interesa especialmente la aportación de Lefebvre es por su capacidad de alumbrar la cuestión del espacio en el sistema capitalista, señalando que este no se reduce a un mero contenedor, a una categoría trascendental, sino más bien se trata de un producto social o cultural.
 
@@ -369,7 +369,7 @@ Así pues, si pensamos de nuevo y más fríamente en la posibilidad de que los e
 En última instancia, los espacios que nos rodean son los espacios de nuestra experiencia. Espacios físicos pero también temporales: la infancia, la adolescencia, la adultez, etc. Toda fase vital se recorre en espacios y, por tanto, los no lugares también son vividos por los individuos. De este modo, negar la nostalgia a los espacios del capitalismo tardío sería ridículo. Al final del día, gran parte de lo que nos rodea no deja de ser una producción cultural y, en consecuencia, es algo contingente en nuestras vidas. Como expresó bellamente Hermann Hesse, “volví a reconocer a la casualidad como destino y a las ruinas de mi vida como fragmento celestial”.[^68] Añoramos lo que añoramos por cómo fue, y pudiendo haber sido probablemente de una forma muy distinta, es querido porque fue así y no de otra manera.
 
 
-# Conclusión
+## Conclusión
 
 > Así ocurre con nuestro pasado. Es trabajo perdido el querer evocarlo, e inútiles todos los afanes de nuestra inteligencia. Ocúltase fuera de sus dominios y de su alcance, en un objeto material (en la sensación que ese objeto material nos daría) que no sospechamos. Y del azar depende que nos encontremos con ese objeto antes de que nos llegue la muerte, o que no lo encontremos nunca. — Marcel Proust[^69]
 
@@ -419,7 +419,7 @@ En el inmenso océano de los productos culturales, los espacios liminales se rei
 
 ---
 
-# Bibliografía
+## Bibliografía
 
 - Alberti, R. “Canción 8”. *Antología poética*. Córdoba: Ediciones del Sur, 2003.
 
@@ -486,7 +486,7 @@ En el inmenso océano de los productos culturales, los espacios liminales se rei
 - Vattimo, G. *El fin de la modernidad: Nihilismo y hermenéutica en la cultura posmoderna*. Barcelona: Editorial Gedisa, 1987.
 
 
-# Webgrafía
+## Webgrafía
 
 - 4chan. (12 de mayo de 2019). *unsettling images*. Recuperado el 21 de mayo de 2024: https://archive.4plebs.org/x/thread/22661164/#22661164
 

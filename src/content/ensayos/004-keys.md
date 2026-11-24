@@ -26,11 +26,11 @@ translationKey: "exp004"
 
 ---
 
-# Author's Note
+## Author's Note
 
 > The following text forms part of an interdisciplinary approach and methodology that I intend to develop in greater detail in my doctoral thesis research. The project lies at the intersection of several fields of research, particularly ontology, economics, cybernetics, sociology, and philosophy of technology, which serve as its central axes for developing a renewed perspective from which to reflect upon the socioeconomic system in which we find ourselves.
 
-# 1. INTRODUCTION: THE LABYRINTH OF CAPITALIST IMMANENCE
+## 1. INTRODUCTION: THE LABYRINTH OF CAPITALIST IMMANENCE
 
 The present text arises from the need to confront the structural disorientation imposed upon us by the nature of the system we inhabit. Left-wing critiques often find themselves trapped in what Nick Land calls **“transcendental miserablism”**, a position that ignores the adaptive and axiomatic capacity of capital, preferring instead to take refuge in revolutionary illusions that have lost their correlation with the material reality of the twenty-first century.
 
@@ -44,7 +44,7 @@ Finally, this proposal distances itself from both moral apology and ethical cond
 
 We are not seeking a **“solution” to capitalism**, since such a claim would reveal an ignorance of its essence, but rather to understand how its dynamic of deterritorialisation constantly redefines what we understand as social reality. Ultimately, this perspective seeks to understand the phenomenon not as an inevitable destiny, but as the historical necessity of our present.
 
-# 2. ANTICAPITALISM AND POSTCAPITALISM: MIRAGES OF DESIRE
+## 2. ANTICAPITALISM AND POSTCAPITALISM: MIRAGES OF DESIRE
 
 When Jameson and Žižek put forward the powerful phrase **“it is easier to imagine an end to the world than an end to capitalism”** (Fisher, 2018, p. 2), what is implicitly revealed is that any kind of ecological or sociopolitical catastrophe is ultimately a problem *immanent* to capitalism, not *transcendent* to it. Far from nature appearing to threaten us from an outside, it is precisely this outside that is longed for by different anticapitalist and postcapitalist positions.
 
@@ -150,7 +150,7 @@ In other words, we cannot modify reality at will simply because we possess a *po
 
 For this reason, taking capitalist realism to its fullest expression means assuming it not as destiny, but as a historical necessity at the present stage in which we find ourselves as a species.
 
-# 3. AN ONTOLOGICAL-ECONOMIC APPROACH TO ANALYSING CAPITALIST REALISM
+## 3. AN ONTOLOGICAL-ECONOMIC APPROACH TO ANALYSING CAPITALIST REALISM
 
 At this point, we have outlined the problem we seek to address. Nevertheless, we have not yet examined the core of the question in depth, since so far we have concentrated on criticising the supposed “solutions” that surround our historical context.
 
@@ -244,7 +244,7 @@ The realism involved does not arise because reality is constituted by objective 
 
 Ultimately, **it is capitalism that directs the Real through its mediation with an environment that is always fluctuating.**
 
-# 4. CONCLUSION: TOWARDS A REALIST UNDERSTANDING OF CONSTANT CHANGE
+## 4. CONCLUSION: TOWARDS A REALIST UNDERSTANDING OF CONSTANT CHANGE
 
 Following the analysis developed above, it becomes clear that capitalism cannot be understood as a monolithic or static entity, but rather as a process of immanent mutation that feeds upon its own contradictions.
 
@@ -264,7 +264,7 @@ In conclusion, capitalist realism should not be accepted as an article of faith,
 
 The challenge for future thought is not to imagine the end of the world, but to become capable of analysing the internal processes of this machinery without allowing ourselves to be blinded by idealism. We must recognise that, beyond our desires and beyond the horizon of possibilities, the path along which we currently move — and which propels those possibilities — is capitalism.
 
-# Laboratory Note
+## Laboratory Note
 
 At *Crítica Acelerada*, we read Diego Giménez Vila's approach as an invitation to shift the question of overcoming capitalism towards another question: **what kind of process is that which we seek to overcome?** The essay locates one possible answer in capitalism's capacity to modify its own limits, recode its crises, and produce new configurations without necessarily abandoning the axiomatic that enables its reproduction. This perspective enters directly into dialogue with several of the problems that concern the Laboratory, particularly acceleration and the trajectory of capitalism.
 
@@ -278,7 +278,7 @@ At the same time, his proposal leaves open a number of tensions that we consider
 
 Within the framework of Diego's doctoral research, this essay is published in **Crítica Acelerada** as part of a research project in progress, in which the hypothesis remains open to expansion, reformulation, tension, and subsequent development. As a **co-agencement node** of CA, this line of inquiry may branch out into future contributions as his research progresses.
 
-# 5. BIBLIOGRAPHY
+## 5. BIBLIOGRAPHY
 
 - Berardi, Franco (2017). *El aceleracionismo cuestionado desde el punto de vista del cuerpo*. In Armen Avanessian and Mauro Reis (eds.), *Aceleracionismo: Estrategias para una transición hacia el postcapitalismo* (pp. 69–76). Buenos Aires: Editorial Caja Negra.
 
@@ -308,7 +308,7 @@ Within the framework of Diego's doctoral research, this essay is published in **
 
 ---
 
-# NOTES
+## NOTES
 
 [^2]: “If capitalism is the external limit of every society, this is because capitalism itself has no external limit, but only an internal limit that is capital itself, which it does not encounter without reproducing it by continually displacing it” (Deleuze and Guattari, 2010, p. 238).
 

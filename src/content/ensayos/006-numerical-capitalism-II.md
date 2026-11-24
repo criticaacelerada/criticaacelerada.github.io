@@ -37,11 +37,11 @@ video:
 
 ---
 
-# Author's Note
+## Author's Note
 
 > The following text is inscribed in an interdisciplinary approach and methodology that I intend to develop in more detail in my doctoral thesis research. A project framed within different research fields, especially in ontology, economics, cybernetics, sociology, and philosophy of technology as central axes to elaborate a renewing perspective that seeks to reflect on the socioeconomic system in which we find ourselves.
 
-# 1. ONTOLOGICAL-ECONOMIC APPROACH TO ANALYZE CAPITALIST REALISM
+## 1. ONTOLOGICAL-ECONOMIC APPROACH TO ANALYZE CAPITALIST REALISM
 
 At this point, we have been able to trace a path through the problematic that we are trying to show. However, we have not yet looked deeply at the core of the issue, since up to now we have focused on understanding the problem that concerns us and making a critique of the presumed "solutions" that surround our historical context. It might seem that during this moment our political approach is ambiguous. To leave no doubt, yes, it is. But because our greatest interest in doing this analysis is not to fit ourselves into a wing of the political spectrum, nor to seek a solution to capitalism. Moreover, that would be contradictory with respect to the theses we are showing, since it would once again reveal ignorance about the nature of capitalism. Nor do we intend to present a political or moral program about capitalism; our approach aims to be empirical and transcendental. We believe that capitalism, in its multiplicity and diversity of approaches, suffers from not being sufficiently treated from an ontological perspective. Many times, whether for political or economic interests, capitalism is treated from a harsh critique or an economic apology.
 
@@ -87,7 +87,7 @@ Everything except capitalism, obviously, but because it acts as a meta-normative
 
 The realism is due not to reality being given by objective and immutable facts, but rather that reality adapts to the mutable changes of capitalism. It is capitalism that directs the Real. Now, assuming that inexorable realism, we must move on to understand and conceptualize that dynamism that is as realistic as it is inexorable.
 
-# 2. NUMERICAL CAPITALISM: BEYOND CAPITALIST REALISM
+## 2. NUMERICAL CAPITALISM: BEYOND CAPITALIST REALISM
 
 > Capitalism identifies with desire to such a degree that it becomes impossible to imagine it being overcome, shamelessly addressing any impulse capable of bringing more economizable drive to its continuously multiplying productive initiatives. Whatever you desire, capitalism is the most reliable way to obtain it, while at the same time, through the absorption of every source of social dynamism, it makes change, growth, and even time itself integral components of its ever-rising tide (Land, 2019a, p. 272).
 
@@ -207,7 +207,7 @@ For this reason, taking capitalist realism further will depend on understanding 
 
 From numerical capitalism, we can calculate the changes that take place in the system and, thus, commit to the direction reality takes beyond the utopian or dystopian outcome that virtually comes to be realized.
 
-# 3. CONCLUSION: NO, IT IS NOT THE END OF HISTORY, BUT NEITHER IS THERE AN ALTERNATIVE
+## 3. CONCLUSION: NO, IT IS NOT THE END OF HISTORY, BUT NEITHER IS THERE AN ALTERNATIVE
 
 Our theoretical proposal can be summarized in a synthesis or response to two of the great proposals of recent decades, that of Fukuyama and that of Fisher. Indeed, we believe that capitalism is not the end of history, since history does not depend on capitalism; there has been history without capitalism before and there can be history after it. Just as we consider it absurd to think of a utopian post-capitalism, we consider it absurd to believe in the permanence of capitalism by all means. In reality, capitalism potentially has the capacity to remain due to its way of adapting to change, but we cannot ensure that advanced stages of capitalism will end up not configuring something different from itself. Because, although capitalism implies adaptation and change, we do not have an *a priori* certainty that adaptation will someday transmute into something different from change, that its own process chains another different process from its milestones or its ruins.
 

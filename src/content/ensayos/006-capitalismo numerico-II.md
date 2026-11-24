@@ -40,12 +40,12 @@ video:
 
 ---
 
-# Nota del autor
+## Nota del autor
 
 > El siguiente texto se inscribe en un enfoque y metodología interdisciplinar que pretendo desarrollar más detalladamente en mi investigación de tesis doctoral. Un proyecto que se enmarca en diferentes campos de investigación, especialmente en ontología, economía, cibernética, sociología y filosofía de la tecnología como ejes centrales para elaborar una perspectiva renovadora que trate de reflexionar acerca del sistema socioeconómico en el que nos encontramos.
 
 
-# 1. ENFOQUE ONTOLÓGICO-ECONÓMICO PARA ANALIZAR EL REALISMO CAPITALISTA
+## 1. ENFOQUE ONTOLÓGICO-ECONÓMICO PARA ANALIZAR EL REALISMO CAPITALISTA
 
 Llegados a este punto, hemos podido trazar un recorrido a través de la problemática que tratamos de mostrar. Sin embargo, todavía no hemos reparado profundamente en el núcleo de la cuestión, ya que hasta el momento nos hemos centrado en comprender el problema que nos atañe y hacer una crítica de las presuntas “soluciones” que envuelven nuestro contexto histórico. Podría parecer que durante este momento nuestro enfoque político es ambiguo. Para que salgamos de dudas, sí, lo es. Pero porque nuestro mayor interés al hacer este análisis no es encajarnos en un ala del espectro político, ni tampoco buscar una solución al capitalismo. Es más, eso sería contradictorio con respecto a las tesis que estamos mostrando, ya que revelaría una vez más la ignorancia acerca de la naturaleza del capitalismo. Tampoco pretendemos presentar un programa político ni moral acerca del capitalismo, nuestro enfoque pretende ser empírico y trascendental. Creemos que el capitalismo, en su multiplicidad y diversidad de enfoques, adolece de no ser tratado suficientemente a partir de una perspectiva ontológica. Muchas veces, ya sea por intereses políticos o económicos, el capitalismo es tratado a partir de una crítica descarnada o una apología económica.
 
@@ -91,7 +91,7 @@ Todo excepto el capitalismo, evidentemente, pero porque este actúa como un marc
 
 El realismo es debido no a que la realidad sea dada por unos hechos objetivos e inmutables, sino que la realidad se adapta a los cambios mutables del capitalismo. Es el capitalismo el que dirige lo Real. Ahora bien, asumiendo ahora ese realismo inexorable, debemos pasar a comprender y conceptualizar ese dinamismo tan realista como inexorable.
 
-# 2. CAPITALISMO NUMÉRICO: MÁS ALLÁ DEL REALISMO CAPITALISTA
+## 2. CAPITALISMO NUMÉRICO: MÁS ALLÁ DEL REALISMO CAPITALISTA
 
 > El capitalismo se identifica con el deseo a un grado tal que resulta imposible imaginar que pueda ser superado, abordando desvergonzadamente cualquier impulso capaz de aportar más pulsión economizable a sus iniciativas productivas en multiplicación continua. Lo que sea que desees, el capitalismo es la manera más confiable de obtenerlo, a la vez que, mediante la absorción de toda fuente de dinamismo social, hace del cambio, el crecimiento e incluso el tiempo mismo componentes integrales de su marea siempre en ascenso (Land, 2019a, p. 272).
 
@@ -216,7 +216,7 @@ Por este motivo, llevar más allá el realismo capitalista dependerá de compren
 A partir del capitalismo numérico podemos calcular los cambios que se efectúan en el sistema y, de este modo, comprometernos con la dirección que toma la realidad más allá del desenlace utópico o distópico que virtualmente llegue a realizarse.
 
 
-# 3. CONCLUSIÓN: NO, NO ES EL FIN DE LA HISTORIA, PERO TAMPOCO HAY ALTERNATIVA
+## 3. CONCLUSIÓN: NO, NO ES EL FIN DE LA HISTORIA, PERO TAMPOCO HAY ALTERNATIVA
 
 Nuestra propuesta teórica puede resumirse en una síntesis o contestación a dos de las grandes propuestas de las últimas décadas, la de Fukuyama y la de Fisher. Efectivamente, creemos que el capitalismo no es el fin de la historia, ya que la historia no depende del capitalismo, ha habido historia sin capitalismo antes y puede haberla después. Del mismo modo que consideramos absurdo pensar en un postcapitalismo utópico, pensamos absurdo creer en la permanencia del capitalismo por todos los medios. En realidad, el capitalismo potencialmente tiene la capacidad de permanecer por su modo de adaptarse al cambio, pero no podemos asegurar que estadios avanzados del capitalismo terminen no configurando algo distinto a sí mismo. Porque, aunque el capitalismo implica la adaptación y el cambio, no tenemos una certeza *a priori* de que la adaptación algún día transmute en algo distinto a partir del cambio, que su propio proceso encadene otro proceso distinto a partir de sus hitos o de sus ruinas.
 

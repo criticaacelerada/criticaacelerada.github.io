@@ -15,13 +15,13 @@ language: "en"
 translationKey: "dest001"
 ---
 
-# OVERVIEW OF THE AUTHORS’ WORK
+## OVERVIEW OF THE AUTHORS’ WORK
 
 
 Nick Bostrom, a Swedish philosopher at the University of Oxford, is widely recognized for his contributions to the study of existential risk, the anthropic principle, the ethics of transhumanism, and the challenges posed by superintelligence. For his part, Milan M. Ćirković, a Serbian astronomer and astrophysicist, focuses his research on astrobiology, global catastrophic risks, and the future of humanity—a field in which he has collaborated closely with Bostrom.
 
 
-# EXCERPT 001. INTRODUCTION TO THE BOOK “GLOBAL CATASTROPHIC RISKS”
+## EXCERPT 001. INTRODUCTION TO THE BOOK “GLOBAL CATASTROPHIC RISKS”
 
 
 Nick Bostrom and Milan Ćirković conduct a study on global catastrophic risks, defined as events capable of causing severe harm to human well-being on a planetary scale. Based on this concern, the authors examine what should be understood by “risk” to humanity and propose a classification of these threats, distinguishing between natural risks, risks arising from unintended consequences, and risks caused by hostile acts.
@@ -39,7 +39,7 @@ As a result, partial or inadequate prevention policies may be implemented that, 
 Based on these arguments, the book’s objective is to examine the range of global catastrophic risks that humanity faces today or may face in the future. This work is intended for readers with an interdisciplinary background, and its purpose is to foster research, public awareness, and political debate regarding the management of these risks. In the view of Bostrom and Ćirković, the development of an interdisciplinary community dedicated to the study of global catastrophic risks will increase the likelihood of designing and implementing appropriate responses to the major challenges of the 21st century.
 
 
-# Taxonomy and Organization
+## Taxonomy and Organization
 
 
 Once the general concept of global catastrophic risk has been established, the authors specify which types of events can be considered within this category. The fundamental criterion is that the resulting damage must reach a truly global magnitude. In this sense, a catastrophe that caused 10,000 deaths or economic losses of $10 billion would not constitute a global catastrophic risk (Bostrom & Ćirković, 2008). In contrast, an event responsible for approximately 10 million deaths or losses in the order of $10 trillion could indeed be classified as such (Bostrom & Ćirković, 2008).
@@ -77,7 +77,7 @@ A similar situation applies to nuclear weapons. Although this is a technology cr
 
 Finally, the authors emphasize that the nature of a risk can change over time. The case of famines is illustrative: historically, they were primarily associated with natural phenomena, such as climate variations or changes in food availability. Today, however, most major famines stem from market failures, armed conflicts, political crises, or processes of social collapse. Consequently, the same phenomenon can shift from the category of natural risk to that of an unintended consequence or hostile act, depending on the historical context and the social conditions in which it occurs.
 
-# Part I. Background
+## Part I. Background
 
 The purpose of this first part of the book is to provide a general context and methodological guidance for thinking systematically and critically about global catastrophic risks. The opening chapter, written by American astrophysicist Fred Adams, presents a long-term scenario for the future of Earth, the galaxy, and the universe as a whole.
 
@@ -139,7 +139,7 @@ When it is not possible to assign a precise probability to a threat, Posner prop
 
 However, this calculation does not necessarily mean that policymakers have carried out a conscious or adequate assessment. It may also reveal that it has been decided, explicitly or implicitly, that one million dollars constitutes a sufficient investment, even if the actual probability of the disaster could be greater than 1 in 1,000. Posner's central criticism, therefore, is that governments allocate insufficient resources to the prevention and mitigation of global catastrophic risks.
 
-# Part II. Natural Hazards
+## Part II. Natural Hazards
 Regarding natural hazards, volcanic eruptions recorded in recent history have produced measurable effects on the global climate. In some cases, they have caused a temporary cooling of the Earth by several tenths of a degree, lasting approximately one year. However, as Michael Rampino points out in Chapter 10, these episodes are small compared to the largest known eruptions.
 
 One of the most significant cases is the eruption of the Toba supervolcano, which occurred in Indonesia approximately 75,000 years ago. This event ejected enormous quantities of fine ash and aerosols into the atmosphere, generating climatic effects comparable to those of a nuclear winter.
@@ -163,7 +163,7 @@ Asteroids and comets, however, are not the only hazards from space. There are ot
 These risks are analyzed by Arnon Dar in Chapter 12. Although his study is relevant to understanding the external threats facing Earth, the possibilities for mitigation are still very limited. In some cases, the hazards seem extremely remote; in others, humanity lacks the knowledge and technological resources necessary to prevent them or reduce their effects. For this reason, research remains the primary tool available to assess their probability, understand their mechanisms, and anticipate their potential consequences.
 
 
-# Part III. Risks Arising from Unintended Consequences
+## Part III. Risks Arising from Unintended Consequences
 
 Despite the diversity of threats examined up to this point, global warming caused by greenhouse gas emissions has garnered a considerable share of public attention. Anthropogenic climate change has, in fact, become the paradigmatic example of a global threat. According to Bostrom and Ćirković, this issue occupies a disproportionate share of the attention given to all global catastrophic risks (Bostrom & Ćirković, 2008).
 
@@ -226,7 +226,7 @@ Finally, Hanson proposes a possible strategy to transform certain existential ri
 Disaster prevention remains a preferable alternative to any subsequent survival strategy. However, Hanson considers it pertinent to evaluate whether any variant of these refuges could be viable as a complementary measure to reduce the probability of human extinction in extreme scenarios.
 
 
-# Part IV. Risks Arising from Hostile Acts
+## Part IV. Risks Arising from Hostile Acts
 
 Regarding the risks arising from hostile acts, the threat of a nuclear Armageddon that dominated the public imagination during the Cold War seems to have lost some of its prominence. This is largely due to the emergence of other global concerns, such as the environmental crisis and terrorism. However, Chapter 18 warns that nuclear war continues to pose a serious threat. Relations between the United States and Russia could deteriorate again to the point where a political or military crisis triggers a nuclear confrontation. Furthermore, a new arms race could lead to an increase in the arsenals of both countries.
 
@@ -295,7 +295,7 @@ To discuss these issues productively, Caplan argues that it is necessary to comp
 The conclusion is not to reject any technological advance or form of global governance, but rather to design them with their potential authoritarian effects in mind. It is possible to strengthen new international institutions while simultaneously establishing controls designed to reduce the risk of their evolving into a global totalitarian regime.
 
 
-# Conclusions and Future Directions
+## Conclusions and Future Directions
 
 In conclusion, Bostrom and Ćirković argue that the most likely global catastrophic risks originate from human activities, particularly industrial civilization and the development of advanced technologies. However, this does not mean that industry and technology should be considered solely responsible for such threats, as they have also generated significant benefits for humanity. While technological modernity has given rise to new catastrophic risks, it has also contributed to reducing numerous smaller-scale hazards in different parts of the world. In fact, local and personal disasters, such as famine, thirst, predation, disease, and small-scale violence, have historically caused far more deaths than major global cataclysms (Bostrom & Ćirković, 2008).
 
@@ -330,9 +330,9 @@ Another priority is to build a stronger, interdisciplinary, and international co
 Finally, Bostrom and Ćirković consider it essential to promote a more critical, reflective, and analytical public discourse on global catastrophic risks. Their study and management must be situated within a broader framework of challenges and opportunities aimed not only at preventing destruction but also at safeguarding and improving the human condition.
 
 
-# Data on Timescales and Existential Risks
+## Data on Timescales and Existential Risks
 
-## 1. Cosmic and Planetary Timescales
+### 1. Cosmic and Planetary Timescales
 
 | Event | Timeframe |
 | ------ | --------- |
@@ -342,14 +342,14 @@ Finally, Bostrom and Ćirković consider it essential to promote a more critical
 | The last stars cease to shine | 100 trillion years |
 | Evaporation of the largest black holes | 10^100 years |
 
-## 2. Mass Extinctions
+### 2. Mass Extinctions
 
 - **Frequency:** 15 mass extinctions over the last 500 million years; 5 of them eliminated more than half of all existing species.
 - **The "Great Dying"** (251.4 million years ago): the largest known extinction event. It wiped out more than 90% of species and entire phylogenetic families. Biodiversity required more than 5 million years to recover.
 - **The impact 65 million years ago** (the extinction of the dinosaurs): possibly a necessary condition for the rise of Homo sapiens by freeing the ecological niche previously occupied by large reptiles.
 - **Overall estimate:** at least 99.9% of all species that have ever existed are now extinct.
 
-## 3. Human Evolution
+### 3. Human Evolution
 
 | Event | Time Ago |
 | ------ | -------- |
@@ -357,7 +357,7 @@ Finally, Bostrom and Ćirković consider it essential to promote a more critical
 | Extinction of Neanderthals in Europe | 3,000–24,000 years ago (likely due to competition with H. sapiens) |
 | Estimated last survival of Homo floresiensis | ~12,000 years ago (subject to uncertainty) |
 
-## 4. Global Risk Assessment (World Economic Forum, 2007 Report, 10-Year Horizon)
+### 4. Global Risk Assessment (World Economic Forum, 2007 Report, 10-Year Horizon)
 
 **By priority/severity:**
 
@@ -384,13 +384,13 @@ Finally, Bostrom and Ćirković consider it essential to promote a more critical
 
 *Note: several risks included in the survey were poorly defined, making the results difficult to interpret. Clearly defining risks is a necessary prerequisite for meaningful quantification.*
 
-## 5. Catastrophic Climate Impacts (Nuclear or Impact Winter)
+### 5. Catastrophic Climate Impacts (Nuclear or Impact Winter)
 
 - Estimated global cooling: **−15 °C**
 - Ocean surface cooling: **2–6 °C**, potentially lasting several years
 - Persistent atmospheric soot (1–3 years) could trigger climatic cooling lasting **decades**, amplified by positive feedback mechanisms (greater snow and ice cover → higher solar reflectivity)
 
-## 6. Asteroid and Comet Impact Risk
+### 6. Asteroid and Comet Impact Risk
 
 | Impact Diameter | Consequence |
 | ---------------- | ----------- |
@@ -401,7 +401,7 @@ Finally, Bostrom and Ćirković consider it essential to promote a more critical
 - **Volcanic super-eruptions:** occur on average every 50,000 years (possibly underestimated because of incomplete geological records).
 - **NASA's Spaceguard Project** (~USD 4 million annually plus volunteer support): aimed to detect 90% of near-Earth asteroids larger than 1 km by the end of 2008.
 
-## 7. Climate Change (IPCC Projections)
+### 7. Climate Change (IPCC Projections)
 
 | Scenario | Mean Warming | Uncertainty Range |
 | -------- | ------------ | ----------------- |
@@ -410,7 +410,7 @@ Finally, Bostrom and Ćirković consider it essential to promote a more critical
 
 - Sea-level rise (under the scenarios considered): **18–38 cm** and **26–59 cm**
 
-## 8. Infectious Diseases and Global Mortality
+### 8. Infectious Diseases and Global Mortality
 
 - Account for approximately **25% of all deaths worldwide** (~15 million annually)
 - Approximately **75%** of these deaths occur in Southeast Asia and Sub-Saharan Africa.
@@ -433,7 +433,7 @@ Finally, Bostrom and Ćirković consider it essential to promote a more critical
 - Cardiovascular disease: ~30% of global mortality (~18 million deaths/year)
 - Cancer: ~8 million deaths/year
 
-## 9. Nuclear Weapons
+### 9. Nuclear Weapons
 
 - Global nuclear arsenal: from **65,000 warheads** (Cold War peak, 1986) to **~26,000** (2007), representing a **60% reduction**
 - Approximately **96%** of these weapons were held by the United States and Russia.

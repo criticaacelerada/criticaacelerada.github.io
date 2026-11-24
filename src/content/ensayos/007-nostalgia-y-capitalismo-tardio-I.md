@@ -32,9 +32,9 @@ translationKey: "exp007"
 📄 [El texto original puede consultarse en el siguiente enlace](/pdfs/nostalgia-capitalismo-tardio.pdf)
 
 
-# PARTE I: La nostalgia en el capitalismo tardío
+## PARTE I: La nostalgia en el capitalismo tardío
 
-## 1. Nostalgia: De la patología, a la emoción y al síntoma
+### 1. Nostalgia: De la patología, a la emoción y al síntoma
 
 > Yo, a caballo, por su sombra  
 > busqué mi pueblo y mi casa.  
@@ -85,13 +85,13 @@ Así pues, la nostalgia es una emoción que nos ayuda a recomponer los fragmento
 
 De este modo, llegamos prácticamente a nuestros días. Una problemática arraigada a nuestro contexto histórico en el que la cultura de masas, el capitalismo y la tecnificación promueven la nostalgia de forma directa e indirecta. En el siguiente apartado, trataremos de poner en perspectiva nuestro escurridizo contexto social para proveer un marco de referencia con el fin de profundizar más detalladamente en la relación entre nostalgia y crítica cultural.
 
-# 2. Crítica cultural y capitalismo
+## 2. Crítica cultural y capitalismo
 
 El bienestar se erige en Occidente y el capitalismo asume un rol hegemónico; un rol que le terminará dando la razón a la fuerza tras la caída del muro de Berlín en 1989. En esta sociedad líquida, en constante reestructuración de su axiomática interna, bajo el pretexto de sociedades liberales y socialdemócratas, y también en el tránsito de sociedades disciplinarias a sociedades de control, vemos que la realidad de nuestra época depende de una multiplicidad de formas difíciles de conceptualizar. El trillado concepto de posmodernidad trató de hacer lo suyo al buscar una forma de analizar esta heterogeneidad sociohistórica, un proyecto incompleto si es que alguna vez fue un proyecto. Cada autor ha tratado de dar una versión de los acontecimientos, una interpretación de los fenómenos que se inscriben en la realidad social de nuestros tiempos[^19].
 
 En el presente apartado trataremos de mostrar diferentes perspectivas que han marcado época en el intento de explicar lo ocurrido y lo que sigue ocurriendo en estas sociedades consumistas e hipertecnológicas. Se ha hecho una selección de las principales voces que, a nuestro juicio, han hecho aportaciones especialmente cruciales a la hora de concebir este escurridizo contexto. En primer lugar, partiremos del análisis histórico y sociológico de Gilles Lipovetsky para exponer los elementos centrales que hicieron que la sociedad de consumo se asiente como el modelo social imperante. Luego, presentaremos brevemente las perspectivas de Jean Baudrillard y Guy Debord que cogen el testigo de la sociedad de consumo comprendida entre finales de los años sesenta y los años setenta. Posteriormente, analizaremos el concepto de posmodernidad a partir de Fredric Jameson como principal teórico en la reflexión de dicho concepto y, acto seguido, revisaremos brevemente el concepto de realismo capitalista de Mark Fisher como contrapunto al de posmodernidad. Finalmente, tras haber trazado una imagen panorámica de la coyuntura sociohistórica, mostraremos nuestro compromiso conceptual como consecuencia de las conclusiones obtenidas del cotejo entre los diversos autores.
 
-## 2.1. Contexto cultural e integración de la sociedad de consumo como realidad social
+### 2.1. Contexto cultural e integración de la sociedad de consumo como realidad social
 
 Diversos cambios culturales y económicos se asientan desde el siglo XIX hasta la actualidad. El modo de producción capitalista expande y ensancha su poder de inversión y su capacidad de modificar la vida cotidiana de los individuos, desde el modo de organización del trabajo a las formas de relacionarse en la vida privada. El primer momento de la fase capitalista, tal como explica Lipovetsky, estuvo caracterizado por un crecimiento sin precedentes en el sistema de producción de bienes:
 
@@ -129,7 +129,7 @@ En este contexto histórico todo se encuentra mediado por los signos y el espect
 
 De este modo, Debord critica esta degradación y rehúsa la necesidad de la apariencia que se encuentra inscrita en la lógica del consumo. La mercancía para él es un mal fatídico; su presencia nos conduce a la lógica enfermiza de consumo y espectáculo: *panem et circenses*. Desde el momento en que la mercancía ha ocupado toda la vida social, el espectáculo se muestra como el efecto inevitable de nuestra cultura. Como mostrará un Baudrillard más maduro, los signos han terminado anteponiéndose a lo real; ahora las cosas mediadas por su apariencia se identifican por lo codificado en ellas socialmente. Lo real se torna opaco, y tan solo lo simbólico es lo que adquiere la potencia del significado: «lo real no tendrá nunca más ocasión de producirse»[^34].
 
-## 2.2. Posmodernidad<span style="font-size: 0.45em;">[^35]</span>: Su problemática identidad y su difícil estatuto
+### 2.2. Posmodernidad<span style="font-size: 0.45em;">[^35]</span>: Su problemática identidad y su difícil estatuto
 
 > Se hubiera pensado que el mundo de los auriculares y Andy Warhol, el fundamentalismo y el sida, las máquinas para hacer ejercicios y MTV, los *yuppies* y los libros sobre el posmodernismo, los peinados *punk* y los cortes al rape al estilo de los años cincuenta, la “pérdida de historicidad” y el éloge de la esquizofrenia, los medios de comunicación y las obsesiones con el calcio y el colesterol, la lógica del “shock del futuro” y el surgimiento de científicos y fuerzas contrainsurgentes como nuevos tipos de grupos sociales cumpliría con todos los requisitos para pasar por algo bien decadente a los ojos de cualquier observador marciano sensato.[^36]
 >
@@ -185,7 +185,7 @@ A este respecto, Fisher comenta que el realismo capitalista ya no presenta esta 
 
 Más allá de entrar en más detalles con respecto a la interpretación de Fisher y sus ideas en torno a la idea de «realismo capitalista», lo hemos presentado aquí a modo de crítica y actualización del concepto de posmodernidad. Llegados a este punto, creemos que el alcance de las diferentes voces que hemos presentado, y sus diferentes formas de apelar a una coyuntura social densa y constitutivamente dinámica, nos dan pie a organizar las consecuencias filosóficas que esta panorámica nos ha otorgado. Dicho esto, pasemos a mencionar las ideas que queremos rescatar para nuestra investigación.
 
-## 2.3. Compromiso teórico con el concepto de «capitalismo tardío»
+### 2.3. Compromiso teórico con el concepto de «capitalismo tardío»
 
 Tras el recorrido que hemos hecho por diferentes autores, conceptos y visiones, ahora nos vemos en la tesitura de reorganizar y tamizar todas las posiciones expuestas anteriormente. Como hemos dicho, cada interpretación capta una serie de elementos y resalta ciertos motivos que no se encuentran en otras. De este modo, ahora podemos acoger ciertos puntos que consideramos imprescindibles, para así remarcar el concepto o la forma que nos es más satisfactorio emplear en esta investigación.
 
