@@ -360,4 +360,4 @@ Turn off
 […]
 
 
-<img src="/images/otravez.jpg">
+<img src="/images/otravez.webp" loading="lazy" decoding="async">

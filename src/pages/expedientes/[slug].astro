@@ -1,193 +1,341 @@
-
 ---
 import { getCollection, render } from "astro:content";
-import HomeButton from "../../components/HomeButton.astro";
-import SocialFooter from "../../components/SocialFooter.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import ArchivoAudiovisual from "../../components/ArchivoAudiovisual.astro";
-import "../../styles/global.css";
+import ReadingProgress from "../../components/ReadingProgress.astro";
+import TableOfContents from "../../components/TableOfContents.astro";
+import CopyCitation from "../../components/CopyCitation.astro";
+import ArticlePagination from "../../components/ArticlePagination.astro";
+import {
+  buildCitation,
+  estimateReadingTime,
+  findNodeByName,
+  formatEditorialDate,
+  hasMathContent,
+  resolveVideoAuthor,
+} from "../../lib/editorial";
 
 export async function getStaticPaths() {
   const ensayos = await getCollection("ensayos");
 
-  return ensayos.map((ensayo) => ({
-    params: {
-      slug: ensayo.id,
-    },
-    props: {
-      ensayo,
-    },
-  }));
+  return ensayos.map((ensayo) => {
+    const traduccion = ensayo.data.translationKey
+      ? ensayos.find(
+          (candidate) =>
+            candidate.id !== ensayo.id &&
+            candidate.data.translationKey === ensayo.data.translationKey
+        )
+      : undefined;
+
+    const mismosIdioma = ensayos
+      .filter((item) => item.data.language === ensayo.data.language)
+      .sort((a, b) => a.data.expediente - b.data.expediente);
+
+    const currentIdx = mismosIdioma.findIndex((item) => item.id === ensayo.id);
+    const prevEnsayo = currentIdx > 0 ? mismosIdioma[currentIdx - 1] : undefined;
+    const nextEnsayo =
+      currentIdx >= 0 && currentIdx < mismosIdioma.length - 1
+        ? mismosIdioma[currentIdx + 1]
+        : undefined;
+
+    return {
+      params: { slug: ensayo.id },
+      props: {
+        ensayo,
+        traduccion,
+        prevEnsayo,
+        nextEnsayo,
+      },
+    };
+  });
 }
 
-const { ensayo } = Astro.props;
-const { Content } = await render(ensayo);
+const { ensayo, traduccion, prevEnsayo, nextEnsayo } = Astro.props;
+const { Content, headings } = await render(ensayo);
 
+const lang = ensayo.data.language ?? "es";
+const isEn = lang === "en";
 const esTraduccion = Boolean(ensayo.data.translator);
+const numero = String(ensayo.data.expediente).padStart(3, "0");
+const authorName = ensayo.data.author ?? "Crítica Acelerada";
+const authorNode = findNodeByName(ensayo.data.author);
+const translatorNode = findNodeByName(ensayo.data.translator);
+const formattedDate = formatEditorialDate(ensayo.data.date, lang);
+const readingTime = estimateReadingTime(ensayo.body, lang);
+const loadKatex = hasMathContent(ensayo.body);
+const videoAuthor = ensayo.data.video
+  ? resolveVideoAuthor(ensayo.data.video.credits, ensayo.data.author)
+  : undefined;
+
+const canonicalHref = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : `https://criticaacelerada.com${Astro.url.pathname}`;
+
+const citation = buildCitation({
+  author: authorName,
+  date: ensayo.data.date,
+  title: ensayo.data.title,
+  seriesLabel: isEn ? `Dossier No. ${numero}` : `Expediente N.º ${numero}`,
+  url: canonicalHref,
+  translator: ensayo.data.translator,
+  lang,
+});
+
+const prevTarget = prevEnsayo
+  ? {
+      href: `/expedientes/${prevEnsayo.id}`,
+      code: String(prevEnsayo.data.expediente).padStart(3, "0"),
+      title: prevEnsayo.data.title,
+    }
+  : undefined;
+
+const nextTarget = nextEnsayo
+  ? {
+      href: `/expedientes/${nextEnsayo.id}`,
+      code: String(nextEnsayo.data.expediente).padStart(3, "0"),
+      title: nextEnsayo.data.title,
+    }
+  : undefined;
 ---
 
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content={ensayo.data.descripcion}
-  />
-  <title>{ensayo.data.title} | Crítica Acelerada</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-</head>
-
-<body>
-
-  <SocialFooter />
-
-  <HomeButton />
+<BaseLayout
+  title={`${ensayo.data.title} | Crítica Acelerada`}
+  description={ensayo.data.descripcion}
+  lang={lang}
+  loadKatex={loadKatex}
+  type="article"
+  publishedTime={ensayo.data.date}
+  author={authorName}
+  section="Expedientes"
+  alternateLang={
+    traduccion
+      ? {
+          lang: traduccion.data.language,
+          href: `/expedientes/${traduccion.id}`,
+        }
+      : undefined
+  }
+>
+  <ReadingProgress />
 
   <main class="case-page">
     <div class="container">
+      <nav
+        class="case-breadcrumb"
+        aria-label={isEn ? "Breadcrumb" : "Ruta de navegación"}
+      >
+        <a href="/">{isEn ? "Home" : "Inicio"}</a>
+        <span aria-hidden="true">/</span>
+        <a href="/expedientes">{isEn ? "Dossiers" : "Expedientes"}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{numero}</span>
+      </nav>
 
       <header class="case-header">
-
         <div class="case-header-top">
           <p class="eyebrow">
-            EXPEDIENTE {String(ensayo.data.expediente).padStart(3, "0")}
+            {isEn ? `DOSSIER ${numero}` : `EXPEDIENTE ${numero}`}
           </p>
 
           <span class="case-status">
-            ARCHIVO ABIERTO
+            {isEn ? "OPEN FILE" : "ARCHIVO ABIERTO"}
           </span>
         </div>
 
         <div class="case-title-grid">
-
           <div class="case-title-block">
-
             {
               esTraduccion && (
                 <div class="translation-label">
                   <span class="translation-label-marker" aria-hidden="true">
                     ↳
                   </span>
-                  <span>TRADUCCIÓN TEÓRICA</span>
-                  <span class="translation-label-languages">
-                    INGLÉS → ESPAÑOL
+                  <span>
+                    {isEn ? "THEORETICAL TRANSLATION" : "TRADUCCIÓN TEÓRICA"}
                   </span>
+                  {ensayo.data.sourceLanguage && (
+                    <span class="translation-label-languages">
+                      {ensayo.data.sourceLanguage.toUpperCase()} →{" "}
+                      {lang.toUpperCase()}
+                    </span>
+                  )}
                 </div>
               )
             }
 
             <h1>{ensayo.data.title}</h1>
 
-            <p class="case-description">
-              {ensayo.data.descripcion}
-            </p>
+            <p class="case-description">{ensayo.data.descripcion}</p>
 
             {
               esTraduccion && (
                 <p class="translation-credit">
-                  Texto de <strong>{ensayo.data.author}</strong>
+                  {isEn ? "Text by " : "Texto de "}
+                  <strong>{authorName}</strong>
                   {" · "}
-                  Traducción al español de{" "}
+                  {isEn ? "Translation by " : "Traducción al español de "}
                   <strong>{ensayo.data.translator}</strong>
+                  {ensayo.data.sourceUrl && ensayo.data.sourceTitle && (
+                    <>
+                      {" · "}
+                      <a
+                        href={ensayo.data.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {ensayo.data.sourceTitle} ↗
+                      </a>
+                    </>
+                  )}
                 </p>
               )
             }
-
           </div>
 
-          <div class="case-number" aria-hidden="true">
-            {String(ensayo.data.expediente).padStart(3, "0")}
-          </div>
-
+          <div class="case-number" aria-hidden="true">{numero}</div>
         </div>
 
         <div class="case-meta">
-
-          <span>CRÍTICA ACELERADA</span>
-
-          <span>LABORATORIO DE ESTUDIOS CRÍTICOS</span>
-
-          {
-            ensayo.data.language && (
-              <span>
-                IDIOMA: {ensayo.data.language.toUpperCase()}
-              </span>
-            )
-          }
-
+          <span>
+            {authorNode ? (
+              <a href={`/nodos/${authorNode.slug}`}>{authorName}</a>
+            ) : (
+              authorName
+            )}
+          </span>
+          <time datetime={ensayo.data.date.toISOString().slice(0, 10)}>
+            {formattedDate}
+          </time>
+          <span>{readingTime}</span>
+          <span>
+            {isEn
+              ? `LANG: ${lang.toUpperCase()}`
+              : `IDIOMA: ${lang.toUpperCase()}`}
+          </span>
         </div>
 
+        {
+          traduccion && (
+            <div
+              class="case-lang-bar"
+              aria-label={isEn ? "Available languages" : "Idiomas disponibles"}
+            >
+              <span class="case-lang-label">
+                {isEn ? "VERSION" : "VERSIÓN"}
+              </span>
+              <div class="language-switch">
+                <span class="language-chip is-active" aria-current="true">
+                  {lang.toUpperCase()}
+                </span>
+                <a
+                  class="language-chip"
+                  href={`/expedientes/${traduccion.id}`}
+                  lang={traduccion.data.language}
+                >
+                  {traduccion.data.language.toUpperCase()} →
+                </a>
+              </div>
+            </div>
+          )
+        }
       </header>
 
       <div class="case-layout">
-
         <aside class="case-sidebar">
+          <div class="case-sidebar-meta">
+            <div class="case-sidebar-block">
+              <span class="case-sidebar-label">
+                {isEn ? "CLASSIFICATION" : "CLASIFICACIÓN"}
+              </span>
+              <strong>
+                {isEn ? `DOSSIER ${numero}` : `EXPEDIENTE ${numero}`}
+              </strong>
+            </div>
 
-          <div class="case-sidebar-block">
-            <span class="case-sidebar-label">
-              CLASIFICACIÓN
-            </span>
+            <div class="case-sidebar-block">
+              <span class="case-sidebar-label">
+                {isEn ? "DATE" : "FECHA"}
+              </span>
+              <strong>{formattedDate}</strong>
+            </div>
 
-            <strong>
-              EXPEDIENTE {String(ensayo.data.expediente).padStart(3, "0")}
-            </strong>
-          </div>
+            <div class="case-sidebar-block">
+              <span class="case-sidebar-label">
+                {isEn ? "FORMAT" : "FORMATO"}
+              </span>
+              <strong>
+                {
+                  esTraduccion
+                    ? isEn
+                      ? "THEORETICAL TRANSLATION"
+                      : "TRADUCCIÓN TEÓRICA"
+                    : isEn
+                      ? "ESSAY"
+                      : "ENSAYO"
+                }
+              </strong>
+            </div>
 
-          <div class="case-sidebar-block">
-            <span class="case-sidebar-label">
-              ESTADO
-            </span>
+            <div class="case-sidebar-block">
+              <span class="case-sidebar-label">
+                {esTraduccion
+                  ? isEn
+                    ? "ORIGINAL AUTHOR"
+                    : "AUTORÍA ORIGINAL"
+                  : isEn
+                    ? "AUTHOR"
+                    : "AUTORÍA"}
+              </span>
+              <strong>
+                {authorNode ? (
+                  <a
+                    class="sidebar-node-link"
+                    href={`/nodos/${authorNode.slug}`}
+                  >
+                    {authorName}
+                  </a>
+                ) : (
+                  authorName
+                )}
+              </strong>
+            </div>
 
-            <strong>PUBLICADO</strong>
-          </div>
-
-          <div class="case-sidebar-block">
-            <span class="case-sidebar-label">
-              FORMATO
-            </span>
-
-            <strong>
-              {esTraduccion ? "TRADUCCIÓN TEÓRICA" : "ENSAYO"}
-            </strong>
-          </div>
-
-          {
-            esTraduccion && (
-              <>
-                <div class="case-sidebar-line"></div>
-
+            {
+              esTraduccion && ensayo.data.translator && (
                 <div class="case-sidebar-block">
                   <span class="case-sidebar-label">
-                    AUTORÍA ORIGINAL
+                    {isEn ? "TRANSLATION" : "TRADUCCIÓN"}
                   </span>
-
                   <strong>
-                    {ensayo.data.author}
+                    {translatorNode ? (
+                      <a
+                        class="sidebar-node-link"
+                        href={`/nodos/${translatorNode.slug}`}
+                      >
+                        {ensayo.data.translator}
+                      </a>
+                    ) : (
+                      ensayo.data.translator
+                    )}
                   </strong>
                 </div>
+              )
+            }
+          </div>
 
-                <div class="case-sidebar-block">
-                  <span class="case-sidebar-label">
-                    TRADUCCIÓN AL ESPAÑOL
-                  </span>
+          <TableOfContents headings={headings} lang={lang} variant="sidebar" />
 
-                  <strong>
-                    {ensayo.data.translator}
-                  </strong>
-                </div>
-              </>
-            )
-          }
+          <CopyCitation citation={citation} lang={lang} />
 
           <div class="case-sidebar-line"></div>
 
           <a class="case-back-link" href="/expedientes">
-            ← Volver al archivo
+            {isEn ? "← Back to archive" : "← Volver al archivo"}
           </a>
-
         </aside>
 
         <article class="case-content">
+          <TableOfContents headings={headings} lang={lang} variant="mobile" />
 
           <Content />
 
@@ -199,20 +347,23 @@ const esTraduccion = Boolean(ensayo.data.translator);
                 context={ensayo.data.video.context}
                 label={ensayo.data.video.label}
                 expediente={ensayo.data.expediente}
-                language={ensayo.data.language}
+                language={lang}
+                author={videoAuthor}
               />
             )
           }
 
+          <ArticlePagination
+            prev={prevTarget}
+            next={nextTarget}
+            lang={lang}
+            ariaLabel={isEn ? "Dossier navigation" : "Navegación de expedientes"}
+          />
         </article>
-
       </div>
-
     </div>
   </main>
-
-</body>
-</html>
+</BaseLayout>
 
 <style>
   .translation-label {
@@ -220,36 +371,43 @@ const esTraduccion = Boolean(ensayo.data.translator);
     align-items: center;
     flex-wrap: wrap;
     gap: 0.65rem;
-    margin-bottom: 1.5rem;
-    color: #ff2f6d;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    color: var(--accent-text);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    line-height: 1.5;
   }
 
   .translation-label-marker {
-    font-size: 1rem;
+    font-size: 0.95rem;
     letter-spacing: 0;
   }
 
   .translation-label-languages {
     padding-left: 0.75rem;
-    border-left: 1px solid #383838;
-    color: #999;
-    font-size: 0.62rem;
-    font-weight: 500;
+    border-left: 1px solid var(--border-strong);
+    color: var(--muted);
+    font-size: var(--text-xs);
   }
 
   .translation-credit {
-    margin-top: 1.25rem;
-    color: #999;
-    font-size: 0.85rem;
-    line-height: 1.8;
+    margin-top: 1.15rem;
+    color: var(--muted);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.65;
   }
 
   .translation-credit strong {
-    color: #ddd;
+    color: var(--text);
     font-weight: 600;
+  }
+
+  .translation-credit a {
+    color: var(--accent-text);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
 </style>

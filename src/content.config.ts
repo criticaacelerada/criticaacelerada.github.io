@@ -37,6 +37,9 @@ const ensayos = defineCollection({
     author: z.string().optional(),
     role: z.string().optional(),
     translator: z.string().optional(),
+    sourceLanguage: z.string().optional(),
+    sourceTitle: z.string().optional(),
+    sourceUrl: z.string().url().optional(),
 
     /*
      * Identidad nodal interna.

@@ -1,4059 +1,1360 @@
 ---
-import "../styles/global.css";
-import SocialFooter from "../components/SocialFooter.astro";
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import heroVisual from "../assets/images/ca-home-visual.jpeg";
 import { getCollection } from "astro:content";
 import { avisos } from "../data/avisos";
+import { nodes } from "../data/nodos";
+import { getNodeTraces } from "../lib/trazas";
+import { formatShortDate } from "../lib/editorial";
 
-const [ensayosTodos, transmisiones, destiladosTodos, alicuotasTodos] = await Promise.all([
+const [ensayosTodos, transmisiones, destiladosTodos, alicuotasTodos] =
+  await Promise.all([
     getCollection("ensayos"),
     getCollection("transmisiones"),
     getCollection("destilados"),
     getCollection("alicuotas"),
-]);
+  ]);
 
-const ensayos = ensayosTodos.filter(
-    (entry) => entry.data.language === "es"
-);
-
+const ensayos = ensayosTodos.filter((entry) => entry.data.language === "es");
 const destilados = destiladosTodos.filter(
-    (entry) => entry.data.language === "es"
+  (entry) => entry.data.language === "es"
 );
-
 const alicuotas = alicuotasTodos.filter(
-    (entry) => entry.data.language === "es"
+  (entry) => entry.data.language === "es"
 );
 
 const publicaciones = [
-    ...ensayos.flatMap((entry) => {
-        const traduccionEn = entry.data.translationKey
-            ? ensayosTodos.find(
-                (candidate) =>
-                    candidate.data.language === "en" &&
-                    candidate.data.translationKey === entry.data.translationKey
-            )
-            : undefined;
+  ...ensayos.flatMap((entry) => {
+    const traduccionEn = entry.data.translationKey
+      ? ensayosTodos.find(
+          (candidate) =>
+            candidate.data.language === "en" &&
+            candidate.data.translationKey === entry.data.translationKey
+        )
+      : undefined;
 
-        const expediente = {
-            id: entry.id,
-            codigo: `EXPEDIENTE ${String(entry.data.expediente).padStart(3, "0")}`,
-            tipo: "ARCHIVO TEXTUAL",
-            fecha: entry.data.date,
-            titulo: entry.data.title,
-            descripcion: entry.data.descripcion,
-            autor: entry.data.author ?? "CRÍTICA ACELERADA",
-            hrefEs: `/expedientes/${entry.id}`,
-            hrefEn: traduccionEn
-                ? `/expedientes/${traduccionEn.id}`
-                : null,
-        };
+    const expediente = {
+      id: entry.id,
+      codigo: `EXPEDIENTE ${String(entry.data.expediente).padStart(3, "0")}`,
+      tipo: "ARCHIVO TEXTUAL",
+      fecha: entry.data.date,
+      titulo: entry.data.title,
+      descripcion: entry.data.descripcion,
+      autor: entry.data.author ?? "CRÍTICA ACELERADA",
+      hrefEs: `/expedientes/${entry.id}`,
+      hrefEn: traduccionEn ? `/expedientes/${traduccionEn.id}` : null,
+    };
 
-        if (!entry.data.video) {
-            return [expediente];
-        }
+    if (!entry.data.video) {
+      return [expediente];
+    }
 
-        const audiovisual = {
-            id: `${entry.id}-audiovisual`,
-            codigo: `ARCHIVO AUDIOVISUAL / ${String(entry.data.expediente).padStart(3, "0")}`,
-            tipo: "MATERIAL ASOCIADO",
-            fecha: entry.data.video.date,
-            titulo: entry.data.video.title,
-            descripcion: "Material audiovisual asociado a este expediente.",
-            autor: entry.data.author ?? "CRÍTICA ACELERADA",
-            hrefEs: `/expedientes/${entry.id}`,
-            hrefEn: traduccionEn
-                ? `/expedientes/${traduccionEn.id}`
-                : null,
-        };
+    const audiovisual = {
+      id: `${entry.id}-audiovisual`,
+      codigo: `ARCHIVO AUDIOVISUAL / ${String(entry.data.expediente).padStart(3, "0")}`,
+      tipo: "MATERIAL ASOCIADO",
+      fecha: entry.data.video.date,
+      titulo: entry.data.video.title,
+      descripcion: "Material audiovisual asociado a este expediente.",
+      autor: entry.data.author ?? "CRÍTICA ACELERADA",
+      hrefEs: `/expedientes/${entry.id}`,
+      hrefEn: traduccionEn ? `/expedientes/${traduccionEn.id}` : null,
+    };
 
-        return [expediente, audiovisual];
-    }),
+    return [expediente, audiovisual];
+  }),
 
-    ...transmisiones.map((entry) => ({
-        id: entry.id,
-        codigo: `TRANSMISIÓN ${String(entry.data.numero).padStart(3, "0")}`,
-        tipo: "ARCHIVO AUDIOVISUAL",
-        fecha: entry.data.pubDate,
-        titulo: entry.data.title,
-        descripcion: entry.data.description,
-        autor: "CRÍTICA ACELERADA",
-        hrefEs: `/transmisiones/${entry.id}`,
-        hrefEn: null,
-    })),
+  ...transmisiones.map((entry) => ({
+    id: entry.id,
+    codigo: `TRANSMISIÓN ${String(entry.data.numero).padStart(3, "0")}`,
+    tipo: "ARCHIVO AUDIOVISUAL",
+    fecha: entry.data.pubDate,
+    titulo: entry.data.title,
+    descripcion: entry.data.description,
+    autor: "CRÍTICA ACELERADA",
+    hrefEs: `/transmisiones/${entry.id}`,
+    hrefEn: null,
+  })),
 
-    ...destilados.map((entry) => {
-        const traduccionEn = entry.data.translationKey
-            ? destiladosTodos.find(
-                (candidate) =>
-                    candidate.data.language === "en" &&
-                    candidate.data.translationKey === entry.data.translationKey
-            )
-            : undefined;
+  ...destilados.map((entry) => {
+    const traduccionEn = entry.data.translationKey
+      ? destiladosTodos.find(
+          (candidate) =>
+            candidate.data.language === "en" &&
+            candidate.data.translationKey === entry.data.translationKey
+        )
+      : undefined;
 
-        return {
-            id: entry.id,
-            codigo: `DESTILADO ${String(entry.data.numero).padStart(3, "0")}`,
-            tipo: "ARCHIVO DESTILADO",
-            fecha: entry.data.pubDate,
-            titulo: entry.data.title,
-            descripcion: entry.data.description,
-            autor: entry.data.autor,
-            hrefEs: `/destilados/${entry.id}`,
-            hrefEn: traduccionEn
-                ? `/destilados/${traduccionEn.id}`
-                : null,
-        };
-    }),
+    return {
+      id: entry.id,
+      codigo: `DESTILADO ${String(entry.data.numero).padStart(3, "0")}`,
+      tipo: "ARCHIVO DESTILADO",
+      fecha: entry.data.pubDate,
+      titulo: entry.data.title,
+      descripcion: entry.data.description,
+      autor: entry.data.autor,
+      hrefEs: `/destilados/${entry.id}`,
+      hrefEn: traduccionEn ? `/destilados/${traduccionEn.id}` : null,
+    };
+  }),
 
-    ...alicuotas.map((entry) => {
-        const traduccionEn = entry.data.translationKey
-            ? alicuotasTodos.find(
-                (candidate) =>
-                    candidate.data.language === "en" &&
-                    candidate.data.translationKey === entry.data.translationKey
-            )
-            : undefined;
+  ...alicuotas.map((entry) => {
+    const traduccionEn = entry.data.translationKey
+      ? alicuotasTodos.find(
+          (candidate) =>
+            candidate.data.language === "en" &&
+            candidate.data.translationKey === entry.data.translationKey
+        )
+      : undefined;
 
-        return {
-            id: entry.id,
-            codigo: `AE—${String(entry.data.numero).padStart(3, "0")}`,
-            tipo: "ARCHIVO EXPERIMENTAL",
-            fecha: entry.data.pubDate,
-            titulo: entry.data.title,
-            descripcion: entry.data.description,
-            autor: entry.data.autor,
-            hrefEs: `/alicuotas/${entry.id}`,
-            hrefEn: traduccionEn
-                ? `/alicuotas/${traduccionEn.id}`
-                : null,
-        };
-    }),
+    return {
+      id: entry.id,
+      codigo: `AE—${String(entry.data.numero).padStart(3, "0")}`,
+      tipo: "ARCHIVO EXPERIMENTAL",
+      fecha: entry.data.pubDate,
+      titulo: entry.data.title,
+      descripcion: entry.data.description,
+      autor: entry.data.autor,
+      hrefEs: `/alicuotas/${entry.id}`,
+      hrefEn: traduccionEn ? `/alicuotas/${traduccionEn.id}` : null,
+    };
+  }),
 ];
 
 const masReciente = publicaciones.sort(
-    (a, b) => b.fecha.getTime() - a.fecha.getTime()
+  (a, b) => b.fecha.getTime() - a.fecha.getTime()
 )[0];
 
 const avisosActivos = avisos
-    .filter((aviso) => aviso.activo)
-    .sort((a, b) => b.fecha.getTime() - a.fecha.getTime())
-    .slice(0, 3);
+  .filter((aviso) => aviso.activo)
+  .sort((a, b) => b.fecha.getTime() - a.fecha.getTime())
+  .slice(0, 3);
 
-const formatearFecha = (fecha: Date) =>
-    new Intl.DateTimeFormat("es-MX", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-    })
-        .format(fecha)
-        .replaceAll("/", ".");
+const nodosConTrazas = await Promise.all(
+  nodes.map(async (node) => {
+    const traces = await getNodeTraces(node);
+    return {
+      node,
+      traceCount: traces.length,
+    };
+  })
+);
+
+const totalExpedientes = new Set(
+  ensayosTodos.map((e) => e.data.translationKey ?? e.id)
+).size;
+const totalDestilados = new Set(
+  destiladosTodos.map((d) => d.data.translationKey ?? d.id)
+).size;
+const totalAlicuotas = new Set(
+  alicuotasTodos.map((a) => a.data.translationKey ?? a.id)
+).size;
 ---
 
+<BaseLayout
+  title="Crítica Acelerada"
+  description="Crítica Acelerada — Laboratorio de Economía Política y Filosofía del Capitalismo Contemporáneo."
+  lang="es"
+>
+  <main class="home">
+    <!-- =====================================================
+         HERO EDITORIAL
+    ====================================================== -->
+    <section class="home-hero">
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <div class="hero-meta">
+            <p class="eyebrow">LABORATORIO DE ESTUDIOS CRÍTICOS</p>
 
-<!doctype html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8" />
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    />
-
-    <meta
-        name="description"
-        content="Crítica Acelerada — Laboratorio de Economía Política y Filosofía del Capitalismo Contemporáneo."
-    />
-
-    <meta
-        name="theme-color"
-        content="#050505"
-    />
-
-    <title>Crítica Acelerada</title>
-
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-</head>
-
-<body>
-
-    <main class="home">
-
-        <!-- =====================================================
-             HERO
-        ====================================================== -->
-
-        <section class="home-hero">
-
-            <!-- RETÍCULA -->
-            <div
-                class="hero-grid-background"
-                aria-hidden="true"
-            ></div>
-
-            <!-- MARCAS DE ENCUADRE -->
-            <div
-                class="hero-frame"
-                aria-hidden="true"
-            >
-                <span class="corner corner-tl"></span>
-                <span class="corner corner-tr"></span>
-                <span class="corner corner-bl"></span>
-                <span class="corner corner-br"></span>
+            <div class="research-fields">
+              <span>ECONOMÍA POLÍTICA</span>
+              <span>FILOSOFÍA</span>
+              <span>CAPITALISMO CONTEMPORÁNEO</span>
             </div>
+          </div>
 
+          <div class="hero-title">
+            <h1>
+              <span>Crítica</span>
+              <span>Acelerada</span>
+            </h1>
 
-            <!-- CONTENIDO PRINCIPAL -->
-            <div class="home-container hero-layout">
-
-                <!-- IZQUIERDA -->
-                <div class="hero-copy">
-
-                    <div class="hero-meta">
-
-                        <p class="eyebrow">
-                            LABORATORIO DE ESTUDIOS CRÍTICOS
-                        </p>
-
-                        <div class="research-fields">
-                            <span>ECONOMÍA POLÍTICA</span>
-                            <span>FILOSOFÍA</span>
-                            <span>CAPITALISMO CONTEMPORÁNEO</span>
-                        </div>
-
-                    </div>
-
-                    <div class="hero-title">
-
-                        <h1>
-                            <span>CRÍTICA</span>
-                            <span>ACELERADA</span>
-                        </h1>
-
-                        <p class="mission">
-                            Impensar las categorías heredadas para comprender
-                            las transformaciones tecnológicas, económicas y
-                            filosóficas del presente.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- OBJETO VISUAL -->
-                <div
-                    class="hero-visual"
-                    aria-hidden="true"
-                >
-
-                    <div class="visual-glow"></div>
-
-                    <img
-                        src="/images/ca-home-visual.jpeg"
-                        alt=""
-                        class="hero-art"
-                    />
-
-                    <div class="visual-fade"></div>
-
-                </div>
-
-
-                <!-- DATOS LATERALES -->
-                <div
-                    class="system-data"
-                    aria-hidden="true"
-                >
-
-                    <span class="system-code">
-                        CA-LAB // 001
-                    </span>
-
-                    <div class="system-line"></div>
-
-                    <span>
-                        ARCHIVO LIBERADO
-                    </span>
-
-                    <span>
-                        NIVEL DE ACCESO
-                    </span>
-
-                    <strong>
-                        PÚBLICO
-                    </strong>
-
-                    <div class="system-accent"></div>
-
-                </div>
-
-            </div>
-
-
-            <!-- FRANJA INFERIOR -->
-            <div class="home-container hero-bottom">
-
-                <div class="hero-bottom-block">
-
-                    <span
-                        class="bottom-marker"
-                        aria-hidden="true"
-                    ></span>
-
-                    <div>
-
-                        <strong>
-                            INVESTIGACIÓN INDEPENDIENTE
-                        </strong>
-
-                        <span>
-                            PENSAMIENTO CRÍTICO
-                        </span>
-
-                        <span>
-                            FUTUROS POSIBLES
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="hero-bottom-block hero-bottom-archive">
-
-                    <div>
-
-                        <strong>
-                            ARCHIVOS DEL LABORATORIO
-                        </strong>
-
-                        <span>
-                            DOCUMENTOS
-                            <i>›</i>
-                            ANÁLISIS
-                            <i>›</i>
-                            TRANSMISIONES
-                            <i>›</i>
-                            EXPERIMENTACIÓN
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             TRANSICIÓN
-        ====================================================== -->
-
-        <div class="hero-transition" aria-hidden="true">
-
-            <div class="home-container transition-inner">
-
-                <span>CA / TRANSICIÓN</span>
-
-                <div class="transition-line"></div>
-
-                <span>001</span>
-
-            </div>
-
+            <p class="mission">
+              Impensar las categorías heredadas para comprender las
+              transformaciones tecnológicas, económicas y filosóficas del
+              presente.
+            </p>
+          </div>
         </div>
 
+        <div class="hero-visual" aria-hidden="true">
+          <Image
+            src={heroVisual}
+            alt=""
+            class="hero-art"
+            widths={[440, 760]}
+            sizes="(max-width: 960px) 0px, 440px"
+            format="webp"
+            quality={86}
+            loading="eager"
+            fetchpriority="high"
+          />
+          <div class="visual-fade"></div>
+        </div>
+      </div>
 
-        <!-- =====================================================
-             MANIFIESTO
-        ====================================================== -->
+      <div class="container hero-bottom">
+        <div class="hero-bottom-block">
+          <span class="hero-bottom-kicker">CA-LAB // ARCHIVO ABIERTO</span>
+          <span class="hero-bottom-detail">
+            INVESTIGACIÓN INDEPENDIENTE · PENSAMIENTO CRÍTICO
+          </span>
+        </div>
 
-        <section class="manifest-section">
+        <div class="hero-bottom-block hero-bottom-right">
+          <span class="hero-bottom-kicker">PRODUCCIÓN ACTIVA</span>
+          <span class="hero-bottom-detail">
+            {String(totalExpedientes).padStart(2, "0")} EXPEDIENTES ·{" "}
+            {String(transmisiones.length).padStart(2, "0")} TRANSMISIONES ·{" "}
+            {String(totalDestilados).padStart(2, "0")} DESTILADOS ·{" "}
+            {String(totalAlicuotas).padStart(2, "0")} ALÍCUOTAS
+          </span>
+        </div>
+      </div>
+    </section>
 
-            <div
-                class="manifest-grid"
-                aria-hidden="true"
-            ></div>
+    <!-- =====================================================
+         REGISTRO MÁS RECIENTE (LEAD STORY)
+    ====================================================== -->
+    {
+      masReciente && (
+        <section class="latest-section">
+          <div class="container latest-inner">
+            <aside class="section-aside-col">
+              <span class="aside-code">CA / REGISTRO</span>
+              <span class="aside-index">PUBLICACIÓN MÁS RECIENTE</span>
+              <div class="aside-rule" aria-hidden="true" />
+              <time
+                class="aside-date"
+                datetime={masReciente.fecha.toISOString().slice(0, 10)}
+              >
+                {formatShortDate(masReciente.fecha)}
+              </time>
+            </aside>
 
-            <div
-                class="manifest-ghost"
-                aria-hidden="true"
-            >
-                01
-            </div>
+            <article class="latest-entry">
+              <div class="latest-meta">
+                <span class="latest-code">{masReciente.codigo}</span>
+                <span>{masReciente.tipo}</span>
+                <span class="latest-author">{masReciente.autor}</span>
+              </div>
 
+              <h2>
+                <a href={masReciente.hrefEs}>{masReciente.titulo}</a>
+              </h2>
 
-            <div class="home-container manifest-inner">
+              <p class="latest-description">{masReciente.descripcion}</p>
 
+              <div class="latest-footer">
+                <div class="latest-languages" aria-label="Idiomas disponibles">
+                  <a
+                    class="latest-read"
+                    href={masReciente.hrefEs}
+                    aria-label={`Leer ${masReciente.titulo} en español`}
+                  >
+                    <span>LEER EN ESPAÑOL</span>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
 
-                <!-- COLUMNA IZQUIERDA -->
-                <aside class="manifest-aside">
-
-                    <span class="manifest-code">
-                        CA / SISTEMA
-                    </span>
-
-                    <span class="manifest-index">
-                        DECLARACIÓN / 001
-                    </span>
-
-                    <div class="manifest-aside-line"></div>
-
-                    <span class="manifest-status">
-                        PENSAMIENTO CRÍTICO
-                    </span>
-
-                </aside>
-
-
-                <!-- TEXTO -->
-                <div class="manifest-content">
-
-                    <p class="manifest-intro">
-                        NO INVESTIGAMOS LO OCULTO;
-                    </p>
-
-                    <p class="manifest-text">
-                        INVESTIGAMOS AQUELLO QUE AÚN NO HA SIDO
-                        PENSADO CON SUFICIENTE RIGOR.
-                    </p>
-
-
-                    <div
-                        class="manifest-bottom"
-                        aria-hidden="true"
+                  {masReciente.hrefEn && (
+                    <a
+                      class="latest-read is-secondary"
+                      href={masReciente.hrefEn}
+                      aria-label={`Read ${masReciente.titulo} in English`}
                     >
-
-                        <span>
-                            ECONOMÍA POLÍTICA
-                        </span>
-
-                        <i></i>
-
-                        <span>
-                            FILOSOFÍA
-                        </span>
-
-                        <i></i>
-
-                        <span>
-                            CAPITALISMO CONTEMPORÁNEO
-                        </span>
-
-                    </div>
-
+                      <span>READ IN ENGLISH</span>
+                      <span class="arrow" aria-hidden="true">→</span>
+                    </a>
+                  )}
                 </div>
-
-            </div>
-
+              </div>
+            </article>
+          </div>
         </section>
-
-
-        <!-- =====================================================
-             REGISTRO MÁS RECIENTE
-        ====================================================== -->
-
-        {
-            masReciente && (
-
-                <section class="latest-section">
-
-                    <div
-                        class="latest-ghost"
-                        aria-hidden="true"
-                    >
-                        02
-                    </div>
-
-                    <div class="home-container latest-inner">
-
-                        <aside class="latest-aside">
-
-                            <span class="latest-system-code">
-                                CA / REGISTRO
-                            </span>
-
-                            <span class="latest-index">
-                                ACTUALIZACIÓN / 002
-                            </span>
-
-                            <div class="latest-aside-line"></div>
-
-                            <span class="latest-status">
-                                PUBLICACIÓN MÁS RECIENTE
-                            </span>
-
-                        </aside>
-
-
-                        <div class="latest-entry">
-
-                            <div class="latest-meta">
-
-                                <span class="latest-code">
-                                    {masReciente.codigo}
-                                </span>
-
-                                <span>
-                                    {masReciente.tipo}
-                                </span>
-
-                                <span class="latest-date">
-                                    {formatearFecha(masReciente.fecha)}
-                                </span>
-
-                            </div>
-
-
-                            <h2>
-                                {masReciente.titulo}
-                            </h2>
-
-
-                            <p class="latest-description">
-                                {masReciente.descripcion}
-                            </p>
-
-
-                            <div class="latest-footer">
-
-                                <span class="latest-author">
-                                    {masReciente.autor}
-                                </span>
-
-                                <div
-                                    class="latest-languages"
-                                    aria-label="Idiomas disponibles"
-                                >
-
-                                    <a
-                                        class="latest-read"
-                                        href={masReciente.hrefEs}
-                                        aria-label={`Leer ${masReciente.titulo} en español`}
-                                    >
-                                        ESPAÑOL
-                                        <i>→</i>
-                                    </a>
-
-                                    {
-                                        masReciente.hrefEn && (
-                                            <a
-                                                class="latest-read"
-                                                href={masReciente.hrefEn}
-                                                aria-label={`Read ${masReciente.titulo} in English`}
-                                            >
-                                                ENGLISH
-                                                <i>→</i>
-                                            </a>
-                                        )
-                                    }
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-            )
-        }
-
-
-        <!-- =====================================================
-             AVISOS
-        ====================================================== -->
-
-        {avisosActivos.length > 0 && (
-
-            <section class="notices-section">
-
-                <div class="home-container notices-inner">
-
-                    <header class="notices-header">
-
-                        <div>
-                            <span class="section-eyebrow">
-                                CA / COMUNICACIÓN
-                            </span>
-
-                            <h2>
-                                AVISOS
-                            </h2>
-                        </div>
-
-                        <span class="notices-count">
-                            {String(avisosActivos.length).padStart(2, "0")} COMUNICACIONES
-                        </span>
-
-                    </header>
-
-                    <div class="notices-list">
-
-                        {avisosActivos.map((aviso) => (
-
-                            <article class="notice-row">
-
-                                <div class="notice-date">
-                                    {formatearFecha(aviso.fecha)}
-                                </div>
-
-                                <div class="notice-main">
-
-                                    <div class="notice-meta">
-                                        <span class="notice-label">
-                                            {aviso.etiqueta}
-                                        </span>
-                                    </div>
-
-                                    <h3>
-                                        {aviso.titulo}
-                                    </h3>
-
-                                    <p>
-                                        {aviso.descripcion}
-                                    </p>
-
-                                </div>
-
-                                {aviso.href && (
-                                    <a
-                                        class="notice-action"
-                                        href={aviso.href}
-                                        aria-label={`Abrir aviso: ${aviso.titulo}`}
-                                    >
-                                        <span>ABRIR</span>
-                                        <i aria-hidden="true">→</i>
-                                    </a>
-                                )}
-
-                            </article>
-
-                        ))}
-
-                    </div>
-
-                </div>
-
-            </section>
-
-        )}
-
-
-        <!-- =====================================================
-             ARCHIVOS
-        ====================================================== -->
-
-        <section class="archive-section">
-
-            <div class="home-container">
-
-
-                <!-- CABECERA -->
-                <header class="archive-header">
-
-                    <div>
-
-                        <span class="section-eyebrow">
-                            ESTRUCTURA DEL LABORATORIO
-                        </span>
-
-                        <h2>
-                            ARCHIVOS
-                        </h2>
-
-                    </div>
-
-                    <span class="archive-count">
-                        04 ARCHIVOS ACTIVOS
-                    </span>
-
-                </header>
-
-
-                <!-- LISTA -->
-                <div class="portal-list">
-
-
-                    <!-- EXPEDIENTES -->
-                    <a
-                        href="/expedientes"
-                        class="portal-row"
-                    >
-
-                        <div class="portal-number">
-                            01
-                        </div>
-
-
-                        <div class="portal-main">
-
-                            <div class="portal-meta">
-
-                                <span>
-                                    CA / 01
-                                </span>
-
-                                <span>
-                                    ARCHIVO TEXTUAL
-                                </span>
-
-                            </div>
-
-
-                            <h3>
-                                EXPEDIENTES
-                            </h3>
-
-
-                            <p>
-                                Ensayos, investigaciones y documentos críticos
-                                para analizar las transformaciones del capitalismo
-                                contemporáneo.
-                            </p>
-
-                        </div>
-
-
-                        <div class="portal-action">
-
-                            <span>
-                                ENTRAR AL ARCHIVO
-                            </span>
-
-                            <span class="portal-arrow">
-                                →
-                            </span>
-
-                        </div>
-
-                    </a>
-
-
-                    <!-- TRANSMISIONES -->
-                    <a
-                        href="/transmisiones"
-                        class="portal-row"
-                    >
-
-                        <div class="portal-number">
-                            02
-                        </div>
-
-
-                        <div class="portal-main">
-
-                            <div class="portal-meta">
-
-                                <span>
-                                    CA / 02
-                                </span>
-
-                                <span>
-                                    ARCHIVO AUDIOVISUAL
-                                </span>
-
-                            </div>
-
-
-                            <h3>
-                                TRANSMISIONES
-                            </h3>
-
-
-                            <p>
-                                Videos, monólogos, conversaciones y registros
-                                audiovisuales producidos por el laboratorio.
-                            </p>
-
-                        </div>
-
-
-                        <div class="portal-action">
-
-                            <span>
-                                ACCEDER
-                            </span>
-
-                            <span class="portal-arrow">
-                                →
-                            </span>
-
-                        </div>
-
-                    </a>
-
-
-                    <!-- DESTILADOS -->
-                    <a
-                        href="/destilados"
-                        class="portal-row"
-                    >
-
-                        <div class="portal-number">
-                            03
-                        </div>
-
-
-                        <div class="portal-main">
-
-                            <div class="portal-meta">
-
-                                <span>
-                                    CA / 03
-                                </span>
-
-                                <span>
-                                    ARCHIVO DESTILADO
-                                </span>
-
-                            </div>
-
-
-                            <h3>
-                                DESTILADOS
-                            </h3>
-
-
-                            <p>
-                                Síntesis críticas de libros, artículos y textos
-                                fundamentales para el análisis del capitalismo
-                                contemporáneo.
-                            </p>
-
-                        </div>
-
-
-                        <div class="portal-action">
-
-                            <span>
-                                EXPLORAR
-                            </span>
-
-                            <span class="portal-arrow">
-                                →
-                            </span>
-
-                        </div>
-
-                    </a>
-
-
-                    <!-- ALÍCUOTAS EXPERIMENTALES -->
-                    <a
-                        href="/alicuotas"
-                        class="portal-row"
-                    >
-
-                        <div class="portal-number">
-                            04
-                        </div>
-
-
-                        <div class="portal-main">
-
-                            <div class="portal-meta">
-
-                                <span>
-                                    CA / 04
-                                </span>
-
-                                <span>
-                                    ARCHIVO EXPERIMENTAL
-                                </span>
-
-                            </div>
-
-
-                            <h3>
-                                ALÍCUOTAS EXPERIMENTALES
-                            </h3>
-
-
-                            <p>
-                                Fragmentos, intervenciones y muestras textuales
-                                donde el lenguaje funciona como materia de
-                                experimentación crítica.
-                            </p>
-
-                        </div>
-
-
-                        <div class="portal-action">
-
-                            <span>
-                                EXTRAER MUESTRA
-                            </span>
-
-                            <span class="portal-arrow">
-                                →
-                            </span>
-
-                        </div>
-
-                    </a>
-
-                </div>
-
+      )
+    }
+
+    <!-- =====================================================
+         MANIFIESTO
+    ====================================================== -->
+    <section class="manifest-section">
+      <div class="container manifest-inner">
+        <aside class="section-aside-col">
+          <span class="aside-code">CA / MANIFIESTO</span>
+          <span class="aside-index">DECLARACIÓN 001</span>
+          <div class="aside-rule" aria-hidden="true"></div>
+        </aside>
+
+        <div class="manifest-content">
+          <p class="manifest-intro">No investigamos lo oculto;</p>
+          <p class="manifest-text">
+            investigamos aquello que aún no ha sido pensado con suficiente
+            rigor.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         ARCHIVOS
+    ====================================================== -->
+    <section class="archive-section" id="archivos">
+      <div class="container">
+        <header class="section-header">
+          <div>
+            <span class="eyebrow">ESTRUCTURA DEL LABORATORIO</span>
+            <h2>Archivos</h2>
+          </div>
+          <span class="section-count">04 ARCHIVOS ACTIVOS</span>
+        </header>
+
+        <div class="portal-list">
+          <a href="/expedientes" class="portal-row">
+            <div class="portal-number">01</div>
+            <div class="portal-main">
+              <div class="portal-meta">
+                <span>CA / 01</span>
+                <span>ARCHIVO TEXTUAL</span>
+                <span>{String(totalExpedientes).padStart(2, "0")} DOCUMENTOS</span>
+              </div>
+              <h3>Expedientes</h3>
+              <p>
+                Ensayos, investigaciones y traducciones críticas para analizar
+                las transformaciones del capitalismo contemporáneo.
+              </p>
             </div>
+            <div class="portal-action">
+              <span>ENTRAR</span>
+              <span class="portal-arrow" aria-hidden="true">→</span>
+            </div>
+          </a>
 
+          <a href="/transmisiones" class="portal-row">
+            <div class="portal-number">02</div>
+            <div class="portal-main">
+              <div class="portal-meta">
+                <span>CA / 02</span>
+                <span>ARCHIVO AUDIOVISUAL</span>
+                <span>
+                  {String(transmisiones.length).padStart(2, "0")} REGISTROS
+                </span>
+              </div>
+              <h3>Transmisiones</h3>
+              <p>
+                Videos, monólogos, conversaciones y registros audiovisuales
+                producidos por el laboratorio.
+              </p>
+            </div>
+            <div class="portal-action">
+              <span>ACCEDER</span>
+              <span class="portal-arrow" aria-hidden="true">→</span>
+            </div>
+          </a>
+
+          <a href="/destilados" class="portal-row">
+            <div class="portal-number">03</div>
+            <div class="portal-main">
+              <div class="portal-meta">
+                <span>CA / 03</span>
+                <span>ARCHIVO DESTILADO</span>
+                <span>{String(totalDestilados).padStart(2, "0")} SÍNTESIS</span>
+              </div>
+              <h3>Destilados</h3>
+              <p>
+                Síntesis críticas de libros, artículos y textos fundamentales
+                para el análisis del capitalismo contemporáneo.
+              </p>
+            </div>
+            <div class="portal-action">
+              <span>EXPLORAR</span>
+              <span class="portal-arrow" aria-hidden="true">→</span>
+            </div>
+          </a>
+
+          <a href="/alicuotas" class="portal-row">
+            <div class="portal-number">04</div>
+            <div class="portal-main">
+              <div class="portal-meta">
+                <span>CA / 04</span>
+                <span>ARCHIVO EXPERIMENTAL</span>
+                <span>{String(totalAlicuotas).padStart(2, "0")} MUESTRAS</span>
+              </div>
+              <h3>Alícuotas Experimentales</h3>
+              <p>
+                Fragmentos, intervenciones y muestras textuales donde el
+                lenguaje funciona como materia de experimentación crítica.
+              </p>
+            </div>
+            <div class="portal-action">
+              <span>EXTRAER</span>
+              <span class="portal-arrow" aria-hidden="true">→</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         AVISOS
+    ====================================================== -->
+    {
+      avisosActivos.length > 0 && (
+        <section class="notices-section">
+          <div class="container">
+            <header class="section-header">
+              <div>
+                <span class="eyebrow">CA / COMUNICACIÓN</span>
+                <h2>Avisos</h2>
+              </div>
+              <span class="section-count">
+                {String(avisosActivos.length).padStart(2, "0")} COMUNICACIÓN
+                {avisosActivos.length === 1 ? "" : "ES"}
+              </span>
+            </header>
+
+            <div class="notices-list">
+              {avisosActivos.map((aviso) => (
+                <article class="notice-row">
+                  <time
+                    class="notice-date"
+                    datetime={aviso.fecha.toISOString().slice(0, 10)}
+                  >
+                    {formatShortDate(aviso.fecha)}
+                  </time>
+
+                  <div class="notice-main">
+                    <span class="notice-label">{aviso.etiqueta}</span>
+                    <h3>{aviso.titulo}</h3>
+                    <p>{aviso.descripcion}</p>
+                  </div>
+
+                  {aviso.href && (
+                    <a
+                      class="notice-action"
+                      href={aviso.href}
+                      aria-label={`Abrir aviso: ${aviso.titulo}`}
+                    >
+                      <span>ESCRIBIR</span>
+                      <span class="arrow" aria-hidden="true">→</span>
+                    </a>
+                  )}
+                </article>
+              ))}
+            </div>
+          </div>
         </section>
+      )
+    }
 
+    <!-- =====================================================
+         MICELIO (DINÁMICO DESDE src/data/nodos.ts)
+    ====================================================== -->
+    <section class="mycelium-section" id="micelio">
+      <div class="container">
+        <header class="section-header">
+          <div>
+            <span class="eyebrow">ESTRUCTURA DEL LABORATORIO</span>
+            <h2>Micelio</h2>
+          </div>
+          <span class="section-count">
+            {String(nodes.length).padStart(2, "0")} NODOS ACTIVOS
+          </span>
+        </header>
 
-        <!-- =====================================================
-             MICELIO
-        ====================================================== -->
+        <div class="mycelium-intro">
+          <span class="aside-code">CA / REGISTRO NODAL</span>
+          <p>
+            Crítica Acelerada se articula como una red de nodos, trayectorias y
+            procesos de co-agenciamiento. Las funciones nodales describen el
+            estado dentro del micelio, no rangos jerárquicos.
+          </p>
+        </div>
 
-        <section class="mycelium-section">
-
-            <div
-                class="mycelium-grid-background"
-                aria-hidden="true"
-            ></div>
-
-            <div
-                class="mycelium-ghost"
-                aria-hidden="true"
-            >
-                03
-            </div>
-
-            <div class="home-container">
-
-                <!-- CABECERA -->
-                <header class="mycelium-header">
-
-                    <div>
-
-                        <span class="section-eyebrow">
-                            ESTRUCTURA DEL LABORATORIO
-                        </span>
-
-                        <h2>
-                            MICELIO
-                        </h2>
-
-                    </div>
-
-                    <span class="mycelium-count">
-                        02 NODOS ACTIVOS
-                    </span>
-
-                </header>
-
-
-                <!-- INTRODUCCIÓN -->
-                <div class="mycelium-intro">
-
-                    <span class="mycelium-code">
-                        CA / REGISTRO NODAL
-                    </span>
-
-                    <p>
-                        Crítica Acelerada se articula como una red de nodos,
-                        trayectorias y procesos de co-agenciamiento. Las funciones
-                        nodales describen el estado dentro del micelio, no rangos
-                        jerárquicos.
-                    </p>
-
+        <div class="node-grid">
+          {
+            nodosConTrazas.map(({ node, traceCount }, index) => (
+              <a
+                href={`/nodos/${node.slug}`}
+                class="node-card"
+                aria-label={`Abrir perfil nodal de ${node.aliases[0] ?? node.name}`}
+              >
+                <div class="node-top">
+                  <span class="node-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span class="node-status">{node.status}</span>
                 </div>
 
-
-                <!-- NODOS -->
-                <div class="node-grid">
-
-                    <!-- OLIVER -->
-                    <a
-                        href="/nodos/oliver-carmenez"
-                        class="node-card"
-                        aria-label="Abrir perfil nodal de Oliver Carmenez"
-                    >
-
-                        <div class="node-top">
-
-                            <span class="node-number">
-                                01
-                            </span>
-
-                            <span class="node-status">
-                                ACTIVO
-                            </span>
-
-                        </div>
-
-                        <div class="node-meta">
-
-                            <span>
-                                CA / NODO 001
-                            </span>
-
-                            <span>
-                                NODO SEMILLA
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            OLIVER CARMENEZ
-                        </h3>
-
-                        <p class="node-description">
-                            Economía política, tecnología, capitalismo y crítica
-                            de las transformaciones contemporáneas.
-                        </p>
-
-                        <div class="node-footer">
-
-                            <span class="node-traces">
-                                REGISTRO EN CONSTRUCCIÓN
-                            </span>
-
-                            <span class="node-trace">
-                                RASTREAR NODO
-                                <i>→</i>
-                            </span>
-
-                        </div>
-
-                    </a>
-
-
-                    <!-- DIEGO -->
-                    <a
-                        href="/nodos/diego-gimenez-vila"
-                        class="node-card"
-                        aria-label="Abrir perfil nodal de Diego Giménez Vila"
-                    >
-
-                        <div class="node-top">
-
-                            <span class="node-number">
-                                02
-                            </span>
-
-                            <span class="node-status">
-                                ACTIVO
-                            </span>
-
-                        </div>
-
-                        <div class="node-meta">
-
-                            <span>
-                                CA / NODO 002
-                            </span>
-
-                            <span>
-                                NODO DE CO-AGENCIAMIENTO
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            DIEGO GIMÉNEZ VILA
-                        </h3>
-
-                        <p class="node-description">
-                            Filosofía, ontología, capitalismo, técnica y
-                            experimentación conceptual.
-                        </p>
-
-                        <div class="node-footer">
-
-                            <span class="node-traces">
-                                REGISTRO EN CONSTRUCCIÓN
-                            </span>
-
-                            <span class="node-trace">
-                                RASTREAR NODO
-                                <i>→</i>
-                            </span>
-
-                        </div>
-
-                    </a>
-
+                <div class="node-meta">
+                  <span>{node.code}</span>
+                  <span>{node.role}</span>
                 </div>
 
-            </div>
+                <h3>{node.aliases[0] ?? node.name}</h3>
 
-        </section>
+                <p class="node-description">
+                  {node.fields.slice(0, 4).join(" · ")}.
+                </p>
 
-    </main>
+                <div class="node-footer">
+                  <span class="node-traces">
+                    {String(traceCount).padStart(2, "0")}{" "}
+                    {traceCount === 1 ? "TRAZA REGISTRADA" : "TRAZAS REGISTRADAS"}
+                  </span>
 
-
-    <SocialFooter />
-
-</body>
-
-</html>
-
+                  <span class="node-trace">
+                    <span>RASTREAR NODO</span>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
 
 <style>
+  .home {
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: clip;
+  }
 
-    /* ============================================================
-       BASE
-    ============================================================ */
+  /* ============================================================
+     HERO EDITORIAL
+  ============================================================ */
 
-    .home {
-        --ca-black: #050505;
-        --ca-black-deep: #020202;
-        --ca-surface: #0a0a0a;
+  .home-hero {
+    padding: 2.75rem 0 0;
+    border-bottom: 1px solid var(--border);
+  }
 
-        --ca-white: #f5f5f5;
-        --ca-grey: rgba(245, 245, 245, 0.56);
-        --ca-muted: rgba(245, 245, 245, 0.28);
-        --ca-line: rgba(245, 245, 245, 0.12);
+  .hero-layout {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+    gap: 2.75rem;
+    align-items: center;
+    padding-bottom: 2.5rem;
+  }
 
-        --ca-pink: #ff2f6d;
+  .hero-meta {
+    margin-bottom: 1.5rem;
+  }
 
-        background: var(--ca-black);
-        color: var(--ca-white);
+  .research-fields {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 0.85rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
 
-        overflow: hidden;
-    }
+  .research-fields span {
+    position: relative;
+  }
 
+  .research-fields span:not(:last-child)::after {
+    content: "·";
+    position: absolute;
+    right: -0.95rem;
+    color: var(--accent-text);
+  }
 
-    .home-container {
-        width: min(
-            1200px,
-            calc(100% - 80px)
-        );
+  .hero-title h1 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(3.35rem, 7.2vw, 6.25rem);
+    font-weight: 600;
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+    color: var(--text);
+  }
 
-        margin-inline: auto;
-    }
+  .hero-title h1 span {
+    display: block;
+  }
 
+  .hero-title .mission {
+    margin-top: 1.85rem;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
 
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 440px;
+    width: 100%;
+    justify-self: end;
+    border: 0;
+    background: transparent;
+    pointer-events: none;
+  }
 
-    /* ============================================================
-       HERO
-    ============================================================ */
+  .hero-art {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.9;
+    mix-blend-mode: lighten;
+    filter: contrast(1.08) brightness(0.86);
+    -webkit-mask-image: radial-gradient(
+      ellipse at center,
+      #000000 32%,
+      rgba(0, 0, 0, 0.85) 54%,
+      rgba(0, 0, 0, 0.32) 74%,
+      transparent 95%
+    );
+    mask-image: radial-gradient(
+      ellipse at center,
+      #000000 32%,
+      rgba(0, 0, 0, 0.85) 54%,
+      rgba(0, 0, 0, 0.32) 74%,
+      transparent 95%
+    );
+  }
 
-    .home-hero {
-        position: relative;
+  .visual-fade {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      transparent 58%,
+      rgba(0, 0, 0, 0.72) 80%,
+      #000000 96%
+    );
+  }
 
-        min-height: 790px;
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 2.5rem;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--border);
+  }
 
-        padding-top: 72px;
+  .hero-bottom-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
 
-        overflow: hidden;
-        isolation: isolate;
+  .hero-bottom-right {
+    text-align: right;
+  }
 
-        background:
-            radial-gradient(
-                circle at 76% 40%,
-                rgba(255, 47, 109, 0.045),
-                transparent 34%
-            ),
-            #050505;
-    }
+  .hero-bottom-kicker {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--accent-text);
+  }
 
+  .hero-bottom-detail {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    color: var(--meta);
+    font-variant-numeric: tabular-nums;
+  }
 
+  /* ============================================================
+     COLUMNA LATERAL DE SECCIÓN
+  ============================================================ */
 
-    /* ============================================================
-       RETÍCULA
-    ============================================================ */
+  .section-aside-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding-top: 0.25rem;
+  }
 
-    .hero-grid-background {
-        position: absolute;
-        inset: 0;
+  .aside-code {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: var(--accent-text);
+  }
 
-        z-index: -3;
+  .aside-index,
+  .aside-date {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: var(--meta);
+    font-variant-numeric: tabular-nums;
+  }
 
-        pointer-events: none;
+  .aside-rule {
+    width: 38px;
+    height: 2px;
+    margin: 0.35rem 0;
+    background: var(--accent);
+  }
 
-        background-image:
-            linear-gradient(
-                rgba(255, 255, 255, 0.018) 1px,
-                transparent 1px
-            ),
-            linear-gradient(
-                90deg,
-                rgba(255, 255, 255, 0.018) 1px,
-                transparent 1px
-            );
+  /* ============================================================
+     PUBLICACIÓN MÁS RECIENTE
+  ============================================================ */
 
-        background-size: 42px 42px;
+  .latest-section {
+    padding: 3.5rem 0 4.25rem;
+    border-bottom: 1px solid var(--border);
+  }
 
-        -webkit-mask-image:
-            linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.9),
-                rgba(0, 0, 0, 0.55) 68%,
-                transparent 100%
-            );
+  .latest-inner {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: start;
+  }
 
-        mask-image:
-            linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.9),
-                rgba(0, 0, 0, 0.55) 68%,
-                transparent 100%
-            );
-    }
+  .latest-entry {
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--accent);
+  }
 
+  .latest-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+    margin-bottom: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: var(--meta);
+  }
 
+  .latest-code {
+    color: var(--accent-text);
+    font-weight: 500;
+  }
 
-    /* ============================================================
-       MARCAS DE ENCUADRE
-    ============================================================ */
+  .latest-author {
+    margin-left: auto;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
 
-    .hero-frame {
-        position: absolute;
-        inset: 31px;
+  .latest-entry h2 {
+    margin: 0;
+    max-width: 24ch;
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4.2vw, 3.35rem);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    text-wrap: balance;
+  }
 
-        z-index: 8;
+  .latest-entry h2 a {
+    transition: color 0.2s ease;
+  }
 
-        pointer-events: none;
-    }
+  .latest-entry h2 a:hover {
+    color: var(--accent-text);
+  }
 
+  .latest-description {
+    max-width: 62ch;
+    margin: 1.25rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
 
-    .corner {
-        position: absolute;
+  .latest-footer {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-subtle);
+  }
 
-        width: 26px;
-        height: 26px;
+  .latest-languages {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem 1.25rem;
+  }
 
-        opacity: 0.68;
-    }
+  .latest-read {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 44px;
+    padding: 0.55rem 1.15rem;
+    background: var(--accent);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
 
+  .latest-read:hover {
+    background: var(--accent-hover);
+  }
 
-    .corner-tl {
-        top: 0;
-        left: 0;
+  .latest-read.is-secondary {
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+  }
 
-        border-top: 1px solid var(--ca-pink);
-        border-left: 1px solid var(--ca-pink);
-    }
+  .latest-read.is-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent-text);
+  }
 
+  .latest-read .arrow {
+    transition: transform 0.2s ease;
+  }
 
-    .corner-tr {
-        top: 0;
-        right: 0;
+  .latest-read:hover .arrow {
+    transform: translateX(4px);
+  }
 
-        border-top: 1px solid var(--ca-pink);
-        border-right: 1px solid var(--ca-pink);
-    }
+  /* ============================================================
+     MANIFIESTO
+  ============================================================ */
 
+  .manifest-section {
+    padding: 4.5rem 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
 
-    .corner-bl {
-        bottom: 0;
-        left: 0;
+  .manifest-inner {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: start;
+  }
 
-        border-bottom: 1px solid var(--ca-pink);
-        border-left: 1px solid var(--ca-pink);
-    }
+  .manifest-content {
+    max-width: 56ch;
+  }
 
+  .manifest-intro {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--muted);
+  }
 
-    .corner-br {
-        bottom: 0;
-        right: 0;
+  .manifest-text {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.9rem, 3.8vw, 3.1rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: var(--text);
+  }
 
-        border-bottom: 1px solid var(--ca-pink);
-        border-right: 1px solid var(--ca-pink);
-    }
+  /* ============================================================
+     CABECERAS DE SECCIÓN
+  ============================================================ */
 
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid var(--accent);
+  }
 
+  .section-header h2 {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-serif);
+    font-size: clamp(2.1rem, 4.2vw, 3.35rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--text);
+  }
 
-    /* ============================================================
-       HERO — COMPOSICIÓN
-    ============================================================ */
+  .section-count {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    color: var(--meta);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
 
+  /* ============================================================
+     ARCHIVOS (PORTALES)
+  ============================================================ */
+
+  .archive-section {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .portal-row {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr) 150px;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: background-color 0.2s ease, padding-left 0.2s ease;
+  }
+
+  .portal-row:hover {
+    background: var(--surface);
+    padding-left: 0.85rem;
+  }
+
+  .portal-number {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--meta);
+    font-variant-numeric: tabular-nums;
+    transition: color 0.2s ease;
+  }
+
+  .portal-row:hover .portal-number {
+    color: var(--accent-text);
+  }
+
+  .portal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.5rem;
+    margin-bottom: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: var(--meta);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .portal-meta span:first-child {
+    color: var(--accent-text);
+  }
+
+  .portal-main h3 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.65rem, 2.8vw, 2.35rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .portal-main p {
+    max-width: 58ch;
+    margin: 0.65rem 0 0;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .portal-action {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+
+  .portal-arrow {
+    font-size: 1.15rem;
+    color: var(--accent-text);
+    transition: transform 0.2s ease;
+  }
+
+  .portal-row:hover .portal-action {
+    color: var(--text);
+  }
+
+  .portal-row:hover .portal-arrow {
+    transform: translateX(5px);
+  }
+
+  /* ============================================================
+     AVISOS
+  ============================================================ */
+
+  .notices-section {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .notice-row {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr) 130px;
+    gap: 2.5rem;
+    align-items: start;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .notice-date {
+    padding-top: 0.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    color: var(--meta);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .notice-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--accent-text);
+  }
+
+  .notice-main h3 {
+    margin: 0.6rem 0 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.35rem, 2.3vw, 1.85rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  .notice-main p {
+    max-width: 62ch;
+    margin: 0.75rem 0 0;
+    font-size: 0.96rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .notice-action {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.4rem 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    color: var(--accent-text);
+    transition: color 0.2s ease;
+  }
+
+  .notice-action:hover {
+    color: var(--text);
+  }
+
+  .notice-action .arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .notice-action:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* ============================================================
+     MICELIO
+  ============================================================ */
+
+  .mycelium-section {
+    padding: 5rem 0 3rem;
+  }
+
+  .mycelium-intro {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 62ch);
+    gap: 3.5rem;
+    margin-bottom: 3rem;
+    align-items: start;
+  }
+
+  .mycelium-intro p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  .node-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .node-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    padding: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .node-card:hover {
+    background: var(--surface-hover);
+    border-color: var(--accent);
+  }
+
+  .node-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+  }
+
+  .node-number {
+    font-family: var(--font-mono);
+    font-size: 1.65rem;
+    color: var(--meta);
+    font-variant-numeric: tabular-nums;
+    transition: color 0.2s ease;
+  }
+
+  .node-card:hover .node-number {
+    color: var(--accent-text);
+  }
+
+  .node-status {
+    position: relative;
+    padding-left: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+
+  .node-status::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .node-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.25rem;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: var(--meta);
+  }
+
+  .node-meta span:first-child {
+    color: var(--accent-text);
+  }
+
+  .node-card h3 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.55rem, 2.6vw, 2.15rem);
+    font-weight: 600;
+    line-height: 1.12;
+    color: var(--text);
+  }
+
+  .node-description {
+    margin: 1rem 0 2rem;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .node-footer {
+    margin-top: auto;
+    padding-top: 1.15rem;
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+  }
+
+  .node-traces {
+    color: var(--meta);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .node-trace {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-text);
+  }
+
+  .node-trace .arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .node-card:hover .node-trace .arrow {
+    transform: translateX(4px);
+  }
+
+  /* ============================================================
+     RESPONSIVE
+  ============================================================ */
+
+  @media (max-width: 960px) {
     .hero-layout {
-        position: relative;
-
-        min-height: 575px;
-
-        display: flex;
-        align-items: flex-start;
+      grid-template-columns: 1fr;
     }
-
-
-
-    /* ============================================================
-       HERO — COPY
-    ============================================================ */
-
-    .hero-copy {
-        position: relative;
-        z-index: 5;
-
-        width: 67%;
-
-        padding-top: 8px;
-    }
-
-
-    .hero-meta {
-        margin-bottom: 57px;
-    }
-
-
-    .eyebrow {
-        margin: 0 0 25px;
-
-        font-size: 12px;
-        line-height: 1.4;
-        font-weight: 500;
-
-        letter-spacing: 0.42em;
-
-        color: var(--ca-pink);
-    }
-
-
-
-    /* ============================================================
-       CAMPOS DE INVESTIGACIÓN
-    ============================================================ */
-
-    .research-fields {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-
-        gap: 34px;
-
-        font-size: 11px;
-        line-height: 1.4;
-
-        letter-spacing: 0.22em;
-
-        color: rgba(245, 245, 245, 0.54);
-    }
-
-
-    .research-fields span {
-        position: relative;
-    }
-
-
-    .research-fields span:not(:last-child)::after {
-        content: "";
-
-        position: absolute;
-
-        top: 50%;
-        right: -18px;
-
-        width: 2px;
-        height: 2px;
-
-        border-radius: 50%;
-
-        background: var(--ca-pink);
-    }
-
-
-
-    /* ============================================================
-       TÍTULO
-    ============================================================ */
-
-    .hero-title h1 {
-        position: relative;
-
-        z-index: 6;
-
-        margin: 0;
-
-        font-size: clamp(
-            76px,
-            7.2vw,
-            118px
-        );
-
-        font-weight: 800;
-
-        line-height: 0.79;
-        letter-spacing: -0.075em;
-
-        color: var(--ca-white);
-    }
-
-
-    .hero-title h1 span {
-        display: block;
-    }
-
-
-    .hero-title h1 span:last-child {
-        margin-top: 20px;
-    }
-
-
-
-    /* ============================================================
-       MISIÓN
-    ============================================================ */
-
-    .mission {
-        width: min(
-            620px,
-            91%
-        );
-
-        margin: 47px 0 0;
-
-        font-size: 16px;
-        line-height: 1.8;
-
-        color: rgba(245, 245, 245, 0.59);
-    }
-
-
-
-    /* ============================================================
-       HERO — OBJETO VISUAL
-    ============================================================ */
 
     .hero-visual {
-        position: absolute;
-
-        width: clamp(
-            520px,
-            47vw,
-            710px
-        );
-
-        aspect-ratio: 1;
-
-        right: -80px;
-        top: -38px;
-
-        z-index: 1;
-
-        pointer-events: none;
-    }
-
-
-
-    /* ============================================================
-       HALO
-    ============================================================ */
-
-    .visual-glow {
-        position: absolute;
-
-        width: 76%;
-        height: 76%;
-
-        left: 50%;
-        top: 45%;
-
-        transform: translate(
-            -50%,
-            -50%
-        );
-
-        border-radius: 50%;
-
-        background:
-            radial-gradient(
-                circle,
-                rgba(255, 47, 109, 0.17) 0%,
-                rgba(255, 47, 109, 0.08) 34%,
-                rgba(255, 47, 109, 0.025) 52%,
-                transparent 72%
-            );
-
-        filter: blur(45px);
-    }
-
-
-
-    /* ============================================================
-       IMAGEN
-    ============================================================ */
-
-    .hero-art {
-        position: absolute;
-        inset: 0;
-
-        width: 100%;
-        height: 100%;
-
-        object-fit: contain;
-
-        opacity: 0.69;
-
-        mix-blend-mode: screen;
-
-        filter:
-            brightness(0.68)
-            contrast(1.12)
-            saturate(0.9);
-
-        -webkit-mask-image:
-            radial-gradient(
-                ellipse at center,
-                black 26%,
-                rgba(0, 0, 0, 0.98) 50%,
-                rgba(0, 0, 0, 0.82) 69%,
-                rgba(0, 0, 0, 0.42) 84%,
-                transparent 98%
-            );
-
-        mask-image:
-            radial-gradient(
-                ellipse at center,
-                black 26%,
-                rgba(0, 0, 0, 0.98) 50%,
-                rgba(0, 0, 0, 0.82) 69%,
-                rgba(0, 0, 0, 0.42) 84%,
-                transparent 98%
-            );
-    }
-
-
-
-    /* ============================================================
-       FUNDIDO INFERIOR
-
-       Se refuerza para que el texto CRÍTICA ACELERADA
-       contenido en el propio gráfico quede como residuo visual
-       y no como segundo logotipo.
-    ============================================================ */
-
-    .visual-fade {
-        position: absolute;
-        inset: 0;
-
-        z-index: 2;
-
-        pointer-events: none;
-
-        background:
-            linear-gradient(
-                to bottom,
-                transparent 0%,
-                transparent 54%,
-                rgba(5, 5, 5, 0.08) 60%,
-                rgba(5, 5, 5, 0.30) 68%,
-                rgba(5, 5, 5, 0.68) 76%,
-                rgba(5, 5, 5, 0.92) 86%,
-                #050505 97%
-            );
-    }
-
-
-
-    /* ============================================================
-       MICROINTERFAZ
-    ============================================================ */
-
-    .system-data {
-        position: absolute;
-
-        top: 64px;
-        right: 0;
-
-        z-index: 7;
-
-        width: 128px;
-
-        display: flex;
-        flex-direction: column;
-
-        gap: 7px;
-
-        font-size: 8px;
-        line-height: 1.5;
-
-        letter-spacing: 0.16em;
-
-        color: rgba(245, 245, 245, 0.33);
-    }
-
-
-    .system-code {
-        color: var(--ca-pink);
-    }
-
-
-    .system-line {
-        width: 100%;
-        height: 1px;
-
-        margin: 4px 0 7px;
-
-        background: rgba(255, 47, 109, 0.27);
-    }
-
-
-    .system-data strong {
-        font-weight: 500;
-
-        color: var(--ca-pink);
-    }
-
-
-    .system-accent {
-        width: 48px;
-        height: 2px;
-
-        margin-top: 5px;
-
-        background: var(--ca-pink);
-    }
-
-
-
-    /* ============================================================
-       FRANJA INFERIOR HERO
-    ============================================================ */
-
-    .hero-bottom {
-        position: relative;
-
-        z-index: 7;
-
-        min-height: 118px;
-
-        display: grid;
-
-        grid-template-columns:
-            0.85fr
-            1.4fr;
-
-        align-items: center;
-
-        border-top:
-            1px solid rgba(255, 47, 109, 0.18);
-
-        border-bottom:
-            1px solid rgba(255, 255, 255, 0.07);
-    }
-
-
-    .hero-bottom-block {
-        display: flex;
-        align-items: center;
-
-        gap: 22px;
-
-        padding: 24px 0;
-    }
-
-
-    .hero-bottom-block + .hero-bottom-block {
-        padding-left: 38px;
-
-        border-left:
-            1px solid rgba(255, 255, 255, 0.06);
-    }
-
-
-    .hero-bottom-block > div {
-        display: flex;
-        flex-direction: column;
-
-        gap: 6px;
-
-        font-size: 9px;
-        line-height: 1.35;
-
-        letter-spacing: 0.2em;
-
-        color: rgba(245, 245, 245, 0.38);
-    }
-
-
-    .hero-bottom-block strong {
-        font-weight: 500;
-
-        color: rgba(255, 47, 109, 0.82);
-    }
-
-
-    .hero-bottom-block i {
-        margin-inline: 8px;
-
-        font-style: normal;
-
-        color: var(--ca-pink);
-    }
-
-
-
-    /* ============================================================
-       MARCADOR
-    ============================================================ */
-
-    .bottom-marker {
-        position: relative;
-
-        width: 58px;
-        height: 58px;
-
-        flex: 0 0 auto;
-
-        border:
-            1px solid rgba(255, 47, 109, 0.24);
-
-        border-radius: 50%;
-
-        background:
-            radial-gradient(
-                circle,
-                var(--ca-pink) 0 2px,
-                transparent 3px
-            ),
-
-            linear-gradient(
-                rgba(255, 47, 109, 0.18),
-                rgba(255, 47, 109, 0.18)
-            )
-            center / 1px 100%
-            no-repeat,
-
-            linear-gradient(
-                90deg,
-                rgba(255, 47, 109, 0.18),
-                rgba(255, 47, 109, 0.18)
-            )
-            center / 100% 1px
-            no-repeat;
-    }
-
-
-    .bottom-marker::after {
-        content: "";
-
-        position: absolute;
-        inset: 9px;
-
-        border:
-            1px solid rgba(255, 47, 109, 0.18);
-
-        border-radius: 50%;
-    }
-
-
-
-    /* ============================================================
-       TRANSICIÓN HERO → MANIFIESTO
-    ============================================================ */
-
-    .hero-transition {
-        position: relative;
-
-        height: 72px;
-
-        background:
-            linear-gradient(
-                to bottom,
-                #050505,
-                #030303
-            );
-    }
-
-
-    .transition-inner {
-        height: 100%;
-
-        display: grid;
-
-        grid-template-columns:
-            auto
-            minmax(60px, 1fr)
-            auto;
-
-        align-items: center;
-
-        gap: 18px;
-
-        font-size: 7px;
-        letter-spacing: 0.25em;
-
-        color: rgba(245, 245, 245, 0.18);
-    }
-
-
-    .transition-inner span:first-child {
-        color: rgba(255, 47, 109, 0.48);
-    }
-
-
-    .transition-line {
-        height: 1px;
-
-        background:
-            linear-gradient(
-                90deg,
-                rgba(255, 47, 109, 0.18),
-                rgba(255, 255, 255, 0.07) 40%,
-                transparent 100%
-            );
-    }
-
-
-
-    /* ============================================================
-       MANIFIESTO
-    ============================================================ */
-
-    .manifest-section {
-        position: relative;
-
-        overflow: hidden;
-
-        isolation: isolate;
-
-        border-top:
-            1px solid rgba(255, 255, 255, 0.025);
-
-        border-bottom:
-            1px solid var(--ca-line);
-
-        background:
-            radial-gradient(
-                circle at 70% 44%,
-                rgba(255, 47, 109, 0.045),
-                transparent 38%
-            ),
-            linear-gradient(
-                90deg,
-                rgba(255, 47, 109, 0.018),
-                transparent 40%
-            ),
-            #030303;
-    }
-
-
-
-    /* RETÍCULA PROPIA */
-
-    .manifest-grid {
-        position: absolute;
-        inset: 0;
-
-        z-index: -2;
-
-        pointer-events: none;
-
-        opacity: 0.5;
-
-        background-image:
-            linear-gradient(
-                rgba(255, 255, 255, 0.014) 1px,
-                transparent 1px
-            ),
-            linear-gradient(
-                90deg,
-                rgba(255, 255, 255, 0.014) 1px,
-                transparent 1px
-            );
-
-        background-size: 42px 42px;
-
-        -webkit-mask-image:
-            radial-gradient(
-                ellipse at center,
-                black,
-                transparent 78%
-            );
-
-        mask-image:
-            radial-gradient(
-                ellipse at center,
-                black,
-                transparent 78%
-            );
-    }
-
-
-
-    /* NÚMERO GIGANTE RESIDUAL */
-
-    .manifest-ghost {
-        position: absolute;
-
-        right: 4%;
-        top: 50%;
-
-        z-index: -1;
-
-        transform: translateY(-51%);
-
-        font-size: clamp(
-            210px,
-            25vw,
-            390px
-        );
-
-        font-weight: 700;
-
-        line-height: 1;
-
-        letter-spacing: -0.09em;
-
-        color: rgba(255, 255, 255, 0.014);
-
-        user-select: none;
-
-        pointer-events: none;
-    }
-
-
-
-    /* COMPOSICIÓN */
-
-    .manifest-inner {
-        position: relative;
-
-        min-height: 460px;
-
-        padding: 132px 0 128px;
-
-        display: grid;
-
-        grid-template-columns:
-            185px
-            minmax(0, 1fr);
-
-        gap: 70px;
-
-        align-items: start;
-    }
-
-
-
-    /* ASIDE */
-
-    .manifest-aside {
-        display: flex;
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 13px;
-
-        padding-top: 8px;
-    }
-
-
-    .manifest-code {
-        font-size: 9px;
-        line-height: 1.5;
-
-        letter-spacing: 0.27em;
-
-        color: var(--ca-pink);
-    }
-
-
-    .manifest-index {
-        font-size: 7px;
-        line-height: 1.5;
-
-        letter-spacing: 0.22em;
-
-        color: rgba(245, 245, 245, 0.26);
-    }
-
-
-    .manifest-aside-line {
-        width: 78px;
-        height: 1px;
-
-        margin: 8px 0 2px;
-
-        background:
-            linear-gradient(
-                90deg,
-                var(--ca-pink),
-                rgba(255, 47, 109, 0)
-            );
-    }
-
-
-    .manifest-status {
-        font-size: 7px;
-        line-height: 1.5;
-
-        letter-spacing: 0.2em;
-
-        color: rgba(245, 245, 245, 0.20);
-    }
-
-
-
-    /* TEXTO DEL MANIFIESTO */
-
-    .manifest-content {
-        max-width: 910px;
-    }
-
-
-    .manifest-intro {
-        margin: 0 0 17px;
-
-        font-size: clamp(
-            24px,
-            2.55vw,
-            38px
-        );
-
-        font-weight: 400;
-
-        line-height: 1.2;
-
-        letter-spacing: -0.025em;
-
-        color: rgba(245, 245, 245, 0.40);
-    }
-
-
-    .manifest-text {
-        max-width: 900px;
-
-        margin: 0;
-
-        font-size: clamp(
-            39px,
-            4.6vw,
-            68px
-        );
-
-        font-weight: 650;
-
-        line-height: 1.04;
-
-        letter-spacing: -0.052em;
-
-        color: var(--ca-white);
-    }
-
-
-
-    /* PIE MANIFIESTO */
-
-    .manifest-bottom {
-        margin-top: 47px;
-
-        padding-top: 18px;
-
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-
-        gap: 15px;
-
-        max-width: 760px;
-
-        border-top:
-            1px solid rgba(255, 255, 255, 0.07);
-
-        font-size: 7px;
-        line-height: 1.5;
-
-        letter-spacing: 0.22em;
-
-        color: rgba(245, 245, 245, 0.26);
-    }
-
-
-    .manifest-bottom i {
-        width: 3px;
-        height: 3px;
-
-        border-radius: 50%;
-
-        background: var(--ca-pink);
-    }
-
-
-
-
-    /* ============================================================
-       REGISTRO MÁS RECIENTE
-    ============================================================ */
-
-    .latest-section {
-        position: relative;
-
-        overflow: hidden;
-        isolation: isolate;
-
-        border-bottom:
-            1px solid var(--ca-line);
-
-        background:
-            radial-gradient(
-                circle at 76% 48%,
-                rgba(255, 47, 109, 0.055),
-                transparent 36%
-            ),
-            linear-gradient(
-                90deg,
-                rgba(255, 47, 109, 0.016),
-                transparent 42%
-            ),
-            #050505;
-    }
-
-
-    .latest-section::before {
-        content: "";
-
-        position: absolute;
-        inset: 0;
-
-        z-index: -2;
-
-        pointer-events: none;
-
-        opacity: 0.48;
-
-        background-image:
-            linear-gradient(
-                rgba(255, 255, 255, 0.012) 1px,
-                transparent 1px
-            ),
-            linear-gradient(
-                90deg,
-                rgba(255, 255, 255, 0.012) 1px,
-                transparent 1px
-            );
-
-        background-size: 42px 42px;
-
-        -webkit-mask-image:
-            radial-gradient(
-                ellipse at 67% 50%,
-                black,
-                transparent 76%
-            );
-
-        mask-image:
-            radial-gradient(
-                ellipse at 67% 50%,
-                black,
-                transparent 76%
-            );
-    }
-
-
-    .latest-ghost {
-        position: absolute;
-
-        right: 3%;
-        top: 50%;
-
-        z-index: -1;
-
-        transform: translateY(-52%);
-
-        font-size: clamp(
-            210px,
-            25vw,
-            390px
-        );
-
-        font-weight: 700;
-
-        line-height: 1;
-        letter-spacing: -0.09em;
-
-        color: rgba(255, 255, 255, 0.014);
-
-        user-select: none;
-        pointer-events: none;
-    }
-
-
-    .latest-inner {
-        position: relative;
-
-        padding: 102px 0 108px;
-
-        display: grid;
-
-        grid-template-columns:
-            185px
-            minmax(0, 1fr);
-
-        gap: 70px;
-
-        align-items: start;
-    }
-
-
-    /* COLUMNA IZQUIERDA */
-
-    .latest-aside {
-        display: flex;
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 13px;
-
-        padding-top: 8px;
-    }
-
-
-    .latest-system-code {
-        font-size: 9px;
-        line-height: 1.5;
-
-        letter-spacing: 0.27em;
-
-        color: var(--ca-pink);
-    }
-
-
-    .latest-index {
-        font-size: 7px;
-        line-height: 1.5;
-
-        letter-spacing: 0.22em;
-
-        color: rgba(245, 245, 245, 0.26);
-    }
-
-
-    .latest-aside-line {
-        width: 78px;
-        height: 1px;
-
-        margin: 8px 0 2px;
-
-        background:
-            linear-gradient(
-                90deg,
-                var(--ca-pink),
-                rgba(255, 47, 109, 0)
-            );
-    }
-
-
-    .latest-status {
-        max-width: 150px;
-
-        font-size: 7px;
-        line-height: 1.7;
-
-        letter-spacing: 0.2em;
-
-        color: rgba(245, 245, 245, 0.20);
-    }
-
-
-    /* PUBLICACIÓN */
-
-    .latest-entry {
-        position: relative;
-
-        display: block;
-
-        min-width: 0;
-
-        padding: 27px 0 0;
-
-        color: inherit;
-        text-decoration: none;
-
-        border-top:
-            1px solid rgba(255, 47, 109, 0.72);
-
-        transition:
-            padding-left 0.28s ease,
-            background 0.28s ease;
-    }
-
-
-    .latest-entry::before {
-        content: "";
-
-        position: absolute;
-
-        left: 0;
-        top: -1px;
-
-        width: 0;
-        height: 1px;
-
-        background: var(--ca-pink);
-
-        box-shadow:
-            0 0 18px rgba(255, 47, 109, 0.45);
-
-        transition:
-            width 0.45s ease;
-    }
-
-
-    .latest-entry:hover {
-        padding-left: 17px;
-
-        background:
-            linear-gradient(
-                90deg,
-                rgba(255, 47, 109, 0.035),
-                transparent 58%
-            );
-    }
-
-
-    .latest-entry:hover::before {
-        width: 100%;
-    }
-
-
-    /* METADATOS */
-
-    .latest-meta {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-
-        gap: 12px 28px;
-
-        margin-bottom: 31px;
-
-        font-size: 8px;
-        line-height: 1.5;
-
-        letter-spacing: 0.22em;
-
-        color: rgba(245, 245, 245, 0.30);
-    }
-
-
-    .latest-code {
-        color: var(--ca-pink);
-    }
-
-
-    .latest-date {
-        margin-left: auto;
-
-        color: rgba(245, 245, 245, 0.44);
-    }
-
-
-    /* TÍTULO */
-
-    .latest-entry h2 {
-        max-width: 890px;
-
-        margin: 0;
-
-        font-size: clamp(
-            40px,
-            4.8vw,
-            67px
-        );
-
-        font-weight: 680;
-
-        line-height: 1.01;
-
-        letter-spacing: -0.052em;
-
-        color: var(--ca-white);
-
-        text-wrap: balance;
-    }
-
-
-    /* DESCRIPCIÓN */
-
-    .latest-description {
-        max-width: 760px;
-
-        margin: 27px 0 0;
-
-        font-size: 14px;
-        line-height: 1.8;
-
-        color: rgba(245, 245, 245, 0.48);
-    }
-
-
-    /* PIE */
-
-    .latest-footer {
-        margin-top: 42px;
-
-        padding: 22px 0 25px;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        gap: 30px;
-
-        border-top:
-            1px solid rgba(255, 255, 255, 0.07);
-
-        border-bottom:
-            1px solid rgba(255, 255, 255, 0.07);
-    }
-
-
-    .latest-author {
-        font-size: 8px;
-        line-height: 1.5;
-
-        letter-spacing: 0.18em;
-
-        text-transform: uppercase;
-
-        color: rgba(245, 245, 245, 0.35);
-    }
-
-
-    .latest-languages {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-
-        gap: 18px 34px;
-    }
-
-
-    .latest-read {
-        display: flex;
-        align-items: center;
-
-        gap: 13px;
-
-        font-size: 8px;
-        line-height: 1.5;
-
-        letter-spacing: 0.21em;
-
-        color: rgba(245, 245, 245, 0.52);
-
-        text-decoration: none;
-
-        transition:
-            color 0.25s ease;
-    }
-
-
-    .latest-read:hover {
-        color: var(--ca-white);
-    }
-
-
-    .latest-read i {
-        font-size: 22px;
-        line-height: 1;
-
-        font-style: normal;
-
-        color: var(--ca-pink);
-
-        transition:
-            transform 0.25s ease;
-    }
-
-
-    .latest-read:hover i {
-        transform: translateX(7px);
-    }
-
-
-    /* ============================================================
-       AVISOS
-    ============================================================ */
-
-    .notices-section {
-        position: relative;
-        overflow: hidden;
-        border-bottom: 1px solid var(--ca-line);
-        background:
-            linear-gradient(90deg, rgba(255, 47, 109, 0.018), transparent 48%),
-            #050505;
-    }
-
-    .notices-inner {
-        padding: 92px 0 104px;
-    }
-
-    .notices-header {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 40px;
-        margin-bottom: 48px;
-        padding-bottom: 22px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-    }
-
-    .notices-header h2 {
-        margin: 12px 0 0;
-        font-size: clamp(42px, 5vw, 68px);
-        font-weight: 680;
-        line-height: 0.95;
-        letter-spacing: -0.055em;
-        color: var(--ca-white);
+      display: none;
     }
 
-    .notices-count {
-        padding-bottom: 5px;
-        font-size: 7px;
-        line-height: 1.5;
-        letter-spacing: 0.2em;
-        color: rgba(245, 245, 245, 0.26);
-        white-space: nowrap;
+    .latest-inner,
+    .manifest-inner,
+    .mycelium-intro {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
     }
 
-    .notices-list {
-        border-top: 1px solid rgba(255, 47, 109, 0.55);
+    .portal-row {
+      grid-template-columns: 64px minmax(0, 1fr) 110px;
+      gap: 1.25rem;
     }
 
     .notice-row {
-        position: relative;
-        display: grid;
-        grid-template-columns: 125px minmax(0, 1fr) 90px;
-        gap: 45px;
-        align-items: start;
-        padding: 30px 0 34px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-        transition: padding-left 0.28s ease, background 0.28s ease;
-    }
-
-    .notice-row::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: -1px;
-        width: 0;
-        height: 1px;
-        background: var(--ca-pink);
-        box-shadow: 0 0 16px rgba(255, 47, 109, 0.42);
-        transition: width 0.4s ease;
-    }
-
-    .notice-row:hover {
-        padding-left: 14px;
-        background: linear-gradient(90deg, rgba(255, 47, 109, 0.03), transparent 60%);
-    }
-
-    .notice-row:hover::before {
-        width: 100%;
-    }
-
-    .notice-date {
-        padding-top: 3px;
-        font-size: 8px;
-        line-height: 1.5;
-        letter-spacing: 0.16em;
-        color: rgba(245, 245, 245, 0.34);
-    }
-
-    .notice-label {
-        font-size: 7px;
-        line-height: 1.5;
-        letter-spacing: 0.2em;
-        color: var(--ca-pink);
-    }
-
-    .notice-main h3 {
-        max-width: 820px;
-        margin: 12px 0 0;
-        font-size: clamp(22px, 2.4vw, 34px);
-        font-weight: 620;
-        line-height: 1.08;
-        letter-spacing: -0.035em;
-        color: var(--ca-white);
-    }
-
-    .notice-main p {
-        max-width: 720px;
-        margin: 12px 0 0;
-        font-size: 12px;
-        line-height: 1.75;
-        color: rgba(245, 245, 245, 0.42);
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
     }
 
     .notice-action {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 10px;
-        padding-top: 20px;
-        font-size: 7px;
-        line-height: 1.5;
-        letter-spacing: 0.18em;
-        color: rgba(245, 245, 245, 0.42);
-        text-decoration: none;
-        transition: color 0.25s ease;
+      justify-self: start;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .home-hero {
+      padding-top: 2.25rem;
     }
 
-    .notice-action i {
-        font-size: 19px;
-        line-height: 1;
-        font-style: normal;
-        color: var(--ca-pink);
-        transition: transform 0.25s ease;
+    .hero-layout {
+      padding-bottom: 2.5rem;
     }
 
-    .notice-action:hover {
-        color: var(--ca-white);
+    .hero-title h1 {
+      font-size: clamp(2.65rem, 12vw, 3.85rem);
+      line-height: 0.98;
     }
 
-    .notice-action:hover i {
-        transform: translateX(5px);
+    .hero-title .mission {
+      font-size: 1rem;
     }
 
-
-    /* ============================================================
-       ARCHIVOS
-    ============================================================ */
-
-    .archive-section {
-        position: relative;
-
-        padding: 120px 0 135px;
-
-        background: #050505;
+    .research-fields {
+      gap: 0.35rem 1rem;
     }
 
-
-
-    /* ============================================================
-       CABECERA
-    ============================================================ */
-
-    .archive-header {
-        display: flex;
-
-        align-items: flex-end;
-        justify-content: space-between;
-
-        gap: 40px;
-
-        margin-bottom: 54px;
-
-        padding-bottom: 28px;
-
-        border-bottom:
-            1px solid var(--ca-line);
+    .research-fields span:not(:last-child)::after {
+      display: none;
     }
 
-
-    .section-eyebrow {
-        display: block;
-
-        margin-bottom: 13px;
-
-        font-size: 9px;
-        line-height: 1.5;
-
-        letter-spacing: 0.28em;
-
-        color: var(--ca-pink);
+    .hero-bottom {
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
     }
 
-
-    .archive-header h2 {
-        margin: 0;
-
-        font-size: clamp(
-            42px,
-            5vw,
-            72px
-        );
-
-        line-height: 0.95;
-
-        letter-spacing: -0.06em;
-
-        color: var(--ca-white);
+    .hero-bottom-right {
+      text-align: left;
     }
 
-
-    .archive-count {
-        margin-bottom: 6px;
-
-        font-size: 8px;
-        line-height: 1.5;
-
-        letter-spacing: 0.22em;
-
-        color: rgba(245, 245, 245, 0.35);
+    .latest-section,
+    .manifest-section,
+    .archive-section,
+    .notices-section,
+    .mycelium-section {
+      padding: 3.25rem 0;
     }
 
-
-
-    /* ============================================================
-       LISTA
-    ============================================================ */
-
-    .portal-list {
-        border-top:
-            1px solid rgba(255, 47, 109, 0.72);
+    .latest-author {
+      margin-left: 0;
     }
 
-
-
-    /* ============================================================
-       FILA
-    ============================================================ */
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
 
     .portal-row {
-        position: relative;
-
-        min-height: 205px;
-
-        display: grid;
-
-        grid-template-columns:
-            125px
-            minmax(0, 1fr)
-            190px;
-
-        align-items: center;
-
-        gap: 30px;
-
-        padding: 32px 12px;
-
-        color: inherit;
-
-        text-decoration: none;
-
-        border-bottom:
-            1px solid var(--ca-line);
-
-        transition:
-            background 0.25s ease,
-            padding-left 0.25s ease;
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+      padding: 1.65rem 0;
     }
-
-
-    .portal-row::before {
-        content: "";
-
-        position: absolute;
-
-        left: 0;
-        top: 0;
-
-        width: 2px;
-        height: 0;
-
-        background: var(--ca-pink);
-
-        transition:
-            height 0.25s ease;
-    }
-
 
     .portal-row:hover {
-        padding-left: 22px;
-
-        background:
-            linear-gradient(
-                90deg,
-                rgba(255, 47, 109, 0.058),
-                rgba(255, 47, 109, 0.013) 48%,
-                transparent
-            );
+      padding-left: 0;
+      background: transparent;
     }
-
-
-    .portal-row:hover::before {
-        height: 100%;
-    }
-
-
-
-    /* ============================================================
-       NÚMERO
-    ============================================================ */
 
     .portal-number {
-        font-size: 52px;
-        font-weight: 300;
-
-        line-height: 1;
-
-        letter-spacing: -0.05em;
-
-        color: rgba(245, 245, 245, 0.14);
-
-        transition:
-            color 0.25s ease;
+      font-size: 1rem;
+      color: var(--accent-text);
     }
-
-
-    .portal-row:hover .portal-number {
-        color: var(--ca-pink);
-    }
-
-
-
-    /* ============================================================
-       META
-    ============================================================ */
-
-    .portal-meta {
-        display: flex;
-
-        gap: 26px;
-
-        margin-bottom: 18px;
-
-        font-size: 8px;
-        line-height: 1.5;
-
-        letter-spacing: 0.22em;
-
-        color: rgba(245, 245, 245, 0.34);
-    }
-
-
-    .portal-meta span:first-child {
-        color: rgba(255, 47, 109, 0.82);
-    }
-
-
-
-    /* ============================================================
-       TÍTULO PORTAL
-    ============================================================ */
-
-    .portal-main h3 {
-        margin: 0;
-
-        font-size: clamp(
-            29px,
-            3vw,
-            42px
-        );
-
-        font-weight: 700;
-
-        line-height: 1;
-
-        letter-spacing: -0.045em;
-
-        color: var(--ca-white);
-    }
-
-
-
-    /* ============================================================
-       DESCRIPCIÓN
-    ============================================================ */
-
-    .portal-main p {
-        max-width: 620px;
-
-        margin: 16px 0 0;
-
-        font-size: 13px;
-        line-height: 1.7;
-
-        color: rgba(245, 245, 245, 0.47);
-    }
-
-
-
-    /* ============================================================
-       ACCIÓN
-    ============================================================ */
 
     .portal-action {
-        justify-self: end;
-
-        display: flex;
-        align-items: center;
-
-        gap: 17px;
-
-        font-size: 8px;
-        line-height: 1.5;
-
-        letter-spacing: 0.21em;
-
-        color: rgba(245, 245, 245, 0.40);
+      justify-self: start;
+      margin-top: 0.35rem;
     }
-
-
-    .portal-arrow {
-        font-size: 22px;
-        line-height: 1;
-
-        color: var(--ca-pink);
-
-        transition:
-            transform 0.25s ease;
-    }
-
-
-    .portal-row:hover .portal-arrow {
-        transform: translateX(7px);
-    }
-
-
-
-    /* ============================================================
-       MICELIO
-    ============================================================ */
-
-    .mycelium-section {
-        position: relative;
-
-        padding: 122px 0 142px;
-
-        overflow: hidden;
-        isolation: isolate;
-
-        border-top:
-            1px solid rgba(255, 255, 255, 0.035);
-
-        background:
-            radial-gradient(
-                circle at 72% 42%,
-                rgba(255, 47, 109, 0.055),
-                transparent 38%
-            ),
-            linear-gradient(
-                90deg,
-                rgba(255, 47, 109, 0.018),
-                transparent 46%
-            ),
-            #030303;
-    }
-
-
-    .mycelium-grid-background {
-        position: absolute;
-        inset: 0;
-
-        z-index: -2;
-
-        pointer-events: none;
-
-        opacity: 0.48;
-
-        background-image:
-            linear-gradient(
-                rgba(255, 255, 255, 0.012) 1px,
-                transparent 1px
-            ),
-            linear-gradient(
-                90deg,
-                rgba(255, 255, 255, 0.012) 1px,
-                transparent 1px
-            );
-
-        background-size: 42px 42px;
-
-        -webkit-mask-image:
-            radial-gradient(
-                ellipse at 69% 50%,
-                black,
-                transparent 76%
-            );
-
-        mask-image:
-            radial-gradient(
-                ellipse at 69% 50%,
-                black,
-                transparent 76%
-            );
-    }
-
-
-    .mycelium-ghost {
-        position: absolute;
-
-        right: 3%;
-        top: 50%;
-
-        z-index: -1;
-
-        transform: translateY(-52%);
-
-        font-size: clamp(
-            210px,
-            25vw,
-            390px
-        );
-
-        font-weight: 700;
-
-        line-height: 1;
-        letter-spacing: -0.09em;
-
-        color: rgba(255, 255, 255, 0.014);
-
-        user-select: none;
-        pointer-events: none;
-    }
-
-
-    /* CABECERA */
-
-    .mycelium-header {
-        display: flex;
-
-        align-items: flex-end;
-        justify-content: space-between;
-
-        gap: 40px;
-
-        margin-bottom: 38px;
-
-        padding-bottom: 28px;
-
-        border-bottom:
-            1px solid var(--ca-line);
-    }
-
-
-    .mycelium-header h2 {
-        margin: 0;
-
-        font-size: clamp(
-            42px,
-            5vw,
-            72px
-        );
-
-        line-height: 0.95;
-
-        letter-spacing: -0.06em;
-
-        color: var(--ca-white);
-    }
-
-
-    .mycelium-count {
-        margin-bottom: 6px;
-
-        font-size: 8px;
-        line-height: 1.5;
-
-        letter-spacing: 0.22em;
-
-        color: rgba(245, 245, 245, 0.35);
-    }
-
-
-    /* INTRODUCCIÓN */
-
-    .mycelium-intro {
-        display: grid;
-
-        grid-template-columns:
-            185px
-            minmax(0, 650px);
-
-        gap: 70px;
-
-        margin-bottom: 66px;
-
-        align-items: start;
-    }
-
-
-    .mycelium-code {
-        padding-top: 4px;
-
-        font-size: 8px;
-        line-height: 1.5;
-
-        letter-spacing: 0.24em;
-
-        color: var(--ca-pink);
-    }
-
-
-    .mycelium-intro p {
-        margin: 0;
-
-        font-size: 14px;
-        line-height: 1.85;
-
-        color: rgba(245, 245, 245, 0.48);
-    }
-
-
-    /* RED DE NODOS */
 
     .node-grid {
-        position: relative;
-
-        display: grid;
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap: 1px;
-
-        border-top:
-            1px solid rgba(255, 47, 109, 0.72);
-
-        border-bottom:
-            1px solid var(--ca-line);
-
-        background:
-            rgba(245, 245, 245, 0.10);
+      grid-template-columns: 1fr;
     }
-
-
-    .node-grid::before {
-        content: "";
-
-        position: absolute;
-
-        left: 50%;
-        top: -32px;
-
-        width: 1px;
-        height: 32px;
-
-        background:
-            linear-gradient(
-                to bottom,
-                transparent,
-                rgba(255, 47, 109, 0.38)
-            );
-
-        pointer-events: none;
-    }
-
 
     .node-card {
-        position: relative;
-
-        min-height: 390px;
-
-        padding: 34px 38px 30px;
-
-        display: flex;
-        flex-direction: column;
-
-        color: inherit;
-        text-decoration: none;
-
-        background: #050505;
-
-        overflow: hidden;
-
-        transition:
-            background 0.28s ease,
-            transform 0.28s ease;
+      min-height: 0;
+      padding: 1.5rem;
     }
-
-
-    .node-card::before {
-        content: "";
-
-        position: absolute;
-
-        left: 0;
-        top: 0;
-
-        width: 2px;
-        height: 0;
-
-        background: var(--ca-pink);
-
-        transition:
-            height 0.28s ease;
-    }
-
-
-    .node-card::after {
-        content: "";
-
-        position: absolute;
-
-        width: 150px;
-        height: 150px;
-
-        right: -70px;
-        top: -70px;
-
-        border:
-            1px solid rgba(255, 47, 109, 0.08);
-
-        border-radius: 50%;
-
-        box-shadow:
-            0 0 0 32px rgba(255, 47, 109, 0.018),
-            0 0 0 64px rgba(255, 47, 109, 0.010);
-
-        pointer-events: none;
-    }
-
-
-    .node-card:hover {
-        background:
-            linear-gradient(
-                135deg,
-                rgba(255, 47, 109, 0.055),
-                rgba(255, 47, 109, 0.012) 42%,
-                #050505 75%
-            );
-    }
-
-
-    .node-card:hover::before {
-        height: 100%;
-    }
-
-
-    .node-top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        gap: 24px;
-
-        margin-bottom: 42px;
-    }
-
-
-    .node-number {
-        font-size: 48px;
-        font-weight: 300;
-
-        line-height: 1;
-
-        letter-spacing: -0.05em;
-
-        color: rgba(245, 245, 245, 0.13);
-
-        transition:
-            color 0.25s ease;
-    }
-
-
-    .node-card:hover .node-number {
-        color: var(--ca-pink);
-    }
-
-
-    .node-status {
-        position: relative;
-
-        padding-left: 12px;
-
-        font-size: 7px;
-        line-height: 1.5;
-
-        letter-spacing: 0.22em;
-
-        color: rgba(245, 245, 245, 0.28);
-    }
-
-
-    .node-status::before {
-        content: "";
-
-        position: absolute;
-
-        left: 0;
-        top: 50%;
-
-        width: 4px;
-        height: 4px;
-
-        transform: translateY(-50%);
-
-        border-radius: 50%;
-
-        background: var(--ca-pink);
-
-        box-shadow:
-            0 0 8px rgba(255, 47, 109, 0.62);
-    }
-
-
-    .node-meta {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-
-        gap: 10px 25px;
-
-        margin-bottom: 19px;
-
-        font-size: 8px;
-        line-height: 1.6;
-
-        letter-spacing: 0.20em;
-
-        color: rgba(245, 245, 245, 0.32);
-    }
-
-
-    .node-meta span:first-child {
-        color: rgba(255, 47, 109, 0.82);
-    }
-
-
-    .node-card h3 {
-        max-width: 480px;
-
-        margin: 0;
-
-        font-size: clamp(
-            30px,
-            3.2vw,
-            46px
-        );
-
-        font-weight: 700;
-
-        line-height: 0.98;
-
-        letter-spacing: -0.052em;
-
-        color: var(--ca-white);
-
-        text-wrap: balance;
-    }
-
-
-    .node-description {
-        max-width: 470px;
-
-        margin: 23px 0 42px;
-
-        font-size: 12px;
-        line-height: 1.75;
-
-        color: rgba(245, 245, 245, 0.42);
-    }
-
-
-    .node-footer {
-        margin-top: auto;
-
-        padding-top: 20px;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        gap: 24px;
-
-        border-top:
-            1px solid rgba(255, 255, 255, 0.07);
-    }
-
-
-    .node-traces {
-        font-size: 7px;
-        line-height: 1.5;
-
-        letter-spacing: 0.18em;
-
-        color: rgba(245, 245, 245, 0.22);
-    }
-
-
-    .node-trace {
-        display: flex;
-        align-items: center;
-
-        gap: 13px;
-
-        font-size: 8px;
-        line-height: 1.5;
-
-        letter-spacing: 0.20em;
-
-        color: rgba(245, 245, 245, 0.48);
-    }
-
-
-    .node-trace i {
-        font-size: 21px;
-        line-height: 1;
-
-        font-style: normal;
-
-        color: var(--ca-pink);
-
-        transition:
-            transform 0.25s ease;
-    }
-
-
-    .node-card:hover .node-trace i {
-        transform: translateX(6px);
-    }
-
-
-
-    /* ============================================================
-       TABLET
-    ============================================================ */
-
-    @media (max-width: 1000px) {
-
-        .home-container {
-            width: min(
-                calc(100% - 48px),
-                1200px
-            );
-        }
-
-
-        .hero-copy {
-            width: 73%;
-        }
-
-
-        .hero-visual {
-            width: 590px;
-
-            right: -215px;
-            top: 15px;
-        }
-
-
-        .system-data {
-            display: none;
-        }
-
-
-        .manifest-inner {
-            grid-template-columns:
-                150px
-                minmax(0, 1fr);
-
-            gap: 45px;
-        }
-
-
-        .portal-row {
-            grid-template-columns:
-                95px
-                1fr
-                120px;
-        }
-
-
-        .mycelium-intro {
-            grid-template-columns:
-                150px
-                minmax(0, 1fr);
-
-            gap: 45px;
-        }
-
-
-        .node-card {
-            padding-inline: 30px;
-        }
-
-    }
-
-
-
-    /* ============================================================
-       MÓVIL
-    ============================================================ */
-
-    @media (max-width: 720px) {
-
-        .home-container {
-            width: calc(100% - 40px);
-        }
-
-
-        /* HERO */
-
-        .home-hero {
-            min-height: 790px;
-
-            padding-top: 49px;
-        }
-
-
-        .hero-frame {
-            inset: 16px;
-        }
-
-
-        .corner {
-            width: 18px;
-            height: 18px;
-        }
-
-
-        .hero-layout {
-            min-height: 615px;
-        }
-
-
-        .hero-copy {
-            width: 100%;
-        }
-
-
-        .hero-meta {
-            margin-bottom: 43px;
-        }
-
-
-        .eyebrow {
-            max-width: 290px;
-
-            font-size: 9px;
-            line-height: 1.8;
-        }
-
-
-        .research-fields {
-            max-width: 330px;
-
-            gap: 12px 20px;
-
-            font-size: 8px;
-            line-height: 1.7;
-        }
-
-
-        .research-fields span:not(:last-child)::after {
-            display: none;
-        }
-
-
-
-        /* TÍTULO */
-
-        .hero-title h1 {
-            font-size: clamp(
-                53px,
-                16.5vw,
-                77px
-            );
-
-            line-height: 0.83;
-        }
-
-
-        .hero-title h1 span:last-child {
-            margin-top: 14px;
-        }
-
-
-
-        /* MISIÓN */
-
-        .mission {
-            width: 88%;
-
-            margin-top: 34px;
-
-            font-size: 13px;
-            line-height: 1.7;
-        }
-
-
-
-        /* IMAGEN */
-
-        .hero-visual {
-            width: 500px;
-
-            right: -255px;
-            top: 235px;
-
-            opacity: 0.78;
-        }
-
-
-        .hero-art {
-            opacity: 0.52;
-        }
-
-
-        .visual-fade {
-            background:
-                linear-gradient(
-                    to bottom,
-                    transparent 0%,
-                    transparent 43%,
-                    rgba(5, 5, 5, 0.16) 56%,
-                    rgba(5, 5, 5, 0.55) 69%,
-                    rgba(5, 5, 5, 0.91) 82%,
-                    #050505 95%
-                );
-        }
-
-
-
-        /* HERO BOTTOM */
-
-        .hero-bottom {
-            min-height: auto;
-
-            display: block;
-
-            padding: 18px 0;
-        }
-
-
-        .hero-bottom-block {
-            padding: 18px 0;
-        }
-
-
-        .hero-bottom-block + .hero-bottom-block {
-            padding: 18px 0;
-
-            border-left: none;
-
-            border-top:
-                1px solid rgba(255, 255, 255, 0.06);
-        }
-
-
-        .hero-bottom-archive {
-            display: none;
-        }
-
-
-
-        /* TRANSICIÓN */
-
-        .hero-transition {
-            height: 54px;
-        }
-
-
-        .transition-inner {
-            font-size: 6px;
-
-            gap: 12px;
-        }
-
-
-
-        /* MANIFIESTO */
-
-        .manifest-inner {
-            min-height: auto;
-
-            padding: 88px 0 92px;
-
-            display: block;
-        }
-
-
-        .manifest-aside {
-            margin-bottom: 43px;
-        }
-
-
-        .manifest-aside-line {
-            width: 54px;
-        }
-
-
-        .manifest-intro {
-            margin-bottom: 13px;
-
-            font-size: 22px;
-            line-height: 1.2;
-        }
-
-
-        .manifest-text {
-            font-size: clamp(
-                38px,
-                10.5vw,
-                52px
-            );
-
-            line-height: 1.04;
-        }
-
-
-        .manifest-bottom {
-            margin-top: 37px;
-
-            gap: 11px;
-
-            font-size: 6px;
-            line-height: 1.7;
-        }
-
-
-        .manifest-ghost {
-            right: -25%;
-
-            font-size: 280px;
-        }
-
-
-
-
-        /* REGISTRO MÁS RECIENTE */
-
-        .latest-inner {
-            padding: 78px 0 82px;
-
-            display: block;
-        }
-
-
-        .latest-aside {
-            margin-bottom: 42px;
-        }
-
-
-        .latest-aside-line {
-            width: 54px;
-        }
-
-
-        .latest-entry {
-            padding-top: 23px;
-        }
-
-
-        .latest-entry:hover {
-            padding-left: 0;
-
-            background: transparent;
-        }
-
-
-        .latest-meta {
-            display: grid;
-            grid-template-columns: 1fr;
-
-            gap: 7px;
-
-            margin-bottom: 25px;
-
-            font-size: 7px;
-        }
-
-
-        .latest-date {
-            margin-left: 0;
-        }
-
-
-        .latest-entry h2 {
-            font-size: clamp(
-                35px,
-                10.5vw,
-                50px
-            );
-
-            line-height: 1.02;
-        }
-
-
-        .latest-description {
-            margin-top: 22px;
-
-            font-size: 12px;
-            line-height: 1.75;
-        }
-
-
-        .latest-footer {
-            margin-top: 32px;
-
-            align-items: flex-start;
-            flex-direction: column;
-
-            gap: 17px;
-        }
-
-
-        .latest-languages {
-            width: 100%;
-
-            gap: 14px 28px;
-        }
-
-
-        .latest-ghost {
-            right: -28%;
-
-            font-size: 280px;
-        }
-
-
-        /* AVISOS */
-
-        .notices-inner {
-            padding: 72px 0 78px;
-        }
-
-        .notices-header {
-            display: block;
-            margin-bottom: 34px;
-        }
-
-        .notices-header h2 {
-            font-size: clamp(40px, 12vw, 54px);
-        }
-
-        .notices-count {
-            display: block;
-            margin-top: 18px;
-        }
-
-        .notice-row {
-            display: block;
-            padding: 26px 0 30px;
-        }
-
-        .notice-row:hover {
-            padding-left: 0;
-            background: transparent;
-        }
-
-        .notice-date {
-            margin-bottom: 14px;
-        }
-
-        .notice-main h3 {
-            font-size: clamp(22px, 7vw, 31px);
-        }
-
-        .notice-main p {
-            font-size: 11px;
-            line-height: 1.75;
-        }
-
-        .notice-action {
-            justify-content: flex-start;
-            margin-top: 22px;
-            padding-top: 0;
-        }
-
-
-        /* ARCHIVOS */
-
-        .archive-section {
-            padding: 88px 0 90px;
-        }
-
-
-        .archive-header {
-            display: block;
-        }
-
-
-        .archive-count {
-            display: block;
-
-            margin-top: 20px;
-        }
-
-
-
-        /* PORTALES */
-
-        .portal-row {
-            min-height: auto;
-
-            grid-template-columns:
-                56px
-                1fr;
-
-            gap: 18px;
-
-            padding: 30px 0;
-        }
-
-
-        .portal-number {
-            align-self: start;
-
-            padding-top: 25px;
-
-            font-size: 35px;
-        }
-
-
-        .portal-main h3 {
-            font-size: 30px;
-        }
-
-
-        .portal-main p {
-            font-size: 12px;
-        }
-
-
-        .portal-meta {
-            display: block;
-
-            line-height: 1.8;
-        }
-
-
-        .portal-meta span {
-            display: block;
-        }
-
-
-        .portal-action {
-            grid-column: 2;
-
-            justify-self: start;
-
-            margin-top: -5px;
-        }
-
-
-        .portal-row:hover {
-            padding-left: 0;
-        }
-
-
-        /* MICELIO */
-
-        .mycelium-section {
-            padding: 88px 0 96px;
-        }
-
-
-        .mycelium-header {
-            display: block;
-
-            margin-bottom: 34px;
-        }
-
-
-        .mycelium-count {
-            display: block;
-
-            margin-top: 20px;
-        }
-
-
-        .mycelium-intro {
-            display: block;
-
-            margin-bottom: 48px;
-        }
-
-
-        .mycelium-code {
-            display: block;
-
-            margin-bottom: 20px;
-        }
-
-
-        .mycelium-intro p {
-            font-size: 12px;
-            line-height: 1.78;
-        }
-
-
-        .node-grid {
-            grid-template-columns: 1fr;
-
-            gap: 1px;
-        }
-
-
-        .node-grid::before {
-            display: none;
-        }
-
-
-        .node-card {
-            min-height: 340px;
-
-            padding: 28px 24px 26px;
-        }
-
-
-        .node-top {
-            margin-bottom: 34px;
-        }
-
-
-        .node-number {
-            font-size: 36px;
-        }
-
-
-        .node-meta {
-            display: block;
-
-            line-height: 1.9;
-        }
-
-
-        .node-meta span {
-            display: block;
-        }
-
-
-        .node-card h3 {
-            font-size: clamp(
-                31px,
-                9vw,
-                42px
-            );
-        }
-
-
-        .node-description {
-            margin-top: 19px;
-
-            font-size: 11px;
-        }
-
-
-        .node-footer {
-            align-items: flex-start;
-            flex-direction: column;
-
-            gap: 15px;
-        }
-
-
-        .mycelium-ghost {
-            right: -30%;
-
-            font-size: 280px;
-        }
-
-    }
-
-
-
-    /* ============================================================
-       MOVIMIENTO REDUCIDO
-    ============================================================ */
-
-    @media (prefers-reduced-motion: reduce) {
-
-        .portal-row,
-        .portal-row::before,
-        .portal-arrow,
-        .portal-number,
-        .node-card,
-        .node-card::before,
-        .node-number,
-        .node-trace i {
-            transition: none;
-        }
-
-    }
-
+  }
 </style>

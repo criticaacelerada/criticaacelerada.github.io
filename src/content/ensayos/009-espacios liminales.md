@@ -55,7 +55,7 @@ El origen de la estética de los espacios liminales comenzó en mayo del 2019, a
 
 El usuario, para abrir el hilo, subió una imagen (véase Figura 1). Y a raíz de esta imagen que dio comienzo a todo, un usuario anónimo narró el contexto de la imagen —de un modo creativo e inventándoselo totalmente—, dando lugar a la leyenda urbana de las *Backrooms*:
 
-<img src="/images/figura-1.png" alt="Espacio liminal.">
+<img src="/images/figura-1.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 1.** *Origen de las Backrooms*, Anónimo.[^8]
 
@@ -70,11 +70,11 @@ Ahora bien, esto que acabamos de comentar es el origen en sí de las *Backrooms*
 Esta primera imagen asienta las bases de ciertos elementos centrales en los espacios liminales. Sin embargo, todo el relato que la acompaña y la dirección que recorre el fenómeno de las *Backrooms* se aleja totalmente de los espacios liminales, en tanto que los espacios liminales no les acompaña ninguna historia que les dé contexto. Tan solo son la propia potencia de las imágenes de espacios, totalmente descontextualizados.
 
 
-<img src="/images/figura-2.png" alt="Espacio liminal.">
+<img src="/images/figura-2.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 2.** *Espacio liminal supermercado*, Anónimo.[^10]
 
-<img src="/images/figura-3.png" alt="Espacio liminal.">
+<img src="/images/figura-3.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 3.** *Espacio liminal garaje*, Anónimo.[^11]
 
@@ -90,7 +90,7 @@ Sin ir más lejos, en un hilo de gran popularidad titulado *Can someone explain 
 
 Por destacar alguno de los ejemplos más convincentes, el usuario *VoloxReddit* aporta la siguiente explicación con bastantes “me gusta” a sus espaldas, es decir, con el reconocimiento positivo de la comunidad:
 
-<img src="/images/figura-4.png" alt="Espacio liminal.">
+<img src="/images/figura-4.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 4.** *Espacio liminal cine*, Anónimo.[^12]
 
@@ -119,12 +119,12 @@ En primer lugar, los espacios liminales se caracterizan por ser siempre lugares 
 
 Esta sensación de soledad empuja a que uno se encuentre como si fuese un observador en tercera persona. La soledad del espectador junto a la ausencia de personas sostiene esa extraña falta de contexto que empuja a la extrañeza con el lugar y con uno mismo. Además, debido a la edición, las imágenes tienden a provocar una sensación de ensoñación que se encuentra entrecruzada con la familiaridad del lugar fotografiado. Como si fuese un sitio en el que se hubiera podido estar antes, pero que resulta inquietante por su manifiesto sentido de irrealidad.
 
-<img src="/images/figura-5.png" alt="Espacio liminal.">
+<img src="/images/figura-5.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 5.** *Espacio liminal aeropuerto*, Anónimo.[^16]
 
 
-<img src="/images/figura-6.png" alt="Espacio liminal.">
+<img src="/images/figura-6.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 6.** *Espacio liminal centro comercial*, Anónimo.[^17]
 
@@ -166,11 +166,11 @@ Esto también justificaría la popularidad de dicho fenómeno artístico a lo la
 
 > Un espacio liminal puede ser un lugar en el que uno se imagina soñando o viendo en la televisión. Puede estar teñido de tragedia o ser inexplicablemente triste en su cotidianidad. Los espacios liminales pueden ser a la vez reconfortantes e incómodos, nostálgicos e inquietantes, íntimos y antinaturales.[^24]
 
-<img src="/images/figura-7.png" alt="Espacio liminal.">
+<img src="/images/figura-7.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 7.** *Espacio liminal McDonald’s*, Anónimo.[^25]
 
-<img src="/images/figura-8.png" alt="Espacio liminal.">
+<img src="/images/figura-8.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 8.** *Espacio liminal escaleras*, Anónimo.[^26]
 
@@ -195,11 +195,11 @@ La primera de las estéticas de internet que nos gustaría mencionar es el *Vapo
 
 La estética *Vaporwave* nace de una mezcolanza paradójica que va desde la sátira, hasta la oda de la sociedad de consumo y sus productos culturales.[^29] El *Vaporwave* rescata del imaginario colectivo ciertos logos, aparatos, y elementos muy relacionados con los años noventa y la digitalización. Todo ello con la intención de simular un regreso nostálgico a esa época y, a su vez, mostrar una crítica cultural “sobre el rápido ritmo del avance tecnológico y la mercantilización del pasado”.[^30]
 
-<img src="/images/figura-9.png" alt="Espacio liminal.">
+<img src="/images/figura-9.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 9.** *Imagen Vaporwave I*, Anónimo.[^31]
 
-<img src="/images/figura-10.png" alt="Espacio liminal.">
+<img src="/images/figura-10.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 10.** *Imagen Vaporwave II*, Anónimo.[^32]
 
@@ -215,12 +215,12 @@ Dicho esto acerca del *Vaporwave*, ahora presentaremos sólo algunas —puesto q
 
 La primera de ellas, el *Dreamcore*, como su nombre indica trata de reflejar una atmósfera onírica. El *Dreamcore* trata de reflejar representaciones inconscientes, con una manifiesta inspiración e intención surrealista. Nos atreveríamos incluso a decir que es una especie de “neosurrealismo”, ya que acoge elementos de distorsión de la realidad, aspectos inverosímiles pero que, a su vez, se mezclan con paisajes y lugares tanto estrafalarios como hipnóticos.
 
-<img src="/images/figura-11.png" alt="Espacio liminal.">
+<img src="/images/figura-11.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 11.** *Imagen Dreamcore*, Anónimo.[^35]
 
 
-<img src="/images/figura-12.png" alt="Espacio liminal.">
+<img src="/images/figura-12.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 12.** *This place is paradise/purgatory*, Anónimo.[^36]
 
@@ -228,23 +228,23 @@ A diferencia de los espacios liminales *stricto sensu*, en el *Dreamcore* sí en
 
 En segundo lugar, el *Weirdcore* —*weird*, “raro” en inglés— es otra estética de internet que tiene cierta relación con el *Dreamcore* y los espacios liminales, pero que tiende a resaltar una extrañeza incómoda en el ambiente y el contexto. Si los espacios liminales estaban fuera de contexto, y el estrafalario contexto del *Dreamcore* sería estar en un sueño; en el *Weirdcore* esta ambigüedad no llega a ninguna parte. Las imágenes suelen tener baja calidad, además de un aspecto surrealista. Sin embargo, la intención de fondo sería crear una sensación de extrañeza en la que uno no llega a comprender el por qué de lo mostrado. Se hace uso de elementos visuales que desafían la lógica y las expectativas, muchas veces consiguiendo sensaciones de incomodidad y nostalgia. A veces también pueden ir acompañadas de un texto, que en lugar de ayudar a situarte, termina lanzándote a una mayor ausencia de sentido.
 
-<img src="/images/figura-13.png" alt="Espacio liminal.">
+<img src="/images/figura-13.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 13.** *Imagen Weirdcore I*, Anónimo.[^37]
 
 
-<img src="/images/figura-14.png" alt="Espacio liminal.">
+<img src="/images/figura-14.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 14.** *Imagen Weirdcore II*, Anónimo.[^38]
 
 Ahora que hemos mostrado algunas de las diferentes estéticas de internet, llega el momento de presentar la que culmina con la cuestión que estamos tratando, es decir, la llamada *Nostalgiacore*. Como su nombre indica, ésta estética trata de resaltar ante todo la cuestión de la nostalgia. Las estéticas anteriores —incluidos los espacios liminales— producen nostalgia de un modo colateral, mientras que la *Nostalgiacore* lo hace de un modo central. Para ello, los lugares que presenta suelen ser espacios teñidos de una atmósfera infantil, lugares que tienden a evocar la infancia a través de objetos o recuerdos inocentes. Suelen ser lugares cerrados, pero también hay espacios abiertos. Con colores brillantes y llamativos, lugares recreativos y con una atmósfera cálida: ambientaciones típicas de los años noventa y la primera década del siglo XXI, un estilo que apela sin lugar a duda a la infancia de las generaciones Millenial y Z.
 
-<img src="/images/figura-15.png" alt="Espacio liminal.">
+<img src="/images/figura-15.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 15.** *Imagen Nostalgiacore I*, Anónimo.[^39]
 
 
-<img src="/images/figura-16.png" alt="Espacio liminal.">
+<img src="/images/figura-16.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 16.** *Imagen Nostalgiacore II*, Anónimo.[^40]
 
@@ -323,7 +323,7 @@ En cuanto al tercer punto —3) Liminalidad—, podemos afirmar que la liminalid
 
 El cuarto y último punto —4) Reacción de emociones concretas—, puede que sea una de las características más decisivas a la hora de delimitar el espacio liminal frente al no lugar. A fin de cuentas, los aspectos 1), 2) y 3) se puede decir que son los desencadenantes de los espacios liminales, mientras que el 4) es el efecto que estos producen. En este sentido, la diferencia principal entre los no lugares y los espacios liminales, es que los primeros no tienen que producir ni producen, normalmente, estas sensaciones; tampoco es su cometido. Esto revela el hecho de que no siempre por fotografiar un no lugar significa que vayamos a conseguir el efecto de un espacio liminal, ya que se tienen que dar las condiciones que comentamos antes. Aunque también cabe decir que una imagen de un espacio liminal puede ser creada “sencillamente”, tan solo uno debe estar en el lugar y momento indicado y ser capaz de capturarla.
 
-<img src="/images/figura-17.png" alt="Espacio liminal.">
+<img src="/images/figura-17.webp" alt="Espacio liminal." loading="lazy" decoding="async">
 
 **Figura 17.** *Espacio liminal en el Mercado de Campanar de Valencia*, tomada por el autor.[^59]
 

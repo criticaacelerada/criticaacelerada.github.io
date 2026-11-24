@@ -1,52 +1,29 @@
 ---
-import "../../styles/global.css";
-import HomeButton from "../../components/HomeButton.astro";
-import SocialFooter from "../../components/SocialFooter.astro";
+import { Image } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { formatShortDate } from "../../lib/editorial";
+import transmisionesVisual from "../../assets/images/transmisiones.png";
 
-const transmisiones = await getCollection("transmisiones");
-
-transmisiones.sort(
+const transmisiones = (await getCollection("transmisiones")).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-
-    <title>Transmisiones | Crítica Acelerada</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  </head>
-
-<body>
-
-<SocialFooter />
-
-<HomeButton />
-
+<BaseLayout
+  title="Transmisiones | Crítica Acelerada"
+  description="Conversaciones, podcasts y registros audiovisuales del laboratorio Crítica Acelerada."
+  lang="es"
+>
   <main class="transmissions-page">
-
     <div class="container">
-
       <section class="transmissions-hero">
-
         <div class="transmissions-intro">
-
-          <p class="eyebrow">
-            TRANSMISIONES
-          </p>
-
-          <h1>
-            Archivo Audiovisual
-          </h1>
-
+          <p class="eyebrow">TRANSMISIONES</p>
+          <h1>Archivo Audiovisual</h1>
           <p class="mission">
-            Conversaciones, podcasts y registros audiovisuales del laboratorio.
+            Conversaciones, monólogos y registros audiovisuales producidos por el
+            laboratorio.
           </p>
 
           <div class="transmissions-meta">
@@ -55,30 +32,22 @@ transmisiones.sort(
               {String(transmisiones.length).padStart(2, "0")} TRANSMISIONES
             </span>
           </div>
-
         </div>
 
         <div class="transmissions-visual" aria-hidden="true">
-
-          <div class="transmissions-signal">
-            <span>C</span>
-          </div>
-
-          <img
-            src="/images/transmisiones.png"
+          <Image
+            src={transmisionesVisual}
             alt=""
+            widths={[320, 540]}
+            sizes="270px"
+            format="webp"
+            quality={85}
           />
-
-          <p>
-            SEÑAL ABIERTA · ARCHIVO AUDIOVISUAL
-          </p>
-
+          <p>SEÑAL ABIERTA</p>
         </div>
-
       </section>
 
       <section class="transmissions-list">
-
         <div class="transmissions-list-header">
           <span>N.º</span>
           <span>TRANSMISIÓN</span>
@@ -87,47 +56,40 @@ transmisiones.sort(
 
         {
           transmisiones.map((transmision) => (
-
             <article class="transmission-entry">
-
               <div class="number">
                 {String(transmision.data.numero).padStart(3, "0")}
               </div>
 
               <div class="content">
-
                 <h3>
-                  {transmision.data.title}
+                  <a href={`/transmisiones/${transmision.id}`}>
+                    {transmision.data.title}
+                  </a>
                 </h3>
 
-                <p>
-                  {transmision.data.description}
-                </p>
+                <p>{transmision.data.description}</p>
 
+                <div class="essay-meta-row">
+                  <span>CRÍTICA ACELERADA</span>
+                  <time datetime={transmision.data.pubDate.toISOString().slice(0, 10)}>
+                    {formatShortDate(transmision.data.pubDate)}
+                  </time>
+                </div>
               </div>
 
               <div class="transmission-actions">
-
                 <a
                   class="read-link"
                   href={`/transmisiones/${transmision.id}`}
                 >
                   Ver señal →
                 </a>
-
               </div>
-
             </article>
-
           ))
         }
-
       </section>
-
     </div>
-
   </main>
-
-</body>
-
-</html>
+</BaseLayout>

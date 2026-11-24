@@ -1,169 +1,237 @@
 ---
 import { getCollection, render } from "astro:content";
-import HomeButton from "../../components/HomeButton.astro";
-import SocialFooter from "../../components/SocialFooter.astro";
-import "../../styles/global.css";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ReadingProgress from "../../components/ReadingProgress.astro";
+import TableOfContents from "../../components/TableOfContents.astro";
+import CopyCitation from "../../components/CopyCitation.astro";
+import ArticlePagination from "../../components/ArticlePagination.astro";
+import {
+  buildCitation,
+  estimateReadingTime,
+  formatEditorialDate,
+  hasMathContent,
+} from "../../lib/editorial";
 
 export async function getStaticPaths() {
   const destilados = await getCollection("destilados");
 
-  return destilados.map((destilado) => ({
-    params: {
-      slug: destilado.id,
-    },
-    props: {
-      destilado,
-    },
-  }));
+  return destilados.map((destilado) => {
+    const traduccion = destilado.data.translationKey
+      ? destilados.find(
+          (candidate) =>
+            candidate.id !== destilado.id &&
+            candidate.data.translationKey === destilado.data.translationKey
+        )
+      : undefined;
+
+    const mismosIdioma = destilados
+      .filter((item) => item.data.language === destilado.data.language)
+      .sort((a, b) => a.data.numero - b.data.numero);
+
+    const currentIdx = mismosIdioma.findIndex(
+      (item) => item.id === destilado.id
+    );
+    const prevDestilado =
+      currentIdx > 0 ? mismosIdioma[currentIdx - 1] : undefined;
+    const nextDestilado =
+      currentIdx >= 0 && currentIdx < mismosIdioma.length - 1
+        ? mismosIdioma[currentIdx + 1]
+        : undefined;
+
+    return {
+      params: { slug: destilado.id },
+      props: { destilado, traduccion, prevDestilado, nextDestilado },
+    };
+  });
 }
 
-const { destilado } = Astro.props;
-const { Content } = await render(destilado);
+const { destilado, traduccion, prevDestilado, nextDestilado } = Astro.props;
+const { Content, headings } = await render(destilado);
 
-const isEnglish = destilado.data.language === "en";
+const lang = destilado.data.language ?? "es";
+const isEnglish = lang === "en";
+const numero = String(destilado.data.numero).padStart(3, "0");
+const formattedDate = formatEditorialDate(destilado.data.pubDate, lang);
+const readingTime = estimateReadingTime(destilado.body, lang);
+const loadKatex = hasMathContent(destilado.body);
+
+const canonicalHref = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : `https://criticaacelerada.com${Astro.url.pathname}`;
+
+const citation = buildCitation({
+  author: destilado.data.autor,
+  date: destilado.data.pubDate,
+  title: destilado.data.title,
+  seriesLabel: isEnglish ? `Distillate No. ${numero}` : `Destilado N.º ${numero}`,
+  url: canonicalHref,
+  sourceWork: destilado.data.obra,
+  extractor: destilado.data.destiladoPor,
+  lang,
+});
+
+const prevTarget = prevDestilado
+  ? {
+      href: `/destilados/${prevDestilado.id}`,
+      code: String(prevDestilado.data.numero).padStart(3, "0"),
+      title: prevDestilado.data.title,
+    }
+  : undefined;
+
+const nextTarget = nextDestilado
+  ? {
+      href: `/destilados/${nextDestilado.id}`,
+      code: String(nextDestilado.data.numero).padStart(3, "0"),
+      title: nextDestilado.data.title,
+    }
+  : undefined;
 ---
 
-<!doctype html>
-<html lang={isEnglish ? "en" : "es"}>
+<BaseLayout
+  title={`${destilado.data.title} | Crítica Acelerada`}
+  description={destilado.data.description}
+  lang={lang}
+  loadKatex={loadKatex}
+  type="article"
+  publishedTime={destilado.data.pubDate}
+  author={destilado.data.autor}
+  section="Destilados"
+  alternateLang={
+    traduccion
+      ? {
+          lang: traduccion.data.language,
+          href: `/destilados/${traduccion.id}`,
+        }
+      : undefined
+  }
+>
+  <ReadingProgress />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{destilado.data.title} | Crítica Acelerada</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-</head>
-
-<body>
-
-<div class="container">
-
-  <header class="case-header">
-
-    <div class="case-header-top">
-
-      <p class="eyebrow">
-        {isEnglish ? "DISTILLATE" : "DESTILADO"} {String(destilado.data.numero).padStart(3, "0")}
-      </p>
-
-      <span class="case-status">
-        {isEnglish ? "OPEN FILE" : "ARCHIVO ABIERTO"}
-      </span>
-
-    </div>
-
-    <div class="case-title-grid">
-
-      <div class="case-title-block">
-
-        <h1>
-          {destilado.data.title}
-        </h1>
-
-        <p class="case-description">
-          {destilado.data.description}
-        </p>
-
-      </div>
-
-      <div class="case-number" aria-hidden="true">
-        {String(destilado.data.numero).padStart(3, "0")}
-      </div>
-
-    </div>
-
-    <div class="case-meta">
-
-      <span>
-        CRÍTICA ACELERADA
-      </span>
-
-      <span>
-        {isEnglish
-          ? "CRITICAL STUDIES LABORATORY"
-          : "LABORATORIO DE ESTUDIOS CRÍTICOS"}
-      </span>
-
-      <span>
-        {destilado.data.autor}
-      </span>
-
-      <span>
-        {destilado.data.obra}
-      </span>
-
-      <span>
-        {isEnglish
-          ? `EXTRACTION: ${destilado.data.destiladoPor}`
-          : `EXTRACCIÓN: ${destilado.data.destiladoPor}`}
-      </span>
-
-    </div>
-
-  </header>
-
-  <div class="case-layout">
-
-    <aside class="case-sidebar">
-
-      <div class="case-sidebar-block">
-
-        <span class="case-sidebar-label">
-          {isEnglish ? "CLASSIFICATION" : "CLASIFICACIÓN"}
-        </span>
-
-        <strong>
-          {isEnglish ? "DISTILLATE" : "DESTILADO"} {String(destilado.data.numero).padStart(3, "0")}
-        </strong>
-
-      </div>
-
-      <div class="case-sidebar-block">
-
-        <span class="case-sidebar-label">
-          {isEnglish ? "STATUS" : "ESTADO"}
-        </span>
-
-        <strong>
-          {isEnglish ? "PUBLISHED" : "PUBLICADO"}
-        </strong>
-
-      </div>
-
-      <div class="case-sidebar-block">
-
-        <span class="case-sidebar-label">
-          {isEnglish ? "FORMAT" : "FORMATO"}
-        </span>
-
-        <strong>
-          {isEnglish ? "SYNTHESIS" : "SÍNTESIS"}
-        </strong>
-
-      </div>
-
-      <div class="case-sidebar-line"></div>
-
-      <a
-        class="case-back-link"
-        href="/destilados"
+  <main class="case-page">
+    <div class="container">
+      <nav
+        class="case-breadcrumb"
+        aria-label={isEnglish ? "Breadcrumb" : "Ruta de navegación"}
       >
-        {isEnglish ? "← Back to archive" : "← Volver al archivo"}
-      </a>
+        <a href="/">{isEnglish ? "Home" : "Inicio"}</a>
+        <span aria-hidden="true">/</span>
+        <a href="/destilados">{isEnglish ? "Distillates" : "Destilados"}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{numero}</span>
+      </nav>
 
-    </aside>
+      <header class="case-header">
+        <div class="case-header-top">
+          <p class="eyebrow">
+            {isEnglish ? `DISTILLATE ${numero}` : `DESTILADO ${numero}`}
+          </p>
+          <span class="case-status">
+            {isEnglish ? "OPEN FILE" : "ARCHIVO ABIERTO"}
+          </span>
+        </div>
 
-    <article class="case-content">
+        <div class="case-title-grid">
+          <div class="case-title-block">
+            <h1>{destilado.data.title}</h1>
+            <p class="case-description">{destilado.data.description}</p>
+          </div>
 
-      <Content />
+          <div class="case-number" aria-hidden="true">{numero}</div>
+        </div>
 
-    </article>
+        <div class="case-meta">
+          <span>{destilado.data.autor}</span>
+          <span>{destilado.data.obra}</span>
+          <span>
+            {isEnglish
+              ? `EXTRACTION: ${destilado.data.destiladoPor}`
+              : `EXTRACCIÓN: ${destilado.data.destiladoPor}`}
+          </span>
+          <time datetime={destilado.data.pubDate.toISOString().slice(0, 10)}>
+            {formattedDate}
+          </time>
+          <span>{readingTime}</span>
+        </div>
 
-  </div>
+        {
+          traduccion && (
+            <div
+              class="case-lang-bar"
+              aria-label={isEnglish ? "Available languages" : "Idiomas disponibles"}
+            >
+              <span class="case-lang-label">
+                {isEnglish ? "VERSION" : "VERSIÓN"}
+              </span>
+              <div class="language-switch">
+                <span class="language-chip is-active" aria-current="true">
+                  {lang.toUpperCase()}
+                </span>
+                <a
+                  class="language-chip"
+                  href={`/destilados/${traduccion.id}`}
+                  lang={traduccion.data.language}
+                >
+                  {traduccion.data.language.toUpperCase()} →
+                </a>
+              </div>
+            </div>
+          )
+        }
+      </header>
 
-</div>
+      <div class="case-layout">
+        <aside class="case-sidebar">
+          <div class="case-sidebar-meta">
+            <div class="case-sidebar-block">
+              <span class="case-sidebar-label">
+                {isEnglish ? "CLASSIFICATION" : "CLASIFICACIÓN"}
+              </span>
+              <strong>
+                {isEnglish ? `DISTILLATE ${numero}` : `DESTILADO ${numero}`}
+              </strong>
+            </div>
 
-<HomeButton />
-<SocialFooter />
+            <div class="case-sidebar-block">
+              <span class="case-sidebar-label">
+                {isEnglish ? "DATE" : "FECHA"}
+              </span>
+              <strong>{formattedDate}</strong>
+            </div>
 
-</body>
-</html>
+            <div class="case-sidebar-block">
+              <span class="case-sidebar-label">
+                {isEnglish ? "FORMAT" : "FORMATO"}
+              </span>
+              <strong>{isEnglish ? "SYNTHESIS" : "SÍNTESIS"}</strong>
+            </div>
+          </div>
+
+          <TableOfContents headings={headings} lang={lang} variant="sidebar" />
+
+          <CopyCitation citation={citation} lang={lang} />
+
+          <div class="case-sidebar-line"></div>
+
+          <a class="case-back-link" href="/destilados">
+            {isEnglish ? "← Back to archive" : "← Volver al archivo"}
+          </a>
+        </aside>
+
+        <article class="case-content">
+          <TableOfContents headings={headings} lang={lang} variant="mobile" />
+
+          <Content />
+
+          <ArticlePagination
+            prev={prevTarget}
+            next={nextTarget}
+            lang={lang}
+            ariaLabel={
+              isEnglish ? "Distillate navigation" : "Navegación de destilados"
+            }
+          />
+        </article>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

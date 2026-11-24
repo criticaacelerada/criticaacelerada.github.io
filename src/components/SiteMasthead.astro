@@ -1,0 +1,608 @@
+---
+import { nodes } from "../data/nodos";
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+
+const archiveLinks = [
+  {
+    code: "01",
+    label: "Expedientes",
+    subtitle: "Ensayos e investigaciones",
+    href: "/expedientes",
+  },
+  {
+    code: "02",
+    label: "Transmisiones",
+    subtitle: "Archivo audiovisual",
+    href: "/transmisiones",
+  },
+  {
+    code: "03",
+    label: "Destilados",
+    subtitle: "Síntesis críticas de obra",
+    href: "/destilados",
+  },
+  {
+    code: "04",
+    label: "Alícuotas Experimentales",
+    subtitle: "Muestras e intervenciones",
+    href: "/alicuotas",
+  },
+];
+
+const isActive = (href: string) =>
+  href === "/"
+    ? currentPath === "/"
+    : currentPath === href || currentPath.startsWith(`${href}/`);
+---
+
+<header class="site-masthead">
+  <div class="masthead-inner">
+    <a class="masthead-brand" href="/" aria-label="Crítica Acelerada — Inicio">
+      <svg
+        class="masthead-isotipo"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+        width="30"
+        height="30"
+        aria-hidden="true"
+      >
+        <circle
+          cx="256"
+          cy="256"
+          r="224"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="14"
+        ></circle>
+        <path
+          d="M 258 175 A 82 82 0 1 0 258 337"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="28"
+          stroke-linecap="butt"
+        ></path>
+        <path
+          d="M 260 340 L 332 190 L 408 340"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="28"
+          stroke-linecap="butt"
+          stroke-linejoin="miter"
+        ></path>
+        <path
+          d="M 120 385 L 388 127"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="10"
+          stroke-linecap="butt"
+        ></path>
+      </svg>
+      <span class="masthead-wordmark">Crítica Acelerada</span>
+    </a>
+
+    <button
+      type="button"
+      class="masthead-toggle"
+      id="nav-drawer-open"
+      aria-label="Abrir menú de navegación"
+      aria-controls="site-nav-drawer"
+      aria-expanded="false"
+    >
+      <span class="masthead-toggle-label">MENÚ</span>
+      <span class="masthead-burger" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<div class="nav-backdrop" id="nav-drawer-backdrop" hidden></div>
+
+<aside
+  id="site-nav-drawer"
+  class="nav-drawer"
+  aria-label="Navegación principal"
+  aria-hidden="true"
+  hidden
+>
+  <div class="nav-drawer-head">
+    <span class="nav-drawer-eyebrow">ÍNDICE DEL LABORATORIO</span>
+
+    <button
+      type="button"
+      class="nav-drawer-close"
+      id="nav-drawer-close"
+      aria-label="Cerrar menú de navegación"
+    >
+      <span>CERRAR</span>
+      <span class="nav-close-icon" aria-hidden="true">×</span>
+    </button>
+  </div>
+
+  <nav class="nav-drawer-body" aria-label="Secciones de Crítica Acelerada">
+    <div class="nav-group">
+      <a
+        href="/"
+        class:list={["nav-home-link", { "is-active": isActive("/") }]}
+        aria-current={isActive("/") ? "page" : undefined}
+      >
+        <span>Portada</span>
+        <span class="nav-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">ARCHIVOS</p>
+
+      <ul class="nav-list">
+        {
+          archiveLinks.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={["nav-item", { "is-active": isActive(item.href) }]}
+                aria-current={isActive(item.href) ? "page" : undefined}
+              >
+                <span class="nav-item-code">{item.code}</span>
+                <span class="nav-item-copy">
+                  <strong>{item.label}</strong>
+                  <small>{item.subtitle}</small>
+                </span>
+                <span class="nav-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">MICELIO · NODOS</p>
+
+      <ul class="nav-list nav-list-compact">
+        {
+          nodes.map((node, index) => {
+            const href = `/nodos/${node.slug}`;
+            return (
+              <li>
+                <a
+                  href={href}
+                  class:list={["nav-item nav-item-node", { "is-active": isActive(href) }]}
+                  aria-current={isActive(href) ? "page" : undefined}
+                >
+                  <span class="nav-item-code">
+                    N{String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span class="nav-item-copy">
+                    <strong>{node.aliases[0] ?? node.name}</strong>
+                    <small>{node.role}</small>
+                  </span>
+                  <span class="nav-arrow" aria-hidden="true">→</span>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </nav>
+
+  <div class="nav-drawer-foot">
+    <span>CRÍTICA ACELERADA</span>
+    <a href="mailto:critica.acelerada@tutamail.com">
+      critica.acelerada@tutamail.com
+    </a>
+  </div>
+</aside>
+
+<script>
+  const openBtn = document.getElementById("nav-drawer-open");
+  const closeBtn = document.getElementById("nav-drawer-close");
+  const drawer = document.getElementById("site-nav-drawer");
+  const backdrop = document.getElementById("nav-drawer-backdrop");
+
+  if (openBtn && closeBtn && drawer && backdrop) {
+    let closeTimer: number | undefined;
+
+    const openDrawer = () => {
+      window.clearTimeout(closeTimer);
+      drawer.hidden = false;
+      backdrop.hidden = false;
+
+      requestAnimationFrame(() => {
+        drawer.classList.add("is-open");
+        backdrop.classList.add("is-open");
+      });
+
+      drawer.setAttribute("aria-hidden", "false");
+      openBtn.setAttribute("aria-expanded", "true");
+      document.documentElement.classList.add("nav-locked");
+      closeBtn.focus();
+    };
+
+    const closeDrawer = (restoreFocus = true) => {
+      drawer.classList.remove("is-open");
+      backdrop.classList.remove("is-open");
+      drawer.setAttribute("aria-hidden", "true");
+      openBtn.setAttribute("aria-expanded", "false");
+      document.documentElement.classList.remove("nav-locked");
+
+      closeTimer = window.setTimeout(() => {
+        drawer.hidden = true;
+        backdrop.hidden = true;
+      }, 220);
+
+      if (restoreFocus) {
+        openBtn.focus();
+      }
+    };
+
+    openBtn.addEventListener("click", () => {
+      const expanded = openBtn.getAttribute("aria-expanded") === "true";
+      if (expanded) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    });
+
+    closeBtn.addEventListener("click", () => closeDrawer());
+    backdrop.addEventListener("click", () => closeDrawer());
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !drawer.hidden) {
+        closeDrawer();
+      }
+    });
+
+    drawer.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => closeDrawer(false));
+    });
+  }
+</script>
+
+<style>
+  .site-masthead {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    background: rgba(0, 0, 0, 0.94);
+    border-top: 3px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .masthead-inner {
+    width: min(var(--max-width), calc(100% - 2.5rem));
+    height: 58px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .masthead-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 44px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .masthead-isotipo {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    color: var(--accent);
+    display: block;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .masthead-brand:hover .masthead-isotipo {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+
+  .masthead-wordmark {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1;
+    color: #f5f5f5;
+  }
+
+  .masthead-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
+    margin-right: -0.75rem;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .masthead-toggle:hover {
+    color: var(--accent-text);
+  }
+
+  .masthead-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .masthead-toggle-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+  }
+
+  .masthead-burger {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 22px;
+    height: 16px;
+  }
+
+  .masthead-burger span {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform 0.2s ease;
+  }
+
+  .masthead-toggle:hover .masthead-burger span:last-child {
+    transform: translateX(3px);
+  }
+
+  .nav-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 980;
+    background: rgba(0, 0, 0, 0.74);
+    opacity: 0;
+    transition: opacity 0.22s ease;
+  }
+
+  .nav-backdrop.is-open {
+    opacity: 1;
+  }
+
+  .nav-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    width: min(440px, 100vw);
+    display: flex;
+    flex-direction: column;
+    background: #000000;
+    border-left: 1px solid var(--border);
+    box-shadow: -24px 0 60px rgba(0, 0, 0, 0.85);
+    transform: translateX(100%);
+    transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow-y: auto;
+  }
+
+  .nav-drawer.is-open {
+    transform: translateX(0);
+  }
+
+  .nav-drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1.75rem;
+    border-top: 3px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-drawer-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: var(--accent-text);
+  }
+
+  .nav-drawer-close {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.35rem 0.5rem;
+    margin-right: -0.5rem;
+    background: transparent;
+    border: 0;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .nav-drawer-close:hover {
+    color: var(--text);
+  }
+
+  .nav-drawer-close:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .nav-close-icon {
+    font-size: 1.35rem;
+    line-height: 1;
+    color: var(--accent-text);
+  }
+
+  .nav-drawer-body {
+    flex: 1;
+    padding: 1.5rem 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .nav-home-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 48px;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-serif);
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--text);
+    transition: color 0.2s ease;
+  }
+
+  .nav-home-link:hover,
+  .nav-home-link.is-active {
+    color: var(--accent-text);
+  }
+
+  .nav-group-label {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: var(--meta);
+  }
+
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-item {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.85rem;
+    min-height: 58px;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    transition: padding-left 0.2s ease, border-color 0.2s ease;
+  }
+
+  .nav-item:hover {
+    padding-left: 0.45rem;
+    border-bottom-color: var(--accent);
+  }
+
+  .nav-item.is-active .nav-item-code,
+  .nav-item.is-active .nav-item-copy strong {
+    color: var(--accent-text);
+  }
+
+  .nav-item-code {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--meta);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .nav-item:hover .nav-item-code {
+    color: var(--accent-text);
+  }
+
+  .nav-item-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .nav-item-copy strong {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  .nav-item-node .nav-item-copy strong {
+    font-size: 1.05rem;
+  }
+
+  .nav-item-copy small {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .nav-arrow {
+    color: var(--accent-text);
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-item:hover .nav-arrow,
+  .nav-home-link:hover .nav-arrow {
+    transform: translateX(4px);
+  }
+
+  .nav-drawer-foot {
+    padding: 1.25rem 1.75rem 1.75rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: var(--meta);
+  }
+
+  .nav-drawer-foot a {
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    transition: color 0.2s ease;
+  }
+
+  .nav-drawer-foot a:hover {
+    color: var(--accent-text);
+  }
+
+  @media (max-width: 640px) {
+    .masthead-inner {
+      width: calc(100% - 2rem);
+    }
+
+    .masthead-wordmark {
+      font-size: 1.02rem;
+    }
+
+    .nav-drawer-head,
+    .nav-drawer-body,
+    .nav-drawer-foot {
+      padding-inline: 1.25rem;
+    }
+  }
+</style>

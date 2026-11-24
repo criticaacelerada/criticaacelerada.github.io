@@ -1,0 +1,198 @@
+---
+import "@fontsource-variable/newsreader/opsz.css";
+import "@fontsource-variable/newsreader/opsz-italic.css";
+import "@fontsource/ibm-plex-sans/400.css";
+import "@fontsource/ibm-plex-sans/500.css";
+import "@fontsource/ibm-plex-sans/600.css";
+import "@fontsource/ibm-plex-sans/700.css";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
+import "../styles/tokens.css";
+import "../styles/global.css";
+import SiteMasthead from "../components/SiteMasthead.astro";
+import SocialFooter from "../components/SocialFooter.astro";
+
+interface AlternateLang {
+  lang: "es" | "en";
+  href: string;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: "es" | "en";
+  loadKatex?: boolean;
+  type?: "website" | "article" | "profile";
+  publishedTime?: Date;
+  author?: string;
+  section?: string;
+  ogImage?: string;
+  alternateLang?: AlternateLang;
+}
+
+const {
+  title,
+  description = "Crítica Acelerada — Laboratorio de Economía Política y Filosofía del Capitalismo Contemporáneo.",
+  lang = "es",
+  loadKatex = false,
+  type = "website",
+  publishedTime,
+  author,
+  section,
+  ogImage = "/images/og-default.png",
+  alternateLang,
+} = Astro.props;
+
+const siteOrigin = Astro.site ?? new URL("https://criticaacelerada.com");
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin).toString();
+const ogImageURL = new URL(ogImage, siteOrigin).toString();
+const alternateURL = alternateLang
+  ? new URL(alternateLang.href, siteOrigin).toString()
+  : undefined;
+const ogLocale = lang === "en" ? "en_US" : "es_MX";
+
+if (loadKatex) {
+  await import("katex/dist/katex.min.css");
+}
+
+const jsonLd =
+  type === "article"
+    ? {
+        "@context": "https://schema.org",
+        "@type": "ScholarlyArticle",
+        headline: title.replace(/\s*\|\s*Crítica Acelerada$/, ""),
+        description,
+        inLanguage: lang,
+        url: canonicalURL,
+        mainEntityOfPage: canonicalURL,
+        image: ogImageURL,
+        ...(publishedTime
+          ? { datePublished: publishedTime.toISOString() }
+          : {}),
+        ...(section ? { articleSection: section } : {}),
+        author: {
+          "@type": "Person",
+          name: author ?? "Crítica Acelerada",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Crítica Acelerada",
+          url: siteOrigin.toString(),
+          logo: {
+            "@type": "ImageObject",
+            url: new URL("/favicon.svg", siteOrigin).toString(),
+          },
+        },
+      }
+    : type === "profile"
+      ? {
+          "@context": "https://schema.org",
+          "@type": "ProfilePage",
+          url: canonicalURL,
+          mainEntity: {
+            "@type": "Person",
+            name: author ?? title.replace(/\s*\|\s*Crítica Acelerada$/, ""),
+            description,
+            affiliation: {
+              "@type": "Organization",
+              name: "Crítica Acelerada",
+              url: siteOrigin.toString(),
+            },
+          },
+        }
+      : {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Crítica Acelerada",
+          description,
+          url: siteOrigin.toString(),
+          inLanguage: ["es", "en"],
+          publisher: {
+            "@type": "Organization",
+            name: "Crítica Acelerada",
+            url: siteOrigin.toString(),
+          },
+        };
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#000000" />
+    <link rel="canonical" href={canonicalURL} />
+    {
+      alternateLang && alternateURL && (
+        <>
+          <link rel="alternate" hreflang={lang} href={canonicalURL} />
+          <link
+            rel="alternate"
+            hreflang={alternateLang.lang}
+            href={alternateURL}
+          />
+        </>
+      )
+    }
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Crítica Acelerada — RSS"
+      href="/rss.xml"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Crítica Acelerada" />
+    <meta property="og:type" content={type === "profile" ? "profile" : type} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {
+      type === "article" && publishedTime && (
+        <meta
+          property="article:published_time"
+          content={publishedTime.toISOString()}
+        />
+      )
+    }
+    {
+      type === "article" && author && (
+        <meta property="article:author" content={author} />
+      )
+    }
+    {
+      type === "article" && section && (
+        <meta property="article:section" content={section} />
+      )
+    }
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- Datos estructurados JSON-LD -->
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(jsonLd)}
+    />
+
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+
+  <body>
+    <SiteMasthead currentPath={Astro.url.pathname} />
+
+    <slot />
+
+    <SocialFooter />
+  </body>
+</html>

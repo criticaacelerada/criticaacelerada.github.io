@@ -6,6 +6,7 @@ interface Props {
   label: string;
   expediente: number;
   language: "es" | "en";
+  author?: string;
 }
 
 const {
@@ -15,104 +16,86 @@ const {
   label,
   expediente,
   language,
+  author = "Crítica Acelerada",
 } = Astro.props;
 
 const intro =
   language === "en"
-    ? "Audiovisual material associated with this expediente."
+    ? "Audiovisual material associated with this dossier."
     : "Material audiovisual asociado a este expediente.";
 ---
 
 <section class="archivo-audiovisual">
 
   <div class="archivo-top">
-
     <span class="archivo-label">
       {label.toUpperCase()} / {String(expediente).padStart(3, "0")}
     </span>
-
-    <span class="archivo-line"></span>
-
+    <span class="archivo-line" aria-hidden="true"></span>
   </div>
 
   <div class="archivo-grid">
-
     <div class="archivo-info">
-
-      <p class="archivo-intro">
-        {intro}
-      </p>
-
-      <h2>
-        {title}
-      </h2>
-
-      <p class="archivo-author">
-        Diego Giménez Vila
-      </p>
-
-      <p class="archivo-context">
-        {context}
-      </p>
-
+      <p class="archivo-intro">{intro}</p>
+      <h2>{title}</h2>
+      <p class="archivo-author">{author}</p>
+      <p class="archivo-context">{context}</p>
     </div>
 
     <div class="video-wrapper">
-
       <iframe
         src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
-        title={`${title} — Diego Giménez Vila`}
+        title={`${title} — ${author}`}
         loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       ></iframe>
-
     </div>
-
   </div>
 
 </section>
 
 <style>
-
   .archivo-audiovisual {
-    margin-top: 5rem;
+    margin-top: 4.5rem;
     padding-top: 2rem;
-    border-top: 1px solid #333;
+    border-top: 2px solid var(--accent);
   }
 
   .archivo-top {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 
   .archivo-label {
     flex-shrink: 0;
-    color: #ff2f6d;
-    font-size: 0.72rem;
-    font-weight: 700;
+    color: var(--accent-text);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
     letter-spacing: 0.12em;
   }
 
   .archivo-line {
     width: 100%;
     height: 1px;
-    background: #333;
+    background: var(--border);
   }
 
   .archivo-grid {
     display: grid;
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
-    gap: 3rem;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.35fr);
+    gap: 2.5rem;
     align-items: start;
   }
 
   .archivo-intro {
-    margin: 0 0 1rem;
-    color: #888;
-    font-size: 0.75rem;
+    margin: 0 0 0.85rem;
+    color: var(--meta);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
     line-height: 1.5;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -120,23 +103,28 @@ const intro =
 
   .archivo-info h2 {
     margin: 0;
-    color: #f5f5f5;
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    line-height: 1;
-    letter-spacing: -0.04em;
+    color: var(--text);
+    font-family: var(--font-serif);
+    font-size: clamp(1.65rem, 3vw, 2.35rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
   }
 
   .archivo-author {
-    margin: 1.5rem 0 0;
-    color: #f5f5f5;
+    margin: 1.25rem 0 0;
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
     font-weight: 600;
   }
 
   .archivo-context {
     margin: 0.35rem 0 0;
-    color: #999;
+    color: var(--muted);
+    font-family: var(--font-sans);
     font-size: 0.9rem;
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
   .video-wrapper {
@@ -144,7 +132,8 @@ const intro =
     width: 100%;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    background: #101010;
+    background: var(--surface);
+    border: 1px solid var(--border);
   }
 
   .video-wrapper iframe {
@@ -156,16 +145,13 @@ const intro =
   }
 
   @media (max-width: 800px) {
-
     .archivo-audiovisual {
-      margin-top: 4rem;
+      margin-top: 3.5rem;
     }
 
     .archivo-grid {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 1.75rem;
     }
-
   }
-
 </style>

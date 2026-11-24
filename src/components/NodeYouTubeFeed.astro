@@ -1,654 +1,298 @@
 ---
 interface Props {
-    handle: string;
-    label: string;
-    url: string;
+  handle: string;
+  label: string;
+  url: string;
 }
 
-const {
-    handle,
-    label,
-    url,
-} = Astro.props;
+const { handle, label, url } = Astro.props;
 ---
 
-<section
-    class="youtube-feed"
-    data-youtube-feed
-    data-handle={handle}
->
+<section class="youtube-feed" data-youtube-feed data-handle={handle}>
+  <div class="youtube-feed-head">
+    <h3>{label}</h3>
 
-    <div class="youtube-feed-head">
-
-        <h3>
-            {label}
-        </h3>
-
-        <a
-            class="youtube-channel-link"
-            href={url}
-            target="_blank"
-            rel="noreferrer"
-        >
-            ABRIR CANAL
-            <span>↗</span>
-        </a>
-
-    </div>
-
-    <div
-        class="youtube-status"
-        data-youtube-status
+    <a
+      class="youtube-channel-link"
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
     >
-        Sincronizando actividad reciente…
-    </div>
+      ABRIR CANAL
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
 
-    <div
-        class="youtube-grid"
-        data-youtube-list
-        hidden
-    ></div>
+  <div class="youtube-status" data-youtube-status>
+    Sincronizando actividad reciente…
+  </div>
 
+  <div class="youtube-grid" data-youtube-list hidden></div>
 </section>
 
-
 <script>
-    const feeds = document.querySelectorAll(
-        "[data-youtube-feed]"
-    );
-
-    const formatDate = (value) => {
-        if (!value) return "";
-
-        return new Intl.DateTimeFormat(
-            "es-MX",
-            {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-            }
-        )
-            .format(new Date(value))
-            .replaceAll("/", ".");
-    };
-
-
-    for (const feed of feeds) {
-
-        const status =
-            feed.querySelector(
-                "[data-youtube-status]"
-            );
-
-        const list =
-            feed.querySelector(
-                "[data-youtube-list]"
-            );
-
-
-        fetch("/api/indagando")
-            .then((response) => {
-
-                if (!response.ok) {
-                    throw new Error(
-                        "YouTube feed error"
-                    );
-                }
-
-                return response.json();
-            })
-            .then((data) => {
-
-                const videos =
-                    Array.isArray(data.videos)
-                        ? data.videos
-                        : [];
-
-
-                if (videos.length === 0) {
-
-                    status.textContent =
-                        "No hay actividad reciente disponible.";
-
-                    return;
-                }
-
-
-                for (const video of videos) {
-
-                    const item =
-                        document.createElement("a");
-
-                    item.className =
-                        "youtube-card";
-
-                    item.href =
-                        video.url || "#";
-
-                    item.target =
-                        "_blank";
-
-                    item.rel =
-                        "noreferrer";
-
-
-                    const thumb =
-                        document.createElement("div");
-
-                    thumb.className =
-                        "youtube-thumb";
-
-
-                    if (video.thumbnail) {
-
-                        const image =
-                            document.createElement("img");
-
-                        image.src =
-                            video.thumbnail;
-
-                        image.alt = "";
-
-                        image.loading =
-                            "lazy";
-
-                        thumb.appendChild(
-                            image
-                        );
-
-                    } else {
-
-                        thumb.classList.add(
-                            "youtube-thumb-empty"
-                        );
-
-                        thumb.setAttribute(
-                            "aria-hidden",
-                            "true"
-                        );
-
-                    }
-
-
-                    const copy =
-                        document.createElement("div");
-
-                    copy.className =
-                        "youtube-card-copy";
-
-
-                    const meta =
-                        document.createElement("div");
-
-                    meta.className =
-                        "youtube-card-meta";
-
-
-                    const source =
-                        document.createElement("span");
-
-                    source.textContent =
-                        "YOUTUBE ·";
-
-
-                    const date =
-                        document.createElement("time");
-
-                    date.textContent =
-                        formatDate(
-                            video.publishedAt
-                        );
-
-
-                    meta.append(
-                        source,
-                        date
-                    );
-
-
-                    const title =
-                        document.createElement("h4");
-
-                    title.textContent =
-                        video.title || "";
-
-
-                    const arrow =
-                        document.createElement("span");
-
-                    arrow.className =
-                        "youtube-card-arrow";
-
-                    arrow.setAttribute(
-                        "aria-hidden",
-                        "true"
-                    );
-
-                    arrow.textContent =
-                        "↗";
-
-
-                    copy.append(
-                        meta,
-                        title,
-                        arrow
-                    );
-
-
-                    item.append(
-                        thumb,
-                        copy
-                    );
-
-
-                    list.appendChild(
-                        item
-                    );
-
-                }
-
-
-                status.hidden = true;
-                list.hidden = false;
-
-            })
-            .catch(() => {
-
-                status.textContent =
-                    "La actividad de INDAGANDO no está disponible temporalmente.";
-
-            });
-
-    }
+  const feeds = document.querySelectorAll("[data-youtube-feed]");
+
+  const formatDate = (value: string | null | undefined) => {
+    if (!value) return "";
+
+    return new Intl.DateTimeFormat("es-MX", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    })
+      .format(new Date(value))
+      .replaceAll("/", ".");
+  };
+
+  for (const feed of feeds) {
+    const status = feed.querySelector("[data-youtube-status]");
+    const list = feed.querySelector("[data-youtube-list]");
+
+    if (!status || !list) continue;
+
+    fetch("/api/indagando")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("YouTube feed error");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const videos = Array.isArray(data.videos) ? data.videos : [];
+
+        if (videos.length === 0) {
+          status.textContent = "No hay actividad reciente disponible.";
+          return;
+        }
+
+        for (const video of videos) {
+          const item = document.createElement("a");
+          item.className = "youtube-card";
+          item.href = video.url || "#";
+          item.target = "_blank";
+          item.rel = "noopener noreferrer";
+
+          const thumb = document.createElement("div");
+          thumb.className = "youtube-thumb";
+
+          if (video.thumbnail) {
+            const image = document.createElement("img");
+            image.src = video.thumbnail;
+            image.alt = "";
+            image.loading = "lazy";
+            thumb.appendChild(image);
+          } else {
+            thumb.classList.add("youtube-thumb-empty");
+            thumb.setAttribute("aria-hidden", "true");
+          }
+
+          const copy = document.createElement("div");
+          copy.className = "youtube-card-copy";
+
+          const meta = document.createElement("div");
+          meta.className = "youtube-card-meta";
+
+          const source = document.createElement("span");
+          source.textContent = "YOUTUBE ·";
+
+          const date = document.createElement("time");
+          date.textContent = formatDate(video.publishedAt);
+
+          meta.append(source, date);
+
+          const title = document.createElement("h4");
+          title.textContent = video.title || "";
+
+          const arrow = document.createElement("span");
+          arrow.className = "youtube-card-arrow";
+          arrow.setAttribute("aria-hidden", "true");
+          arrow.textContent = "↗";
+
+          copy.append(meta, title, arrow);
+          item.append(thumb, copy);
+          list.appendChild(item);
+        }
+
+        status.setAttribute("hidden", "");
+        list.removeAttribute("hidden");
+      })
+      .catch(() => {
+        status.textContent =
+          "La actividad de INDAGANDO no está disponible temporalmente.";
+      });
+  }
 </script>
 
-
 <style>
+  .youtube-feed {
+    margin-top: 2.75rem;
+    border-top: 2px solid var(--accent);
+  }
 
-    .youtube-feed {
-        margin-top: 48px;
+  .youtube-feed-head {
+    padding: 1.25rem 0 1.1rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
 
-        border-top:
-            1px solid rgba(255, 47, 109, 0.65);
-    }
+  .youtube-feed-head h3 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
 
+  .youtube-channel-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: 1.4;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    transition: color 0.2s ease;
+  }
 
+  .youtube-channel-link span {
+    color: var(--accent-text);
+  }
+
+  .youtube-channel-link:hover {
+    color: var(--text);
+  }
+
+  .youtube-status {
+    padding: 1.5rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    color: var(--meta);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .youtube-grid {
+    width: 100%;
+    padding: 1.75rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem 1.5rem;
+  }
+
+  .youtube-card {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .youtube-card:hover {
+    background: var(--surface-hover);
+    border-color: var(--accent);
+  }
+
+  .youtube-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .youtube-thumb img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: saturate(0.88) contrast(1.03);
+    transition: transform 0.35s ease, filter 0.35s ease;
+  }
+
+  .youtube-card:hover .youtube-thumb img {
+    transform: scale(1.02);
+    filter: saturate(1) contrast(1.04);
+  }
+
+  .youtube-thumb-empty {
+    background: var(--surface);
+  }
+
+  .youtube-card-copy {
+    position: relative;
+    min-height: 118px;
+    padding: 1rem 1.25rem 1.25rem;
+  }
+
+  .youtube-card-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.75rem;
+    margin-bottom: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: 1.4;
+    letter-spacing: 0.12em;
+    color: var(--meta);
+  }
+
+  .youtube-card-meta span {
+    color: var(--accent-text);
+  }
+
+  .youtube-card h4 {
+    margin: 0;
+    padding-right: 1.5rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--text);
+  }
+
+  .youtube-card-arrow {
+    position: absolute;
+    right: 1.1rem;
+    bottom: 1rem;
+    font-size: 0.95rem;
+    color: var(--accent-text);
+    transition: transform 0.2s ease;
+  }
+
+  .youtube-card:hover .youtube-card-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  @media (max-width: 680px) {
     .youtube-feed-head {
-        padding: 22px 0 20px;
-
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-
-        gap: 30px;
-
-        border-bottom:
-            1px solid rgba(245, 245, 245, 0.12);
-    }
-
-
-    .youtube-feed-head h3 {
-        margin: 0;
-
-        font-size: clamp(
-            22px,
-            2vw,
-            27px
-        );
-
-        font-weight: 620;
-
-        line-height: 1;
-
-        letter-spacing: -0.035em;
-
-        color: #f5f5f5;
-    }
-
-
-    .youtube-channel-link {
-        display: inline-flex;
-        align-items: center;
-
-        gap: 10px;
-
-        font-size: 7px;
-        line-height: 1.5;
-
-        letter-spacing: 0.20em;
-
-        color: rgba(245, 245, 245, 0.38);
-
-        text-decoration: none;
-
-        transition:
-            color 0.2s ease;
-    }
-
-
-    .youtube-channel-link span {
-        color: #ff2f6d;
-    }
-
-
-    .youtube-channel-link:hover {
-        color: rgba(245, 245, 245, 0.72);
-    }
-
-
-    .youtube-status {
-        padding: 28px 0;
-
-        font-size: 9px;
-        line-height: 1.6;
-
-        letter-spacing: 0.13em;
-
-        color: rgba(245, 245, 245, 0.30);
-
-        border-bottom:
-            1px solid rgba(245, 245, 245, 0.12);
-    }
-
-
-    .youtube-grid {
-        width: 100%;
-
-        padding: 28px 0 4px;
-
-        display: grid;
-
-        grid-template-columns:
-            repeat(
-                3,
-                minmax(0, 1fr)
-            );
-
-        gap: 34px 22px;
-    }
-
-
-    .youtube-card {
-        min-width: 0;
-
-        display: flex;
-        flex-direction: column;
-
-        color: inherit;
-        text-decoration: none;
-    }
-
-
-    .youtube-thumb {
-        position: relative;
-
-        width: 100%;
-
-        aspect-ratio: 16 / 9;
-
-        overflow: hidden;
-
-        background: #090909;
-
-        border:
-            1px solid rgba(245, 245, 245, 0.08);
-    }
-
-
-    .youtube-thumb::after {
-        content: "";
-
-        position: absolute;
-        inset: 0;
-
-        pointer-events: none;
-
-        box-shadow:
-            inset 0 0 0 1px
-            rgba(0, 0, 0, 0.18);
-    }
-
-
-    .youtube-thumb img {
-        width: 100%;
-        height: 100%;
-
-        display: block;
-
-        object-fit: cover;
-
-        filter:
-            saturate(0.82)
-            contrast(1.03);
-
-        transition:
-            transform 0.35s ease,
-            filter 0.35s ease;
-    }
-
-
-    .youtube-card:hover
-    .youtube-thumb img {
-        transform: scale(1.025);
-
-        filter:
-            saturate(1)
-            contrast(1.04);
-    }
-
-
-    .youtube-thumb-empty {
-        background:
-            linear-gradient(
-                135deg,
-                #090909,
-                #111111
-            );
-    }
-
-
-    .youtube-card-copy {
-        position: relative;
-
-        min-height: 116px;
-
-        padding:
-            14px
-            22px
-            18px
-            0;
-
-        border-bottom:
-            1px solid rgba(245, 245, 245, 0.12);
-
-        transition:
-            border-color 0.2s ease;
-    }
-
-
-    .youtube-card:hover
-    .youtube-card-copy {
-        border-bottom-color:
-            rgba(255, 47, 109, 0.50);
-    }
-
-
-    .youtube-card-meta {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-
-        gap: 7px 12px;
-
-        margin-bottom: 9px;
-
-        font-size: 7px;
-        line-height: 1.5;
-
-        letter-spacing: 0.16em;
-
-        color: rgba(245, 245, 245, 0.35);
-    }
-
-
-    .youtube-card-meta span {
-        color: #ff2f6d;
-    }
-
-
-    .youtube-card h4 {
-        margin: 0;
-
-        font-size: clamp(
-            14px,
-            1.3vw,
-            17px
-        );
-
-        font-weight: 580;
-
-        line-height: 1.28;
-
-        letter-spacing: -0.015em;
-
-        color: rgba(245, 245, 245, 0.86);
-    }
-
-
-    .youtube-card-arrow {
-        position: absolute;
-
-        right: 0;
-        bottom: 17px;
-
-        font-size: 14px;
-
-        color: #ff2f6d;
-
-        transition:
-            transform 0.25s ease;
-    }
-
-
-    .youtube-card:hover
-    .youtube-card-arrow {
-        transform:
-            translate(3px, -3px);
-    }
-
-
-    @media (max-width: 980px) {
-
-        .youtube-grid {
-            grid-template-columns:
-                repeat(
-                    2,
-                    minmax(0, 1fr)
-                );
-
-            gap: 30px 20px;
-        }
-
-    }
-
-
-    @media (max-width: 620px) {
-
-        .youtube-feed {
-            margin-top: 38px;
-        }
-
-
-        .youtube-feed-head {
-            align-items: flex-start;
-            flex-direction: column;
-
-            gap: 14px;
-        }
-
-
-        .youtube-grid {
-            grid-template-columns:
-                minmax(0, 1fr);
-
-            gap: 28px;
-        }
-
-
-        .youtube-card-copy {
-            min-height: 0;
-
-            padding-top: 12px;
-            padding-bottom: 16px;
-        }
-
-
-        .youtube-card h4 {
-            font-size: 16px;
-
-            padding-right: 14px;
-        }
-
-    }
-
-
-
-    /* Refined editorial treatment */
-    .youtube-feed {
-        margin-top: 42px;
-        border-top: 1px solid rgba(255,47,109,.55);
-    }
-
-    .youtube-feed-head {
-        padding: 20px 0 18px;
-    }
-
-    .youtube-feed-head h3 {
-        font-size: clamp(20px, 2.2vw, 30px);
-        font-weight: 560;
-        letter-spacing: -.045em;
-    }
-
-    .youtube-channel-link {
-        padding-bottom: 8px;
-        border-bottom: 1px solid rgba(255,47,109,.35);
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
     .youtube-grid {
-        padding: 26px 0 0;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 34px 24px;
-    }
-
-    .youtube-card {
-        min-width: 0;
-        background: rgba(255,255,255,.018);
-        transition: background .25s ease;
-    }
-
-    .youtube-card:hover { background: rgba(255,47,109,.045); }
-
-    .youtube-thumb {
-        border-color: rgba(245,245,245,.12);
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
     }
 
     .youtube-card-copy {
-        min-height: 126px;
-        padding: 16px 20px 20px;
-        border: 1px solid rgba(245,245,245,.09);
-        border-top: 0;
+      min-height: 0;
     }
-
-    .youtube-card h4 {
-        font-size: clamp(15px, 1.45vw, 19px);
-        line-height: 1.25;
-    }
-
-    .youtube-card-arrow { right: 18px; bottom: 18px; }
-
-    @media (max-width: 620px) {
-        .youtube-grid { grid-template-columns: 1fr; gap: 24px; }
-        .youtube-card-copy { min-height: 0; }
-    }
-
+  }
 </style>

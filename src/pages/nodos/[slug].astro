@@ -1,2646 +1,500 @@
 ---
-
-import "../../styles/global.css";
-
-import SocialFooter from "../../components/SocialFooter.astro";
-
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { nodes, getNodeBySlug } from "../../data/nodos";
-
 import { getNodeTraces } from "../../lib/trazas";
-
 import NodeYouTubeFeed from "../../components/NodeYouTubeFeed.astro";
+import { formatShortDate } from "../../lib/editorial";
 
 export function getStaticPaths() {
-
-    return nodes.map((node) => ({
-
-        params: { slug: node.slug },
-
-    }));
-
+  return nodes.map((node) => ({
+    params: { slug: node.slug },
+  }));
 }
 
 const { slug } = Astro.params;
-
 const node = getNodeBySlug(slug ?? "");
 
 if (!node) {
-
-    return Astro.redirect("/");
-
+  return Astro.redirect("/");
 }
 
 const traces = await getNodeTraces(node);
-
-const formatearFecha = (fecha: Date) =>
-
-    new Intl.DateTimeFormat("es-MX", {
-
-        day: "2-digit",
-
-        month: "2-digit",
-
-        year: "numeric",
-
-    })
-
-        .format(fecha)
-
-        .replaceAll("/", ".");
-
 ---
 
-<!doctype html>
+<BaseLayout
+  title={`${node.name} | Crítica Acelerada`}
+  description={`Registro nodal de ${node.name} en Crítica Acelerada.`}
+  lang="es"
+  type="profile"
+  author={node.name}
+>
+  <main class="node-profile">
+    <section class="node-hero">
+      <div class="container">
+        <nav class="case-breadcrumb" aria-label="Ruta de navegación">
+          <a href="/">Inicio</a>
+          <span aria-hidden="true">/</span>
+          <span>Micelio</span>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{node.code}</span>
+        </nav>
 
-<html lang="es">
+        <div class="node-hero-layout">
+          <aside class="node-aside">
+            <span class="node-code">{node.code}</span>
+            <span class="node-role">{node.role}</span>
+            <div class="node-line" aria-hidden="true"></div>
+            <span class="node-status">{node.status}</span>
+            {node.location && (
+              <span class="node-location">{node.location}</span>
+            )}
+          </aside>
 
-<head>
+          <div class="node-heading">
+            <span class="eyebrow">REGISTRO NODAL</span>
+            <h1>{node.name}</h1>
 
-    <meta charset="UTF-8" />
-
-    <meta
-
-        name="viewport"
-
-        content="width=device-width, initial-scale=1.0"
-
-    />
-
-    <meta
-
-        name="description"
-
-        content={`Registro nodal de ${node.name} en Crítica Acelerada.`}
-
-    />
-
-    <meta
-
-        name="theme-color"
-
-        content="#050505"
-
-    />
-
-    <title>{node.name} — Crítica Acelerada</title>
-
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-</head>
-
-<body>
-
-    <main class="node-profile">
-
-        <section class="node-hero">
-
-            <div class="node-grid-background" aria-hidden="true"></div>
-
-            <div class="node-ghost" aria-hidden="true">
-
-                {node.code.endsWith("001") ? "01" : "02"}
-
+            <div class="field-list">
+              {node.fields.map((field) => <span>{field}</span>)}
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="profile-container">
+    <section class="profile-section">
+      <div class="container profile-layout">
+        <aside class="section-aside">
+          <span>01</span>
+          <strong>TRAYECTORIA</strong>
+        </aside>
 
-                <a class="back-link" href="/">
+        <div class="profile-copy">
+          <span class="profile-label">TRABAJO PROFESIONAL</span>
+          <p>{node.professional}</p>
+        </div>
+      </div>
+    </section>
 
-                    <span>←</span>
-
-                    VOLVER AL LABORATORIO
-
-                </a>
-
-                <div class="node-hero-layout">
-
-                    <aside class="node-aside">
-
-                        <span class="node-code">
-
-                            {node.code}
-
-                        </span>
-
-                        <span class="node-role">
-
-                            {node.role}
-
-                        </span>
-
-                        <div class="node-line"></div>
-
-                        <span class="node-status">
-
-                            {node.status}
-
-                        </span>
-
-                        {node.location && (
-
-                            <span class="node-location">
-
-                                {node.location}
-
-                            </span>
-
-                        )}
-
-                    </aside>
-
-
-
-
-
-
-
-
-
-                    <div class="node-heading">
-
-                        <span class="section-eyebrow">
-
-                            REGISTRO NODAL
-
-                        </span>
-
-                        <h1>
-
-                            {node.name}
-
-                        </h1>
-
-                        <div class="field-list">
-
-                            {node.fields.map((field) => (
-
-                                <span>{field}</span>
-
-                            ))}
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-
-
-
-
-
-
+    {
+      node.parallel && (
         <section class="profile-section">
+          <div class="container profile-layout">
+            <aside class="section-aside">
+              <span>02</span>
+              <strong>PRÁCTICA PARALELA</strong>
+            </aside>
 
-            <div class="profile-container profile-layout">
+            <div class="profile-copy">
+              <span class="profile-label">{node.parallel.title}</span>
+              <p>{node.parallel.description}</p>
 
-                <aside class="section-aside">
-
-                    <span>01</span>
-
-                    <strong>TRAYECTORIA</strong>
-
-                </aside>
-
-                <div class="profile-copy">
-
-                    <span class="profile-label">
-
-                        TRABAJO PROFESIONAL
-
-                    </span>
-
-                    <p>
-
-                        {node.professional}
-
-                    </p>
-
-                </div>
-
+              {node.parallel.url && (
+                <a
+                  class="external-link"
+                  href={node.parallel.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {node.parallel.label ?? "VISITAR PROYECTO"}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              )}
             </div>
-
+          </div>
         </section>
-
-
-
-
-
-
-
-
-
-        {node.parallel && (
-
-            <section class="profile-section parallel-section">
-
-                <div class="profile-container profile-layout">
-
-                    <aside class="section-aside">
-
-                        <span>02</span>
-
-                        <strong>PRÁCTICA PARALELA</strong>
-
-                    </aside>
-
-                    <div class="profile-copy">
-
-                        <span class="profile-label">
-
-                            {node.parallel.title}
-
-                        </span>
-
-                        <p>
-
-                            {node.parallel.description}
-
-                        </p>
-
-                        {node.parallel.url && (
-
-                            <a
-
-                                class="external-link"
-
-                                href={node.parallel.url}
-
-                                target="_blank"
-
-                                rel="noreferrer"
-
-                            >
-
-                                {node.parallel.label ?? "VISITAR PROYECTO"}
-
-                                <span>↗</span>
-
-                            </a>
-
-                        )}
-
-                    </div>
-
-                </div>
-
-            </section>
-
-        )}
-
-
-
-
-
-
-
-
-
-        {node.youtube && (
-
-            <section class="profile-section parallel-section">
-
-                <div class="profile-container profile-layout">
-
-                    <aside class="section-aside">
-
-                        <span>03</span>
-
-                        <strong>ACTIVIDAD EXTERNA</strong>
-
-                    </aside>
-
-                    <div class="profile-copy">
-
-                        <span class="profile-label">
-
-                            CORRIENTE DEL NODO
-
-                        </span>
-
-                        <p>
-
-                            Publicaciones recientes del canal de YouTube
-
-                            asociado a este nodo. Una ventana hacia su práctica externa y hacia los proyectos que orbitan alrededor del nodo.
-
-                        </p>
-
-                        <NodeYouTubeFeed
-
-                            handle={node.youtube.handle}
-
-                            label={node.youtube.label}
-
-                            url={node.youtube.url}
-
-                        />
-
-                    </div>
-
-                </div>
-
-            </section>
-
-        )}
-
-
-
-
-
-
-
-
-
-        <section class="profile-section traces-section">
-
-            <div class="profile-container profile-layout">
-
-                <aside class="section-aside">
-
-                    <span>
-
-                        {node.youtube ? "04" : "03"}
-
-                    </span>
-
-                    <strong>TRAZAS EN CA</strong>
-
-                </aside>
-
-                <div class="profile-copy">
-
-                    <div class="traces-heading">
-
-                        <span class="profile-label">
-
-                            REGISTRO DE CONTRIBUCIONES
-
-                        </span>
-
-                        <span class="traces-count">
-
-                            {String(traces.length).padStart(2, "0")} TRAZAS
-
-                        </span>
-
-                    </div>
-
-
-
-
-
-
-
-
-
-                    {
-
-                        traces.length > 0 ? (
-
-                            <div class="trace-list">
-
-                                {traces.map((trace) => (
-
-                                    <a
-
-                                        class="trace-row"
-
-                                        href={trace.href}
-
-                                    >
-
-                                        <div class="trace-meta">
-
-                                            <span class="trace-code">
-
-                                                {trace.code}
-
-                                            </span>
-
-                                            <span>
-
-                                                {trace.type}
-
-                                            </span>
-
-                                            <span>
-
-                                                {formatearFecha(trace.date)}
-
-                                            </span>
-
-                                        </div>
-
-
-
-
-
-
-
-
-
-                                        <div class="trace-main">
-
-                                            <span class="trace-role">
-
-                                                {trace.role}
-
-                                            </span>
-
-                                            <h3>
-
-                                                {trace.title}
-
-                                            </h3>
-
-                                        </div>
-
-
-
-
-
-
-
-
-
-                                        <span class="trace-arrow">
-
-                                            →
-
-                                        </span>
-
-                                    </a>
-
-                                ))}
-
-                            </div>
-
-                        ) : (
-
-                            <div class="trace-empty">
-
-                                <span>
-
-                                    CA / SISTEMA
-
-                                </span>
-
-                                <strong>
-
-                                    SIN TRAZAS REGISTRADAS
-
-                                </strong>
-
-                                <small>
-
-                                    Este nodo todavía no aparece en los
-
-                                    metadatos de los archivos sincronizados.
-
-                                </small>
-
-                            </div>
-
-                        )
-
-                    }
-
-                </div>
-
+      )
+    }
+
+    {
+      node.youtube && (
+        <section class="profile-section">
+          <div class="container profile-layout">
+            <aside class="section-aside">
+              <span>03</span>
+              <strong>ACTIVIDAD EXTERNA</strong>
+            </aside>
+
+            <div class="profile-copy">
+              <span class="profile-label">CORRIENTE DEL NODO</span>
+              <p>
+                Publicaciones recientes del canal de YouTube asociado a este
+                nodo. Una ventana hacia su práctica externa y hacia los proyectos
+                que orbitan alrededor del nodo.
+              </p>
+
+              <NodeYouTubeFeed
+                handle={node.youtube.handle}
+                label={node.youtube.label}
+                url={node.youtube.url}
+              />
             </div>
-
+          </div>
         </section>
+      )
+    }
 
-    </main>
+    <section class="profile-section traces-section">
+      <div class="container profile-layout">
+        <aside class="section-aside">
+          <span>{node.youtube ? "04" : "03"}</span>
+          <strong>TRAZAS EN CA</strong>
+        </aside>
 
-    <SocialFooter />
+        <div class="profile-copy">
+          <div class="traces-heading">
+            <span class="profile-label">REGISTRO DE CONTRIBUCIONES</span>
+            <span class="traces-count">
+              {String(traces.length).padStart(2, "0")} TRAZAS
+            </span>
+          </div>
 
-</body>
+          {
+            traces.length > 0 ? (
+              <div class="trace-list">
+                {traces.map((trace) => (
+                  <a class="trace-row" href={trace.href}>
+                    <div class="trace-meta">
+                      <span class="trace-code">{trace.code}</span>
+                      <span>{trace.type}</span>
+                      <time datetime={trace.date.toISOString().slice(0, 10)}>
+                        {formatShortDate(trace.date)}
+                      </time>
+                    </div>
 
-</html>
+                    <div class="trace-main">
+                      <span class="trace-role">{trace.role}</span>
+                      <h3>{trace.title}</h3>
+                    </div>
 
-
-
-
-
-
-
-
+                    <span class="trace-arrow" aria-hidden="true">
+                      →
+                    </span>
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <div class="trace-empty">
+                <span>CA / SISTEMA</span>
+                <strong>SIN TRAZAS REGISTRADAS</strong>
+                <small>
+                  Este nodo todavía no aparece en los metadatos de los archivos
+                  sincronizados.
+                </small>
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
 
 <style>
-
-    .node-profile {
-
-        --ca-black: #050505;
-
-        --ca-black-deep: #020202;
-
-        --ca-surface: #0a0a0a;
-
-        --ca-white: #f5f5f5;
-
-        --ca-grey: rgba(245, 245, 245, 0.56);
-
-        --ca-muted: rgba(245, 245, 245, 0.28);
-
-        --ca-line: rgba(245, 245, 245, 0.12);
-
-        --ca-pink: #ff2f6d;
-
-        min-height: 100vh;
-
-        background: var(--ca-black);
-
-        color: var(--ca-white);
-
-        overflow: hidden;
-
-    }
-
-
-
-
-
-
-
-
-
-    .profile-container {
-
-        width: min(
-
-            1200px,
-
-            calc(100% - 80px)
-
-        );
-
-        margin-inline: auto;
-
-    }
-
-
-
-
-
-
-
-
-
-    /* HERO */
-
-    .node-hero {
-
-        position: relative;
-
-        min-height: 650px;
-
-        padding: 52px 0 105px;
-
-        overflow: hidden;
-
-        isolation: isolate;
-
-        border-bottom:
-
-            1px solid var(--ca-line);
-
-        background:
-
-            radial-gradient(
-
-                circle at 74% 40%,
-
-                rgba(255, 47, 109, 0.06),
-
-                transparent 37%
-
-            ),
-
-            linear-gradient(
-
-                90deg,
-
-                rgba(255, 47, 109, 0.02),
-
-                transparent 45%
-
-            ),
-
-            #030303;
-
-    }
-
-
-
-
-
-
-
-
-
-    .node-grid-background {
-
-        position: absolute;
-
-        inset: 0;
-
-        z-index: -2;
-
-        opacity: 0.52;
-
-        background-image:
-
-            linear-gradient(
-
-                rgba(255, 255, 255, 0.014) 1px,
-
-                transparent 1px
-
-            ),
-
-            linear-gradient(
-
-                90deg,
-
-                rgba(255, 255, 255, 0.014) 1px,
-
-                transparent 1px
-
-            );
-
-        background-size: 42px 42px;
-
-        -webkit-mask-image:
-
-            radial-gradient(
-
-                ellipse at 65% 50%,
-
-                black,
-
-                transparent 78%
-
-            );
-
-        mask-image:
-
-            radial-gradient(
-
-                ellipse at 65% 50%,
-
-                black,
-
-                transparent 78%
-
-            );
-
-    }
-
-
-
-
-
-
-
-
-
-    .node-ghost {
-
-        position: absolute;
-
-        right: 2%;
-
-        top: 50%;
-
-        z-index: -1;
-
-        transform: translateY(-48%);
-
-        font-size: clamp(
-
-            230px,
-
-            29vw,
-
-            440px
-
-        );
-
-        font-weight: 700;
-
-        line-height: 1;
-
-        letter-spacing: -0.1em;
-
-        color: rgba(255, 255, 255, 0.018);
-
-        user-select: none;
-
-    }
-
-
-
-
-
-
-
-
-
-    .back-link {
-
-        display: inline-flex;
-
-        align-items: center;
-
-        gap: 13px;
-
-        margin-bottom: 95px;
-
-        font-size: 8px;
-
-        line-height: 1.5;
-
-        letter-spacing: 0.22em;
-
-        color: rgba(245, 245, 245, 0.38);
-
-        text-decoration: none;
-
-        transition:
-
-            color 0.25s ease;
-
-    }
-
-
-
-
-
-
-
-
-
-    .back-link span {
-
-        color: var(--ca-pink);
-
-    }
-
-
-
-
-
-
-
-
-
-    .back-link:hover {
-
-        color: var(--ca-white);
-
-    }
-
-
-
-
-
-
-
-
-
-    .node-hero-layout {
-
-        display: grid;
-
-        grid-template-columns:
-
-            185px
-
-            minmax(0, 1fr);
-
-        gap: 70px;
-
-        align-items: start;
-
-    }
-
-
-
-
-
-
-
-
-
-    .node-aside {
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 13px;
-
-        padding-top: 10px;
-
-    }
-
-
-
-
-
-
-
-
-
-    .node-code {
-
-        font-size: 9px;
-
-        line-height: 1.5;
-
-        letter-spacing: 0.27em;
-
-        color: var(--ca-pink);
-
-    }
-
-
-
-
-
-
-
-
-
-    .node-role,
-
-    .node-location {
-
-        font-size: 7px;
-
-        line-height: 1.7;
-
-        letter-spacing: 0.20em;
-
-        color: rgba(245, 245, 245, 0.28);
-
-    }
-
-
-
-
-
-
-
-
-
-    .node-line {
-
-        width: 78px;
-
-        height: 1px;
-
-        margin: 5px 0;
-
-        background:
-
-            linear-gradient(
-
-                90deg,
-
-                var(--ca-pink),
-
-                transparent
-
-            );
-
-    }
-
-
-
-
-
-
-
-
-
-    .node-status {
-
-        position: relative;
-
-        width: fit-content;
-
-        padding-left: 12px;
-
-        font-size: 7px;
-
-        line-height: 1.5;
-
-        letter-spacing: 0.20em;
-
-        color: rgba(245, 245, 245, 0.25);
-
-    }
-
-
-
-
-
-
-
-
-
-    .node-status::before {
-
-        content: "";
-
-        position: absolute;
-
-        left: 0;
-
-        top: 50%;
-
-        width: 4px;
-
-        height: 4px;
-
-        transform: translateY(-50%);
-
-        border-radius: 50%;
-
-        background: var(--ca-pink);
-
-        box-shadow:
-
-            0 0 8px rgba(255, 47, 109, 0.65);
-
-    }
-
-
-
-
-
-
-
-
-
-    .section-eyebrow {
-
-        display: block;
-
-        margin-bottom: 20px;
-
-        font-size: 9px;
-
-        line-height: 1.5;
-
-        letter-spacing: 0.28em;
-
-        color: var(--ca-pink);
-
-    }
-
-
-
-
-
-
-
-
-
-    .node-heading h1 {
-
-        max-width: 920px;
-
-        margin: 0;
-
-        font-size: clamp(
-
-            62px,
-
-            8vw,
-
-            122px
-
-        );
-
-        font-weight: 760;
-
-        line-height: 0.84;
-
-        letter-spacing: -0.075em;
-
-        color: var(--ca-white);
-
-        text-wrap: balance;
-
-    }
-
-
-
-
-
-
-
-
-
-    .field-list {
-
-        display: flex;
-
-        align-items: center;
-
-        flex-wrap: wrap;
-
-        gap: 12px 30px;
-
-        margin-top: 45px;
-
-        font-size: 8px;
-
-        line-height: 1.6;
-
-        letter-spacing: 0.20em;
-
-        color: rgba(245, 245, 245, 0.34);
-
-    }
-
-
-
-
-
-
-
-
-
-    .field-list span {
-
-        position: relative;
-
-    }
-
-
-
-
-
-
-
-
-
-    .field-list span:not(:last-child)::after {
-
-        content: "";
-
-        position: absolute;
-
-        right: -17px;
-
-        top: 50%;
-
-        width: 3px;
-
-        height: 3px;
-
-        transform: translateY(-50%);
-
-        border-radius: 50%;
-
-        background: var(--ca-pink);
-
-    }
-
-
-
-
-
-
-
-
-
-    /* SECCIONES */
-
-    .profile-section {
-
-        padding: 100px 0;
-
-        border-bottom:
-
-            1px solid var(--ca-line);
-
-        background: #050505;
-
-    }
-
-
-
-
-
-
-
-
-
-    .parallel-section {
-
-        background: #030303;
-
-    }
-
-
-
-
-
-
-
-
-
-    .traces-section {
-
-        padding-bottom: 130px;
-
-    }
-
-
-
-
-
-
-
-
-
+  .node-profile {
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .node-hero {
+    padding: 2.25rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .node-hero-layout {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: start;
+    padding-top: 1.75rem;
+    border-top: 2px solid var(--accent);
+  }
+
+  .node-aside {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+
+  .node-code {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--accent-text);
+  }
+
+  .node-role,
+  .node-location {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+
+  .node-line {
+    width: 36px;
+    height: 2px;
+    margin: 0.5rem 0;
+    background: var(--accent);
+  }
+
+  .node-status {
+    position: relative;
+    padding-left: 0.85rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    color: var(--text);
+  }
+
+  .node-status::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .node-heading h1 {
+    margin: 0.75rem 0 1.5rem;
+    font-family: var(--font-serif);
+    font-size: clamp(2.25rem, 5vw, 3.85rem);
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    color: var(--text);
+  }
+
+  .field-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+
+  .field-list span {
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+  }
+
+  .profile-section {
+    padding: 3.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .profile-layout {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .section-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .section-aside span {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .section-aside strong {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+
+  .profile-copy {
+    min-width: 0;
+    max-width: 68ch;
+  }
+
+  .traces-section .profile-copy {
+    max-width: none;
+  }
+
+  .profile-label {
+    display: block;
+    margin-bottom: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--accent-text);
+  }
+
+  .profile-copy p {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.78;
+    color: var(--text-body);
+  }
+
+  .external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    margin-top: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--accent-text);
+    border-bottom: 1px solid var(--accent);
+    transition: color 0.2s ease;
+  }
+
+  .external-link:hover {
+    color: var(--text);
+  }
+
+  .traces-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .traces-heading .profile-label {
+    margin-bottom: 0;
+  }
+
+  .traces-count {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    color: var(--meta);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .trace-list {
+    border-top: 2px solid var(--accent);
+  }
+
+  .trace-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.65rem 1.5rem;
+    align-items: center;
+    padding: 1.45rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: background-color 0.2s ease, padding-left 0.2s ease;
+  }
+
+  .trace-row:hover {
+    background: var(--surface);
+    padding-left: 0.75rem;
+  }
+
+  .trace-meta {
+    grid-column: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    color: var(--meta);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .trace-code {
+    color: var(--accent-text);
+  }
+
+  .trace-main {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .trace-role {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+
+  .trace-main h3 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+    font-weight: 600;
+    line-height: 1.22;
+    color: var(--text);
+  }
+
+  .trace-row:hover .trace-main h3 {
+    color: var(--accent-text);
+  }
+
+  .trace-arrow {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    font-size: 1.15rem;
+    color: var(--accent-text);
+    transition: transform 0.2s ease;
+  }
+
+  .trace-row:hover .trace-arrow {
+    transform: translateX(4px);
+  }
+
+  .trace-empty {
+    padding: 2rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .trace-empty span {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    color: var(--accent-text);
+  }
+
+  .trace-empty strong {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--text);
+  }
+
+  .trace-empty small {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 860px) {
+    .node-hero-layout,
     .profile-layout {
-
-        display: grid;
-
-        grid-template-columns:
-
-            185px
-
-            minmax(0, 760px);
-
-        gap: 70px;
-
-        align-items: start;
-
-    }
-
-
-
-
-
-
-
-
-
-    .section-aside {
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 11px;
-
-        padding-top: 5px;
-
-    }
-
-
-
-
-
-
-
-
-
-    .section-aside span {
-
-        font-size: 28px;
-
-        font-weight: 300;
-
-        line-height: 1;
-
-        letter-spacing: -0.04em;
-
-        color: rgba(245, 245, 245, 0.12);
-
-    }
-
-
-
-
-
-
-
-
-
-    .section-aside strong {
-
-        font-size: 7px;
-
-        font-weight: 400;
-
-        line-height: 1.6;
-
-        letter-spacing: 0.21em;
-
-        color: rgba(245, 245, 245, 0.26);
-
-    }
-
-
-
-
-
-
-
-
-
-    .profile-label {
-
-        display: block;
-
-        margin-bottom: 23px;
-
-        font-size: 9px;
-
-        line-height: 1.5;
-
-        letter-spacing: 0.25em;
-
-        color: var(--ca-pink);
-
-    }
-
-
-
-
-
-
-
-
-
-    .profile-copy p {
-
-        max-width: 760px;
-
-        margin: 0;
-
-        font-size: clamp(
-
-            20px,
-
-            2.1vw,
-
-            30px
-
-        );
-
-        line-height: 1.5;
-
-        letter-spacing: -0.018em;
-
-        color: rgba(245, 245, 245, 0.74);
-
-    }
-
-
-
-
-
-
-
-
-
-    .external-link {
-
-        display: inline-flex;
-
-        align-items: center;
-
-        gap: 13px;
-
-        margin-top: 34px;
-
-        font-size: 8px;
-
-        line-height: 1.5;
-
-        letter-spacing: 0.20em;
-
-        color: rgba(245, 245, 245, 0.45);
-
-        text-decoration: none;
-
-    }
-
-
-
-
-
-
-
-
-
-    .external-link span {
-
-        color: var(--ca-pink);
-
-    }
-
-
-
-
-
-
-
-
-
-    .traces-heading {
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        gap: 30px;
-
-        margin-bottom: 34px;
-
-    }
-
-
-
-
-
-
-
-
-
-    .traces-heading .profile-label {
-
-        margin-bottom: 0;
-
-    }
-
-
-
-
-
-
-
-
-
-    .traces-count {
-
-        font-size: 8px;
-
-        line-height: 1.5;
-
-        letter-spacing: 0.20em;
-
-        color: rgba(245, 245, 245, 0.30);
-
-    }
-
-
-
-
-
-
-
-
-
-    .trace-list {
-
-        border-top:
-
-            1px solid rgba(255, 47, 109, 0.68);
-
-    }
-
-
-
-
-
-
-
-
-
-    .trace-row {
-
-        position: relative;
-
-        min-height: 155px;
-
-        padding: 25px 0;
-
-        display: grid;
-
-        grid-template-columns:
-
-            175px
-
-            minmax(0, 1fr)
-
-            35px;
-
-        gap: 30px;
-
-        align-items: center;
-
-        color: inherit;
-
-        text-decoration: none;
-
-        border-bottom:
-
-            1px solid var(--ca-line);
-
-        transition:
-
-            padding-left 0.25s ease,
-
-background 0.25s ease;
-
-    }
-
-
-
-
-
-
-
-
-
-    .trace-row:hover {
-
-        padding-left: 14px;
-
-        background:
-
-            linear-gradient(
-
-                90deg,
-
-                rgba(255, 47, 109, 0.045),
-
-                transparent 62%
-
-            );
-
-    }
-
-
-
-
-
-
-
-
-
-    .trace-meta {
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 6px;
-
-        font-size: 7px;
-
-        line-height: 1.55;
-
-        letter-spacing: 0.18em;
-
-        color: rgba(245, 245, 245, 0.27);
-
-    }
-
-
-
-
-
-
-
-
-
-    .trace-code {
-
-        color: var(--ca-pink);
-
-    }
-
-
-
-
-
-
-
-
-
-    .trace-role {
-
-        display: block;
-
-        margin-bottom: 9px;
-
-        font-size: 7px;
-
-        line-height: 1.5;
-
-        letter-spacing: 0.21em;
-
-        color: rgba(255, 47, 109, 0.78);
-
-    }
-
-
-
-
-
-
-
-
-
-    .trace-main h3 {
-
-        max-width: 560px;
-
-        margin: 0;
-
-        font-size: clamp(
-
-            20px,
-
-            2vw,
-
-            28px
-
-        );
-
-        font-weight: 630;
-
-        line-height: 1.12;
-
-        letter-spacing: -0.025em;
-
-        color: var(--ca-white);
-
-    }
-
-
-
-
-
-
-
-
-
-    .trace-arrow {
-
-        justify-self: end;
-
-        font-size: 22px;
-
-        line-height: 1;
-
-        color: var(--ca-pink);
-
-        transition:
-
-            transform 0.25s ease;
-
-    }
-
-
-
-
-
-
-
-
-
-    .trace-row:hover .trace-arrow {
-
-        transform: translateX(6px);
-
-    }
-
-
-
-
-
-
-
-
-
-    .trace-empty {
-
-        padding: 28px 0;
-
-        display: grid;
-
-        grid-template-columns:
-
-            150px
-
-            minmax(0, 1fr);
-
-        gap: 10px 35px;
-
-        border-top:
-
-            1px solid rgba(255, 47, 109, 0.65);
-
-        border-bottom:
-
-            1px solid var(--ca-line);
-
-    }
-
-
-
-
-
-
-
-
-
-    .trace-empty > span {
-
-        grid-row: 1 / 3;
-
-        font-size: 8px;
-
-        line-height: 1.5;
-
-        letter-spacing: 0.20em;
-
-        color: var(--ca-pink);
-
-    }
-
-
-
-
-
-
-
-
-
-    .trace-empty strong {
-
-        font-size: 11px;
-
-        font-weight: 500;
-
-        line-height: 1.5;
-
-        letter-spacing: 0.18em;
-
-        color: rgba(245, 245, 245, 0.60);
-
-    }
-
-
-
-
-
-
-
-
-
-    .trace-empty small {
-
-        max-width: 560px;
-
-        font-size: 11px;
-
-        line-height: 1.7;
-
-        color: rgba(245, 245, 245, 0.33);
-
-    }
-
-
-
-
-
-
-
-
-
-    /* TABLET */
-
-    @media (max-width: 1000px) {
-
-        .profile-container {
-
-            width: min(
-
-                calc(100% - 48px),
-
-                1200px
-
-            );
-
-        }
-
-
-
-
-
-
-
-
-
-        .node-hero-layout,
-
-        .profile-layout {
-
-            grid-template-columns:
-
-                150px
-
-                minmax(0, 1fr);
-
-            gap: 45px;
-
-        }
-
-    }
-
-
-
-
-
-
-
-
-
-    /* MÓVIL */
-
-    @media (max-width: 720px) {
-
-        .profile-container {
-
-            width: calc(100% - 40px);
-
-        }
-
-
-
-
-
-
-
-
-
-        .node-hero {
-
-            min-height: auto;
-
-            padding: 35px 0 82px;
-
-        }
-
-
-
-
-
-
-
-
-
-        .back-link {
-
-            margin-bottom: 70px;
-
-            font-size: 7px;
-
-        }
-
-
-
-
-
-
-
-
-
-        .node-hero-layout {
-
-            display: block;
-
-        }
-
-
-
-
-
-
-
-
-
-        .node-aside {
-
-            margin-bottom: 48px;
-
-        }
-
-
-
-
-
-
-
-
-
-        .node-heading h1 {
-
-            font-size: clamp(
-
-                52px,
-
-                16vw,
-
-                78px
-
-            );
-
-        }
-
-
-
-
-
-
-
-
-
-        .field-list {
-
-            display: block;
-
-            margin-top: 34px;
-
-        }
-
-
-
-
-
-
-
-
-
-        .field-list span {
-
-            display: block;
-
-            margin-bottom: 7px;
-
-        }
-
-
-
-
-
-
-
-
-
-        .field-list span::after {
-
-            display: none;
-
-        }
-
-
-
-
-
-
-
-
-
-        .node-ghost {
-
-            right: -37%;
-
-            font-size: 280px;
-
-        }
-
-
-
-
-
-
-
-
-
-        .profile-section {
-
-            padding: 76px 0;
-
-        }
-
-
-
-
-
-
-
-
-
-        .profile-layout {
-
-            display: block;
-
-        }
-
-
-
-
-
-
-
-
-
-        .section-aside {
-
-            margin-bottom: 38px;
-
-        }
-
-
-
-
-
-
-
-
-
-        .profile-copy p {
-
-            font-size: 20px;
-
-            line-height: 1.55;
-
-        }
-
-
-
-
-
-
-
-
-
-        .traces-heading {
-
-            align-items: flex-start;
-
-            flex-direction: column;
-
-            gap: 12px;
-
-        }
-
-
-
-
-
-
-
-
-
-        .trace-row {
-
-            min-height: auto;
-
-            grid-template-columns:
-
-                1fr
-
-                28px;
-
-            gap: 19px;
-
-            padding: 25px 0;
-
-        }
-
-
-
-
-
-
-
-
-
-        .trace-row:hover {
-
-            padding-left: 0;
-
-            background: transparent;
-
-        }
-
-
-
-
-
-
-
-
-
-        .trace-meta {
-
-            grid-column: 1 / -1;
-
-            flex-direction: row;
-
-            flex-wrap: wrap;
-
-            gap: 7px 18px;
-
-        }
-
-
-
-
-
-
-
-
-
-        .trace-main {
-
-            grid-column: 1;
-
-        }
-
-
-
-
-
-
-
-
-
-        .trace-arrow {
-
-            grid-column: 2;
-
-            align-self: center;
-
-        }
-
-
-
-
-
-
-
-
-
-        .trace-empty {
-
-            grid-template-columns: 1fr;
-
-            gap: 13px;
-
-        }
-
-
-
-
-
-
-
-
-
-        .trace-empty > span {
-
-            grid-row: auto;
-
-        }
-
-    }
-
-
-
-
-
-    /* =========================================================
-
-       CA / NODOS — REFINAMIENTO VISUAL
-
-       Sistema editorial: jerarquía, ritmo, accesibilidad y responsive
-
-       ========================================================= */
-
-    .node-profile {
-
-        --ca-pink-soft: rgba(255, 47, 109, 0.12);
-
-        --ca-pink-line: rgba(255, 47, 109, 0.42);
-
-        --ca-panel: rgba(255, 255, 255, 0.025);
-
-        font-family: inherit;
-
-    }
-
-    .node-hero {
-
-        min-height: 0;
-
-        padding: 30px 0 68px;
-
-        background:
-
-            radial-gradient(circle at 82% 28%, rgba(255,47,109,.09), transparent 28%),
-
-            linear-gradient(180deg, #080808 0%, #030303 100%);
-
-    }
-
-    .profile-container {
-
-        width: min(1240px, calc(100% - 64px));
-
-    }
-
-    .back-link {
-
-        margin-bottom: 68px;
-
-        padding: 10px 0;
-
-        border-bottom: 1px solid transparent;
-
-    }
-
-    .back-link:hover {
-
-        color: var(--ca-white);
-
-        border-bottom-color: var(--ca-pink-line);
-
-    }
-
-    .node-hero-layout {
-
-        grid-template-columns: 155px minmax(0, 1fr);
-
-        gap: clamp(28px, 4vw, 60px);
-
-    }
-
-    .node-aside {
-
-        border-top: 1px solid var(--ca-pink-line);
-
-        padding-top: 16px;
-
-    }
-
-    .node-code {
-
-        font-weight: 700;
-
-    }
-
-    .node-heading {
-
-        max-width: 1000px;
-
-    }
-
-    .node-heading h1 {
-
-        max-width: 100%;
-
-        font-size: clamp(56px, 8.2vw, 126px);
-
-        line-height: .86;
-
-        letter-spacing: -.085em;
-
-        text-wrap: pretty;
-
-    }
-
-    .field-list {
-
-        max-width: 720px;
-
-        margin-top: 28px;
-
-        gap: 10px 28px;
-
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
     }
 
     .profile-section {
-
-        position: relative;
-
-        padding: 78px 0;
-
-        border-bottom: 1px solid var(--ca-line);
-
-        background: #050505;
-
+      padding: 2.75rem 0;
     }
-
-    .profile-section:nth-of-type(even) {
-
-        background: #070707;
-
-    }
-
-    .profile-layout {
-
-        grid-template-columns: 155px minmax(0, 1fr);
-
-        gap: clamp(28px, 4vw, 60px);
-
-    }
-
-    .section-aside {
-
-        position: relative;
-
-        display: flex;
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 12px;
-
-        padding-top: 4px;
-
-        color: var(--ca-muted);
-
-    }
-
-    .section-aside::before {
-
-        content: '';
-
-        width: 34px;
-
-        height: 1px;
-
-        margin-bottom: 8px;
-
-        background: var(--ca-pink);
-
-    }
-
-    .section-aside span {
-
-        color: rgba(245,245,245,.16);
-
-        font-size: 24px;
-
-        font-weight: 300;
-
-        line-height: 1;
-
-        letter-spacing: -.04em;
-
-    }
-
-    .section-aside strong {
-
-        max-width: 130px;
-
-        font-size: 8px;
-
-        line-height: 1.65;
-
-        letter-spacing: .16em;
-
-        font-weight: 600;
-
-    }
-
-    .profile-copy {
-
-        min-width: 0;
-
-        max-width: 1000px;
-
-    }
-
-    .profile-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-
-        margin-bottom: 26px;
-
-        font-size: 12px;
-        font-weight: 600;
-        line-height: 1.5;
-        letter-spacing: .18em;
-
-        color: var(--ca-pink);
-    }
-
-    .profile-label::before {
-
-        content: '↳';
-
-        font-size: 13px;
-
-    }
-
-    .profile-copy > p {
-        max-width: 900px;
-        margin: 0;
-
-        font-size: clamp(20px, 1.55vw, 25px);
-        line-height: 1.55;
-        letter-spacing: -0.012em;
-        font-weight: 400;
-
-        color: rgba(245,245,245,.78);
-
-        text-align: justify;
-        text-justify: inter-word;
-        hyphens: none;
-        overflow-wrap: normal;
-
-        text-wrap: pretty;
-    }
-
-    .parallel-section {
-
-        background: #080808;
-
-    }
-
-    .external-link {
-
-        display: inline-flex;
-
-        align-items: center;
-
-        gap: 16px;
-
-        margin-top: 34px;
-
-        padding: 13px 0;
-
-        border-bottom: 1px solid var(--ca-pink-line);
-
-        color: var(--ca-white);
-
-        font-size: 9px;
-
-        letter-spacing: .18em;
-
-        text-decoration: none;
-
-        transition: color .2s ease, gap .2s ease;
-
-    }
-
-    .external-link span { color: var(--ca-pink); }
-
-    .external-link:hover { color: var(--ca-pink); gap: 22px; }
-
-    .traces-section {
-
-        background: #030303;
-
-    }
-
-    .traces-heading {
-
-        display: flex;
-
-        align-items: baseline;
-
-        justify-content: space-between;
-
-        gap: 24px;
-
-        padding-bottom: 24px;
-
-        border-bottom: 1px solid var(--ca-line);
-
-    }
-
-    .traces-heading .profile-label { margin-bottom: 0; }
-
-    .traces-count {
-
-        flex-shrink: 0;
-
-        color: var(--ca-muted);
-
-        font-size: 8px;
-
-        letter-spacing: .18em;
-
-    }
-
-    .trace-list {
-
-        border-top: 0;
-
-    }
-
-    .trace-row {
-
-        position: relative;
-
-        display: grid;
-
-        grid-template-columns: 150px minmax(0, 1fr) 28px;
-
-        gap: 24px;
-
-        align-items: center;
-
-        padding: 25px 0;
-
-        border-bottom: 1px solid var(--ca-line);
-
-        text-decoration: none;
-
-        transition: padding .25s ease, background .25s ease, border-color .25s ease;
-
-    }
-
-    .trace-row:hover {
-
-        padding-inline: 16px;
-
-        background: var(--ca-panel);
-
-        border-bottom-color: var(--ca-pink-line);
-
-    }
-
-    .trace-meta {
-
-        display: flex;
-
-        flex-wrap: wrap;
-
-        gap: 8px 16px;
-
-        color: var(--ca-muted);
-
-        font-size: 8px;
-
-        letter-spacing: .12em;
-
-    }
-
-    .trace-code { color: var(--ca-pink); }
-
-    .trace-main { min-width: 0; }
-
-    .trace-role {
-
-        display: block;
-
-        margin-bottom: 8px;
-
-        color: var(--ca-pink);
-
-        font-size: 8px;
-
-        letter-spacing: .14em;
-
-    }
-
-    .trace-main h3 {
-
-        margin: 0;
-
-        font-size: clamp(18px, 2vw, 26px);
-
-        line-height: 1.12;
-
-        letter-spacing: -.035em;
-
-        font-weight: 560;
-
-        color: rgba(245,245,245,.88);
-
-    }
-
-    .trace-arrow {
-
-        justify-self: end;
-
-        color: var(--ca-pink);
-
-        font-size: 18px;
-
-        transition: transform .2s ease;
-
-    }
-
-    .trace-row:hover .trace-arrow { transform: translate(4px, -4px); }
-
-    .trace-empty {
-
-        display: grid;
-
-        gap: 12px;
-
-        padding: 28px 0;
-
-        border-bottom: 1px solid var(--ca-line);
-
-    }
-
-    .trace-empty > span, .trace-empty small { color: var(--ca-muted); }
-
-    .trace-empty strong { font-size: 18px; font-weight: 500; }
-
-    @media (max-width: 900px) {
-
-        .profile-container { width: min(100% - 44px, 760px); }
-
-        .node-hero-layout, .profile-layout { grid-template-columns: 1fr; gap: 30px; }
-
-        .node-aside, .section-aside { border-top: 1px solid var(--ca-pink-line); padding-top: 14px; }
-
-        .node-aside { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; }
-
-        .node-line { display: none; }
-
-        .node-status, .node-location { align-self: end; }
-
-        .profile-section { padding: 70px 0; }
-
-        .section-aside { flex-direction: row; align-items: baseline; justify-content: space-between; }
-
-        .section-aside::before { display: none; }
-
-        .section-aside strong { max-width: none; }
-
-        .trace-row { grid-template-columns: 1fr 28px; gap: 18px; }
-
-        .trace-meta { grid-column: 1 / -1; }
-
-        .trace-main { grid-column: 1; }
-
-        .trace-arrow { grid-column: 2; grid-row: 2; }
-
-    }
-
-    @media (max-width: 560px) {
-
-        .profile-container { width: calc(100% - 32px); }
-
-        .section-aside span {
-            font-size: 20px;
-        }
-
-        .node-hero { padding: 24px 0 62px; }
-
-        .back-link { margin-bottom: 58px; }
-
-        .node-heading h1 { font-size: clamp(52px, 16vw, 88px); }
-
-        .field-list { margin-top: 28px; gap: 10px 22px; }
-
-        .profile-section { padding: 54px 0; }
-
-        .profile-copy > p {
-            font-size: 18px;
-            line-height: 1.55;
-            text-align: left;
-            hyphens: none;
-        }
-
-        .traces-heading { align-items: flex-start; flex-direction: column; gap: 14px; }
-
-        .trace-row:hover { padding-inline: 8px; }
-
-    }
-
+  }
 </style>

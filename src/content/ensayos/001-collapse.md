@@ -151,7 +151,7 @@ It is possible that, long before 2026, this axiom had already begun to evaporate
 The graphs of **the Great Acceleration**, presented by Will Steffen and his colleagues, had already shown by 2015 that the exponential growth of economic variables — such as Gross Domestic Product (GDP) and Foreign Direct Investment (FDI) — since capitalism's golden age had unfolded in parallel with the degradation of the biosphere, ocean acidification, rising temperatures, and water stress, to mention only a few examples.
 
 <figure>
-  <img src="/images/GA.jpg" alt="Figure 1. Great Acceleration graphs.">
+  <img src="/images/GA.webp" alt="Figure 1. Great Acceleration graphs." loading="lazy" decoding="async">
   <figcaption>
     <strong>Figure 1.</strong> Great Acceleration graphs.<br>
     Source: Steffen et al. (2015).

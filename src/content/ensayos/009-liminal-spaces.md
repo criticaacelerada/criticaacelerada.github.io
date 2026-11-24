@@ -43,7 +43,7 @@ The aesthetic of liminal spaces originated in May 2019 with a thread on the popu
 
 To open the thread, the user uploaded an image (see Figure 1). In response to this image—the one that set everything in motion—an anonymous user creatively invented a context for it, giving rise to the urban legend of the *Backrooms*:
 
-<img src="/images/figura-1.png" alt="Liminal space.">
+<img src="/images/figura-1.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 1.** *Origin of the Backrooms*, Anonymous.[^8]
 
@@ -55,11 +55,11 @@ What we have just described, however, is specifically the origin of the *Backroo
 
 This first image established certain central elements of liminal spaces. However, the narrative surrounding it and the direction taken by the *Backrooms* phenomenon ultimately diverge from liminal spaces, insofar as liminal spaces are not accompanied by a story that provides them with context. They consist solely of the evocative power of images of spaces that have been completely stripped of context.
 
-<img src="/images/figura-2.png" alt="Liminal space.">
+<img src="/images/figura-2.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 2.** *Liminal Supermarket Space*, Anonymous.[^10]
 
-<img src="/images/figura-3.png" alt="Liminal space.">
+<img src="/images/figura-3.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 3.** *Liminal Garage Space*, Anonymous.[^11]
 
@@ -75,7 +75,7 @@ One example can be found in a highly popular thread entitled *Can Someone Explai
 
 Among the more compelling examples, the user *VoloxReddit* offered the following explanation, which received considerable approval from the community:
 
-<img src="/images/figura-4.png" alt="Liminal space.">
+<img src="/images/figura-4.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 4.** *Liminal Cinema Space*, Anonymous.[^12]
 
@@ -103,11 +103,11 @@ First, liminal spaces are characterized by the complete absence of people.[^15] 
 
 This sensation of solitude encourages the viewer to experience the image as though occupying the position of a third-person observer. The viewer’s solitude, together with the absence of people, sustains that strange lack of context that generates estrangement from both the place and oneself. Moreover, because of the editing, the images tend to evoke a dreamlike quality intertwined with the familiarity of the photographed location. It is as though it were a place one might have visited before, yet one that becomes unsettling because of its manifest sense of unreality.
 
-<img src="/images/figura-5.png" alt="Liminal space.">
+<img src="/images/figura-5.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 5.** *Liminal Airport Space*, Anonymous.[^16]
 
-<img src="/images/figura-6.png" alt="Liminal space.">
+<img src="/images/figura-6.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 6.** *Liminal Shopping Mall Space*, Anonymous.[^17]
 
@@ -149,11 +149,11 @@ This may also account for the popularity of this artistic phenomenon throughout 
 
 > A liminal space can be a place one imagines dreaming about or seeing on television. It can be tinged with tragedy or be inexplicably sad in its everydayness. Liminal spaces can be comforting and uncomfortable, nostalgic and unsettling, intimate and unnatural.[^24]
 
-<img src="/images/figura-7.png" alt="Liminal space.">
+<img src="/images/figura-7.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 7.** *Liminal McDonald’s Space*, Anonymous.[^25]
 
-<img src="/images/figura-8.png" alt="Liminal space.">
+<img src="/images/figura-8.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 8.** *Liminal Stairway Space*, Anonymous.[^26]
 
@@ -177,11 +177,11 @@ The first Internet aesthetic we would like to mention is *Vaporwave*. A pioneeri
 
 The *Vaporwave* aesthetic emerges from a paradoxical mixture ranging from satire to an ode to consumer society and its cultural products.[^29] *Vaporwave* retrieves from the collective imaginary certain logos, devices, and elements closely associated with the 1990s and digitization. Its aim is to simulate a nostalgic return to that period while simultaneously offering a cultural critique “of the rapid pace of technological advancement and the commodification of the past.”[^30]
 
-<img src="/images/figura-9.png" alt="Liminal space.">
+<img src="/images/figura-9.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 9.** *Vaporwave Image I*, Anonymous.[^31]
 
-<img src="/images/figura-10.png" alt="Liminal space.">
+<img src="/images/figura-10.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 10.** *Vaporwave Image II*, Anonymous.[^32]
 
@@ -197,11 +197,11 @@ Having discussed *Vaporwave*, we will now present only some of the aesthetics th
 
 The first is *Dreamcore*, which, as its name suggests, seeks to evoke a dreamlike atmosphere. *Dreamcore* attempts to represent unconscious imagery, with an explicit surrealist inspiration and intention. We might even describe it as a form of “neo-surrealism,” insofar as it incorporates distortions of reality and implausible elements while simultaneously combining them with landscapes and locations that are both bizarre and hypnotic.
 
-<img src="/images/figura-11.png" alt="Liminal space.">
+<img src="/images/figura-11.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 11.** *Dreamcore Image*, Anonymous.[^35]
 
-<img src="/images/figura-12.png" alt="Liminal space.">
+<img src="/images/figura-12.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 12.** *This Place Is Paradise/Purgatory*, Anonymous.[^36]
 
@@ -209,21 +209,21 @@ Unlike *stricto sensu* liminal spaces, *Dreamcore* does include open spaces and 
 
 Second, *Weirdcore*—*weird* being the English word for “strange”—is another Internet aesthetic related to *Dreamcore* and liminal spaces, but it tends to emphasize an uncomfortable sense of strangeness in both atmosphere and context. If liminal spaces are characterized by being out of context, and the bizarre context of *Dreamcore* is that of a dream, *Weirdcore* allows this ambiguity to lead nowhere. Images are often of low quality and possess a surreal appearance. The underlying intention, however, is to create a sense of estrangement in which the viewer cannot fully comprehend what is being shown. Visual elements that challenge logic and expectations are employed, often producing feelings of discomfort and nostalgia. These images may also be accompanied by text which, rather than helping to situate the viewer, plunges them into an even greater absence of meaning.
 
-<img src="/images/figura-13.png" alt="Liminal space.">
+<img src="/images/figura-13.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 13.** *Weirdcore Image I*, Anonymous.[^37]
 
-<img src="/images/figura-14.png" alt="Liminal space.">
+<img src="/images/figura-14.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 14.** *Weirdcore Image II*, Anonymous.[^38]
 
 Having introduced some of the different Internet aesthetics, we can now turn to the one that most directly culminates in the issue under consideration: *Nostalgiacore*. As its name suggests, this aesthetic foregrounds nostalgia above all else. The preceding aesthetics—including liminal spaces—produce nostalgia indirectly, whereas *Nostalgiacore* makes it central. The spaces it presents are generally imbued with a childlike atmosphere, evoking childhood through objects or innocent memories. They are often enclosed spaces, although open spaces also appear. Bright and striking colors, recreational locations, and warm atmospheres are characteristic: settings typical of the 1990s and the first decade of the twenty-first century, an aesthetic that unmistakably appeals to the childhood of Millennials and Generation Z.
 
-<img src="/images/figura-15.png" alt="Liminal space.">
+<img src="/images/figura-15.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 15.** *Nostalgiacore Image I*, Anonymous.[^39]
 
-<img src="/images/figura-16.png" alt="Liminal space.">
+<img src="/images/figura-16.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 16.** *Nostalgiacore Image II*, Anonymous.[^40]
 
@@ -300,7 +300,7 @@ With regard to the third point—3) liminality—we can argue that liminality is
 
 The fourth and final point—4) the elicitation of specific emotions—may be one of the most decisive characteristics in distinguishing liminal spaces from non-places. Ultimately, aspects 1), 2), and 3) can be understood as the conditions that trigger liminal spaces, whereas 4) is the effect they produce. In this respect, the principal difference between non-places and liminal spaces is that the former do not necessarily produce, and normally do not produce, these sensations; nor is this their purpose. This reveals why photographing a non-place does not necessarily produce the effect of a liminal space: the conditions discussed above must be present. At the same time, an image of a liminal space may be created “simply”: one need only be in the right place at the right time and capable of capturing it.
 
-<img src="/images/figura-17.png" alt="Liminal space.">
+<img src="/images/figura-17.webp" alt="Liminal space." loading="lazy" decoding="async">
 
 **Figure 17.** *Liminal Space at the Campanar Market in Valencia*, photograph by the author.[^59]
 

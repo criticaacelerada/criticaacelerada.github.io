@@ -1,138 +1,81 @@
 ---
 import { getCollection, render } from "astro:content";
-import HomeButton from "../../components/HomeButton.astro";
-import SocialFooter from "../../components/SocialFooter.astro";
-import "../../styles/global.css";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { formatEditorialDate } from "../../lib/editorial";
 
 export async function getStaticPaths() {
   const transmisiones = await getCollection("transmisiones");
 
   return transmisiones.map((transmision) => ({
-    params: {
-      slug: transmision.id,
-    },
-    props: {
-      transmision,
-    },
+    params: { slug: transmision.id },
+    props: { transmision },
   }));
 }
 
 const { transmision } = Astro.props;
 const { Content } = await render(transmision);
+const numero = String(transmision.data.numero).padStart(3, "0");
+const formattedDate = formatEditorialDate(transmision.data.pubDate, "es");
 ---
 
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{transmision.data.title}</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-</head>
-
-<body>
-
-<SocialFooter />
-
-<HomeButton />
-
+<BaseLayout
+  title={`${transmision.data.title} | Crítica Acelerada`}
+  description={transmision.data.description}
+  lang="es"
+  type="article"
+  publishedTime={transmision.data.pubDate}
+  author="Crítica Acelerada"
+  section="Transmisiones"
+>
   <main class="broadcast-page">
-
     <div class="container">
+      <nav class="case-breadcrumb" aria-label="Ruta de navegación">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <a href="/transmisiones">Transmisiones</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{numero}</span>
+      </nav>
 
       <header class="broadcast-header">
-
         <div class="broadcast-header-top">
-
-          <p class="eyebrow">
-            TRANSMISIÓN {String(transmision.data.numero).padStart(3,"0")}
-          </p>
-
-          <span class="broadcast-status">
-            SEÑAL ARCHIVADA
-          </span>
-
+          <p class="eyebrow">TRANSMISIÓN {numero}</p>
+          <span class="broadcast-status">SEÑAL ARCHIVADA</span>
         </div>
 
         <div class="broadcast-title-grid">
-
           <div class="broadcast-title-block">
-
-            <h1>
-              {transmision.data.title}
-            </h1>
-
-            <p class="broadcast-description">
-              {transmision.data.description}
-            </p>
-
+            <h1>{transmision.data.title}</h1>
+            <p class="broadcast-description">{transmision.data.description}</p>
           </div>
 
-          <div class="broadcast-number" aria-hidden="true">
-            {String(transmision.data.numero).padStart(3,"0")}
-          </div>
-
+          <div class="broadcast-number" aria-hidden="true">{numero}</div>
         </div>
 
         <div class="broadcast-meta">
-
           <span>CRÍTICA ACELERADA</span>
-
           <span>ARCHIVO AUDIOVISUAL</span>
-
-          {
-            transmision.data.pubDate && (
-              <span>
-                {transmision.data.pubDate.toLocaleDateString("es-MX", {
-                  day: "2-digit",
-                  month: "long",
-                  year: "numeric",
-                })}
-              </span>
-            )
-          }
-
+          <time datetime={transmision.data.pubDate.toISOString().slice(0, 10)}>
+            {formattedDate}
+          </time>
         </div>
-
       </header>
 
       <div class="broadcast-layout">
-
         <aside class="broadcast-sidebar">
-
           <div class="broadcast-sidebar-block">
-
-            <span class="broadcast-sidebar-label">
-              CLASIFICACIÓN
-            </span>
-
-            <strong>
-              TRANSMISIÓN {String(transmision.data.numero).padStart(3,"0")}
-            </strong>
-
+            <span class="broadcast-sidebar-label">CLASIFICACIÓN</span>
+            <strong>TRANSMISIÓN {numero}</strong>
           </div>
 
           <div class="broadcast-sidebar-block">
-
-            <span class="broadcast-sidebar-label">
-              ESTADO
-            </span>
-
-            <strong>
-              PUBLICADA
-            </strong>
-
+            <span class="broadcast-sidebar-label">FECHA</span>
+            <strong>{formattedDate}</strong>
           </div>
 
           <div class="broadcast-sidebar-block">
-
-            <span class="broadcast-sidebar-label">
-              FORMATO
-            </span>
-
-            <strong>
-              AUDIOVISUAL
-            </strong>
-
+            <span class="broadcast-sidebar-label">FORMATO</span>
+            <strong>AUDIOVISUAL</strong>
           </div>
 
           <div class="broadcast-signal" aria-hidden="true">
@@ -141,27 +84,15 @@ const { Content } = await render(transmision);
             <span></span>
           </div>
 
-          <a
-            class="broadcast-back-link"
-            href="/transmisiones"
-          >
+          <a class="broadcast-back-link" href="/transmisiones">
             ← Volver al archivo
           </a>
-
         </aside>
 
         <article class="broadcast-content">
-
           <Content />
-
         </article>
-
       </div>
-
     </div>
-
   </main>
-
-</body>
-
-</html>
+</BaseLayout>

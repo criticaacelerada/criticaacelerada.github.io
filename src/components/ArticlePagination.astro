@@ -1,0 +1,50 @@
+---
+export interface PaginationTarget {
+  href: string;
+  code: string;
+  title: string;
+}
+
+interface Props {
+  prev?: PaginationTarget;
+  next?: PaginationTarget;
+  lang?: "es" | "en";
+  ariaLabel?: string;
+}
+
+const {
+  prev,
+  next,
+  lang = "es",
+  ariaLabel = lang === "en" ? "Sequential navigation" : "Navegación secuencial",
+} = Astro.props;
+
+const prevLabel = lang === "en" ? "Previous" : "Anterior";
+const nextLabel = lang === "en" ? "Next" : "Siguiente";
+---
+
+{
+  (prev || next) && (
+    <nav class="case-pagination" aria-label={ariaLabel}>
+      {prev ? (
+        <a class="case-page-link" href={prev.href}>
+          <span class="case-page-link-label">
+            ← {prevLabel} · {prev.code}
+          </span>
+          <span class="case-page-link-title">{prev.title}</span>
+        </a>
+      ) : (
+        <div aria-hidden="true" />
+      )}
+
+      {next && (
+        <a class="case-page-link is-next" href={next.href}>
+          <span class="case-page-link-label">
+            {nextLabel} · {next.code} →
+          </span>
+          <span class="case-page-link-title">{next.title}</span>
+        </a>
+      )}
+    </nav>
+  )
+}

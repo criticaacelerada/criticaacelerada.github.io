@@ -1,8 +1,9 @@
 ---
-import "../../styles/global.css";
-import HomeButton from "../../components/HomeButton.astro";
-import SocialFooter from "../../components/SocialFooter.astro";
+import { Image } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { formatShortDate } from "../../lib/editorial";
+import expedientesVisual from "../../assets/images/expedientes.png";
 
 const ensayos = await getCollection("ensayos");
 
@@ -10,35 +11,28 @@ const ensayos = await getCollection("ensayos");
 Agrupa los documentos que comparten translationKey.
 Los ensayos sin traducción permanecen como entradas individuales.
 */
-const grupos = new Map();
+const grupos = new Map<string, typeof ensayos>();
 
 for (const ensayo of ensayos) {
   const clave = ensayo.data.translationKey ?? `individual-${ensayo.id}`;
-
-  if (!grupos.has(clave)) {
-    grupos.set(clave, []);
-  }
-
-  grupos.get(clave).push(ensayo);
+  const bucket = grupos.get(clave) ?? [];
+  bucket.push(ensayo);
+  grupos.set(clave, bucket);
 }
 
 const expedientes = Array.from(grupos.values())
   .map((versiones) => {
     /*
-    La versión inglesa funciona como referencia editorial.
+    La versión en español funciona como ficha principal por defecto.
     Si no existe, utiliza la primera versión disponible.
     */
     const principal =
-      versiones.find((version) => version.data.language === "en") ??
+      versiones.find((version) => version.data.language === "es") ??
       versiones[0];
 
-    const idiomas = versiones.sort((a, b) => {
-      const orden = ["en", "es"];
-
-      return (
-        orden.indexOf(a.data.language) -
-        orden.indexOf(b.data.language)
-      );
+    const idiomas = [...versiones].sort((a, b) => {
+      const orden = ["es", "en"];
+      return orden.indexOf(a.data.language) - orden.indexOf(b.data.language);
     });
 
     return {
@@ -46,82 +40,45 @@ const expedientes = Array.from(grupos.values())
       idiomas,
     };
   })
-  .sort(
-    (a, b) =>
-      a.principal.data.expediente -
-      b.principal.data.expediente
-  );
+  .sort((a, b) => b.principal.data.expediente - a.principal.data.expediente);
 ---
 
-<html lang="es">
-
-<head>
-  <meta charset="UTF-8" />
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-
-  <title>Expedientes | Crítica Acelerada</title>
-
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-</head>
-
-<body>
-
-<SocialFooter />
-
-<HomeButton />
-
+<BaseLayout
+  title="Expedientes | Crítica Acelerada"
+  description="Archivo de ensayos, investigaciones y traducciones teóricas de Crítica Acelerada."
+  lang="es"
+>
   <main class="archive-page">
-
     <div class="container">
-
       <section class="archive-hero">
-
         <div class="archive-intro">
-
-          <p class="eyebrow">
-            EXPEDIENTES
-          </p>
-
-          <h1>
-            Archivo
-          </h1>
-
+          <p class="eyebrow">EXPEDIENTES</p>
+          <h1>Archivo</h1>
           <p class="mission">
-            Ensayos, investigaciones y documentos del laboratorio.
+            Ensayos, investigaciones y documentos del laboratorio sobre las
+            transformaciones económicas, tecnológicas y filosóficas del presente.
           </p>
 
           <div class="archive-meta">
             <span>CRÍTICA ACELERADA</span>
             <span>{String(expedientes.length).padStart(2, "0")} DOCUMENTOS</span>
           </div>
-
         </div>
 
         <div class="archive-visual" aria-hidden="true">
-
-          <div class="archive-logo">
-            <span>C</span>
-          </div>
-
-          <img
-            src="/images/expedientes.png"
+          <Image
+            src={expedientesVisual}
             alt=""
+            widths={[320, 540]}
+            sizes="270px"
+            format="webp"
+            quality={85}
           />
-
-          <p>
-            LABORATORIO DE ESTUDIOS CRÍTICOS
-          </p>
-
+          <p>ARCHIVO TEXTUAL</p>
         </div>
-
       </section>
 
       <section class="archive-list">
-
         <div class="archive-list-header">
           <span>N.º</span>
           <span>DOCUMENTO</span>
@@ -130,72 +87,58 @@ const expedientes = Array.from(grupos.values())
 
         {
           expedientes.map(({ principal, idiomas }) => (
-
             <article class="essay">
-
               <div class="number">
                 {String(principal.data.expediente).padStart(3, "0")}
               </div>
 
               <div class="content">
-
                 <h3>
-                  {principal.data.title}
+                  <a href={`/expedientes/${principal.id}`}>
+                    {principal.data.title}
+                  </a>
                 </h3>
 
-                <p>
-                  {principal.data.descripcion}
-                </p>
+                <p>{principal.data.descripcion}</p>
 
+                <div class="essay-meta-row">
+                  <span>{principal.data.author ?? "Crítica Acelerada"}</span>
+                  <time datetime={principal.data.date.toISOString().slice(0, 10)}>
+                    {formatShortDate(principal.data.date)}
+                  </time>
+                </div>
               </div>
 
               <div class="essay-actions">
-
-                {
-                  idiomas.length > 1 ? (
-
-                    <div class="language-switch">
-
-                      {
-                        idiomas.map((version) => (
-                          <a
-                            class="language-chip"
-                            href={`/expedientes/${version.id}`}
-                            lang={version.data.language}
-                            aria-label={`Abrir versión ${version.data.language.toUpperCase()}`}
-                          >
-                            {version.data.language.toUpperCase()}
-                          </a>
-                        ))
-                      }
-
-                    </div>
-
-                  ) : (
-
-                    <a
-                      class="read-link"
-                      href={`/expedientes/${principal.id}`}
-                    >
-                      Leer →
-                    </a>
-
-                  )
-                }
-
+                {idiomas.length > 1 ? (
+                  <div class="language-switch" aria-label="Idiomas disponibles">
+                    {idiomas.map((version) => (
+                      <a
+                        class:list={[
+                          "language-chip",
+                          { "is-primary": version.id === principal.id },
+                        ]}
+                        href={`/expedientes/${version.id}`}
+                        lang={version.data.language}
+                        aria-label={`Leer ${principal.data.title} en ${version.data.language.toUpperCase()}`}
+                      >
+                        {version.data.language.toUpperCase()}
+                      </a>
+                    ))}
+                  </div>
+                ) : (
+                  <a
+                    class="read-link"
+                    href={`/expedientes/${principal.id}`}
+                  >
+                    Leer →
+                  </a>
+                )}
               </div>
-
             </article>
-
           ))
         }
-
       </section>
-
     </div>
-
   </main>
-
-</body>
-
-</html>
+</BaseLayout>

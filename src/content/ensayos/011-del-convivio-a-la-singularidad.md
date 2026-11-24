@@ -80,7 +80,7 @@ Sostener el imperativo hoy no es ingenuidad, sino voluntad y poder. Representan 
 
 
 <figure>
-  <img src="/images/2073.png" alt="Drones en 2073">
+  <img src="/images/2073.webp" alt="Drones en 2073" loading="lazy" decoding="async">
   <figcaption>
     <strong>Nota:</strong>Fotograma de 2073 [Película]<br>
     Fuente: A. Kapadia, 2024, Lafcadia Productions. Copyright 2024

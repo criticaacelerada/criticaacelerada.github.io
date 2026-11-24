@@ -1,175 +1,251 @@
 ---
 import { getCollection, render } from "astro:content";
-import HomeButton from "../../components/HomeButton.astro";
-import SocialFooter from "../../components/SocialFooter.astro";
-import "../../styles/global.css";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ReadingProgress from "../../components/ReadingProgress.astro";
+import TableOfContents from "../../components/TableOfContents.astro";
+import CopyCitation from "../../components/CopyCitation.astro";
+import ArticlePagination from "../../components/ArticlePagination.astro";
+import {
+  buildCitation,
+  estimateReadingTime,
+  findNodeByName,
+  formatEditorialDate,
+  hasMathContent,
+} from "../../lib/editorial";
 
 export async function getStaticPaths() {
   const alicuotas = await getCollection("alicuotas");
 
-  return alicuotas.map((alicuota) => ({
-    params: {
-      slug: alicuota.id,
-    },
-    props: {
-      alicuota,
-    },
-  }));
+  return alicuotas.map((alicuota) => {
+    const traduccion = alicuota.data.translationKey
+      ? alicuotas.find(
+          (candidate) =>
+            candidate.id !== alicuota.id &&
+            candidate.data.translationKey === alicuota.data.translationKey
+        )
+      : undefined;
+
+    const mismosIdioma = alicuotas
+      .filter((item) => item.data.language === alicuota.data.language)
+      .sort((a, b) => a.data.numero - b.data.numero);
+
+    const currentIdx = mismosIdioma.findIndex(
+      (item) => item.id === alicuota.id
+    );
+    const prevAlicuota =
+      currentIdx > 0 ? mismosIdioma[currentIdx - 1] : undefined;
+    const nextAlicuota =
+      currentIdx >= 0 && currentIdx < mismosIdioma.length - 1
+        ? mismosIdioma[currentIdx + 1]
+        : undefined;
+
+    return {
+      params: { slug: alicuota.id },
+      props: { alicuota, traduccion, prevAlicuota, nextAlicuota },
+    };
+  });
 }
 
-const { alicuota } = Astro.props;
-const { Content } = await render(alicuota);
+const { alicuota, traduccion, prevAlicuota, nextAlicuota } = Astro.props;
+const { Content, headings } = await render(alicuota);
+
+const lang = alicuota.data.language ?? "es";
+const isEn = lang === "en";
+const numero = String(alicuota.data.numero).padStart(3, "0");
+const authorNode = findNodeByName(alicuota.data.autor);
+const formattedDate = formatEditorialDate(alicuota.data.pubDate, lang);
+const readingTime = estimateReadingTime(alicuota.body, lang);
+const loadKatex = hasMathContent(alicuota.body);
+
+const canonicalHref = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : `https://criticaacelerada.com${Astro.url.pathname}`;
+
+const citation = buildCitation({
+  author: alicuota.data.autor,
+  date: alicuota.data.pubDate,
+  title: alicuota.data.title,
+  seriesLabel: `AE—${numero}`,
+  url: canonicalHref,
+  translator: alicuota.data.translator,
+  lang,
+});
+
+const prevTarget = prevAlicuota
+  ? {
+      href: `/alicuotas/${prevAlicuota.id}`,
+      code: `AE—${String(prevAlicuota.data.numero).padStart(3, "0")}`,
+      title: prevAlicuota.data.title,
+    }
+  : undefined;
+
+const nextTarget = nextAlicuota
+  ? {
+      href: `/alicuotas/${nextAlicuota.id}`,
+      code: `AE—${String(nextAlicuota.data.numero).padStart(3, "0")}`,
+      title: nextAlicuota.data.title,
+    }
+  : undefined;
 ---
 
-<!doctype html>
-<html lang={alicuota.data.language}>
+<BaseLayout
+  title={`${alicuota.data.title} | Crítica Acelerada`}
+  description={alicuota.data.description}
+  lang={lang}
+  loadKatex={loadKatex}
+  type="article"
+  publishedTime={alicuota.data.pubDate}
+  author={alicuota.data.autor}
+  section="Alícuotas Experimentales"
+  alternateLang={
+    traduccion
+      ? {
+          lang: traduccion.data.language,
+          href: `/alicuotas/${traduccion.id}`,
+        }
+      : undefined
+  }
+>
+  <ReadingProgress />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{alicuota.data.title} | Crítica Acelerada</title>
-   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-</head>
-
-<body>
-
-<div class="container">
-
-  <header class="case-header">
-
-    <div class="case-header-top">
-
-      <p class="eyebrow">
-        AE—{String(alicuota.data.numero).padStart(3, "0")}
-      </p>
-
-      <span class="case-status">
-        ARCHIVO ABIERTO
-      </span>
-
-    </div>
-
-    <div class="case-title-grid">
-
-      <div class="case-title-block">
-
-        <h1>
-          {alicuota.data.title}
-        </h1>
-
-        <p class="case-description">
-          {alicuota.data.description}
-        </p>
-
-      </div>
-
-      <div class="case-number" aria-hidden="true">
-        {String(alicuota.data.numero).padStart(3, "0")}
-      </div>
-
-    </div>
-
-    <div class="case-meta">
-
-      <span>
-        CRÍTICA ACELERADA
-      </span>
-
-      <span>
-        LABORATORIO DE ESTUDIOS CRÍTICOS
-      </span>
-
-      <span>
-        {alicuota.data.autor}
-      </span>
-
-      {
-        alicuota.data.translator && (
-          <span>
-            TRADUCCIÓN: {alicuota.data.translator}
-          </span>
-        )
-      }
-
-    </div>
-
-  </header>
-
-  <div class="case-layout">
-
-    <aside class="case-sidebar">
-
-      <div class="case-sidebar-block">
-
-        <span class="case-sidebar-label">
-          CLASIFICACIÓN
-        </span>
-
-        <strong>
-          AE—{String(alicuota.data.numero).padStart(3, "0")}
-        </strong>
-
-      </div>
-
-      <div class="case-sidebar-block">
-
-        <span class="case-sidebar-label">
-          ESTADO
-        </span>
-
-        <strong>
-          PUBLICADO
-        </strong>
-
-      </div>
-
-      <div class="case-sidebar-block">
-
-        <span class="case-sidebar-label">
-          FORMATO
-        </span>
-
-        <strong>
-          {alicuota.data.tipo?.toUpperCase() ?? "MUESTRA EXPERIMENTAL"}
-        </strong>
-
-      </div>
-
-      <div class="case-sidebar-block">
-
-        <span class="case-sidebar-label">
-          IDIOMA
-        </span>
-
-        <strong>
-          {alicuota.data.language.toUpperCase()}
-        </strong>
-
-      </div>
-
-      <div class="case-sidebar-line"></div>
-
-      <a
-        class="case-back-link"
-        href="/alicuotas"
+  <main class="case-page">
+    <div class="container">
+      <nav
+        class="case-breadcrumb"
+        aria-label={isEn ? "Breadcrumb" : "Ruta de navegación"}
       >
-        ← Volver al archivo
-      </a>
+        <a href="/">{isEn ? "Home" : "Inicio"}</a>
+        <span aria-hidden="true">/</span>
+        <a href="/alicuotas">{isEn ? "Experimental Aliquots" : "Alícuotas"}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">AE—{numero}</span>
+      </nav>
 
-    </aside>
+      <header class="case-header">
+        <div class="case-header-top">
+          <p class="eyebrow">AE—{numero}</p>
+          <span class="case-status">
+            {isEn ? "OPEN FILE" : "ARCHIVO ABIERTO"}
+          </span>
+        </div>
 
-    <article class="case-content">
+        <div class="case-title-grid">
+          <div class="case-title-block">
+            <h1>{alicuota.data.title}</h1>
+            <p class="case-description">{alicuota.data.description}</p>
+          </div>
 
-      <Content />
+          <div class="case-number" aria-hidden="true">{numero}</div>
+        </div>
 
-    </article>
+        <div class="case-meta">
+          <span>
+            {authorNode ? (
+              <a href={`/nodos/${authorNode.slug}`}>{alicuota.data.autor}</a>
+            ) : (
+              alicuota.data.autor
+            )}
+          </span>
+          {
+            alicuota.data.translator && (
+              <span>
+                {isEn ? "TRANSLATION: " : "TRADUCCIÓN: "}
+                {alicuota.data.translator}
+              </span>
+            )
+          }
+          <time datetime={alicuota.data.pubDate.toISOString().slice(0, 10)}>
+            {formattedDate}
+          </time>
+          <span>{readingTime}</span>
+        </div>
 
-  </div>
+        {
+          traduccion && (
+            <div
+              class="case-lang-bar"
+              aria-label={isEn ? "Available languages" : "Idiomas disponibles"}
+            >
+              <span class="case-lang-label">
+                {isEn ? "VERSION" : "VERSIÓN"}
+              </span>
+              <div class="language-switch">
+                <span class="language-chip is-active" aria-current="true">
+                  {lang.toUpperCase()}
+                </span>
+                <a
+                  class="language-chip"
+                  href={`/alicuotas/${traduccion.id}`}
+                  lang={traduccion.data.language}
+                >
+                  {traduccion.data.language.toUpperCase()} →
+                </a>
+              </div>
+            </div>
+          )
+        }
+      </header>
 
-</div>
+      <div class="case-layout">
+        <aside class="case-sidebar">
+          <div class="case-sidebar-meta">
+            <div class="case-sidebar-block">
+              <span class="case-sidebar-label">
+                {isEn ? "CLASSIFICATION" : "CLASIFICACIÓN"}
+              </span>
+              <strong>AE—{numero}</strong>
+            </div>
 
-<HomeButton />
-<SocialFooter />
+            <div class="case-sidebar-block">
+              <span class="case-sidebar-label">
+                {isEn ? "DATE" : "FECHA"}
+              </span>
+              <strong>{formattedDate}</strong>
+            </div>
 
-</body>
-</html>
+            <div class="case-sidebar-block">
+              <span class="case-sidebar-label">
+                {isEn ? "FORMAT" : "FORMATO"}
+              </span>
+              <strong>
+                {alicuota.data.tipo?.toUpperCase() ?? "MUESTRA EXPERIMENTAL"}
+              </strong>
+            </div>
+
+            <div class="case-sidebar-block">
+              <span class="case-sidebar-label">
+                {isEn ? "LANGUAGE" : "IDIOMA"}
+              </span>
+              <strong>{lang.toUpperCase()}</strong>
+            </div>
+          </div>
+
+          <TableOfContents headings={headings} lang={lang} variant="sidebar" />
+
+          <CopyCitation citation={citation} lang={lang} />
+
+          <div class="case-sidebar-line"></div>
+
+          <a class="case-back-link" href="/alicuotas">
+            {isEn ? "← Back to archive" : "← Volver al archivo"}
+          </a>
+        </aside>
+
+        <article class="case-content">
+          <TableOfContents headings={headings} lang={lang} variant="mobile" />
+
+          <Content />
+
+          <ArticlePagination
+            prev={prevTarget}
+            next={nextTarget}
+            lang={lang}
+            ariaLabel={
+              isEn ? "Aliquot navigation" : "Navegación de alícuotas"
+            }
+          />
+        </article>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

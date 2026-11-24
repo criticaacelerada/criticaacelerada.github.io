@@ -1,5 +1,4 @@
 
-
 ---
 title: "¿Por qué hablar de colapso? Parte I"
 date: 2026-07-26
@@ -149,7 +148,7 @@ Es probable que, mucho antes de 2026, ese axioma ya estuviera vaporizado cuando 
 Los gráficos de **la Gran Aceleración**, presentados por Will Steffen y su equipo, mostraron ya en 2015 que el crecimiento exponencial de variables económicas —como el Producto Interno Bruto (PIB) o la Inversión Extranjera Directa (IED)— desde la época dorada del capitalismo avanzaba de manera paralela a la degradación de la biosfera, la acidificación de los océanos, el incremento de la temperatura y el estrés hídrico, por mencionar algunos ejemplos.
 
 <figure>
-  <img src="/images/GA.jpg" alt="Figura 1. Gráficas de la Gran Aceleración.">
+  <img src="/images/GA.webp" alt="Figura 1. Gráficas de la Gran Aceleración." loading="lazy" decoding="async">
   <figcaption>
     <strong>Figura 1.</strong> Gráficas de la Gran Aceleración.<br>
     Fuente: Steffen et al. (2015).
