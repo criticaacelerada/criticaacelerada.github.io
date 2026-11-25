@@ -38,6 +38,7 @@ const publicaciones = [
       id: entry.id,
       codigo: `EXPEDIENTE ${String(entry.data.expediente).padStart(3, "0")}`,
       tipo: "ARCHIVO TEXTUAL",
+      esTransmision: false,
       fecha: entry.data.date,
       titulo: entry.data.title,
       descripcion: entry.data.descripcion,
@@ -54,6 +55,7 @@ const publicaciones = [
       id: `${entry.id}-audiovisual`,
       codigo: `ARCHIVO AUDIOVISUAL / ${String(entry.data.expediente).padStart(3, "0")}`,
       tipo: "MATERIAL ASOCIADO",
+      esTransmision: false,
       fecha: entry.data.video.date,
       titulo: entry.data.video.title,
       descripcion: "Material audiovisual asociado a este expediente.",
@@ -69,6 +71,7 @@ const publicaciones = [
     id: entry.id,
     codigo: `TRANSMISIÓN ${String(entry.data.numero).padStart(3, "0")}`,
     tipo: "ARCHIVO AUDIOVISUAL",
+    esTransmision: true,
     fecha: entry.data.pubDate,
     titulo: entry.data.title,
     descripcion: entry.data.description,
@@ -90,6 +93,7 @@ const publicaciones = [
       id: entry.id,
       codigo: `DESTILADO ${String(entry.data.numero).padStart(3, "0")}`,
       tipo: "ARCHIVO DESTILADO",
+      esTransmision: false,
       fecha: entry.data.pubDate,
       titulo: entry.data.title,
       descripcion: entry.data.description,
@@ -112,6 +116,7 @@ const publicaciones = [
       id: entry.id,
       codigo: `AE—${String(entry.data.numero).padStart(3, "0")}`,
       tipo: "ARCHIVO EXPERIMENTAL",
+      esTransmision: false,
       fecha: entry.data.pubDate,
       titulo: entry.data.title,
       descripcion: entry.data.description,
@@ -125,6 +130,16 @@ const publicaciones = [
 const masReciente = publicaciones.sort(
   (a, b) => b.fecha.getTime() - a.fecha.getTime()
 )[0];
+
+const etiquetaAccionPrincipal = masReciente?.esTransmision
+  ? "IR A LA TRANSMISIÓN"
+  : "LEER EN ESPAÑOL";
+
+const ariaAccionPrincipal = masReciente
+  ? masReciente.esTransmision
+    ? `Ir a la transmisión ${masReciente.titulo}`
+    : `Leer ${masReciente.titulo} en español`
+  : "";
 
 const avisosActivos = avisos
   .filter((aviso) => aviso.activo)
@@ -257,13 +272,20 @@ const totalAlicuotas = new Set(
               <p class="latest-description">{masReciente.descripcion}</p>
 
               <div class="latest-footer">
-                <div class="latest-languages" aria-label="Idiomas disponibles">
+                <div
+                  class="latest-languages"
+                  aria-label={
+                    masReciente.esTransmision
+                      ? "Acceso a la transmisión"
+                      : "Idiomas disponibles"
+                  }
+                >
                   <a
                     class="latest-read"
                     href={masReciente.hrefEs}
-                    aria-label={`Leer ${masReciente.titulo} en español`}
+                    aria-label={ariaAccionPrincipal}
                   >
-                    <span>LEER EN ESPAÑOL</span>
+                    <span>{etiquetaAccionPrincipal}</span>
                     <span class="arrow" aria-hidden="true">→</span>
                   </a>
 
