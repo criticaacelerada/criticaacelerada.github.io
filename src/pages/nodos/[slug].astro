@@ -19,6 +19,9 @@ if (!node) {
 }
 
 const traces = await getNodeTraces(node);
+const hasProfessional = Boolean(node.professional?.trim());
+const hasParallel = Boolean(node.parallel);
+const hasBothBioColumns = hasProfessional && hasParallel;
 ---
 
 <BaseLayout
@@ -39,66 +42,67 @@ const traces = await getNodeTraces(node);
           <span aria-current="page">{node.code}</span>
         </nav>
 
-        <div class="node-hero-layout">
-          <aside class="node-aside">
+        <div class="node-topbar">
+          <div class="node-identity">
             <span class="node-code">{node.code}</span>
+            <span class="node-sep" aria-hidden="true">·</span>
             <span class="node-role">{node.role}</span>
-            <div class="node-line" aria-hidden="true"></div>
-            <span class="node-status">{node.status}</span>
+          </div>
+
+          <div class="node-topbar-right">
             {node.location && (
               <span class="node-location">{node.location}</span>
             )}
-          </aside>
+            <span class="node-status">{node.status}</span>
+          </div>
+        </div>
 
+        <header class="node-header-grid">
           <div class="node-heading">
             <span class="eyebrow">REGISTRO NODAL</span>
             <h1>{node.name}</h1>
-
-            <div class="field-list">
-              {node.fields.map((field) => <span>{field}</span>)}
-            </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="profile-section">
-      <div class="container profile-layout">
-        <aside class="section-aside">
-          <span>01</span>
-          <strong>TRAYECTORIA</strong>
-        </aside>
-
-        <div class="profile-copy">
-          <span class="profile-label">TRABAJO PROFESIONAL</span>
-          <p>{node.professional}</p>
-        </div>
+          <div class="field-list" aria-label="Líneas de investigación">
+            {node.fields.map((field) => <span>{field}</span>)}
+          </div>
+        </header>
       </div>
     </section>
 
     {
-      node.parallel && (
-        <section class="profile-section">
-          <div class="container profile-layout">
-            <aside class="section-aside">
-              <span>02</span>
-              <strong>PRÁCTICA PARALELA</strong>
-            </aside>
+      (hasProfessional || hasParallel) && (
+        <section class="profile-section bio-section">
+          <div class="container">
+            <div class:list={["bio-grid", { "is-single": !hasBothBioColumns }]}>
+              {hasProfessional && (
+                <article class="bio-col">
+                  <h2 class="section-code">01 / TRAYECTORIA</h2>
+                  <span class="bio-sublabel">TRABAJO PROFESIONAL</span>
+                  <p>{node.professional}</p>
+                </article>
+              )}
 
-            <div class="profile-copy">
-              <span class="profile-label">{node.parallel.title}</span>
-              <p>{node.parallel.description}</p>
+              {hasParallel && node.parallel && (
+                <article class="bio-col">
+                  <h2 class="section-code">
+                    {hasProfessional ? "02" : "01"} / PRÁCTICA PARALELA
+                  </h2>
+                  <span class="bio-sublabel">{node.parallel.title}</span>
+                  <p>{node.parallel.description}</p>
 
-              {node.parallel.url && (
-                <a
-                  class="external-link"
-                  href={node.parallel.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {node.parallel.label ?? "VISITAR PROYECTO"}
-                  <span aria-hidden="true">↗</span>
-                </a>
+                  {node.parallel.url && (
+                    <a
+                      class="external-link"
+                      href={node.parallel.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {node.parallel.label ?? "VISITAR PROYECTO"}
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </article>
               )}
             </div>
           </div>
@@ -106,87 +110,81 @@ const traces = await getNodeTraces(node);
       )
     }
 
+    <section class="profile-section traces-section">
+      <div class="container">
+        <div class="section-bar">
+          <h2 class="section-code">03 / TRAZAS EN CA</h2>
+          <span class="traces-count">
+            {String(traces.length).padStart(2, "0")} TRAZAS
+          </span>
+        </div>
+
+        {
+          traces.length > 0 ? (
+            <div class="trace-table">
+              {traces.map((trace) => (
+                <a class="trace-row" href={trace.href}>
+                  <span class="trace-code">{trace.code}</span>
+
+                  <h3 class="trace-title">{trace.title}</h3>
+
+                  <span class="trace-classification">
+                    <span class="trace-role">{trace.role}</span>
+                    <span class="trace-sep" aria-hidden="true">/</span>
+                    <span class="trace-type">{trace.type}</span>
+                  </span>
+
+                  <time
+                    class="trace-date"
+                    datetime={trace.date.toISOString().slice(0, 10)}
+                  >
+                    {formatShortDate(trace.date)}
+                  </time>
+
+                  <span class="trace-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <div class="trace-empty">
+              <span>CA / SISTEMA</span>
+              <strong>SIN TRAZAS REGISTRADAS</strong>
+              <small>
+                Este nodo todavía no aparece en los metadatos de los archivos
+                sincronizados.
+              </small>
+            </div>
+          )
+        }
+      </div>
+    </section>
+
     {
       node.youtube && (
-        <section class="profile-section">
-          <div class="container profile-layout">
-            <aside class="section-aside">
-              <span>03</span>
-              <strong>ACTIVIDAD EXTERNA</strong>
-            </aside>
-
-            <div class="profile-copy">
-              <span class="profile-label">CORRIENTE DEL NODO</span>
-              <p>
-                Publicaciones recientes del canal de YouTube asociado a este
-                nodo. Una ventana hacia su práctica externa y hacia los proyectos
-                que orbitan alrededor del nodo.
-              </p>
-
-              <NodeYouTubeFeed
-                handle={node.youtube.handle}
-                label={node.youtube.label}
-                url={node.youtube.url}
-              />
+        <section class="profile-section external-activity-section">
+          <div class="container">
+            <div class="section-bar">
+              <h2 class="section-code">04 / ACTIVIDAD EXTERNA</h2>
+              <span class="section-meta">CORRIENTE DEL NODO</span>
             </div>
+
+            <p class="activity-intro">
+              Publicaciones recientes del canal de YouTube asociado a este nodo.
+              Una ventana hacia su práctica externa y hacia los proyectos que
+              orbitan alrededor del nodo.
+            </p>
+
+            <NodeYouTubeFeed
+              handle={node.youtube.handle}
+              label={node.youtube.label}
+              url={node.youtube.url}
+            />
           </div>
         </section>
       )
     }
-
-    <section class="profile-section traces-section">
-      <div class="container profile-layout">
-        <aside class="section-aside">
-          <span>{node.youtube ? "04" : "03"}</span>
-          <strong>TRAZAS EN CA</strong>
-        </aside>
-
-        <div class="profile-copy">
-          <div class="traces-heading">
-            <span class="profile-label">REGISTRO DE CONTRIBUCIONES</span>
-            <span class="traces-count">
-              {String(traces.length).padStart(2, "0")} TRAZAS
-            </span>
-          </div>
-
-          {
-            traces.length > 0 ? (
-              <div class="trace-list">
-                {traces.map((trace) => (
-                  <a class="trace-row" href={trace.href}>
-                    <div class="trace-meta">
-                      <span class="trace-code">{trace.code}</span>
-                      <span>{trace.type}</span>
-                      <time datetime={trace.date.toISOString().slice(0, 10)}>
-                        {formatShortDate(trace.date)}
-                      </time>
-                    </div>
-
-                    <div class="trace-main">
-                      <span class="trace-role">{trace.role}</span>
-                      <h3>{trace.title}</h3>
-                    </div>
-
-                    <span class="trace-arrow" aria-hidden="true">
-                      →
-                    </span>
-                  </a>
-                ))}
-              </div>
-            ) : (
-              <div class="trace-empty">
-                <span>CA / SISTEMA</span>
-                <strong>SIN TRAZAS REGISTRADAS</strong>
-                <small>
-                  Este nodo todavía no aparece en los metadatos de los archivos
-                  sincronizados.
-                </small>
-              </div>
-            )
-          }
-        </div>
-      </div>
-    </section>
   </main>
 </BaseLayout>
 
@@ -194,50 +192,64 @@ const traces = await getNodeTraces(node);
   .node-profile {
     background: var(--bg);
     color: var(--text);
+    overflow-x: clip;
   }
 
+  /* ============================================================
+     1. BARRA SUPERIOR NODAL Y 2. ENCABEZADO HORIZONTAL
+  ============================================================ */
+
   .node-hero {
-    padding: 2.25rem 0 4rem;
+    padding: 2.25rem 0 3.75rem;
     border-bottom: 1px solid var(--border);
   }
 
-  .node-hero-layout {
-    display: grid;
-    grid-template-columns: 220px minmax(0, 1fr);
-    gap: 3.5rem;
-    align-items: start;
-    padding-top: 1.75rem;
-    border-top: 2px solid var(--accent);
+  .node-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    padding: 0.25rem 0 1.05rem;
+    border-bottom: 1px solid var(--accent);
   }
 
-  .node-aside {
+  .node-identity {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.65rem;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.65rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
 
   .node-code {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
     font-weight: 500;
-    letter-spacing: 0.14em;
     color: var(--accent-text);
   }
 
-  .node-role,
+  .node-sep {
+    color: var(--meta);
+  }
+
+  .node-role {
+    color: var(--muted);
+  }
+
+  .node-topbar-right {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.35rem;
+  }
+
   .node-location {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     letter-spacing: 0.12em;
-    color: var(--muted);
-  }
-
-  .node-line {
-    width: 36px;
-    height: 2px;
-    margin: 0.5rem 0;
-    background: var(--accent);
+    color: var(--meta);
   }
 
   .node-status {
@@ -261,90 +273,118 @@ const traces = await getNodeTraces(node);
     background: var(--accent);
   }
 
+  .node-header-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 2rem 3.5rem;
+    align-items: end;
+    padding-top: 2.5rem;
+  }
+
+  .node-heading {
+    min-width: 0;
+  }
+
   .node-heading h1 {
-    margin: 0.75rem 0 1.5rem;
+    margin: 0.75rem 0 0;
     font-family: var(--font-serif);
-    font-size: clamp(2.25rem, 5vw, 3.85rem);
+    font-size: clamp(2.25rem, 4.6vw, 3.75rem);
     font-weight: 600;
     line-height: 1.04;
     letter-spacing: -0.025em;
     color: var(--text);
+    text-wrap: balance;
   }
 
   .field-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.55rem;
+    justify-content: flex-end;
+    align-content: flex-end;
+    gap: 0.45rem;
+    padding-bottom: 0.2rem;
   }
 
   .field-list span {
-    padding: 0.35rem 0.7rem;
+    padding: 0.32rem 0.65rem;
     border: 1px solid var(--border);
     background: var(--surface);
     color: var(--muted);
     font-family: var(--font-mono);
     font-size: var(--text-xs);
+    line-height: 1.35;
     letter-spacing: 0.08em;
   }
+
+  /* ============================================================
+     3. SECCIONES 01 / TRAYECTORIA Y 02 / PRÁCTICA PARALELA
+  ============================================================ */
 
   .profile-section {
     padding: 3.75rem 0;
     border-bottom: 1px solid var(--border);
   }
 
-  .profile-layout {
-    display: grid;
-    grid-template-columns: 220px minmax(0, 1fr);
-    gap: 3.5rem;
-    align-items: start;
+  .profile-section:last-child {
+    border-bottom: 0;
   }
 
-  .section-aside {
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-  }
-
-  .section-aside span {
+  .section-code {
+    margin: 0;
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
     color: var(--accent-text);
     font-variant-numeric: tabular-nums;
   }
 
-  .section-aside strong {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    color: var(--muted);
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
   }
 
-  .profile-copy {
+  .bio-grid.is-single {
+    grid-template-columns: 1fr;
+  }
+
+  .bio-col {
     min-width: 0;
-    max-width: 68ch;
   }
 
-  .traces-section .profile-copy {
-    max-width: none;
+  .bio-grid:not(.is-single) .bio-col:first-child {
+    padding-right: 3rem;
   }
 
-  .profile-label {
+  .bio-grid:not(.is-single) .bio-col:last-child {
+    padding-left: 3rem;
+    border-left: 1px solid var(--border-subtle);
+  }
+
+  .bio-sublabel {
     display: block;
-    margin-bottom: 1rem;
+    margin: 0.65rem 0 1.25rem;
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    color: var(--accent-text);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--meta);
   }
 
-  .profile-copy p {
+  .bio-col p,
+  .activity-intro {
     margin: 0;
     font-family: var(--font-serif);
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     line-height: 1.78;
     color: var(--text-body);
+  }
+
+  .bio-grid.is-single .bio-col p,
+  .activity-intro {
+    max-width: 72ch;
   }
 
   .external-link {
@@ -354,7 +394,7 @@ const traces = await getNodeTraces(node);
     min-height: 44px;
     margin-top: 1.5rem;
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     letter-spacing: 0.12em;
     color: var(--accent-text);
     border-bottom: 1px solid var(--accent);
@@ -365,92 +405,107 @@ const traces = await getNodeTraces(node);
     color: var(--text);
   }
 
-  .traces-heading {
+  /* ============================================================
+     4. 03 / TRAZAS EN CA — TABLA EDITORIAL HORIZONTAL
+  ============================================================ */
+
+  .section-bar {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    gap: 1.5rem;
-    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-strong);
   }
 
-  .traces-heading .profile-label {
-    margin-bottom: 0;
-  }
-
-  .traces-count {
+  .traces-count,
+  .section-meta {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     letter-spacing: 0.14em;
+    text-transform: uppercase;
     color: var(--meta);
     font-variant-numeric: tabular-nums;
   }
 
-  .trace-list {
-    border-top: 2px solid var(--accent);
+  .trace-table {
+    display: flex;
+    flex-direction: column;
   }
 
   .trace-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 0.65rem 1.5rem;
-    align-items: center;
-    padding: 1.45rem 0;
-    border-bottom: 1px solid var(--border);
-    transition: background-color 0.2s ease, padding-left 0.2s ease;
+    grid-template-columns: 200px minmax(0, 1fr) 235px 96px 24px;
+    gap: 1.25rem;
+    align-items: baseline;
+    padding: 1.1rem 0.65rem;
+    margin-inline: -0.65rem;
+    border-bottom: 1px solid var(--border-subtle);
+    transition: background-color 0.2s ease;
   }
 
   .trace-row:hover {
     background: var(--surface);
-    padding-left: 0.75rem;
   }
 
-  .trace-meta {
-    grid-column: 1;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 1.25rem;
+  .trace-code {
+    min-width: 0;
     font-family: var(--font-mono);
     font-size: var(--text-xs);
+    font-weight: 500;
     letter-spacing: 0.1em;
+    color: var(--accent-text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .trace-title {
+    margin: 0;
+    min-width: 0;
+    font-family: var(--font-serif);
+    font-size: 1.12rem;
+    font-weight: 500;
+    line-height: 1.32;
+    color: var(--text);
+    transition: color 0.2s ease;
+  }
+
+  .trace-row:hover .trace-title {
+    color: var(--accent-text);
+  }
+
+  .trace-classification {
+    min-width: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    line-height: 1.45;
+    color: var(--muted);
+  }
+
+  .trace-sep {
+    margin-inline: 0.25rem;
+    color: var(--meta);
+  }
+
+  .trace-type {
+    color: var(--meta);
+  }
+
+  .trace-date {
+    text-align: right;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
     color: var(--meta);
     font-variant-numeric: tabular-nums;
   }
 
-  .trace-code {
-    color: var(--accent-text);
-  }
-
-  .trace-main {
-    grid-column: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-  }
-
-  .trace-role {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    letter-spacing: 0.12em;
-    color: var(--muted);
-  }
-
-  .trace-main h3 {
-    margin: 0;
-    font-family: var(--font-serif);
-    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
-    font-weight: 600;
-    line-height: 1.22;
-    color: var(--text);
-  }
-
-  .trace-row:hover .trace-main h3 {
-    color: var(--accent-text);
-  }
-
   .trace-arrow {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    font-size: 1.15rem;
+    text-align: right;
+    font-size: 1rem;
+    line-height: 1;
     color: var(--accent-text);
     transition: transform 0.2s ease;
   }
@@ -460,6 +515,7 @@ const traces = await getNodeTraces(node);
   }
 
   .trace-empty {
+    margin-top: 1.5rem;
     padding: 2rem;
     border: 1px solid var(--border);
     background: var(--surface);
@@ -486,15 +542,101 @@ const traces = await getNodeTraces(node);
     font-size: 0.9rem;
   }
 
-  @media (max-width: 860px) {
-    .node-hero-layout,
-    .profile-layout {
+  /* ============================================================
+     ACTIVIDAD EXTERNA (YOUTUBE)
+  ============================================================ */
+
+  .activity-intro {
+    margin-top: 1.5rem;
+  }
+
+  /* ============================================================
+     5. RESPONSIVO (TABLET Y MÓVIL)
+  ============================================================ */
+
+  @media (max-width: 1024px) {
+    .trace-row {
+      grid-template-columns: 165px minmax(0, 1fr) 195px 88px 20px;
+      gap: 0.95rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .node-header-grid {
       grid-template-columns: 1fr;
-      gap: 1.75rem;
+      gap: 1.5rem;
+      align-items: start;
+      padding-top: 2rem;
+    }
+
+    .field-list {
+      justify-content: flex-start;
+      padding-bottom: 0;
+    }
+
+    .bio-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .bio-grid:not(.is-single) .bio-col:first-child {
+      padding-right: 0;
+    }
+
+    .bio-grid:not(.is-single) .bio-col:last-child {
+      padding-left: 0;
+      padding-top: 2.5rem;
+      border-left: 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+  }
+
+  @media (max-width: 820px) {
+    .node-hero {
+      padding: 1.75rem 0 2.75rem;
     }
 
     .profile-section {
       padding: 2.75rem 0;
+    }
+
+    .trace-row {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.45rem 1rem;
+      align-items: center;
+      padding: 1.15rem 0;
+      margin-inline: 0;
+    }
+
+    .trace-row:hover {
+      background: transparent;
+    }
+
+    .trace-code {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .trace-date {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .trace-title {
+      grid-column: 1;
+      grid-row: 2;
+      font-size: 1.15rem;
+    }
+
+    .trace-classification {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    .trace-arrow {
+      grid-column: 2;
+      grid-row: 2 / span 2;
+      align-self: center;
     }
   }
 </style>
