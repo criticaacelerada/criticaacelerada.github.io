@@ -323,8 +323,9 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--border-subtle);
-  background: var(--surface);
+  border: none;
+  background: transparent;
+  box-shadow: none;
   padding: 1.5rem;
 }
 
@@ -333,10 +334,24 @@ img {
   position: relative;
   z-index: 2;
   width: min(100%, 270px);
+  height: auto;
   max-height: 270px;
   object-fit: contain;
   opacity: 0.78;
-  filter: grayscale(1) contrast(1.1);
+  mix-blend-mode: screen;
+  filter: grayscale(1) contrast(1.15);
+  -webkit-mask-image: radial-gradient(
+    ellipse closest-side at center,
+    #000000 72%,
+    rgba(0, 0, 0, 0.82) 88%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse closest-side at center,
+    #000000 72%,
+    rgba(0, 0, 0, 0.82) 88%,
+    transparent 100%
+  );
 }
 
 .archive-visual p,
