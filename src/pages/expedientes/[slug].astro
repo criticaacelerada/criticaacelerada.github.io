@@ -60,6 +60,11 @@ const numero = String(ensayo.data.expediente).padStart(3, "0");
 const authorName = ensayo.data.author ?? "Crítica Acelerada";
 const authorNode = findNodeByName(ensayo.data.author);
 const translatorNode = findNodeByName(ensayo.data.translator);
+const translatorBioHeading = headings.find((heading) =>
+  ["sobre-el-traductor", "sobre-la-traductora", "about-the-translator"].includes(
+    heading.slug
+  )
+);
 const formattedDate = formatEditorialDate(ensayo.data.date, lang);
 const readingTime = estimateReadingTime(ensayo.body, lang);
 const loadKatex = hasMathContent(ensayo.body);
@@ -174,7 +179,19 @@ const nextTarget = nextEnsayo
                   <strong>{authorName}</strong>
                   {" · "}
                   {isEn ? "Translation by " : "Traducción al español de "}
-                  <strong>{ensayo.data.translator}</strong>
+                  <strong>{ensayo.data.translator}</strong>{translatorBioHeading && (
+                    <sup class="translator-anchor">
+                      <a
+                        href={`#${translatorBioHeading.slug}`}
+                        title={translatorBioHeading.text}
+                        aria-label={
+                          isEn
+                            ? `Go to ${translatorBioHeading.text}`
+                            : `Ir a ${translatorBioHeading.text}`
+                        }
+                      >*</a>
+                    </sup>
+                  )}
                   {ensayo.data.sourceUrl && ensayo.data.sourceTitle && (
                     <>
                       {" · "}
@@ -409,5 +426,26 @@ const nextTarget = nextEnsayo
     color: var(--accent-text);
     text-decoration: underline;
     text-underline-offset: 0.2em;
+  }
+
+  .translator-anchor {
+    margin-left: 0.06em;
+    font-size: 0.85em;
+    line-height: 0;
+    vertical-align: super;
+  }
+
+  .translation-credit .translator-anchor a {
+    padding: 0 0.08em;
+    color: var(--accent-text);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.18s ease, opacity 0.18s ease;
+  }
+
+  .translation-credit .translator-anchor a:hover,
+  .translation-credit .translator-anchor a:focus-visible {
+    color: var(--text);
+    opacity: 0.92;
   }
 </style>
